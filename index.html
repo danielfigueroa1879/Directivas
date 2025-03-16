@@ -5,28 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directiva de Funcionamiento</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif; /* Fuente moderna */
+            font-family: 'Poppins ExtraLight', sans-serif; /* Fuente Pipins Extra Light (similar) */
             margin: 0;
             padding: 20px;
             background-color: #f0f2f5;
         }
-        
+
         .download-btn {
             transition: all 0.3s ease;
         }
-        
+
         .download-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
+
         .card-container {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
+        /* Modo oscuro */
+        .dark-mode body {
+            background-color: #1f2937;
+            color: #ffffff;
+        }
+
+        .dark-mode .bg-white {
+            background-color: #111827;
+        }
+
+        .dark-mode .text-gray-500 {
+            color: #d1d5db;
+        }
+
+        .dark-mode .text-blue-700 {
+            color: #3b82f6;
+        }
+
         @media (max-width: 640px) {
             body {
                 font-size: 16px; /* Aumentar tamaño de fuente general */
@@ -51,30 +70,37 @@
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 text-gray-800">
+    <!-- Botón para alternar modo claro/oscuro -->
+    <div class="flex justify-end mb-4">
+        <button id="toggle-dark-mode" class="bg-gray-300 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded">
+            Modo Oscuro
+        </button>
+    </div>
+
     <div class="card-container">
-        <div class="p-6 bg-white rounded-xl shadow-md space-y-6">
-            <h1 class="text-xl font-bold text-center text-blue-700">DIRECTIVA DE FUNCIONAMIENTO</h1>
-            <h2 class="text-lg font-semibold text-center">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+        <div class="p-6 bg-white rounded-xl shadow-md space-y-6 dark:bg-gray-800 dark:text-white">
+            <h1 class="text-xl font-bold text-center text-blue-700 dark:text-blue-500">DIRECTIVA DE FUNCIONAMIENTO</h1>
+            <h2 class="text-lg font-semibold text-center dark:text-gray-300">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
             
             <div class="space-y-4">
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="font-bold">1️⃣ Presentar Directiva (DD.FF.)</h3>
-                    <ul class="list-disc pl-5 text-sm">
+                <div class="border-l-4 border-blue-500 pl-4 dark:border-blue-400">
+                    <h3 class="font-bold dark:text-gray-300">1️⃣ Presentar Directiva (DD.FF.)</h3>
+                    <ul class="list-disc pl-5 text-sm dark:text-gray-400">
                         <li>Vigencia 03 años en instalación</li>
                         <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
                         <li>
                             <a 
                                 href="https://www.bcn.cl/leychile/navegar?idNorma=9081" 
                                 target="_blank" 
-                                class="text-blue-600 hover:underline"
+                                class="text-blue-600 hover:underline dark:text-blue-400"
                             >
                                 Dec. 93/1985
                             </a>,
                             <a 
                                 href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" 
                                 target="_blank" 
-                                class="text-blue-600 hover:underline"
+                                class="text-blue-600 hover:underline dark:text-blue-400"
                             >
                                 Dec. 261 (IV.4)
                             </a>,
@@ -82,7 +108,7 @@
                             <a 
                                 href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" 
                                 target="_blank" 
-                                class="text-blue-600 hover:underline"
+                                class="text-blue-600 hover:underline dark:text-blue-400"
                             >
                                 Dec. 32/2024
                             </a>
@@ -90,9 +116,9 @@
                     </ul>
                 </div>
                 
-                <div class="border-l-4 border-green-500 pl-4">
-                    <h3 class="font-bold">2️⃣ Documentación</h3>
-                    <ul class="space-y-3 pl-5 text-sm">
+                <div class="border-l-4 border-green-500 pl-4 dark:border-green-400">
+                    <h3 class="font-bold dark:text-gray-300">2️⃣ Documentación</h3>
+                    <ul class="space-y-3 pl-5 text-sm dark:text-gray-400">
                         <li class="flex flex-col space-y-1">
                             <span>02 Solicitudes Simples</span>
                             <a 
@@ -150,12 +176,12 @@
                     </ul>
                 </div>
                 
-                <div class="border-l-4 border-red-500 pl-4">
-                    <h3 class="font-bold">3️⃣ Todo escaneado en Digital PDF</h3>
-                    <ul class="list-disc pl-5 text-sm">
+                <div class="border-l-4 border-red-500 pl-4 dark:border-red-400">
+                    <h3 class="font-bold dark:text-gray-300">3️⃣ Todo escaneado en Digital PDF</h3>
+                    <ul class="list-disc pl-5 text-sm dark:text-gray-400">
                         <li class="flex flex-col space-y-1">
-                            <span> Escanear todo en 01 archvio PDF (Pendrive)</span>
-                            <span> Pagina Unir PDF</span>
+                            <span> Escanear todo en 01 archivo PDF (Pendrive)</span>
+                            <span> Página Unir PDF</span>
                             <a 
                                 href="https://dal5.short.gy/I" 
                                 target="_blank" 
@@ -167,9 +193,9 @@
                     </ul>
                 </div>
                 
-                <div class="border-l-4 border-yellow-500 pl-4">
-                    <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                    <ul class="list-disc pl-5 text-sm">
+                <div class="border-l-4 border-yellow-500 pl-4 dark:border-yellow-400">
+                    <h3 class="font-bold dark:text-gray-300">4️⃣ Tramitar Credenciales</h3>
+                    <ul class="list-disc pl-5 text-sm dark:text-gray-400">
                         <li class="flex flex-col space-y-1">
                             <span>Resol. 2.522 (26.08.2024) normaliza el proceso</span>
                             <a 
@@ -194,13 +220,23 @@
                 </div>
             </div>
             
-            <div class="text-xs text-gray-500 mt-4 text-center">
+            <div class="text-xs text-gray-500 mt-4 text-center dark:text-gray-400">
                 Haga clic en los botones para iniciar la descarga de los documentos
             </div>
         </div>
-        <footer class="text-center text-gray-500 text-xs mt-4">
+        <footer class="text-center text-gray-500 text-xs mt-4 dark:text-gray-400">
             © 2025 - Directiva de Funcionamiento
         </footer>
     </div>
+
+    <script>
+        // Alternar modo claro/oscuro
+        const toggleDarkModeButton = document.getElementById('toggle-dark-mode');
+        toggleDarkModeButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            toggleDarkModeButton.textContent = isDarkMode ? 'Modo Claro' : 'Modo Oscuro';
+        });
+    </script>
 </body>
 </html>
