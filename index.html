@@ -7,120 +7,103 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <style>
-        /* Fuente personalizada */
-        @font-face {
-            font-family: 'PoppinsExtraLight';
-            src: url('https://fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrLCz7Z11lFdR5zw.woff2') format('woff2');
-        }
-
         body {
-            font-family: 'PoppinsExtraLight', sans-serif;
+            font-family: 'Poppins ExtraLight', sans-serif;
             margin: 0;
-            padding: 2rem;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #374151;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-
+        .download-btn {
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
         .card-container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-
         /* Modo oscuro */
         @media (prefers-color-scheme: dark) {
             body {
-                background: #111827;
+                background-color: #111827;
                 color: #d1d5db;
             }
-
-            .card-container {
-                background: #374151; /* 3 tonos más claro que el fondo oscuro */
+            .bg-white {
+                background-color: #374151; /* <<--- 3 TONOS MÁS CLARO */
                 color: #d1d5db;
             }
-
-            .download-btn {
-                background: #2563eb;
-                color: white;
+            .text-gray-800 {
+                color: #d1d5db;
             }
-
-            a:hover {
-                color: #8b949e;
+            .text-gray-700 {
+                color: #9ca3af;
+            }
+            .text-blue-700 {
+                color: #3b82f6;
+            }
+            .text-gray-500 {
+                color: #9ca3af;
+            }
+            .border-blue-500 {
+                border-color: #3b82f6;
+            }
+            .border-green-500 {
+                border-color: #22c55e;
+            }
+            .border-red-500 {
+                border-color: #ef4444;
+            }
+            .border-yellow-500 {
+                border-color: #f59e0b;
             }
         }
-
-        /* Botones de descarga */
-        .download-btn {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            background: #22c55e;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            display: inline-block;
-            width: 120px;
-            margin-top: 0.5rem;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Ajustes móviles */
         @media (max-width: 640px) {
             body {
-                padding: 1.25rem;
-                font-size: 0.875rem;
+                font-size: 16px;
+                padding: 16px;
             }
-
             h1 {
                 font-size: 1.5rem;
             }
-
             h2 {
                 font-size: 1.25rem;
             }
-
-            .card-container {
-                padding: 1rem;
+            ul li {
+                font-size: 1rem;
             }
-
-            .download-btn {
-                width: 100%;
-                margin-bottom: 0.5rem;
+            .card-container {
+                padding: 16px;
             }
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-[#111827] text-gray-800 dark:text-white">
-    <div class="card-container dark:bg-[#374151]">
-        <h1 class="text-center text-blue-700 text-2xl font-bold mb-4">DIRECTIVA DE FUNCIONAMIENTO</h1>
-        <h2 class="text-center text-gray-800 dark:text-white text-lg font-medium mb-6">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
-
-        <div class="space-y-6">
-            <!-- Sección 1 -->
-            <div class="pl-4 border-l-4 border-blue-500">
-                <h3 class="text-gray-800 dark:text-white font-bold mb-2">1️⃣ Presentar Directiva (DD.FF.)</h3>
-                <ul class="list-disc pl-5 text-sm text-gray-700 dark:text-gray-300">
+<body class="text-gray-800"> <!-- SE ELIMINÓ bg-gray-100 PARA PERMITIR MODO OSCURO -->
+    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6">
+        <h1 class="text-xl font-bold text-center text-blue-700">DIRECTIVA DE FUNCIONAMIENTO</h1>
+        <h2 class="text-lg font-semibold text-center text-gray-800">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+        <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h3 class="font-bold text-gray-800">1️⃣ Presentar Directiva (DD.FF.)</h3>
+                <ul class="list-disc pl-5 text-sm text-gray-700">
                     <li>Vigencia 03 años en instalación</li>
                     <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
                     <li>
                         <a 
                             href="https://www.bcn.cl/leychile/navegar?idNorma=9081" 
                             target="_blank" 
-                            class="text-blue-600 hover:underline dark:text-blue-400"
+                            class="text-blue-600 hover:underline"
                         >
                             Dec. 93/1985
                         </a>,
                         <a 
                             href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" 
                             target="_blank" 
-                            class="text-blue-600 hover:underline dark:text-blue-400"
+                            class="text-blue-600 hover:underline"
                         >
                             Dec. 261 (IV.4)
                         </a>,
@@ -128,16 +111,15 @@
                         <a 
                             href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" 
                             target="_blank" 
-                            class="text-blue-600 hover:underline dark:text-blue-400"
+                            class="text-blue-600 hover:underline"
                         >
                             Dec. 32/2024
                         </a>
                     </li>
                 </ul>
             </div>
-
-            <!-- Sección 2 -->
-        <div class="border-l-4 border-green-500 pl-4">
+   
+            <div class="border-l-4 border-green-500 pl-4">
                 <h3 class="font-bold text-gray-800">2️⃣ Documentación</h3>
                 <ul class="space-y-3 pl-5 text-sm text-gray-700">
                     <li class="flex flex-col space-y-1">
@@ -196,7 +178,7 @@
                     </li>
                 </ul>
             </div>
-     
+            
             <div class="border-l-4 border-red-500 pl-4">
                 <h3 class="font-bold text-gray-800">3️⃣ Todo escaneado en Digital PDF</h3>
                 <ul class="list-disc pl-5 text-sm text-gray-700">
