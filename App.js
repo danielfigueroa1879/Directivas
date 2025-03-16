@@ -141,3 +141,19 @@ const DocumentosDeportivos = () => {
               >
                 Descargar Ejemplo
               </a>
+            </li>
+          </ul>
+        </div>
+        
+        <div className="text-xs text-gray-500 mt-4 text-center">
+          Haga clic en los botones para iniciar la descarga de los documentos
+        </div>
+      </div>
+      <footer className="text-center text-gray-500 text-xs mt-4">
+        © 2025 - Directiva de Funcionamiento
+      </footer>
+    </div>
+  );
+};
+
+ReactDOM.render(<DocumentosDeportivos />, document.getElementById('root'));
