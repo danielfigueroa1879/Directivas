@@ -19,14 +19,38 @@
             transition: all 0.3s ease;
         }
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px); /* Movimiento vertical mayor */
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
         }
         .card-container {
             max-width: 800px;
             margin: 0 auto;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Efectos para subtítulos (div con borde lateral) */
+        div.border-l-4 {
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        div.border-l-4:hover {
+            transform: translateX(5px); /* Desplazamiento horizontal */
+            border-color: #2a699a; /* Azul oscuro */
+        }
+        div.border-green-500:hover {
+            border-color: #166534; /* Verde oscuro */
+        }
+        div.border-red-500:hover {
+            border-color: #bf1f23; /* Rojo oscuro */
+        }
+        div.border-yellow-500:hover {
+            border-color: #a87d00; /* Amarillo oscuro */
+        }
+
+        /* Opcional: Cambio de color del texto de los subtítulos */
+        div.border-l-4:hover h3 {
+            color: #3b82f6; /* Azul claro */
+        }
+
         /* Modo oscuro */
         @media (prefers-color-scheme: dark) {
             body {
@@ -34,7 +58,7 @@
                 color: #d1d5db;
             }
             .bg-white {
-                background-color: #374151; /* <<--- 3 TONOS MÁS CLARO */
+                background-color: #374151;
                 color: #d1d5db;
             }
             .text-gray-800 {
@@ -82,12 +106,12 @@
         }
     </style>
 </head>
-<body class="text-gray-800"> <!-- SE ELIMINÓ bg-gray-100 PARA PERMITIR MODO OSCURO -->
+<body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6">
         <h1 class="text-xl font-bold text-center text-blue-700">DIRECTIVA DE FUNCIONAMIENTO</h1>
         <h2 class="text-lg font-semibold text-center text-gray-800">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         <div class="space-y-4">
-            <div class="border-l-4 border-blue-500 pl-4">
+           <div class="border-l-4 border-blue-500 pl-4">
                 <h3 class="font-bold text-gray-800">1️⃣ Presentar Directiva (DD.FF.)</h3>
                 <ul class="list-disc pl-5 text-sm text-gray-700">
                     <li>Vigencia 03 años en instalación</li>
