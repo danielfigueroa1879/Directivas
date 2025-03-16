@@ -104,6 +104,27 @@
                 padding: 16px;
             }
         }
+        /* NUEVO EFECTO DE ANIMACIÓN */
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .card-container {
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            animation: slideUp 1s ease-out 0.5s forwards; /* 1seg duración, 0.5s delay */
+            transform-origin: center bottom;
+            opacity: 0;
+        }
+        
     </style>
 </head>
 <body class="text-gray-800">
