@@ -72,7 +72,7 @@ div.border-red-500.clicked {
 }
 
 div.border-yellow-500 {
-    border-color: #dfa506 !important; /* Amarillo oscuro */
+    border-color: #f5b508 !important; /* Amarillo oscuro */
 }
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
