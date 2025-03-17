@@ -59,9 +59,36 @@ div.border-l-4:hover h3 {
   body {
     background-color: #111827; /* Fondo oscuro */
     color: #ffffff; /* Color de texto blanco para mejorar visibilidad */
-    box-shadow: none; /* Eliminar sombra en modo oscuro */
   }
-
+  .bg-white {
+      background-color: #374151;
+      color: #d1d5db;
+  }
+  .text-gray-800 {
+      color: #d1d5db;
+            }
+  .text-gray-700 {
+      color: #9ca3af;
+            }
+  .text-blue-700 {
+      color: #3b82f6;
+            }
+  .text-gray-500 {
+      color: #9ca3af;
+            }
+  .border-blue-500 {
+      border-color: #3b82f6;
+            }
+  .border-green-500 {
+      border-color: #22c55e;
+            }
+  .border-red-500 {
+      border-color: #ef4444;
+            }
+  .border-yellow-500 {
+      border-color: #f59e0b;
+            }
+        }
   .card-container {
     background-color: #374151; /* Fondo oscuro para tarjetas */
     color: #ffffff; /* Texto blanco dentro de las tarjetas */
