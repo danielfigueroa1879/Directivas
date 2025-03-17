@@ -5,7 +5,7 @@ body {
   padding: 20px;
   /* Cambio principal: Fondo en modo claro con sombra adicional */
   background-color: #f3f4f6; /* Un fondo más claro */
-  color: #374151;
+  color: #374151; /* Color de texto en modo claro */
   transition: background-color 0.3s ease, color 0.3s ease;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra suave en el fondo */
 }
@@ -45,13 +45,14 @@ div.border-l-4:hover {
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #111827;
-    color: #d1d5db;
+    background-color: #111827; /* Fondo oscuro */
+    color: #ffffff; /* Color de texto blanco para mejorar visibilidad */
     box-shadow: none; /* Eliminar sombra en modo oscuro */
   }
 
   .card-container {
-    background-color: #374151;
+    background-color: #374151; /* Fondo oscuro para tarjetas */
+    color: #ffffff; /* Texto blanco dentro de las tarjetas */
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra tenue en modo oscuro */
   }
 
@@ -61,6 +62,18 @@ div.border-l-4:hover {
 
   div.border-l-4:hover {
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra más pronunciada */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff; /* Encabezados blancos en modo oscuro */
+  }
+
+  p, li, a {
+    color: #d1d5db; /* Texto secundario en tono gris claro */
+  }
+
+  a:hover {
+    color: #ffffff; /* Enlaces brillan al pasar el mouse */
   }
 }
 
