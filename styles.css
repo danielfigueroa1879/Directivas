@@ -3,77 +3,79 @@ body {
   font-family: 'Poppins ExtraLight', sans-serif;
   margin: 0;
   padding: 20px;
-  /* Cambio principal: Fondo en modo claro con sombra adicional */
-  background-color: #f3f4f6; /* Un fondo más claro */
-  color: #374151; /* Color de texto en modo claro */
+  background-color: #f3f4f6;
+  color: #374151;
   transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra suave en el fondo */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .download-btn {
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .download-btn:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff; /* Fondo blanco para resaltar contenido */
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra moderada */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
 }
 
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
   transition: transform 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-color: #ffffff; /* Borde blanco para mayor contraste */
 }
 
 div.border-l-4:hover {
   transform: translateX(5px);
   border-color: #2a699a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #111827; /* Fondo oscuro */
-    color: #e2e8f0; /* Color de texto gris claro para mejorar visibilidad */
-    box-shadow: none; /* Eliminar sombra en modo oscuro */
+    background-color: #111827;
+    color: #e2e8f0; /* Texto gris claro para mayor legibilidad */
+    box-shadow: none;
   }
 
   .card-container {
-    background-color: #374151; /* Fondo oscuro para tarjetas */
-    color: #e2e8f0; /* Texto gris claro dentro de las tarjetas */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra tenue en modo oscuro */
+    background-color: #2a2d36; /* Fondo ligeramente más claro para mejor contraste */
+    color: #e2e8f0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   }
 
   div.border-l-4 {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05); /* Sombra ligera */
+    border-color: #ffffff; /* Borde blanco para subtítulos */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
   }
 
   div.border-l-4:hover {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra más pronunciada */
+    border-color: #3b82f6; /* Azul claro para el hover */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #cbd5e1; /* Encabezados en tono azul claro */
+    color: #cbd5e1; /* Título en tono azul claro para mayor claridad */
   }
 
   p, li, a {
-    color: #d1d5db; /* Texto secundario en tono gris claro */
+    color: #d1d5db; /* Texto secundario en gris claro */
   }
 
   a:hover {
-    color: #ffffff; /* Enlaces brillan al pasar el mouse */
+    color: #ffffff;
   }
 }
 
@@ -82,24 +84,24 @@ div.border-l-4:hover {
   body {
     font-size: 16px;
     padding: 16px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra más suave en móviles */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
   }
 
   .card-container {
     padding: 16px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra moderada en móviles */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   div.border-l-4 {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
   div.border-l-4:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
-/* NUEVO EFECTO DE ANIMACIÓN */
+/* Animación */
 @keyframes slideUp {
   from {
     transform: translateY(20%);
