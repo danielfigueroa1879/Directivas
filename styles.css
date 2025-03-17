@@ -27,31 +27,40 @@ body {
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
+  animation: slideUp 1s ease-out 0.5s forwards;
+  transform-origin: center bottom;
+  opacity: 0;
 }
 
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
   transition: transform 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-color: #ffffff; /* Borde blanco para mayor contraste */
+  border-color: #ffffff; /* Borde blanco inicial */
 }
-div.border-l-4:hover {
-  transform: translateX(5px); /* Desplazamiento horizontal */
+
+/* Reglas específicas por color */
+div.border-blue-500:hover {
   border-color: #2a699a; /* Azul oscuro */
-        }
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 div.border-green-500:hover {
   border-color: #166534; /* Verde oscuro */
-        }
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 div.border-red-500:hover {
   border-color: #bf1f23; /* Rojo oscuro */
-        }
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 div.border-yellow-500:hover {
   border-color: #a87d00; /* Amarillo oscuro */
-        }
-
-div.border-l-4:hover {
   transform: translateX(5px);
-  border-color: #2a699a;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,32 +68,32 @@ div.border-l-4:hover {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827;
-    color: #e2e8f0; /* Texto gris claro para mayor legibilidad */
+    color: #e2e8f0;
     box-shadow: none;
   }
 
   .card-container {
-    background-color: #2a2d36; /* Fondo ligeramente más claro para mejor contraste */
+    background-color: #2a2d36;
     color: #e2e8f0;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   }
 
   div.border-l-4 {
-    border-color: #ffffff; /* Borde blanco para subtítulos */
+    border-color: #ffffff;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
   }
 
   div.border-l-4:hover {
-    border-color: #3b82f6; /* Azul claro para el hover */
+    border-color: #3b82f6;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #cbd5e1; /* Título en tono azul claro para mayor claridad */
+    color: #cbd5e1;
   }
 
   p, li, a {
-    color: #d1d5db; /* Texto secundario en gris claro */
+    color: #d1d5db;
   }
 
   a:hover {
@@ -124,13 +133,4 @@ div.border-l-4:hover {
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.card-container {
-  max-width: 800px;
-  margin: 0 auto;
-  transition: all 0.3s ease;
-  animation: slideUp 1s ease-out 0.5s forwards;
-  transform-origin: center bottom;
-  opacity: 0;
 }
