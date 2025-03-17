@@ -50,7 +50,7 @@ div.border-blue-500.clicked {
 }
 
 div.border-green-500 {
-  border-color: #1ccfc3 !important; /* Verde oscuro (no turquesa) */
+  border-color: #1ccfc3 !important; /* Verde turquesa */
 }
 div.border-green-500:hover,
 div.border-green-500.clicked {
@@ -75,15 +75,17 @@ div.border-yellow-500.clicked {
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
- /* Clase para efecto "fijo" al hacer clic */
+
+/* Clase para efecto "fijo" al hacer clic */
 .clicked {
   transform: translateX(5px) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
+
 /* --- NUEVA REGLA PARA MÁRGENES INFERIORES --- */
 /* Espacio debajo del último botón de cada sección */
 div.border-l-4 ul li:last-child {
-  margin-bottom: 1rem; /* Ajusta este valor según tu preferencia (ej: 1rem = 16px) */
+  margin-bottom: 1rem; /* 16px de espacio */
 }
 
 /* Modo oscuro */
@@ -105,20 +107,18 @@ div.border-l-4 ul li:last-child {
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
   }
 
+  /* Colores oscuros específicos */
   div.border-blue-500 {
-    border-color: #2a699a !important;/*AZUL*/
+    border-color: #2a699a !important; /* Azul oscuro en modo oscuro */
   }
-
   div.border-green-500 {
-    border-color: #1ccfc3 !important; /*VERDE TURQUESA*/
+    border-color: #1ccfc3 !important; /* Verde turquesa en modo oscuro */
   }
-
   div.border-red-500 {
-    border-color: #f01317 !important; /* ROJO */
+    border-color: #f01317 !important; /* Rojo oscuro en modo oscuro */
   }
-
   div.border-yellow-500 {
-    border-color: #d29f05 !important; /* Amarillo oscuro */
+    border-color: #d29f05 !important; /* Amarillo oscuro en modo oscuro */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -166,5 +166,4 @@ div.border-l-4 ul li:last-child {
     transform: translateY(0);
     opacity: 1;
   }
- 
 }
