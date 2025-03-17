@@ -46,13 +46,13 @@ div.border-l-4:hover {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827; /* Fondo oscuro */
-    color: #ffffff; /* Color de texto blanco para mejorar visibilidad */
+    color: #e2e8f0; /* Color de texto gris claro para mejorar visibilidad */
     box-shadow: none; /* Eliminar sombra en modo oscuro */
   }
 
   .card-container {
     background-color: #374151; /* Fondo oscuro para tarjetas */
-    color: #ffffff; /* Texto blanco dentro de las tarjetas */
+    color: #e2e8f0; /* Texto gris claro dentro de las tarjetas */
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra tenue en modo oscuro */
   }
 
@@ -65,7 +65,7 @@ div.border-l-4:hover {
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* Encabezados blancos en modo oscuro */
+    color: #cbd5e1; /* Encabezados en tono azul claro */
   }
 
   p, li, a {
