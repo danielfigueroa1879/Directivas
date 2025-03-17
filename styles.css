@@ -35,6 +35,19 @@ div.border-l-4 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   border-color: #ffffff; /* Borde blanco para mayor contraste */
 }
+div.border-l-4:hover {
+  transform: translateX(5px); /* Desplazamiento horizontal */
+  border-color: #2a699a; /* Azul oscuro */
+        }
+div.border-green-500:hover {
+  border-color: #166534; /* Verde oscuro */
+        }
+div.border-red-500:hover {
+  border-color: #bf1f23; /* Rojo oscuro */
+        }
+div.border-yellow-500:hover {
+  border-color: #a87d00; /* Amarillo oscuro */
+        }
 
 div.border-l-4:hover {
   transform: translateX(5px);
