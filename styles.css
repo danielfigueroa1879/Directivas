@@ -162,4 +162,7 @@ div.border-yellow-500.clicked {
     transform: translateY(0);
     opacity: 1;
   }
+  div.border-l-4 ul li:last-child {
+  margin-bottom: 1rem; /* Ajusta el valor según tu preferencia */
+  }
 }
