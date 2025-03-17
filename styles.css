@@ -1,131 +1,145 @@
 /* Estilos generales */
 <style>
-    @font-face {
-      font-family: 'Pipinss Extra Light';
-      src: url('fonts/PipinssExtraLight.woff2') format('woff2'),
-           url('fonts/PipinssExtraLight.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
+    /* Estilos generales */
+    body {
+        font-family: 'Poppins ExtraLight', sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #eaeded; /* Nuevo color de fondo gris claro */
+        color: #374151;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
-  </style>
-  <title>Directiva de Funcionamiento</title>
- <style>
+
+    .download-btn {
+        transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+        transform: translateY(-5px); /* Movimiento vertical mayor */
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    }
+
+    .card-container {
+        max-width: 800px;
+        margin: 0 auto;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Efectos para subtítulos (div con borde lateral) */
+    div.border-l-4 {
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    div.border-l-4:hover {
+        transform: translateX(5px); /* Desplazamiento horizontal */
+        border-color: #2a699a; /* Azul oscuro */
+    }
+
+    div.border-green-500:hover {
+        border-color: #166534; /* Verde oscuro */
+    }
+
+    div.border-red-500:hover {
+        border-color: #bf1f23; /* Rojo oscuro */
+    }
+
+    div.border-yellow-500:hover {
+        border-color: #a87d00; /* Amarillo oscuro */
+    }
+
+    /* Opcional: Cambio de color del texto de los subtítulos */
+    div.border-l-4:hover h3 {
+        color: #3b82f6; /* Azul claro */
+    }
+
+    /* Modo oscuro */
+    @media (prefers-color-scheme: dark) {
         body {
-            font-family: 'Poppins ExtraLight', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f2f5;
-            color: #374151;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .download-btn {
-            transition: all 0.3s ease;
-        }
-        .download-btn:hover {
-            transform: translateY(-5px); /* Movimiento vertical mayor */
-            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
-        }
-        .card-container {
-            max-width: 800px;
-            margin: 0 auto;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #111827; /* Color de fondo para modo oscuro */
+            color: #d1d5db;
         }
 
-        /* Efectos para subtítulos (div con borde lateral) */
-        div.border-l-4 {
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        div.border-l-4:hover {
-            transform: translateX(5px); /* Desplazamiento horizontal */
-            border-color: #2a699a; /* Azul oscuro */
-        }
-        div.border-green-500:hover {
-            border-color: #166534; /* Verde oscuro */
-        }
-        div.border-red-500:hover {
-            border-color: #bf1f23; /* Rojo oscuro */
-        }
-        div.border-yellow-500:hover {
-            border-color: #a87d00; /* Amarillo oscuro */
+        .bg-white {
+            background-color: #374151;
+            color: #d1d5db;
         }
 
-        /* Opcional: Cambio de color del texto de los subtítulos */
-        div.border-l-4:hover h3 {
-            color: #3b82f6; /* Azul claro */
+        .text-gray-800 {
+            color: #d1d5db;
         }
 
-        /* Modo oscuro */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background-color: #111827;
-                color: #d1d5db;
-            }
-            .bg-white {
-                background-color: #374151;
-                color: #d1d5db;
-            }
-            .text-gray-800 {
-                color: #d1d5db;
-            }
-            .text-gray-700 {
-                color: #9ca3af;
-            }
-            .text-blue-700 {
-                color: #3b82f6;
-            }
-            .text-gray-500 {
-                color: #9ca3af;
-            }
-            .border-blue-500 {
-                border-color: #3b82f6;
-            }
-            .border-green-500 {
-                border-color: #22c55e;
-            }
-            .border-red-500 {
-                border-color: #ef4444;
-            }
-            .border-yellow-500 {
-                border-color: #f59e0b;
-            }
+        .text-gray-700 {
+            color: #9ca3af;
         }
-        @media (max-width: 640px) {
-            body {
-                font-size: 16px;
-                padding: 16px;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            h2 {
-                font-size: 1.25rem;
-            }
-            ul li {
-                font-size: 1rem;
-            }
-            .card-container {
-                padding: 16px;
-            }
+
+        .text-blue-700 {
+            color: #3b82f6;
         }
-        /* NUEVO EFECTO DE ANIMACIÓN */
-        @keyframes slideUp {
-            from {
-                transform: translateY(20%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+
+        .text-gray-500 {
+            color: #9ca3af;
+        }
+
+        .border-blue-500 {
+            border-color: #3b82f6;
+        }
+
+        .border-green-500 {
+            border-color: #22c55e;
+        }
+
+        .border-red-500 {
+            border-color: #ef4444;
+        }
+
+        .border-yellow-500 {
+            border-color: #f59e0b;
+        }
+    }
+
+    /* Estilos para dispositivos móviles */
+    @media (max-width: 640px) {
+        body {
+            font-size: 16px;
+            padding: 16px;
+            background-color: #eaeded; /* Mantener el mismo color de fondo gris en móvil */
+        }
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+        }
+
+        ul li {
+            font-size: 1rem;
         }
 
         .card-container {
-            max-width: 800px;
-            margin: 0 auto;
-            transition: all 0.3s ease;
-            animation: slideUp 1s ease-out 0.5s forwards; /* 1seg duración, 0.5s delay */
-            transform-origin: center bottom;
+            padding: 16px;
+        }
+    }
+
+    /* NUEVO EFECTO DE ANIMACIÓN */
+    @keyframes slideUp {
+        from {
+            transform: translateY(20%);
             opacity: 0;
         }
-        
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .card-container {
+        max-width: 800px;
+        margin: 0 auto;
+        transition: all 0.3s ease;
+        animation: slideUp 1s ease-out 0.5s forwards; /* 1seg duración, 0.5s delay */
+        transform-origin: center bottom;
+        opacity: 0;
+    }
 </style>
