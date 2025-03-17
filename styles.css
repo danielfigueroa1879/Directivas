@@ -59,7 +59,7 @@ div.border-green-500.clicked {
 }
 
 div.border-red-500 {
-  border-color: #dfa506 !important; /* Rojo oscuro */
+  border-color: #f01317 !important; /* Rojo oscuro */
 }
 div.border-red-500:hover,
 div.border-red-500.clicked {
