@@ -41,7 +41,7 @@ div.border-l-4 {
 
 /* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
 div.border-blue-500 {
-  border-color: #2a699a !important; /* Azul oscuro */
+  border-color: #0a73c3 !important; /* Azul oscuro */
 }
 div.border-blue-500:hover,
 div.border-blue-500.clicked {
@@ -50,7 +50,7 @@ div.border-blue-500.clicked {
 }
 
 div.border-green-500 {
-  border-color: #166534 !important; /* Verde oscuro (no turquesa) */
+  border-color: #1f9c94 !important; /* Verde oscuro (no turquesa) */
 }
 div.border-green-500:hover,
 div.border-green-500.clicked {
@@ -59,7 +59,7 @@ div.border-green-500.clicked {
 }
 
 div.border-red-500 {
-  border-color: #bf1f23 !important; /* Rojo oscuro */
+  border-color: #f01317 !important; /* Rojo oscuro */
 }
 div.border-red-500:hover,
 div.border-red-500.clicked {
@@ -68,7 +68,7 @@ div.border-red-500.clicked {
 }
 
 div.border-yellow-500 {
-  border-color: #a87d00 !important; /* Amarillo oscuro */
+  border-color: #e0aa06 !important; /* Amarillo oscuro */
 }
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
