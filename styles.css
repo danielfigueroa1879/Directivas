@@ -68,7 +68,7 @@ div.border-red-500.clicked {
 }
 
 div.border-yellow-500 {
-  border-color: #e0aa06 !important; /* Amarillo oscuro */
+  border-color: #d29f05 !important; /* Amarillo oscuro */
 }
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
@@ -102,19 +102,19 @@ div.border-yellow-500.clicked {
   }
 
   div.border-blue-500 {
-    border-color: #2a699a !important;
+    border-color: #2a699a !important;/*AZUL*/
   }
 
   div.border-green-500 {
-    border-color: #166534 !important;
+    border-color: #1ccfc3 !important; /*VERDE TURQUESA*/
   }
 
   div.border-red-500 {
-    border-color: #bf1f23 !important;
+    border-color: #f01317 !important; /* ROJO */
   }
 
   div.border-yellow-500 {
-    border-color: #a87d00 !important;
+    border-color: #a87d00 !important; /* OCRE */
   }
 
   h1, h2, h3, h4, h5, h6 {
