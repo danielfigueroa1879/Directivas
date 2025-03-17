@@ -85,19 +85,19 @@ div.border-yellow-500.clicked {
 /* --- NUEVA REGLA PARA MÁRGENES INFERIORES Y SUPERIORES --- */
 /* Margen para la primera sección */
 div.border-l-4:first-of-type {
-    margin-top: 1rem; /* Margen superior para la primera sección */
-    margin-bottom: 1rem; /* Margen inferior para la primera sección */
+    margin-top: 1rem !important; /* Margen superior para la primera sección */
+    margin-bottom: 1rem !important; /* Margen inferior para la primera sección */
 }
 
 /* Margen para las secciones 2, 3 y 4 */
 div.border-l-4:not(:first-of-type) {
-    margin-top: 1.5rem; /* Margen superior reducido */
-    margin-bottom: 1.5rem; /* Margen inferior reducido */
+    margin-top: 1rem !important; /* Margen superior reducido */
+    margin-bottom: 1rem !important; /* Margen inferior reducido */
 }
 
 /* Caso específico para botones */
 div.border-l-4 ul li:last-child .download-btn {
-    margin-bottom: 1.5rem; /* Mantener el margen para botones */
+    margin-bottom: 1rem !important; /* Mantener el margen para botones */
 }
 
 /* Modo oscuro */
