@@ -33,50 +33,52 @@ body {
 div.border-l-4 {
   transition: transform 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-color: #ffffff; /* Borde blanco por defecto */
+  border-left: 4px solid #ffffff; /* Borde blanco grueso */
+  padding-left: 10px; /* Espacio para el texto */
+  color: #ffffff !important; /* Aseguramos el color del texto */
 }
 
 div.border-l-4:hover {
   transform: translateX(5px);
-  border-color: #3b82f6; /* Azul claro en hover */
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra más visible */
+  border-color: #3b82f6;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827;
-    color: #ffffff; /* Texto blanco puro */
+    color: #ffffff;
     box-shadow: none;
   }
 
   .card-container {
-    background-color: #2a2d36; /* Fondo oscuro pero ligeramente claro */
-    color: #ffffff; /* Texto blanco */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra más pronunciada */
+    background-color: #2a2d36;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
   }
 
   div.border-l-4 {
-    border-color: #ffffff; /* Borde blanco para mayor contraste */
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra blanca */
+    color: #ffffff !important; /* Texto blanco FORZADO */
+    border-left: 4px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.4); /* Sombra más pronunciada */
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5); /* Text-shadow para claridad */
+    font-weight: bold; /* Negrita para mayor visibilidad */
   }
 
   div.border-l-4:hover {
-    border-color: #3b82f6; /* Azul claro */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3); /* Sombra más intensa */
+    border-color: #3b82f6;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Sombra más intensa */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #ffffff; /* Títulos en blanco puro */
-    font-weight: bold; /* Añadimos negritas para mayor visibilidad */
+    color: #ffffff;
+    font-weight: bold;
   }
 
   p, li, a {
-    color: #d1d5db; /* Texto gris claro, pero legible */
-  }
-
-  a:hover {
-    color: #3b82f6; /* Azul claro al pasar el mouse */
+    color: #d1d5db;
   }
 }
 
@@ -94,7 +96,8 @@ div.border-l-4:hover {
   }
 
   div.border-l-4 {
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra blanca en móviles */
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
   }
 }
 
