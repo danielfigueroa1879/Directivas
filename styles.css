@@ -39,30 +39,48 @@ div.border-l-4 {
   border-color: #ffffff; /* Borde blanco inicial */
 }
 
-/* Reglas específicas por color (IMPORTANTE: Orden es clave) */
-div.border-blue-500:hover {
+/* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
+div.border-blue-500 {
   border-color: #2a699a !important; /* Azul oscuro */
-  transform: translateX(5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-div.border-green-500:hover {
-  border-color: #166534 !important; /* Verde oscuro */
-  transform: translateX(5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-div.border-red-500:hover {
-  border-color: #bf1f23 !important; /* Rojo oscuro */
-  transform: translateX(5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-div.border-yellow-500:hover {
-  border-color: #a87d00 !important; /* Amarillo oscuro */
+div.border-blue-500:hover,
+div.border-blue-500.clicked {
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Eliminamos la regla redundante que anulaba los colores */
-/* div.border-l-4:hover { ... } → ¡Eliminada! */
+div.border-green-500 {
+  border-color: #166534 !important; /* Verde oscuro (no turquesa) */
+}
+div.border-green-500:hover,
+div.border-green-500.clicked {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+div.border-red-500 {
+  border-color: #bf1f23 !important; /* Rojo oscuro */
+}
+div.border-red-500:hover,
+div.border-red-500.clicked {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+div.border-yellow-500 {
+  border-color: #a87d00 !important; /* Amarillo oscuro */
+}
+div.border-yellow-500:hover,
+div.border-yellow-500.clicked {
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Clase para efecto "fijo" al hacer clic */
+.clicked {
+  transform: translateX(5px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
@@ -83,9 +101,20 @@ div.border-yellow-500:hover {
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
   }
 
-  div.border-l-4:hover {
-    transform: translateX(5px); /* Mantener el desplazamiento */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  div.border-blue-500 {
+    border-color: #2a699a !important;
+  }
+
+  div.border-green-500 {
+    border-color: #166534 !important;
+  }
+
+  div.border-red-500 {
+    border-color: #bf1f23 !important;
+  }
+
+  div.border-yellow-500 {
+    border-color: #a87d00 !important;
   }
 
   h1, h2, h3, h4, h5, h6 {
