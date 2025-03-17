@@ -75,6 +75,9 @@ div.border-yellow-500.clicked {
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+ div.border-l-4 ul li:last-child {
+  margin-bottom: 1rem; /* Ajusta el valor según tu preferencia777777777777777777777 */
+  }
 
 /* Clase para efecto "fijo" al hacer clic */
 .clicked {
@@ -162,7 +165,5 @@ div.border-yellow-500.clicked {
     transform: translateY(0);
     opacity: 1;
   }
-  div.border-l-4 ul li:last-child {
-  margin-bottom: 1rem; /* Ajusta el valor según tu preferencia */
-  }
+ 
 }
