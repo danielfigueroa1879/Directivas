@@ -32,51 +32,52 @@ body {
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
   transition: transform 0.3s ease, border-color 0.3s ease;
-  border-left: 6px solid #FFD700; /* Color amarillo brillante */
+  border-left: 6px solid #FFD700; /* Borde amarillo */
   padding-left: 15px;
-  color: #FFD700 !important; /* Texto amarillo */
+  color: #ffffff !important; /* Texto blanco puro */
   font-weight: bold;
-  text-shadow: 0 0 5px #FFD700; /* Sombra amarilla */
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido para contraste */
+  text-shadow: 0 0 3px #FFD700; /* Sombra amarilla */
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo opaco para contraste */
 }
 
 div.border-l-4:hover {
   transform: translateX(5px);
   border-color: #FFA07A; /* Naranja vibrante */
-  text-shadow: 0 0 8px #FFA07A; /* Sombra más intensa */
+  text-shadow: 0 0 5px #FFA07A; /* Sombra más intensa */
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827;
-    color: #FFD700; /* Texto amarillo principal */
+    color: #ffffff;
     box-shadow: none;
   }
 
   .card-container {
     background-color: #2a2d36;
-    color: #FFD700 !important; /* Forzamos color amarillo */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+    color: #ffffff !important;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3);
   }
 
   div.border-l-4 {
-    color: #FFD700 !important; /* Aseguramos el color */
+    color: #ffffff !important; /* Texto blanco FORZADO */
     border-left: 6px solid #FFD700;
-    text-shadow: 0 0 5px #FFD700;
-    background-color: rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 3px #FFD700;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido blanco */
   }
 
   div.border-l-4:hover {
     border-color: #FFA07A;
-    text-shadow: 0 0 8px #FFA07A;
+    text-shadow: 0 0 5px #FFA07A;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #FFD700 !important; /* Títulos amarillos vibrantes */
+    color: #ffffff !important; /* Título blanco puro */
     font-weight: bold;
-    text-shadow: 0 0 5px #FFD700;
-    background-color: rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 3px #FFD700; /* Sombra amarilla para resaltar */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo opaco */
+    padding: 5px;
   }
 
   p, li, a {
