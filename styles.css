@@ -37,6 +37,8 @@ div.border-l-4 {
     transition: transform 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-color: #ffffff; /* Borde blanco inicial */
+    padding-top: 1rem; /* Espacio arriba */
+    padding-bottom: 1rem; /* Espacio abajo */
 }
 
 /* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
@@ -82,22 +84,9 @@ div.border-yellow-500.clicked {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* --- NUEVA REGLA PARA MÁRGENES INFERIORES Y SUPERIORES --- */
-/* Margen para la primera sección */
-div.border-l-4:first-of-type {
-    margin-top: 1rem !important; /* Margen superior para la primera sección */
-    margin-bottom: 1rem !important; /* Margen inferior para la primera sección */
-}
-
-/* Margen para las secciones 2, 3 y 4 */
-div.border-l-4:not(:first-of-type) {
-    margin-top: 1rem !important; /* Margen superior reducido */
-    margin-bottom: 1rem !important; /* Margen inferior reducido */
-}
-
 /* Caso específico para botones */
 div.border-l-4 ul li:last-child .download-btn {
-    margin-bottom: 1rem !important; /* Mantener el margen para botones */
+    margin-bottom: 1rem; /* Mantener el margen para botones */
 }
 
 /* Modo oscuro */
