@@ -32,62 +32,24 @@ body {
 
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
+}
+
 div.border-l-4:hover {
-            transform: translateX(5px); /* Desplazamiento horizontal */
-            border-color: #2a699a; /* Azul oscuro */
-        }
-div.border-green-500:hover {
-            border-color: #166534; /* Verde oscuro */
-        }
-div.border-red-500:hover {
-            border-color: #bf1f23; /* Rojo oscuro */
-        }
-div.border-yellow-500:hover {
-            border-color: #a87d00; /* Amarillo oscuro */
-        }
-
-        /* Opcional: Cambio de color del texto de los subtítulos */
-div.border-l-4:hover h3 {
-            color: #3b82f6; /* Azul claro */
-        }
-
+  transform: translateX(5px);
+  border-color: #2a699a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+}
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827; /* Fondo oscuro */
     color: #ffffff; /* Color de texto blanco para mejorar visibilidad */
+    box-shadow: none; /* Eliminar sombra en modo oscuro */
   }
-  .bg-white {
-      background-color: #374151;
-      color: #d1d5db;
-  }
-  .text-gray-800 {
-      color: #d1d5db;
-            }
-  .text-gray-700 {
-      color: #9ca3af;
-            }
-  .text-blue-700 {
-      color: #3b82f6;
-            }
-  .text-gray-500 {
-      color: #9ca3af;
-            }
-  .border-blue-500 {
-      border-color: #3b82f6;
-            }
-  .border-green-500 {
-      border-color: #22c55e;
-            }
-  .border-red-500 {
-      border-color: #ef4444;
-            }
-  .border-yellow-500 {
-      border-color: #f59e0b;
-            }
+
   .card-container {
     background-color: #374151; /* Fondo oscuro para tarjetas */
     color: #ffffff; /* Texto blanco dentro de las tarjetas */
