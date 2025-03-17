@@ -1,3 +1,5 @@
+
+
 /* Estilos generales */
 body {
     font-family: 'Poppins ExtraLight', sans-serif;
@@ -37,8 +39,8 @@ div.border-l-4 {
     transition: transform 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-color: #ffffff; /* Borde blanco inicial */
-    padding-top: 1rem; /* Espacio arriba */
-    padding-bottom: 1rem; /* Espacio abajo */
+    padding-top: 0.5rem; /* Espacio arriba */
+    padding-bottom: 0.5rem; /* Espacio abajo */
 }
 
 /* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
