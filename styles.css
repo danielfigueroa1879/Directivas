@@ -33,49 +33,50 @@ body {
 div.border-l-4 {
   transition: transform 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-color: #ffffff; /* Borde blanco para mayor contraste */
+  border-color: #ffffff; /* Borde blanco por defecto */
 }
 
 div.border-l-4:hover {
   transform: translateX(5px);
-  border-color: #2a699a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-color: #3b82f6; /* Azul claro en hover */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra más visible */
 }
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #111827;
-    color: #e2e8f0; /* Texto gris claro para mayor legibilidad */
+    color: #ffffff; /* Texto blanco puro */
     box-shadow: none;
   }
 
   .card-container {
-    background-color: #2a2d36; /* Fondo ligeramente más claro para mejor contraste */
-    color: #e2e8f0;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    background-color: #2a2d36; /* Fondo oscuro pero ligeramente claro */
+    color: #ffffff; /* Texto blanco */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Sombra más pronunciada */
   }
 
   div.border-l-4 {
-    border-color: #ffffff; /* Borde blanco para subtítulos */
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    border-color: #ffffff; /* Borde blanco para mayor contraste */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra blanca */
   }
 
   div.border-l-4:hover {
-    border-color: #3b82f6; /* Azul claro para el hover */
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    border-color: #3b82f6; /* Azul claro */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.3); /* Sombra más intensa */
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #cbd5e1; /* Título en tono azul claro para mayor claridad */
+    color: #ffffff; /* Títulos en blanco puro */
+    font-weight: bold; /* Añadimos negritas para mayor visibilidad */
   }
 
   p, li, a {
-    color: #d1d5db; /* Texto secundario en gris claro */
+    color: #d1d5db; /* Texto gris claro, pero legible */
   }
 
   a:hover {
-    color: #ffffff;
+    color: #3b82f6; /* Azul claro al pasar el mouse */
   }
 }
 
@@ -93,11 +94,7 @@ div.border-l-4:hover {
   }
 
   div.border-l-4 {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
-  div.border-l-4:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Sombra blanca en móviles */
   }
 }
 
