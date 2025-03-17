@@ -85,8 +85,8 @@ div.border-yellow-500.clicked {
 /* --- NUEVA REGLA PARA MÁRGENES INFERIORES Y SUPERIORES --- */
 /* Margen para la primera sección */
 div.border-l-4:first-of-type {
-    margin-top: 2rem; /* Margen superior para la primera sección */
-    margin-bottom: 2rem; /* Margen inferior para la primera sección */
+    margin-top: 1rem; /* Margen superior para la primera sección */
+    margin-bottom: 1rem; /* Margen inferior para la primera sección */
 }
 
 /* Margen para las secciones 2, 3 y 4 */
