@@ -26,7 +26,7 @@ body {
   padding: 20px;
   background-color: #ffffff; /* Fondo blanco para resaltar contenido */
   border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra moderada */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Sombra moderada */
   transition: all 0.3s ease;
 }
 
