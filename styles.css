@@ -5,7 +5,7 @@
         font-family: 'Poppins ExtraLight', sans-serif;
         margin: 0;
         padding: 20px;
-        background-color: #eaeded; /* Nuevo color de fondo gris claro */
+        background-color: #eaeded; /* Color de fondo gris claro para PC y móvil */
         color: #374151;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
@@ -102,7 +102,7 @@
         body {
             font-size: 16px;
             padding: 16px;
-            background-color: #eaeded; /* Mantener el mismo color de fondo gris en móvil */
+            background-color: #eaeded; /* Mismo color de fondo gris claro en móvil */
         }
 
         h1 {
