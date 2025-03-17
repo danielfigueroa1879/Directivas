@@ -39,30 +39,30 @@ div.border-l-4 {
   border-color: #ffffff; /* Borde blanco inicial */
 }
 
-/* Reglas específicas por color */
+/* Reglas específicas por color (IMPORTANTE: Orden es clave) */
 div.border-blue-500:hover {
-  border-color: #2a699a; /* Azul oscuro */
+  border-color: #2a699a !important; /* Azul oscuro */
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 div.border-green-500:hover {
-  border-color: #166534; /* Verde oscuro */
+  border-color: #166534 !important; /* Verde oscuro */
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 div.border-red-500:hover {
-  border-color: #bf1f23; /* Rojo oscuro */
+  border-color: #bf1f23 !important; /* Rojo oscuro */
+  transform: translateX(5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+div.border-yellow-500:hover {
+  border-color: #a87d00 !important; /* Amarillo oscuro */
   transform: translateX(5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-div.border-yellow-500:hover {
-  border-color: #a87d00; /* Amarillo oscuro */
-  transform: translateX(5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+/* Eliminamos la regla redundante que anulaba los colores */
+/* div.border-l-4:hover { ... } → ¡Eliminada! */
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
@@ -84,7 +84,7 @@ div.border-yellow-500:hover {
   }
 
   div.border-l-4:hover {
-    border-color: #3b82f6;
+    transform: translateX(5px); /* Mantener el desplazamiento */
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   }
 
