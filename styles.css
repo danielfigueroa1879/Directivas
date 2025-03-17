@@ -32,15 +32,27 @@ body {
 
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
-  transition: transform 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra ligera */
-}
-
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
 div.border-l-4:hover {
-  transform: translateX(5px);
-  border-color: #2a699a;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-}
+            transform: translateX(5px); /* Desplazamiento horizontal */
+            border-color: #2a699a; /* Azul oscuro */
+        }
+div.border-green-500:hover {
+            border-color: #166534; /* Verde oscuro */
+        }
+div.border-red-500:hover {
+            border-color: #bf1f23; /* Rojo oscuro */
+        }
+div.border-yellow-500:hover {
+            border-color: #a87d00; /* Amarillo oscuro */
+        }
+
+        /* Opcional: Cambio de color del texto de los subtítulos */
+div.border-l-4:hover h3 {
+            color: #3b82f6; /* Azul claro */
+        }
+
 
 /* Modo oscuro */
 @media (prefers-color-scheme: dark) {
