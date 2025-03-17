@@ -68,7 +68,7 @@ div.border-red-500.clicked {
 }
 
 div.border-yellow-500 {
-  border-color: #d29f05 !important; /* Amarillo oscuro */
+  border-color: #dfa506 !important; /* Amarillo oscuro */
 }
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
@@ -114,7 +114,7 @@ div.border-yellow-500.clicked {
   }
 
   div.border-yellow-500 {
-    border-color: #d29f05 !important; /* OCRE */
+    border-color: #d29f05 !important; /* Amarillo oscuro */
   }
 
   h1, h2, h3, h4, h5, h6 {
