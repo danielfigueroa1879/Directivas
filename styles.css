@@ -4,11 +4,11 @@
         font-family: 'Poppins ExtraLight', sans-serif;
         margin: 0;
         padding: 20px;
-        /* Cambio principal: Fondo en modo claro */
         background-color: #707b7c;
         color: #374151;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
+
     .download-btn {
         transition: all 0.3s ease;
     }
@@ -19,7 +19,11 @@
     .card-container {
         max-width: 800px;
         margin: 0 auto;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        padding: 24px;
+        background-color: white;
+        border-radius: 20px; /* Bordes más redondeados */
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Sombra más intensa */
+        transition: all 0.3s ease;
     }
 
     /* Efectos para subtítulos (div con borde lateral) */
@@ -79,6 +83,13 @@
         .border-yellow-500 {
             border-color: #f59e0b;
         }
+
+        /* Ajuste de sombra y bordes en modo oscuro */
+        .card-container {
+            background-color: #374151;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); /* Sombra más oscura */
+            border-radius: 20px;
+        }
     }
 
     /* Estilos para móviles */
@@ -98,10 +109,11 @@
         }
         .card-container {
             padding: 16px;
+            border-radius: 16px; /* Bordes redondeados en móvil */
         }
     }
 
-    /* NUEVO EFECTO DE ANIMACIÓN */
+    /* Animación de deslizamiento */
     @keyframes slideUp {
         from {
             transform: translateY(20%);
