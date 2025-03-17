@@ -5,7 +5,7 @@
         margin: 0;
         padding: 20px;
         /* Cambio principal: Fondo en modo claro */
-        background-color: #ccd1d1;
+        background-color: #707b7c;
         color: #374151;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
