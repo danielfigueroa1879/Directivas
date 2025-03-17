@@ -82,15 +82,22 @@ div.border-yellow-500.clicked {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* --- NUEVA REGLA PARA MÁRGENES INFERIORES --- */
-/* Espacio debajo del último elemento de cada sección */
-div.border-l-4 > :last-child {
-    margin-bottom: 2rem; /* Ajusta este valor según tu preferencia (ej: 2rem = 32px) */
+/* --- NUEVA REGLA PARA MÁRGENES INFERIORES Y SUPERIORES --- */
+/* Margen para la primera sección */
+div.border-l-4:first-of-type {
+    margin-top: 2rem; /* Margen superior para la primera sección */
+    margin-bottom: 2rem; /* Margen inferior para la primera sección */
+}
+
+/* Margen para las secciones 2, 3 y 4 */
+div.border-l-4:not(:first-of-type) {
+    margin-top: 1.5rem; /* Margen superior reducido */
+    margin-bottom: 1.5rem; /* Margen inferior reducido */
 }
 
 /* Caso específico para botones */
 div.border-l-4 ul li:last-child .download-btn {
-    margin-bottom: 2rem; /* Mantener el margen para botones */
+    margin-bottom: 1.5rem; /* Mantener el margen para botones */
 }
 
 /* Modo oscuro */
