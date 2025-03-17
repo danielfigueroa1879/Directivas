@@ -1,4 +1,13 @@
 /* Estilos generales */
+<style>
+    @font-face {
+      font-family: 'Pipinss Extra Light';
+      src: url('fonts/PipinssExtraLight.woff2') format('woff2'),
+           url('fonts/PipinssExtraLight.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+  </style>
  <style>
         body {
             font-family: 'Poppins ExtraLight', sans-serif;
