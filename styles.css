@@ -1,30 +1,74 @@
+/* Estilos generales */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins ExtraLight', sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f0f2f5;
+    color: #374151;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .download-btn {
     transition: all 0.3s ease;
 }
-
 .download-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
     max-width: 800px;
     margin: 0 auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Efectos para subtítulos */
+div.border-l-4 {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+div.border-l-4:hover {
+    transform: translateX(5px);
+    border-color: #2a699a;
+}
+div.border-green-500:hover {
+    border-color: #166534;
+}
+div.border-red-500:hover {
+    border-color: #bf1f23;
+}
+div.border-yellow-500:hover {
+    border-color: #a87d00;
+}
+
+/* Opcional: Cambio de color del texto en hover */
+div.border-l-4:hover h3 {
+    color: #3b82f6;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111827;
+        color: #d1d5db;
+    }
+    .bg-white {
+        background-color: #374151;
+        color: #d1d5db;
+    }
+    .text-gray-800 {
+        color: #d1d5db;
+    }
+    /* ... (resto de estilos oscuros) */
+}
+
+/* Responsividad */
 @media (max-width: 640px) {
     body {
-        padding: 10px;
+        font-size: 16px;
+        padding: 16px;
     }
-    
-    .card-container {
-        padding: 10px;
+    h1 {
+        font-size: 1.5rem;
     }
+    /* ... (resto de estilos móviles) */
 }
