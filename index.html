@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" type="logo-os10/png" sizes="192x192" href="/icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="logo-os10/png" sizes="192x192" href="/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
     
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -18,9 +18,33 @@
     
     <!-- Archivo CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .qr-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+        }
+        
+        @media (max-width: 640px) {
+            .qr-container {
+                width: 80px;
+                height: 80px;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    </style>
 </head>
 <body class="text-gray-800">
-    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6">
+    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
+        <!-- QR Code añadido -->
+        <div class="qr-container">
+            <img src="https://github.com/danielfigueroa1879/Directivas/blob/b9a5d8646e02a0fab209e6d578dfe1c5e24750e2/qr.png?raw=true" alt="QR Code" class="w-full h-full object-contain">
+        </div>
+        
         <h1 class="text-2xl font-bold text-center">DIRECTIVA DE FUNCIONAMIENTO</h1>
         <h2 class="text-lg font-semibold text-center">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
         <div class="space-y-4">
@@ -121,8 +145,8 @@
                 <h3 class="font-bold">3️⃣ Todo escaneado en Digital PDF</h3>
                 <ul class="list-disc pl-5 text-sm">
                     <li class="flex flex-col space-y-1">
-                        <span> Escanear todo en 01 archivo PDF (Pendrive)</span>
-                        <span> Página Unir PDF</span>
+                        <span>Escanear todo en 01 archivo PDF (Pendrive)</span>
+                        <span>Página Unir PDF</span>
                         <a 
                             href="https://dal5.short.gy/I" 
                             target="_blank" 
