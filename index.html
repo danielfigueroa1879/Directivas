@@ -14,38 +14,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     
     <!-- Fuente personalizada -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     
     <!-- Archivo CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        .qr-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-        }
-        
-        @media (max-width: 640px) {
-            .qr-container {
-                width: 60px;
-                height: 60px;
-                top: 10px;
-                right: 10px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .qr-container {
-                width: 50px;
-                height: 50px;
-                top: 8px;
-                right: 8px;
-            }
-        }
-    </style>
 </head>
 <body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
@@ -59,7 +31,7 @@
         <div class="space-y-4">
            <div class="border-l-4 border-blue-500 pl-4">
                 <h3 class="font-bold">1️⃣ Presentar Directiva (DD.FF.)</h3>
-                <ul class="list-disc pl-5 text-sm">
+                <ul class="list-disc pl-5 text-sm normal-text">
                     <li>Vigencia 03 años en instalación</li>
                     <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
                     <li>
@@ -91,7 +63,7 @@
    
             <div class="border-l-4 border-green-500 pl-4">
                 <h3 class="font-bold">2️⃣ Documentación</h3>
-                <ul class="space-y-3 pl-5 text-sm">
+                <ul class="space-y-3 pl-5 text-sm normal-text">
                     <li class="flex flex-col space-y-1">
                      <span>02 Solicitudes Simple</span>
                         <a 
@@ -152,7 +124,7 @@
             
             <div class="border-l-4 border-red-500 pl-4">
                 <h3 class="font-bold">3️⃣ Todo escaneado en Digital PDF</h3>
-                <ul class="list-disc pl-5 text-sm">
+                <ul class="list-disc pl-5 text-sm normal-text">
                     <li class="flex flex-col space-y-1">
                         <span>Escanear todo en 01 archivo PDF (Pendrive)</span>
                         <span>Página Unir PDF</span>
@@ -169,7 +141,7 @@
             
             <div class="border-l-4 border-yellow-500 pl-4">
                 <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                <ul class="list-disc pl-5 text-sm">
+                <ul class="list-disc pl-5 text-sm normal-text">
                     <li class="flex flex-col space-y-1">
                         <span>Resol. 2.522 (26.08.2024) normaliza el proceso</span>
                         <a 
@@ -194,12 +166,25 @@
             </div>
         </div>
         
-        <div class="text-sm text-gray-500 mt-4 text-center">
+        <div class="text-sm text-gray-700 mt-4 text-center normal-text">
             Haga clic en los botones para iniciar la descarga de los documentos
         </div>
     </div>
-    <footer class="text-center text-gray-500 text-sm mt-4">
+    <footer class="text-center text-gray-700 text-sm mt-4 normal-text">
         © 2025 - Daniel Figueroa Ch.
     </footer>
+    
+    <script>
+    // Script para añadir efecto click (opcional)
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.border-l-4');
+        sections.forEach(section => {
+            section.addEventListener('click', function() {
+                sections.forEach(s => s.classList.remove('clicked'));
+                this.classList.add('clicked');
+            });
+        });
+    });
+    </script>
 </body>
 </html>
