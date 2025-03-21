@@ -98,6 +98,10 @@ div.border-red-500.clicked {
 div.border-yellow-500 {
     border-color: #f5b508 !important; /* Amarillo oscuro */
 }
+div.border-yellow-500 .download-btn,
+div.border-yellow-500 .download-btn span {
+    color: white !important; /* Forzar color blanco */
+}
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
     transform: translateX(5px);
