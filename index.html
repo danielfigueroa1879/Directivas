@@ -55,6 +55,11 @@
         .border-green-500 { border-color: #10b981; }
         .border-red-500 { border-color: #ef4444; }
         .border-yellow-500 { border-color: #f59e0b; }
+        
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #111827; color: #e2e8f0; }
+            .card-container { background-color: #2a2d36; color: #e2e8f0; }
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -229,7 +234,7 @@
     </footer>
     
     <script>
-    // Script simplificado para asegurar compatibilidad
+    // Script para añadir efecto click y animación de salto al botón de tramitar credenciales
     document.addEventListener('DOMContentLoaded', function() {
         // Efecto click en secciones
         var sections = document.querySelectorAll('.border-l-4');
@@ -242,11 +247,24 @@
             });
         }
         
-        // Animación para el botón de Tramitar Credenciales
+        // Animación para el botón de Tramitar Credenciales (cada 7 segundos)
         var botonTramitar = document.getElementById('tramitarCredenciales');
         if (botonTramitar) {
-            // Definir la animación del rebote usando CSS directamente
-            botonTramitar.style.animation = "bounce 1s infinite";
+            // Función para activar/desactivar la animación
+            function toggleBounce() {
+                botonTramitar.classList.add('bounce-animation');
+                
+                // Desactivar después de 2 segundos
+                setTimeout(function() {
+                    botonTramitar.classList.remove('bounce-animation');
+                }, 2000);
+            }
+            
+            // Activar cada 7 segundos
+            setInterval(toggleBounce, 7000);
+            
+            // Primera activación después de 2 segundos
+            setTimeout(toggleBounce, 2000);
         }
     });
     </script>
