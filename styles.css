@@ -138,14 +138,14 @@ div.border-yellow-500 .download-btn span {
 }
 div.border-yellow-500:hover,
 div.border-yellow-500.clicked {
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 /* Clase para efecto "fijo" al hacer clic */
 .clicked {
-    transform: translateX(5px) !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    transform: translateX(3px) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Aumentar tamaño de los títulos de sección */
@@ -262,10 +262,18 @@ div.border-l-4 h3 {
 /* Ajustes específicos para pantallas muy pequeñas */
 @media (max-width: 480px) {
     .qr-container {
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
         top: 8px;
         right: 8px;
+    }
+    
+    body {
+        padding: 8px;
+    }
+    
+    .card-container {
+        padding: 10px;
     }
 }
 
