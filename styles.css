@@ -65,7 +65,8 @@ body {
 }
 
 .bounce-animation {
-    animation: bounce 1s ease infinite !important;
+    animation: bounce 2s ease infinite !important;
+    animation-play-state: paused !important; /* Inicialmente pausado */
 }
 
 .card-container {
@@ -169,28 +170,28 @@ div.border-l-4 h3 {
     }
 
     div.border-l-4 {
-        border-color: #ffffff;
+        border-color: #4b5563 !important; /* Gris medio para todos los bordes en modo oscuro */
         box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
     }
 
     div.border-blue-500 {
-        border-color: #2a699a !important; /* AZUL */
+        border-color: #3b82f6 !important; /* Azul brillante para modo oscuro */
     }
 
     div.border-green-500 {
-        border-color: #1ccfc3 !important; /* VERDE TURQUESA */
+        border-color: #10b981 !important; /* Verde brillante para modo oscuro */
     }
 
     div.border-red-500 {
-        border-color: #f00b0f !important; /* ROJO */
+        border-color: #ef4444 !important; /* Rojo brillante para modo oscuro */
     }
 
     div.border-yellow-500 {
-        border-color: #d29f05 !important; /* Amarillo oscuro */
+        border-color: #f59e0b !important; /* Amarillo brillante para modo oscuro */
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #cbd5e1;
+        color: #f9fafb;
     }
 
     .normal-text {
@@ -200,6 +201,35 @@ div.border-l-4 h3 {
 
     a:hover {
         color: #ffffff;
+    }
+    
+    /* Botones en modo oscuro */
+    .download-btn {
+        opacity: 1; /* Más visible en modo oscuro */
+    }
+    
+    .bg-green-500 {
+        background-color: #10b981 !important; /* Verde más brillante */
+    }
+    
+    .bg-green-600 {
+        background-color: #059669 !important; /* Verde hover más brillante */
+    }
+    
+    .bg-red-500 {
+        background-color: #ef4444 !important; /* Rojo más brillante */
+    }
+    
+    .bg-red-600 {
+        background-color: #dc2626 !important; /* Rojo hover más brillante */
+    }
+    
+    .bg-yellow-500 {
+        background-color: #f59e0b !important; /* Amarillo más brillante */
+    }
+    
+    .bg-yellow-600 {
+        background-color: #d97706 !important; /* Amarillo hover más brillante */
     }
 }
 
@@ -244,18 +274,18 @@ div.border-l-4 h3 {
         right: 10px;
     }
     
-    /* Botones en móviles - AJUSTADOS para hacerlos uniformes */
+    /* Botones en móviles - AJUSTADOS para hacerlos uniformes y alineados a la izquierda */
     .download-btn {
         width: 160px !important; /* Ancho fijo, igual para todos */
         height: 36px !important; /* Altura fija para todos */
         font-size: 0.9rem !important; /* Letra más grande pero adaptada a móvil */
         padding: 8px !important; /* Padding uniforme */
-        margin: 0 auto 12px auto; /* Centrado y con margen inferior adecuado */
+        margin: 0 0 12px 0 !important; /* Margen solo abajo, nada a los lados para alinear a la izquierda */
     }
     
-    /* Ajustar el contenedor de botones en móvil para centrado */
+    /* Ajustar el contenedor de botones en móvil para alinear a la izquierda */
     .flex.justify-start {
-        justify-content: center !important;
+        justify-content: flex-start !important;
     }
 }
 
