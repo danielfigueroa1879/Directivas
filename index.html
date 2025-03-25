@@ -1,23 +1,4 @@
-<script>
-    // Script para añadir efecto click y animación de salto al botón de tramitar credenciales
-    document.addEventListener('DOMContentLoaded', function() {
-        // Efecto click en secciones
-        const sections = document.querySelectorAll('.border-l-4');
-        sections.forEach(section => {
-            section.addEventListener('click', function() {
-                sections.forEach(s => s.classList.remove('clicked'));
-                this.classList.add('clicked');
-            });
-        });
-        
-        // Animación de salto para el botón de tramitar credenciales
-        const tramitarBtn = document.getElementById('tramitarCredenciales');
-        
-        // Aplicar la animación inmediatamente y siempre activa
-        tramitarBtn.classList.add('bounce-animation');
-        
-        // No es necesario usar setInterval ya que la animación es continua
-    });<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -35,8 +16,46 @@
     <!-- Fuente personalizada -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     
-    <!-- Archivo CSS personalizado -->
+    <!-- Archivo CSS personalizado (asegúrate de que este archivo exista) -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- CSS de respaldo en caso de que styles.css no pueda cargarse -->
+    <style>
+        /* Estilos mínimos para asegurar visibilidad */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f3f4f6;
+        }
+        .card-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn {
+            display: inline-block;
+            margin: 8px 0;
+            padding: 8px 12px;
+            background-color: #4b5563;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .border-l-4 {
+            border-left-width: 4px;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        .border-blue-500 { border-color: #3b82f6; }
+        .border-green-500 { border-color: #10b981; }
+        .border-red-500 { border-color: #ef4444; }
+        .border-yellow-500 { border-color: #f59e0b; }
+    </style>
 </head>
 <body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
@@ -102,7 +121,7 @@
                             <a 
                                 href="https://dal5.short.gy/D" 
                                 target="_blank" 
-                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-xs inline-block text-center download-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg text-xs inline-block text-center download-btn"
                             >
                                 Descargar Word
                             </a>
@@ -115,7 +134,7 @@
                             <a 
                                 href="https://dal5.short.gy/Re24" 
                                 target="_blank" 
-                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-xs inline-block text-center download-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg text-xs inline-block text-center download-btn"
                             >
                                 Descargar Requisitos
                             </a>
@@ -128,7 +147,7 @@
                             <a 
                                 href="https://dal5.short.gy/0u" 
                                 target="_blank" 
-                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-xs inline-block text-center download-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg text-xs inline-block text-center download-btn"
                             >
                                 Ejemplo Uniforme
                             </a>
@@ -141,7 +160,7 @@
                             <a 
                                 href="https://dal5.short.gy/6ydn" 
                                 target="_blank" 
-                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded text-xs inline-block text-center download-btn"
+                                class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-lg text-xs inline-block text-center download-btn"
                             >
                                 Descargar Análisis
                             </a>
@@ -210,34 +229,26 @@
     </footer>
     
     <script>
-    // Script para añadir efecto click y animación de salto al botón de tramitar credenciales
+    // Script simplificado para asegurar compatibilidad
     document.addEventListener('DOMContentLoaded', function() {
         // Efecto click en secciones
-        const sections = document.querySelectorAll('.border-l-4');
-        sections.forEach(section => {
-            section.addEventListener('click', function() {
-                sections.forEach(s => s.classList.remove('clicked'));
+        var sections = document.querySelectorAll('.border-l-4');
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].addEventListener('click', function() {
+                for (var j = 0; j < sections.length; j++) {
+                    sections[j].classList.remove('clicked');
+                }
                 this.classList.add('clicked');
             });
-        });
-        
-        // Animación de salto para el botón de tramitar credenciales
-        const tramitarBtn = document.getElementById('tramitarCredenciales');
-        
-        // Función para activar la animación de salto
-        function activateBounce() {
-            tramitarBtn.classList.add('bounce-animation');
-            
-            // Pausa la animación después de 2 segundos
-            setTimeout(function() {
-                tramitarBtn.classList.remove('bounce-animation');
-            }, 1500);
         }
         
-        // Activar el salto cada 6 segundos
-        setInterval(activateBounce, 6000);
-        
-        // Activar el salto inicialmente después de 2 segundos
-        setTimeout(activateBounce, 2000);
+        // Animación para el botón de Tramitar Credenciales
+        var botonTramitar = document.getElementById('tramitarCredenciales');
+        if (botonTramitar) {
+            // Definir la animación del rebote usando CSS directamente
+            botonTramitar.style.animation = "bounce 1s infinite";
+        }
     });
     </script>
+</body>
+</html>
