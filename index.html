@@ -4,7 +4,20 @@
         // Efecto click en secciones
         const sections = document.querySelectorAll('.border-l-4');
         sections.forEach(section => {
-            section.addEventListener<!DOCTYPE html>
+            section.addEventListener('click', function() {
+                sections.forEach(s => s.classList.remove('clicked'));
+                this.classList.add('clicked');
+            });
+        });
+        
+        // Animación de salto para el botón de tramitar credenciales
+        const tramitarBtn = document.getElementById('tramitarCredenciales');
+        
+        // Aplicar la animación inmediatamente y siempre activa
+        tramitarBtn.classList.add('bounce-animation');
+        
+        // No es necesario usar setInterval ya que la animación es continua
+    });<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
