@@ -1,4 +1,85 @@
-/* Estilos generales */
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111827;
+        color: #e2e8f0;
+        box-shadow: none;
+    }
+
+    .card-container {
+        background-color: #2a2d36;
+        color: #e2e8f0;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    }
+
+    div.border-l-4 {
+        border-color: #4b5563 !important; /* Gris medio para todos los bordes en modo oscuro */
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    }
+
+    div.border-blue-500 {
+        border-color: #3b82f6 !important; /* Azul brillante para modo oscuro */
+    }
+
+    div.border-green-500 {
+        border-color: #10b981 !important; /* Verde brillante para modo oscuro */
+    }
+
+    div.border-red-500 {
+        border-color: #ef4444 !important; /* Rojo brillante para modo oscuro */
+    }
+
+    div.border-yellow-500 {
+        border-color: #f59e0b !important; /* Amarillo brillante para modo oscuro */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #f9fafb;
+    }
+
+    .normal-text {
+        color: #e5e7eb !important; /* Texto más visible en modo oscuro */
+        font-weight: 400 !important;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+    
+    /* Botones en modo oscuro - mantener colores consistentes con secciones */
+    .download-btn {
+        opacity: 1; /* Más visible en modo oscuro */
+    }
+    
+    /* Mantener los colores de botones por sección en modo oscuro */
+    .section-blue .download-btn {
+        background-color: #3b82f6 !important;
+    }
+    .section-blue .download-btn:hover {
+        background-color: #2563eb !important;
+    }
+    
+    .section-green .download-btn {
+        background-color: #10b981 !important;
+    }
+    .section-green .download-btn:hover {
+        background-color: #059669 !important;
+    }
+    
+    .section-red .download-btn {
+        background-color: #ef4444 !important;
+    }
+    .section-red .download-btn:hover {
+        background-color: #dc2626 !important;
+    }
+    
+    .section-yellow .download-btn {
+        background-color: #f59e0b !important;
+    }
+    .section-yellow .download-btn:hover {
+        background-color: #d97706 !important;
+    }
+}/* Estilos generales */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -274,7 +355,7 @@ div.border-l-4 h3 {
         right: 10px;
     }
     
-    /* Botones en móviles - AJUSTADOS para hacerlos uniformes y alineados a la izquierda */
+    /* Botones en móviles - AJUSTADOS para hacerlos uniformes y estrictamente alineados a la izquierda */
     .download-btn {
         width: 160px !important; /* Ancho fijo, igual para todos */
         height: 36px !important; /* Altura fija para todos */
@@ -283,9 +364,17 @@ div.border-l-4 h3 {
         margin: 0 0 12px 0 !important; /* Margen solo abajo, nada a los lados para alinear a la izquierda */
     }
     
-    /* Ajustar el contenedor de botones en móvil para alinear a la izquierda */
+    /* Ajustar el contenedor de botones en móvil para alinear estrictamente a la izquierda */
     .flex.justify-start {
         justify-content: flex-start !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+    
+    /* Eliminar cualquier auto-margen que pueda estar centrando */
+    .flex.justify-start > a {
+        margin-left: 0 !important;
+        margin-right: auto !important;
     }
 }
 
