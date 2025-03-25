@@ -22,8 +22,10 @@ body {
 .normal-text {
     color: #1f2937 !important; /* Color gris más oscuro */
     font-weight: 400 !important; /* Peso de fuente medio */
+    font-size: 1.05rem !important; /* Letra ligeramente más grande */
 }
 
+/* Estilo para los botones de descarga */
 .download-btn {
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -33,6 +35,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px; /* Espacio debajo de cada botón */
+    width: 100%; /* Ancho completo para que sean más verticales */
+    max-width: 200px; /* Ancho máximo para que no sean demasiado anchos */
+    font-size: 0.9rem !important; /* Letra más grande en los botones */
+    padding: 8px 12px !important; /* Botones más grandes */
 }
 
 .download-btn:hover {
@@ -40,15 +47,25 @@ body {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.download-btn span {
-    display: inline-block;
-    font-size: 0.7rem;
+/* Animación de salto para el botón de tramitar credenciales */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce-animation {
+    animation: bounce 0.8s ease infinite;
+    animation-play-state: paused; /* Inicialmente pausada */
 }
 
 .card-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px; /* Padding más grande */
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
@@ -63,13 +80,15 @@ div.border-l-4 {
     transition: transform 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-color: #ffffff; /* Borde blanco inicial */
-    padding-top: 0.5rem; /* Espacio arriba */
-    padding-bottom: 0.5rem; /* Espacio abajo */
+    padding-top: 1rem; /* Más espacio arriba */
+    padding-bottom: 1rem; /* Más espacio abajo */
+    margin-bottom: 1.5rem; /* Espacio entre secciones */
 }
 
 /* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
 div.border-blue-500 {
     border-color: #0a73c3 !important; /* Azul oscuro */
+    border-width: 6px !important; /* Borde más grueso */
 }
 div.border-blue-500:hover,
 div.border-blue-500.clicked {
@@ -79,6 +98,7 @@ div.border-blue-500.clicked {
 
 div.border-green-500 {
     border-color: #1ccfc3 !important; /* Verde oscuro (no turquesa) */
+    border-width: 6px !important; /* Borde más grueso */
 }
 div.border-green-500:hover,
 div.border-green-500.clicked {
@@ -88,6 +108,7 @@ div.border-green-500.clicked {
 
 div.border-red-500 {
     border-color: #f01317 !important; /* Rojo oscuro */
+    border-width: 6px !important; /* Borde más grueso */
 }
 div.border-red-500:hover,
 div.border-red-500.clicked {
@@ -97,6 +118,7 @@ div.border-red-500.clicked {
 
 div.border-yellow-500 {
     border-color: #f5b508 !important; /* Amarillo oscuro */
+    border-width: 6px !important; /* Borde más grueso */
 }
 div.border-yellow-500 .download-btn,
 div.border-yellow-500 .download-btn span {
@@ -114,9 +136,10 @@ div.border-yellow-500.clicked {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Caso específico para botones */
-div.border-l-4 ul li:last-child .download-btn {
-    margin-bottom: 1rem; /* Mantener el margen para botones */
+/* Aumentar tamaño de los títulos de sección */
+div.border-l-4 h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.8rem;
 }
 
 /* Modo oscuro */
@@ -188,7 +211,7 @@ div.border-l-4 ul li:last-child .download-btn {
 
     /* Hacer más visible el texto de lista en móviles */
     ul li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
     }
 
     div.border-l-4 {
@@ -205,6 +228,11 @@ div.border-l-4 ul li:last-child .download-btn {
         height: 50px;
         top: 10px;
         right: 10px;
+    }
+    
+    /* Botones en móviles */
+    .download-btn {
+        max-width: 100%; /* En móviles ocupan todo el ancho disponible */
     }
 }
 
