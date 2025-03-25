@@ -36,10 +36,12 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 15px; /* Espacio debajo de cada botón */
-    width: 100%; /* Ancho completo para que sean más verticales */
-    max-width: 200px; /* Ancho máximo para que no sean demasiado anchos */
-    font-size: 0.9rem !important; /* Letra más grande en los botones */
+    width: auto; /* Ancho automático basado en contenido */
+    min-width: 140px; /* Ancho mínimo para mantener consistencia */
+    max-width: 180px; /* Limitar el ancho máximo */
+    font-size: 0.85rem !important; /* Letra más grande en los botones pero no excesiva */
     padding: 8px 12px !important; /* Botones más grandes */
+    border-radius: 8px !important; /* Esquinas más redondeadas */
 }
 
 .download-btn:hover {
@@ -78,47 +80,53 @@ body {
 /* Efectos para subtítulos (div con borde lateral) */
 div.border-l-4 {
     transition: transform 0.3s ease, border-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); /* Sombra más sutil */
     border-color: #ffffff; /* Borde blanco inicial */
-    padding-top: 1rem; /* Más espacio arriba */
-    padding-bottom: 1rem; /* Más espacio abajo */
-    margin-bottom: 1.5rem; /* Espacio entre secciones */
+    padding-top: 0.8rem; /* Espacio arriba */
+    padding-bottom: 0.8rem; /* Espacio abajo */
+    margin-bottom: 1.2rem; /* Espacio entre secciones */
+    background-color: rgba(247, 248, 250, 0.5); /* Fondo muy sutil */
+    border-radius: 0 4px 4px 0; /* Bordes redondeados solo a la derecha */
 }
 
 /* Reglas específicas por color (¡¡¡USO DE !important PARA SOBREESCRIBIR TAILWIND!!!) */
 div.border-blue-500 {
     border-color: #0a73c3 !important; /* Azul oscuro */
-    border-width: 6px !important; /* Borde más grueso */
+    border-width: 3px !important; /* Borde más sutil y elegante */
+    border-radius: 0 0 0 4px !important; /* Borde redondeado solo en la esquina inferior izquierda */
 }
 div.border-blue-500:hover,
 div.border-blue-500.clicked {
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 div.border-green-500 {
     border-color: #1ccfc3 !important; /* Verde oscuro (no turquesa) */
-    border-width: 6px !important; /* Borde más grueso */
+    border-width: 3px !important; /* Borde más sutil y elegante */
+    border-radius: 0 0 0 4px !important;
 }
 div.border-green-500:hover,
 div.border-green-500.clicked {
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 div.border-red-500 {
     border-color: #f01317 !important; /* Rojo oscuro */
-    border-width: 6px !important; /* Borde más grueso */
+    border-width: 3px !important; /* Borde más sutil y elegante */
+    border-radius: 0 0 0 4px !important;
 }
 div.border-red-500:hover,
 div.border-red-500.clicked {
-    transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateX(3px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 div.border-yellow-500 {
     border-color: #f5b508 !important; /* Amarillo oscuro */
-    border-width: 6px !important; /* Borde más grueso */
+    border-width: 3px !important; /* Borde más sutil y elegante */
+    border-radius: 0 0 0 4px !important;
 }
 div.border-yellow-500 .download-btn,
 div.border-yellow-500 .download-btn span {
@@ -206,20 +214,22 @@ div.border-l-4 h3 {
 
     /* Aumentar tamaño de texto normal en móviles */
     .normal-text {
-        font-size: 1.1rem !important; /* Texto más grande en móviles */
+        font-size: 1rem !important; /* Texto ajustado para móviles */
     }
 
     /* Hacer más visible el texto de lista en móviles */
     ul li {
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.7rem;
     }
 
     div.border-l-4 {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
     }
 
     div.border-l-4:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     /* Ajustes para el QR en móviles */
@@ -230,9 +240,18 @@ div.border-l-4 h3 {
         right: 10px;
     }
     
-    /* Botones en móviles */
+    /* Botones en móviles - AJUSTADOS para hacerlos más elegantes */
     .download-btn {
-        max-width: 100%; /* En móviles ocupan todo el ancho disponible */
+        max-width: 160px; /* Ancho fijo, no ocupan todo el espacio */
+        min-width: 120px; /* Mínimo más pequeño */
+        font-size: 0.8rem !important; /* Letra ligeramente más pequeña */
+        padding: 6px 10px !important; /* Padding ajustado */
+        margin: 0 auto 10px 0; /* Centrado a la izquierda con margen adecuado */
+    }
+    
+    /* Ajustar el contenedor de botones en móvil */
+    .flex.justify-start {
+        justify-content: flex-start !important;
     }
 }
 
