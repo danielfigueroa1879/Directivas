@@ -38,6 +38,33 @@
             height: 100px;
         }*/
       
+        /* Estilo para el logo OS10 */
+        .logo-os10 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: auto;
+            opacity: 0.7;
+            z-index: 10;
+        }
+
+        @media (max-width: 640px) {
+            .logo-os10 {
+                width: 60px;
+                top: 15px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-os10 {
+                width: 50px;
+                top: 10px;
+                left: 10px;
+            }
+        }
+
 /* Estilo para el QR en la sección 4 */
 .qr-container-section4 {
     width: 60px;
@@ -166,6 +193,7 @@
             animation: slideUp 1s ease-out 0.5s forwards;
             transform-origin: center bottom;
             opacity: 0;
+            position: relative;
         }
 
         /* Efectos para subtítulos (div con borde lateral) */
@@ -428,6 +456,10 @@
 </head>
 <body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
+        <!-- Logo OS10 en la esquina superior izquierda (con enlace) -->
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
+            <img src="https://github.com/danielfigueroa1879/Directivas/blob/83200f0959dcef957d3e570deaeaa279f462a156/logo-os10.png?raw=true" alt="Logo OS10" class="logo-os10">
+        </a>
 
         <h1 class="text-2xl font-bold text-center">DIRECTIVA DE FUNCIONAMIENTO</h1>
         <h2 class="text-lg font-semibold text-center">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
