@@ -30,13 +30,47 @@
         }
 
         /* Estilo para el contenedor del QR */
-        .qr-container {
+        /*.qr-container {
             position: absolute;
             top: 20px;
             right: 20px;
             width: 100px;
             height: 100px;
-        }
+        }*/
+      
+/* Añade esta nueva clase para el QR en la sección 4 */
+.qr-container-section4 {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 10px;
+    display: block;
+}
+
+/* Estilo para el elemento de lista que contiene el QR */
+.qr-list-item {
+    list-style-type: none !important;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 640px) {
+    .qr-container-section4 {
+        width: 80px;
+        height: 80px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .qr-container-section4 {
+        width: 70px;
+        height: 70px;
+    }
+}
 
         /* Clase para textos normales - letra más oscura */
         .normal-text {
