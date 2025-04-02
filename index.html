@@ -524,7 +524,259 @@
     a[href*="d6.short.gy"]:hover {
         box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
     }
-}       
+}  
+/* ===== EFECTOS DE BRILLO PARA TODOS LOS DISPOSITIVOS Y MODOS ===== */
+
+/* 1. ESTILOS BASE PARA PC - MODO CLARO */
+.download-btn {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+}
+
+.download-btn:hover, 
+.download-btn:active {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Botones específicos por sección - Modo Claro PC */
+.section-blue .download-btn {
+    box-shadow: 0 4px 8px rgba(10, 115, 195, 0.4) !important;
+}
+
+.section-blue .download-btn:hover,
+.section-blue .download-btn:active {
+    box-shadow: 0 8px 15px rgba(10, 115, 195, 0.5) !important;
+}
+
+.section-green .download-btn {
+    box-shadow: 0 4px 8px rgba(28, 207, 195, 0.4) !important;
+}
+
+.section-green .download-btn:hover,
+.section-green .download-btn:active {
+    box-shadow: 0 8px 15px rgba(28, 207, 195, 0.5) !important;
+}
+
+.section-red .download-btn {
+    box-shadow: 0 4px 8px rgba(240, 19, 23, 0.4) !important;
+}
+
+.section-red .download-btn:hover,
+.section-red .download-btn:active {
+    box-shadow: 0 8px 15px rgba(240, 19, 23, 0.5) !important;
+}
+
+.section-yellow .download-btn {
+    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.4) !important;
+}
+
+.section-yellow .download-btn:hover,
+.section-yellow .download-btn:active {
+    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.5) !important;
+}
+
+/* Botón con animación de rebote - Modo Claro PC */
+#tramitarCredenciales {
+    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
+}
+
+#tramitarCredenciales:hover,
+#tramitarCredenciales:active,
+#tramitarCredenciales.bounce-animation {
+    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
+}
+
+/* 2. ESTILOS PARA PC - MODO OSCURO */
+@media (prefers-color-scheme: dark) {
+    .download-btn {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .download-btn:hover, 
+    .download-btn:active {
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    /* Botones específicos por sección - Modo Oscuro PC */
+    .section-blue .download-btn {
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
+    }
+    
+    .section-blue .download-btn:hover,
+    .section-blue .download-btn:active {
+        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
+    }
+    
+    .section-green .download-btn {
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
+    }
+    
+    .section-green .download-btn:hover,
+    .section-green .download-btn:active {
+        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
+    }
+    
+    .section-red .download-btn {
+        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
+    }
+    
+    .section-red .download-btn:hover,
+    .section-red .download-btn:active {
+        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
+    }
+    
+    .section-yellow .download-btn {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
+    }
+    
+    .section-yellow .download-btn:hover,
+    .section-yellow .download-btn:active {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
+    }
+    
+    /* Botón con animación de rebote - Modo Oscuro PC */
+    #tramitarCredenciales {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
+    }
+    
+    #tramitarCredenciales:hover,
+    #tramitarCredenciales:active,
+    #tramitarCredenciales.bounce-animation {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
+    }
+}
+
+/* 3. ESTILOS PARA MÓVIL - MODO CLARO */
+@media (max-width: 640px) {
+    .download-btn {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    .download-btn:hover, 
+    .download-btn:active {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    /* Botones específicos por sección - Modo Claro Móvil */
+    .section-blue .download-btn {
+        box-shadow: 0 4px 8px rgba(10, 115, 195, 0.5) !important;
+    }
+    
+    .section-blue .download-btn:hover,
+    .section-blue .download-btn:active {
+        box-shadow: 0 8px 15px rgba(10, 115, 195, 0.6) !important;
+    }
+    
+    .section-green .download-btn {
+        box-shadow: 0 4px 8px rgba(28, 207, 195, 0.5) !important;
+    }
+    
+    .section-green .download-btn:hover,
+    .section-green .download-btn:active {
+        box-shadow: 0 8px 15px rgba(28, 207, 195, 0.6) !important;
+    }
+    
+    .section-red .download-btn {
+        box-shadow: 0 4px 8px rgba(240, 19, 23, 0.5) !important;
+    }
+    
+    .section-red .download-btn:hover,
+    .section-red .download-btn:active {
+        box-shadow: 0 8px 15px rgba(240, 19, 23, 0.6) !important;
+    }
+    
+    .section-yellow .download-btn {
+        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
+    }
+    
+    .section-yellow .download-btn:hover,
+    .section-yellow .download-btn:active {
+        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
+    }
+    
+    /* Botón con animación de rebote - Modo Claro Móvil */
+    #tramitarCredenciales {
+        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.6) !important;
+    }
+    
+    #tramitarCredenciales:hover,
+    #tramitarCredenciales:active,
+    #tramitarCredenciales.bounce-animation {
+        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.7) !important;
+    }
+}
+
+/* 4. ESTILOS PARA MÓVIL - MODO OSCURO */
+@media (prefers-color-scheme: dark) and (max-width: 640px) {
+    .download-btn {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    .download-btn:hover, 
+    .download-btn:active {
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* Botones específicos por sección - Modo Oscuro Móvil */
+    .section-blue .download-btn {
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.6) !important;
+    }
+    
+    .section-blue .download-btn:hover,
+    .section-blue .download-btn:active {
+        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.7) !important;
+    }
+    
+    .section-green .download-btn {
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.6) !important;
+    }
+    
+    .section-green .download-btn:hover,
+    .section-green .download-btn:active {
+        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.7) !important;
+    }
+    
+    .section-red .download-btn {
+        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.6) !important;
+    }
+    
+    .section-red .download-btn:hover,
+    .section-red .download-btn:active {
+        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.7) !important;
+    }
+    
+    .section-yellow .download-btn {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
+    }
+    
+    .section-yellow .download-btn:hover,
+    .section-yellow .download-btn:active {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
+    }
+    
+    /* Botón con animación de rebote - Modo Oscuro Móvil */
+    #tramitarCredenciales {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.7) !important;
+    }
+    
+    #tramitarCredenciales:hover,
+    #tramitarCredenciales:active,
+    #tramitarCredenciales.bounce-animation {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.8) !important;
+    }
+    
+    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
+    a[href*="dal5.short.gy"],
+    a[href*="d6.short.gy"] {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    a[href*="dal5.short.gy"]:hover,
+    a[href*="d6.short.gy"]:hover {
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
+    }
+}
     </style>
 </head>
 <body class="text-gray-800">
