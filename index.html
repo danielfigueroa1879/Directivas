@@ -452,6 +452,79 @@
                 opacity: 1;
             }
         }
+        /* Efecto de brillo para botones en modo oscuro en dispositivos móviles */
+@media (prefers-color-scheme: dark) and (max-width: 640px) {
+    /* Estilos generales para todos los botones de descarga */
+    .download-btn {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .download-btn:hover, 
+    .download-btn:active {
+        transform: translateY(-5px) !important;
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* Botones específicos por sección */
+    .section-blue .download-btn {
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
+    }
+    
+    .section-blue .download-btn:hover,
+    .section-blue .download-btn:active {
+        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
+    }
+    
+    .section-green .download-btn {
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
+    }
+    
+    .section-green .download-btn:hover,
+    .section-green .download-btn:active {
+        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
+    }
+    
+    .section-red .download-btn {
+        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
+    }
+    
+    .section-red .download-btn:hover,
+    .section-red .download-btn:active {
+        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
+    }
+    
+    .section-yellow .download-btn {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
+    }
+    
+    .section-yellow .download-btn:hover,
+    .section-yellow .download-btn:active {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
+    }
+    
+    /* Botón con animación de rebote */
+    #tramitarCredenciales {
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
+    }
+    
+    #tramitarCredenciales:hover,
+    #tramitarCredenciales:active,
+    #tramitarCredenciales.bounce-animation {
+        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
+    }
+    
+    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
+    a[href*="dal5.short.gy"],
+    a[href*="d6.short.gy"] {
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
+    }
+    
+    a[href*="dal5.short.gy"]:hover,
+    a[href*="d6.short.gy"]:hover {
+        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
+    }
+}       
     </style>
 </head>
 <body class="text-gray-800">
