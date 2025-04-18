@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramitar Credencial Empresa</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Base */
+        body {
+            font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 20px;
+    color: #1f2937;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 16px; /* Tamaño base aumentado */
+    
+    /* Añadir imagen de fondo */
+    background-image: url("https://github.com/danielfigueroa1879/Credenciales/blob/298ba3c2a48913cf4f02b846a90fc12d3d391687/101.jpg?raw=true");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+        }
+css/* Capa semitransparente para mejorar legibilidad del contenido */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+    z-index: -1;
+}
+        .text-sm, p, li, td {
+            font-weight: 400;
+            font-size: 1.05rem; /* Aumentado de tamaño */
+        }
+
+        /* Contenedor Principal */
+        .card-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: all 0.3s ease;
+            animation: slideUp 1s ease-out 0.5s forwards;
+            opacity: 0;
+            background-color: #FFFFEF;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-top: 40px;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Header y Logo */
+        .header-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1.main-title {
+            font-size: 1.9rem;
+            font-weight: bold;
+            color: #EAB308;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+            padding-left: 60px;
+        }
+
+        h3, h4 {
+            font-weight: 600;
+        }
+
+        .logo-os10 {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 70px;
+            height: auto;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-os10:hover {
+            opacity: 1;
+        }
+
+        .content-container {
+            margin-top: 35px;
+        }
+
+        /* Estilos de Botones - MODIFICADOS para PC */
+        .download-btn {
+            transition: all 0.3s ease;
+            margin: 16px 0;
+            padding: 13px 16px; /* Engrosado verticalmente para PC */
+            font-size: 0.95rem;
+            width: 25%;
+            display: inline-block;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 7px !important;
+            font-size: 1rem; /* Tamaño aumentado para los botones */
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sombras específicas para tipos de botones */
+        .download-btn.bg-yellow-500 {
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+        }
+        
+        .download-btn.bg-yellow-500:hover {
+            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5);
+        }
+        
+        .download-btn.bg-blue-500 {
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+        }
+        
+        .download-btn.bg-blue-500:hover {
+            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.4);
+        }
+        
+        .download-btn.dpi-btn {
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+            text-align: center;
+        }
+        
+        .download-btn.dpi-btn:hover {
+            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.5);
+        }
+
+        /* Imágenes y Miniaturas */
+        .qr-code-footer {
+            width: 80px;
+            height: 80px;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background-color: white;
+            padding: 4px;
+        }
+
+        .photo-example,
+        .valores-example,
+        .pdf-thumbnail {
+            transition: transform 0.3s ease;
+            cursor: zoom-in;
+            border: 1px solid #FFD700;
+            margin-bottom: 10px;
+            position: relative;
+            max-width: 100%;
+        }
+
+        .photo-example:hover {
+            transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .valores-example:hover {
+            transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Estilos de Tabla */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 24px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 8px;
+        }
+        
+        .responsive-table th,
+        .responsive-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        
+        .responsive-table th {
+            background-color: #f1f5f9;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        /* Anchos de columnas optimizados */
+        .responsive-table th:nth-child(1), .responsive-table td:nth-child(1) { min-width: 100px; } /* AF */
+        .responsive-table th:nth-child(2), .responsive-table td:nth-child(2) { min-width: 120px; } /* RUN */
+        .responsive-table th:nth-child(3), .responsive-table td:nth-child(3) { min-width: 150px; } /* NOMBRES */
+        .responsive-table th:nth-child(4), .responsive-table td:nth-child(4) { min-width: 150px; } /* APELLIDOS */
+        .responsive-table th:nth-child(5), .responsive-table td:nth-child(5) { min-width: 180px; } /* CARGO */
+        .responsive-table th:nth-child(6), .responsive-table td:nth-child(6) { min-width: 180px; } /* EMPRESA */
+        .responsive-table th:nth-child(7), .responsive-table td:nth-child(7) { min-width: 120px; } /* VIGENCIA */
+        .responsive-table th:nth-child(8), .responsive-table td:nth-child(8) { min-width: 180px; } /* OBS */
+        .responsive-table th:nth-child(9), .responsive-table td:nth-child(9) { min-width: 100px; } /* OTROS */
+        .responsive-table th:nth-child(10), .responsive-table td:nth-child(10) { min-width: 180px; } /* EMAIL */
+        
+        /* Estilos para los selectores en la tabla */
+        .cargo-select,
+        .color-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+            padding-right: 2rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        
+        /* Elementos adicionales */
+        .conversion-link {
+            color: #DC2626 !important;
+            font-weight: bold !important;
+        }
+        
+        .border-l-4 {
+            border-color: #FFD700 !important;
+        }
+        
+        .border-l-4:hover {
+            border-color: #FFA000 !important;
+        }
+        
+        .separator {
+            height: 1px;
+            background-color: #FFD700;
+            opacity: 0.3;
+            margin: 24px 0;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 640px) {
+            body {
+                padding: 16px;
+                font-size: 14px;
+                color: #374151;
+            }
+            
+            h1.main-title {
+                font-size: 1.6rem;
+                letter-spacing: -0.5px;
+                margin-top: 8px;
+                margin-bottom: 1.2rem;
+                padding-left: 65px;
+                text-align: center;
+                padding-right: 15px;
+                line-height: 1.2;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            .card-container {
+                padding: 16px;
+                padding-top: 40px;
+            }
+            
+            ul li {
+                font-size: 14px;
+            }
+            
+            .text-sm {
+                font-size: 14px !important;
+            }
+            
+            .logo-os10 {
+                width: 60px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .content-container {
+                margin-top: 25px;
+            }
+            
+            /* Botones en móvil */
+            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btnv {
+                font-size: 1rem !important;
+                width: auto !important;
+                min-width: 180px !important;
+                margin: 12px 0 !important;
+                margin-left: 0 !important;
+                padding-top: 14px !important;
+                padding-bottom: 14px !important;
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+            }
+            
+            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btnv:hover {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
+            }
+            
+            .download-btn.dpi-btn, .excel-btn, .indep-btn {
+                width: 180px !important;
+                min-width: 180px !important;
+                max-width: 180px !important;
+                font-weight: 900 !important;
+                margin-left: 0 !important;
+                padding-top: 14px !important;
+                padding-bottom: 14px !important;
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
+            }
+            
+            .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
+            }
+            
+            /* QR Code en móvil */
+            .qr-code-footer {
+                width: 50px;
+                height: 50px;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 2px;
+                margin-top: 215px !important;
+            }
+            
+            /* Ajustes para imágenes en móvil */
+            .photo-example {
+                width: 66% !important;
+                height: auto;
+                margin-left: 0 !important;
+                margin-right: auto !important;
+                display: block;
+                padding-top: 14px !important;
+                padding-bottom: 14px !important;
+            }
+            
+            /* Tabla en móvil */
+            .table-container {
+                margin-left: -16px;
+                margin-right: -16px;
+                width: calc(100% + 32px);
+                padding: 0 16px;
+            }
+            
+            .table-container::after {
+                content: '←  desplaza horizontalmente  →';
+                display: block !important;
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 14px;
+                color: #6b7280;
+            }
+            
+            .table-container::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 20px;
+                height: 100%;
+                background: linear-gradient(to right, transparent, rgba(255,255,255,0.7));
+                pointer-events: none;
+                z-index: 5;
+            }
+            
+            .responsive-table th,
+            .responsive-table td {
+                font-size: 0.9rem;
+            }
+            
+            .conversion-link {
+                font-size: 0.9rem !important;
+            }
+        }
+        
+        /* Modo Oscuro */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #111827;
+                color: #d1d5db;
+                font-size: 16px;
+            }
+            
+            .bg-white {
+                background-color: #374151;
+                color: #d1d5db;
+            }
+            
+            .text-sm {
+                font-size: 16px !important;
+            }
+            
+            .conversion-link {
+                color: #EF4444 !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .responsive-table th {
+                background-color: #374151;
+                color: #d1d5db;
+            }
+            
+            .responsive-table th, 
+            .responsive-table td {
+                border-color: #4b5563;
+            }
+            
+            .table-container::before {
+                background: linear-gradient(to right, transparent, rgba(55,65,81,0.7));
+            }
+            
+            .table-container::after {
+                color: #9ca3af;
+            }
+            
+            .cargo-select,
+            .color-select {
+                background-color: #2d3748;
+                color: #d1d5db;
+                border-color: #4b5563;
+            }
+            
+            .cargo-select option,
+            .color-select option {
+                background-color: #1f2937;
+            }
+            
+            /* Botones en modo oscuro */
+            .download-btn {
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            }
+            
+            .download-btn:hover {
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+            }
+            
+            .download-btn.bg-yellow-500 {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+            }
+            
+            .download-btn.bg-yellow-500:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
+            }
+            
+            .download-btn.bg-blue-500 {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.6);
+            }
+            
+            .download-btn.bg-blue-500:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
+            }
+            
+            .download-btn.dpi-btn {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+            }
+            
+            .download-btn.dpi-btn:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
+            }
+        }
+
+
+transition: all 0.3s ease;
+            margin: 16px 0;
+            padding: 13px 16px; /* Engrosado verticalmente para PC */
+            font-size: 0.95rem;
+            width: 25%;
+            display: inline-block;
+            white-space: nowrap;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 7px !important;
+            font-size: 1rem; /* Tamaño aumentado para los botones *
+
+        /* Modo oscuro específico para móvil */
+       /* Corregir el CSS para botones en modo oscuro para móvil */
+     @media (prefers-color-scheme: dark) and (max-width: 640px) {
+    /* Corregido: Eliminar espacios extras y añadir puntos faltantes */
+    .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btn {
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+        white-space: nowrap !important;
+        font-size: 1rem !important;
+        font-weight: 900 !important;
+        text-align: center !important;
+        padding: 14px 12px !important;
+        margin-left: 0 !important;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
+    }
+    
+    .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
+        transform: translateY(-3px);
+    }
+}
+        
+        
+        /* Estilos para impresión */
+        @media print {
+            img[src*="foto.jpg"] {
+                width: 35% !important;
+                height: auto !important;
+            }
+            
+            .mt-4.flex.justify-between {
+                position: relative !important;
+                height: 500px !important;
+            }
+            
+            .qr-code-footer {
+                width: 80px !important;
+                height: 80px !important;
+                position: absolute !important;
+                top: 350px !important;
+                right: 30px !important;
+                margin-top: 0 !important;
+            }
+            
+            .table-container {
+                transform: scale(0.4);
+                transform-origin: top left;
+                width: 250%;
+                margin-bottom: 70px;
+            }
+            
+            .table-container + div {
+                margin-top: -140px;
+            }
+        }
+        /* Aumentar el tamaño de los subtítulos (h4) para todas las pantallas */
+h4.font-semibold, h4 {
+    font-weight: 600;
+    font-size: 1.3rem !important; /* Aumentado significativamente para todos los dispositivos */
+    margin-bottom: 1rem !important; /* Más espacio inferior */
+    color: #1f2937; /* Color base para modo claro */
+}
+
+/* Asegurar que el aumento de subtítulos se aplique en modo oscuro */
+@media (prefers-color-scheme: dark) {
+    h4.font-semibold, h4 {
+        color: #e5e7eb; /* Color más claro para modo oscuro */
+    }
+}
+
+/* Ajustes específicos para móvil - manteniendo el tamaño grande */
+@media (max-width: 640px) {
+    h4.font-semibold, h4 {
+        font-size: 1.2rem !important; /* Ligeramente más pequeño en móvil pero aún grande */
+        margin-bottom: 0.85rem !important;
+    }
+}
+/* Sombras y efectos de brillo para TODOS los botones en modo oscuro móvil */
+@media (prefers-color-scheme: dark) and (max-width: 640px) {
+    /* Aplicar sombra base a TODOS los tipos de botones */
+    .download-btn,
+    .dpi-btn,
+    .excel-btn,
+    .indep-btn,
+    a[href*="Cr3d"],
+    a[href*="Ind"],
+    a[href*="bv"],
+    a[href*="dal5.short.gy/0"],
+    a[href*="dal5.short.gy/j"] {
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* Aplicar efecto hover a TODOS los tipos de botones */
+    .download-btn:hover,
+    .dpi-btn:hover,
+    .excel-btn:hover,
+    .indep-btn:hover,
+    a[href*="Cr3d"]:hover,
+    a[href*="Ind"]:hover,
+    a[href*="bv"]:hover,
+    a[href*="dal5.short.gy/0"]:hover,
+    a[href*="dal5.short.gy/j"]:hover {
+        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+        transform: translateY(-3px) !important;
+    }
+
+    /* Específicamente para botones amarillos */
+    .bg-yellow-500 {
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+    }
+
+    .bg-yellow-500:hover {
+        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+    }
+
+    /* Específicamente para botones azules */
+    .bg-blue-500 {
+        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
+    }
+
+    .bg-blue-500:hover {
+        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6) !important;
+    }
+}
+/* Corrección específica para botones de conversión DPI */
+@media (prefers-color-scheme: dark) and (max-width: 640px) {
+    /* Selección muy específica para los botones de 300 DPI */
+    a[href="https://dal5.short.gy/0"].download-btn.dpi-btn,
+    a[href="https://dal5.short.gy/j"].download-btn.dpi-btn {
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+        transition: all 0.3s ease !important;
+        width: 180px !important;
+        min-width: 180px !important;
+        max-width: 180px !important;
+        text-align: center !important;
+        font-weight: 600 !important;
+        padding: 14px 12px !important;
+    }
+
+    a[href="https://dal5.short.gy/0"].download-btn.dpi-btn:hover,
+    a[href="https://dal5.short.gy/j"].download-btn.dpi-btn:hover {
+        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+        transform: translateY(-3px) !important;
+    }
+    
+    /* Asegurarse que todos los botones dpi-btn tengan los mismos efectos */
+    .download-btn.dpi-btn {
+        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .download-btn.dpi-btn:hover {
+        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+        transform: translateY(-3px) !important;
+    }
+}
+/* Estilos para el pie de página - Normal para PC */
+.text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.text-sm.text-gray-200.mt-4.text-center.normal-text span {
+    font-size: 0.9rem;
+}
+
+/* Estilos para móvil - Texto más pequeño */
+@media (max-width: 640px) {
+    .text-sm.text-gray-200.mt-4.text-center.normal-text span {
+        font-size: 0.7rem !important; /* Mucho más pequeño en móvil */
+        line-height: 1.2 !important;
+    }
+    
+    .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-left: 0 !important;
+    }
+    
+    .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3.pl-5 {
+        padding-left: 0 !important;
+    }
+    
+    .text-sm.text-gray-200.mt-4.text-center.normal-text li {
+        margin-bottom: 0 !important;
+        line-height: 1.1 !important;
+        list-style-type: none !important;
+    }
+}
+
+/* Dividir el título en dos líneas SOLO para móviles */
+@media (max-width: 640px) {
+    h1.main-title {
+        font-size: 1.6rem !important;
+        letter-spacing: -0.5px;
+        line-height: 1.3;
+        padding-left: 60px;
+        padding-right: 10px;
+        margin-top: 6px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Clase adicional para aplicar solo en móviles */
+    .mobile-break {
+        display: block !important; /* Hace que el span actúe como bloque y genere el salto de línea */
+        margin-top: 2px;
+    }
+}
+
+/* Para pantallas más grandes, ocultar el salto de línea */
+.mobile-break {
+    display: none; /* Por defecto, el span no genera salto de línea */
+}
+
+/* Para pantallas muy pequeñas, reducir aún más */
+@media (max-width: 380px) {
+    h1.main-title {
+        font-size: 1.4rem !important;
+        letter-spacing: -0.5px;
+        padding-left: 55px;
+        line-height: 1.3;
+    }
+}
+/* De aqui solo para titulo ______________________________________________________*/
+/* Estilos base para ambas líneas del título con efectos balanceados */
+.title-container {
+  text-align: center;
+  margin-top: 1rem;
+  line-height: 0.8;
+}
+
+.main-title, .main-subtitle {
+  color: #EAB308; /* Color amarillo dorado para ambos */
+  font-weight: bold;
+  line-height: 0.8;
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); /* Sombra ligeramente visible */
+  transition: all 0.3s ease;
+}
+
+/* Posicionamiento ajustado - CREDENCIAL con mínimo desplazamiento */
+.main-title {
+  font-size: 1.75rem;
+  margin-bottom: -0.3rem;
+  transform: translateX(-3px); /* Se mueve a la derecha - Reducido a -3px */
+  filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3)); /* Brillo sutil pero visible */
+}
+
+.main-subtitle {
+  font-size: 1.5rem;
+  margin-top: -0.25rem;
+  transform: translateX(10px); /* Segunda línea a la derecha */
+  filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3));
+}
+
+/* Efecto hover ligeramente perceptible */
+.title-container:hover .main-title,
+.title-container:hover .main-subtitle {
+  text-shadow: 0 2px 6px rgba(245, 158, 11, 0.5); /* Sombra aumentada en hover */
+}
+
+/* Ajuste específico para móviles */
+@media (max-width: 640px) {
+  .main-title {
+    font-size: 1.5rem;
+    margin-bottom: -0.35rem;
+    transform: translateX(-4px); /* Reducido de -8px a -4px */
+  }
+  
+  .main-subtitle {
+    font-size: 1.3rem;
+    margin-top: -0.3rem;
+    transform: translateX(12px);
+  }
+}
+
+/* Ajustes para tablets y escritorio */
+@media (min-width: 768px) {
+  .main-title {
+    font-size: 2.25rem;
+    margin-bottom: -0.4rem;
+    transform: translateX(-2px); /* CAMBIO AQUÍ: Valor más cercano a 0 para mover más a la derecha */
+    text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45); /* Sombra ligeramente más visible en PC */
+  }
+  
+  .main-subtitle {
+    font-size: 2rem;
+    margin-top: -0.35rem;
+    transform: translateX(30px);
+    text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45);
+  }
+}
+/* Ajuste para que el contenedor ocupe casi todo el ancho en móvil */
+@media (max-width: 640px) {
+    body {
+        padding: 8px !important; /* Padding reducido pero no eliminado */
+    }
+    
+    .card-container {
+        max-width: 100% !important; /* Ancho máximo al 100% */
+        width: 100% !important; /* Ancho 100% */
+        padding: 15px !important; /* Padding interno ligeramente más grande */
+        margin-left: auto !important; /* Margen automático */
+        margin-right: auto !important; /* Margen automático */
+        border-radius: 8px !important; /* Mantiene bordes redondeados más pequeños */
+    }
+    
+    /* Ajuste para el contenido interno */
+    .content-container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    /* Ajustes para las secciones con borde */
+    .border-l-4 {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-right: 8px !important;
+    }
+}
+      
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="card-container bg-white rounded-xl shadow-md relative">
+        <!-- Logo OS10 -->
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
+            <img src="https://github.com/danielfigueroa1879/Credenciales/blob/592cdbb028ff7da3345c11f9f0f06e0900ea0d37/logo-os10.png?raw=true" 
+                 alt="Logo OS10" 
+                 class="logo-os10">
+        </a>
+        <div class="title-container">
+  <h1 class="main-title">CREDENCIAL</h1>
+  <h2 class="main-subtitle">EMPRESA E INDEPENDIENTE</h2>
+</div>
+        
+        <!-- Contenedor con espacio adicional después del título -->
+        <div class="content-container">
+            <div class="border-l-4 border-yellow-500 pl-4 mb-6">
+                <h3 class="font-bold mb-2 text-red-600 text-lg md:text-lg md:tracking-wide md:my-3">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+                <div class="space-y-4">
+                    <!-- Documentos requeridos -->
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">Documentos requeridos:</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li class="mb-1">01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                            <a href="https://d6.short.gy/bv" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded mt-2 mb-4">
+                                Descargar Solicitud
+                            </a>
+                            <li class="mb-1">Fotocopia de cédula de identidad (ambas caras).</li>
+                            <li class="mb-1">Certificado OS.10 (Curso Aprobado Vigente).</li>
+                            <li class="mb-1">Certificado de Antecedentes para Fines Especiales.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Fotografía digital -->
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">Fotografía digital:</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li class="mb-1">Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                            <li class="mb-1">Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                            <li class="mb-1">Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                            <li class="mb-1">Fotografia almacenada en un Pendrive.</li>
+                            <div class="mt-2">
+                                <img 
+                                    src="https://github.com/danielfigueroa1879/Credenciales/raw/17337cdf6fb8b4e03149a37a2870c64e04601bca/foto.jpg" 
+                                    alt="Ejemplo de Fotografía" 
+                                    class="photo-example w-2/3 md:w-1/4 mb-2 ml-0" 
+                                    style="margin-left: 0; display: block;"
+                                >
+                            </div>
+                            <div class="flex flex-col space-y-3 mt-2">
+                                <a href="https://dal5.short.gy/0" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded">
+                                    1. Convertir 300 DPI 
+                                </a>
+                                <a href="https://dal5.short.gy/j" target="_blank" class="download-btn dpi-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded">
+                                    2. Convertir 300 DPI
+                                </a>
+                                <p class="text-sm italic mt-1">modificar los DPI o PPP de su imagen</p>
+                            </div>
+                        </ul>
+                    </div>
+                    
+                    <!-- Formato Excel -->
+                    <div class="mb-4">
+                        <h4 class="font-semibold mb-2">Formato Excel:</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li class="mb-1">Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                            <li class="mb-1">Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                        </ul>
+                        <div class="table-container">
+                            <table class="responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>AF</th>
+                                        <th>RUN</th>
+                                        <th>NOMBRES</th>
+                                        <th>APELLIDOS</th>
+                                        <th>CARGO</th>
+                                        <th>EMPRESA</th>
+                                        <th>VIGENCIA</th>
+                                        <th>OBS-COLOR CREDENCIAL</th>
+                                        <th>OTROS</th>
+                                        <th>EMAIL</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>COQUIMBO</td>
+                                        <td>12345678-9</td>
+                                        <td>CAMILA GRACIELA</td>
+                                        <td>LEYTON MONTENEGRO</td>
+                                        <td>
+                                            <select class="cargo-select bg-white border rounded px-2 py-1 text-sm w-full">
+                                                <option selected>GUARDIA DE SEGURIDAD</option>
+                                                <option>CONSERJE</option>
+                                                <option>VIGILANTE PRIVADO</option>
+                                                <option>ASESOR DE SEGURIDAD</option>
+                                                <option>CAPACITADOR</option>
+                                                <option>ENCARGADO DE SEGURIDAD</option>
+                                                <option>JEFE DE SEGURIDAD</option>
+                                                <option>SUPERVISOR</option>
+                                                <option>TECNICO</option>
+                                                <option>TECNICO INDEPENDIENTE</option>
+                                                <option>TECNICO DE C.C.T.V. Y ALARMA</option>
+                                                <option>TECNICO A.T.M.</option>
+                                                <option>INSTALADOR TECNICO</option>
+                                            </select>
+                                        </td>
+                                        <td>ALTA SEGURIDAD S.A.</td>
+                                        <td>31-10-2027</td>
+                                        <td>
+                                            <select class="color-select bg-white border rounded px-2 py-1 text-sm w-full">
+                                                <option selected>BLANCO</option>
+                                                <option>AZUL</option>
+                                                <option>GRIS</option>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td>camilaleyton@gmail.com</td>
+                                    </tr>
+                                    <tr>
+                                        <td>COQUIMBO</td>
+                                        <td>15524524-5</td>
+                                        <td>DANIEL ENRIQUE</td>
+                                        <td>VEGA CHAVEZ</td>
+                                        <td>
+                                            <select class="cargo-select bg-white border rounded px-2 py-1 text-sm w-full">
+                                                <option>GUARDIA DE SEGURIDAD</option>
+                                                <option selected>CONSERJE</option>
+                                                <option>VIGILANTE PRIVADO</option>
+                                                <option>ASESOR DE SEGURIDAD</option>
+                                                <option>CAPACITADOR</option>
+                                                <option>ENCARGADO DE SEGURIDAD</option>
+                                                <option>JEFE DE SEGURIDAD</option>
+                                                <option>SUPERVISOR</option>
+                                                <option>TECNICO</option>
+                                                <option>TECNICO INDEPENDIENTE</option>
+                                                <option>TECNICO DE C.C.T.V. Y ALARMA</option>
+                                                <option>TECNICO A.T.M.</option>
+                                                <option>INSTALADOR TECNICO</option>
+                                            </select>
+                                        </td>
+                                        <td>ALTA SEGURIDAD S.A.</td>
+                                        <td>23/05/2026</td>
+                                        <td>
+                                            <select class="color-select bg-white border rounded px-2 py-1 text-sm w-full">
+                                                <option selected>BLANCO</option>
+                                                <option>AZUL</option>
+                                                <option>GRIS</option>
+                                            </select>
+                                        </td>
+                                        <td></td>
+                                        <td>danielvega@gmail.com</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex flex-wrap justify-start items-center pl-5">
+                            <a href="https://dal5.short.gy/Cr3d" target="_blank" class="download-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded mt-4 mb-4 excel-btn">
+                                Descargar Excel
+                            </a>
+                        </div>
+                                  <!-- Subtítulo para Credencial Independiente -->
+                        <h4 class="font-semibold mb-2 mt-4 text-left">
+                          <span style="color: #DC2626;" class="text-lg sm:text-xl md:text-2xl">CREDENCIAL INDEPENDIENTE</span>
+                        </h4>
+                        <div class="flex flex-wrap justify-start items-center pl-5">
+                            <a href="https://dal5.short.gy/Ind" target="_blank" class="download-btn bg-blue-500 hover:bg-blue-600 text-white font-bold rounded mt-2 mb-4 indep-btn">
+                               C. Independiente
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">PAGO VALE VISTA:</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li class="mb-1">$5.763 CLP en VALE VISTA a nombre de:</li>
+                            <li class="mb-1"><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                            <li class="mb-1">R.U.T.: 61.944.800-6</li>
+                            <li class="mb-1">Teléfono OS.10.: +562512651024</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 flex flex-wrap justify-between items-start md:items-start">
+                    <img 
+                        src="https://raw.githubusercontent.com/danielfigueroa1879/Credenciales/da146109b14c4ffc143bbbf27a00dfad2fbfe4b0/valores.jpg" 
+                        alt="Valores de Pago" 
+                        class="valores-example w-1/2 md:w-1/4 mb-2"
+                    >
+                    <a href="https://dal5.short.gy/C√" target="_blank" class="mt-0 md:mt-0">
+                        <img src="https://raw.githubusercontent.com/danielfigueroa1879/Credenciales/ef0b1d80f2830affe8a2d4095f70a136119cf5a0/qrcred.png" 
+                             alt="Código QR" 
+                             class="qr-code-footer"
+                             title="Escanea para más información"
+                             style="margin-top: 350px; /* Para pantallas grandes */"> 
+                    </a>
+                </div>
+            </div>
+        </div>  
+       <div class="text-sm text-gray-300 mt-4 text-center normal-text">
+          <ul class="space-y-3 pl-5 text-sm normal-text">
+               <li>
+                <span>Haga clic en los botones para descargar.</span><br>
+                <span>©2025 - Daniel Figueroa Ch.</span><br>
+                <span>Ingeniero en Informática.</span>
+               </li>
+
+       </div>
+        <footer class="text-center text-gray-600 text-sm mt-4 normal-text">
+           
+        </footer>
+    </div>
+
+    <script>
+// Script para añadir efecto click y animación de salto al botón de Credencial Independiente
+document.addEventListener('DOMContentLoaded', function() {
+    // Efecto click en secciones (conservado del código original)
+    var sections = document.querySelectorAll('.border-l-4');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].addEventListener('click', function() {
+            for (var j = 0; j < sections.length; j++) {
+                sections[j].classList.remove('clicked');
+            }
+            this.classList.add('clicked');
+        });
+    }
+    
+    // Agregamos la clase de animación para CSS
+    var cssAnimation = `
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-15px);
+        }
+        60% {
+            transform: translateY(-7px);
+        }
+    }
+    
+    .bounce-animation {
+        animation: bounce 2s ease infinite !important;
+    }`;
+    
+    // Agregar estilos al documento
+    var styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = cssAnimation;
+    document.head.appendChild(styleSheet);
+    
+    // Animación para el botón de Credencial Independiente
+    var botonIndependiente = document.querySelector('.indep-btn'); // Seleccionando el botón por su clase
+    
+    if (botonIndependiente) {
+        // Función para activar/desactivar la animación
+        function toggleBounce() {
+            botonIndependiente.classList.add('bounce-animation');
+            
+            // Desactivar después de 2 segundos
+            setTimeout(function() {
+                botonIndependiente.classList.remove('bounce-animation');
+            }, 2000);
+        }
+        
+        // Activar cada 5 segundos (cambiado de 3 a 5 para que sea menos intrusivo)
+        setInterval(toggleBounce, 5000);
+        
+        // Primera activación después de 3 segundos
+        setTimeout(toggleBounce, 3000);
+    }
+});
+</script>
+    
+</body>
+</html>
