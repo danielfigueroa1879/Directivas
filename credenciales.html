@@ -531,6 +531,23 @@ transition: all 0.3s ease;
         transform: translateY(-3px);
     }
 }
+
+        /* Añade estas reglas CSS en la sección de estilos de tu archivo credenciales.html */
+
+/* Modo Oscuro - Específicamente para el pie de página */
+@media (prefers-color-scheme: dark) {
+    .text-gray-600 {
+        color: #d1d5db !important; /* Color más claro para modo oscuro */
+    }
+    
+    .normal-text span {
+        color: #d1d5db !important; /* Color más claro para textos en modo oscuro */
+    }
+    
+    footer.text-gray-600 {
+        color: #d1d5db !important; /* Color más claro para el footer en modo oscuro */
+    }
+}
         
         
         /* Estilos para impresión */
