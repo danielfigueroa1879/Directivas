@@ -849,15 +849,16 @@ h4.font-semibold, h4 {
     position: absolute;
     top: 15px;
     right: 15px;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 7px;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     z-index: 10;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 .back-btn:hover {
@@ -865,13 +866,34 @@ h4.font-semibold, h4 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.back-btn svg {
+    margin-right: 5px;
+    height: 20px;
+    width: 20px;
+}
+
 /* Ajustes para móvil */
 @media (max-width: 640px) {
     .back-btn {
-        top: 10px;
-        right: 10px;
-        padding: 6px 10px;
-        font-size: 0.85rem;
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 16px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 50px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        height: auto;
+        min-width: 50px;
+        min-height: 50px;
+    }
+    
+    .back-btn:active {
+        transform: scale(0.95);
     }
 }
 
@@ -889,7 +911,7 @@ h4.font-semibold, h4 {
     </style>
 </head>
   
-  <body class="text-gray-800">
+<body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md relative">
         <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
@@ -900,10 +922,10 @@ h4.font-semibold, h4 {
         
         <!-- Botón de volver añadido aquí -->
         <a href="https://danielfigueroa1879.github.io/Directivas/" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
             </svg>
-            Volver
+            <span class="btn-text">Volver</span>
         </a>
         
         <div class="title-container">
@@ -1199,6 +1221,17 @@ document.addEventListener('DOMContentLoaded', function() {
     
     .pulse-animation {
         animation: pulse 1s ease-in-out;
+    }
+    
+    /* Ocultar texto en móviles y mostrar solo icono */
+    @media (max-width: 640px) {
+        .back-btn .btn-text {
+            display: none;
+        }
+        
+        .back-btn svg {
+            margin-right: 0 !important;
+        }
     }`;
     document.head.appendChild(styleSheet);
 });
