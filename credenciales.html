@@ -96,7 +96,7 @@ body::before {
             position: absolute;
             top: 15px;
             left: 15px;
-            width:80px;
+            width: 70px;
             height: auto;
             opacity: 0.5;
             transition: opacity 0.3s ease;
@@ -122,6 +122,8 @@ body::before {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             border-radius: 7px !important;
             font-size: 1rem; /* Tamaño aumentado para los botones */
+            text-align: left !important; /* Alineación a la izquierda */
+            padding-left: 20px !important; /* Padding izquierdo aumentado */
         }
 
         .download-btn:hover {
@@ -148,7 +150,8 @@ body::before {
         
         .download-btn.dpi-btn {
             box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
-            text-align: center;
+            text-align: left !important; /* Alineación a la izquierda */
+            padding-left: 20px !important; /* Padding izquierdo aumentado */
         }
         
         .download-btn.dpi-btn:hover {
@@ -308,7 +311,7 @@ body::before {
             }
             
             .logo-os10 {
-                width: 50px;
+                width: 60px;
                 top: 10px;
                 left: 10px;
             }
@@ -520,8 +523,8 @@ transition: all 0.3s ease;
         white-space: nowrap !important;
         font-size: 1rem !important;
         font-weight: 900 !important;
-        text-align: center !important;
-        padding: 14px 12px !important;
+        text-align: left !important;
+        padding: 14px 12px 14px 20px !important;
         margin-left: 0 !important;
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
     }
@@ -529,23 +532,6 @@ transition: all 0.3s ease;
     .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
         transform: translateY(-3px);
-    }
-}
-
-        /* Añade estas reglas CSS en la sección de estilos de tu archivo credenciales.html */
-
-/* Modo Oscuro - Específicamente para el pie de página */
-@media (prefers-color-scheme: dark) {
-    .text-gray-600 {
-        color: #d1d5db !important; /* Color más claro para modo oscuro */
-    }
-    
-    .normal-text span {
-        color: #d1d5db !important; /* Color más claro para textos en modo oscuro */
-    }
-    
-    footer.text-gray-600 {
-        color: #d1d5db !important; /* Color más claro para el footer en modo oscuro */
     }
 }
         
@@ -602,6 +588,12 @@ h4.font-semibold, h4 {
     h4.font-semibold, h4 {
         font-size: 1.2rem !important; /* Ligeramente más pequeño en móvil pero aún grande */
         margin-bottom: 0.85rem !important;
+    }
+    
+    /* Ajuste adicional para botones en móvil */
+    .download-btn, .dpi-btn, .excel-btn, .indep-btn {
+        text-align: left !important;
+        padding-left: 20px !important;
     }
 }
 /* Sombras y efectos de brillo para TODOS los botones en modo oscuro móvil */
@@ -662,9 +654,9 @@ h4.font-semibold, h4 {
         width: 180px !important;
         min-width: 180px !important;
         max-width: 180px !important;
-        text-align: center !important;
+        text-align: left !important;
         font-weight: 600 !important;
-        padding: 14px 12px !important;
+        padding: 14px 12px 14px 20px !important;
     }
 
     a[href="https://dal5.short.gy/0"].download-btn.dpi-btn:hover,
@@ -851,10 +843,53 @@ h4.font-semibold, h4 {
         padding-right: 8px !important;
     }
 }
+
+/* Estilos para el botón de volver */
+.back-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 8px 12px;
+    border-radius: 7px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes para móvil */
+@media (max-width: 640px) {
+    .back-btn {
+        top: 10px;
+        right: 10px;
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Estilos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .back-btn.bg-yellow-500 {
+        box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4);
+    }
+    
+    .back-btn.bg-yellow-500:hover {
+        box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5);
+    }
+}
       
     </style>
 </head>
-<body class="text-gray-800">
+  
+  <body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md relative">
         <!-- Logo OS10 -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
@@ -862,10 +897,19 @@ h4.font-semibold, h4 {
                  alt="Logo OS10" 
                  class="logo-os10">
         </a>
+        
+        <!-- Botón de volver añadido aquí -->
+        <a href="https://danielfigueroa1879.github.io/Directivas/" class="back-btn bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+            </svg>
+            Volver
+        </a>
+        
         <div class="title-container">
-  <h1 class="main-title">CREDENCIALES</h1>
-  <h2 class="main-subtitle">EMPRESA O INDEPENDIENTE</h2>
-</div>
+            <h1 class="main-title">CREDENCIAL</h1>
+            <h2 class="main-subtitle">EMPRESA E INDEPENDIENTE</h2>
+        </div>
         
         <!-- Contenedor con espacio adicional después del título -->
         <div class="content-container">
@@ -1050,7 +1094,7 @@ h4.font-semibold, h4 {
                 </div>
             </div>
         </div>  
-       <div class="text-sm text-gray-600 mt-4 text-center normal-text">
+       <div class="text-sm text-gray-300 mt-4 text-center normal-text">
           <ul class="space-y-3 pl-5 text-sm normal-text">
                <li>
                 <span>Haga clic en los botones para descargar.</span><br>
@@ -1122,6 +1166,41 @@ document.addEventListener('DOMContentLoaded', function() {
         // Primera activación después de 3 segundos
         setTimeout(toggleBounce, 3000);
     }
+    
+    // Animación para el botón de volver
+    var botonVolver = document.querySelector('.back-btn');
+    if (botonVolver) {
+        // Aplicar un efecto de pulsación suave al botón de volver cuando se carga la página
+        setTimeout(function() {
+            botonVolver.classList.add('pulse-animation');
+            setTimeout(function() {
+                botonVolver.classList.remove('pulse-animation');
+            }, 1000);
+        }, 1500);
+    }
+});
+
+// Agregar animación de pulso para el botón volver
+document.addEventListener('DOMContentLoaded', function() {
+    var styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    
+    .pulse-animation {
+        animation: pulse 1s ease-in-out;
+    }`;
+    document.head.appendChild(styleSheet);
 });
 </script>
     
