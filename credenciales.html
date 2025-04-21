@@ -498,6 +498,28 @@ body::before {
             .download-btn.dpi-btn:hover {
                 box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
             }
+            
+            /* Corregir color de texto en modo oscuro */
+            .text-sm.text-gray-300, 
+            .text-sm.text-gray-200,
+            .text-gray-600,
+            footer,
+            .normal-text,
+            .normal-text span,
+            .normal-text li {
+                color: #ffffff !important;
+            }
+            
+            /* Asegurar que el texto del footer es visible */
+            footer.text-center.text-gray-600.text-sm.mt-4.normal-text,
+            .text-sm.text-gray-200.mt-4.text-center.normal-text {
+                color: #ffffff !important;
+            }
+            
+            .text-sm.text-gray-200.mt-4.text-center.normal-text span,
+            .text-sm.text-gray-200.mt-4.text-center.normal-text li {
+                color: #ffffff !important;
+            }
         }
 
 
@@ -1123,9 +1145,9 @@ h4.font-semibold, h4 {
                 <span>©2025 - Daniel Figueroa Ch.</span><br>
                 <span>Ingeniero en Informática.</span>
                </li>
-
+          </ul>
        </div>
-        <footer class="text-center text-gray-600 text-sm mt-4 normal-text">
+        <footer class="text-center text-gray-300 text-sm mt-4 normal-text">
            
         </footer>
     </div>
