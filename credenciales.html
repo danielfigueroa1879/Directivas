@@ -115,13 +115,12 @@ body::before {
             transition: all 0.3s ease;
             margin: 16px 0;
             padding: 13px 16px; /* Engrosado verticalmente para PC */
-            font-size: 0.95rem;
             width: 25%;
             display: inline-block;
             white-space: nowrap;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             border-radius: 7px !important;
-            font-size: 1rem; /* Tamaño aumentado para los botones */
+            font-size: 1rem; /* Tamaño aumentado para los botones *//
             text-align: left !important; /* Alineación a la izquierda */
             padding-left: 20px !important; /* Padding izquierdo aumentado */
         }
@@ -255,7 +254,7 @@ body::before {
         
         /* Elementos adicionales */
         .conversion-link {
-            color: #DC2626 !important;
+            color: #EBB8A4 !important;
             font-weight: bold !important;
         }
         
@@ -311,7 +310,7 @@ body::before {
             }
             
             .logo-os10 {
-                width: 50px;
+                width: 60px;
                 top: 10px;
                 left: 10px;
             }
@@ -432,7 +431,7 @@ body::before {
             }
             
             .conversion-link {
-                color: #EF4444 !important;
+                color: #EBB8A4 !important;
                 font-size: 0.9rem !important;
             }
             
@@ -550,6 +549,46 @@ transition: all 0.3s ease;
         margin-left: 0 !important;
         box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
     }
+    
+    .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
+        transform: translateY(-3px);
+    }
+}
+        
+        
+        /* Estilos para impresión */
+        @media print {
+            img[src*="foto.jpg"] {
+                width: 35% !important;
+                height: auto !important;
+            }
+            
+            .mt-4.flex.justify-between {
+                position: relative !important;
+                height: 500px !important;
+            }
+            
+            .qr-code-footer {
+                width: 80px !important;
+                height: 80px !important;
+                position: absolute !important;
+                top: 350px !important;
+                right: 30px !important;
+                margin-top: 0 !important;
+            }
+            
+            .table-container {
+                transform: scale(0.4);
+                transform-origin: top left;
+                width: 250%;
+                margin-bottom: 70px;
+            }
+            
+            .table-container + div {
+                margin-top: -140px;
+            }
+        }
     
     .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
@@ -932,7 +971,6 @@ h4.font-semibold, h4 {
       
     </style>
 </head>
-  
 <body class="text-gray-800">
     <div class="card-container bg-white rounded-xl shadow-md relative">
         <!-- Logo OS10 -->
@@ -958,7 +996,7 @@ h4.font-semibold, h4 {
         <!-- Contenedor con espacio adicional después del título -->
         <div class="content-container">
             <div class="border-l-4 border-yellow-500 pl-4 mb-6">
-                <h3 class="font-bold mb-2 text-red-600 text-lg md:text-lg md:tracking-wide md:my-3">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+                <h3 class="font-bold mb-2 text-lg md:text-lg lg:text-2xl md:tracking-wide md:my-3 lg:my-4" style="color: #F54C38;">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
                 <div class="space-y-4">
                     <!-- Documentos requeridos -->
                     <div class="mb-4">
@@ -1104,7 +1142,7 @@ h4.font-semibold, h4 {
                         </div>
                                   <!-- Subtítulo para Credencial Independiente -->
                         <h4 class="font-semibold mb-2 mt-4 text-left">
-                          <span style="color: #DC2626;" class="text-lg sm:text-xl md:text-2xl">CREDENCIAL INDEPENDIENTE</span>
+                          <span style="color: #F54C38;" class="text-lg sm:text-xl md:text-2xl">CREDENCIAL INDEPENDIENTE</span>
                         </h4>
                         <div class="flex flex-wrap justify-start items-center pl-5">
                             <a href="https://dal5.short.gy/Ind" target="_blank" class="download-btn bg-blue-500 hover:bg-blue-600 text-white font-bold rounded mt-2 mb-4 indep-btn">
@@ -1138,7 +1176,7 @@ h4.font-semibold, h4 {
                 </div>
             </div>
         </div>  
-       <div class="text-sm text-gray-600 mt-4 text-center normal-text">
+       <div class="text-sm text-gray-300 mt-4 text-center normal-text">
           <ul class="space-y-3 pl-5 text-sm normal-text">
                <li>
                 <span>Haga clic en los botones para descargar.</span><br>
