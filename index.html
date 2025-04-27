@@ -367,7 +367,14 @@
 
             .footer-info { color: #a0aec0; }
         }
+@media (prefers-color-scheme: dark) {
+    /* ... (otros estilos existentes) ... */
 
+    /* Color para h3 en modo oscuro */
+    .section h3 {
+        color: #f9fafb; /* Blanco suave, alto contraste */
+    }
+}
 
         /* === ESTILOS PARA MÓVILES (max-width: 640px) === */
         @media (max-width: 640px) {
@@ -468,7 +475,7 @@
              .qr-container-section4 { width: 50px; height: 50px; margin-top: 1rem;}
              h1 { font-size: 1.3rem; }
              h2 { font-size: 0.9rem; }
-             .section h3 { font-size: 1.0rem; }
+             .section h3 { font-size: 1.1rem; }
              .section li { font-size: 0.85rem; }
              .download-btn { min-width: 140px; height: 40px; font-size: 0.8rem; padding: 0 12px;}
         }
