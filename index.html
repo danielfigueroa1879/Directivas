@@ -3,1074 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Directiva de Funcionamiento - OS10</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="logo-os10/png" sizes="192x192" href="/icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512x512.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
-    
-    <!-- Tailwind CSS CDN -->
+    <link rel="manifest" href="/site.webmanifest">
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    
-    <!-- Fuente personalizada -->
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Archivo CSS personalizado -->
+
     <style>
-        /* Estilos generales */
+        /* --- Variables CSS --- */
+        :root {
+            --font-family: 'Poppins', sans-serif;
+            --text-color-light: #374151;
+            --text-color-dark: #e2e8f0;
+            --bg-light: #F2FFFD;
+            --bg-dark: #1f2937;
+            --card-bg-light: #FFFFFF;
+            --card-bg-dark: #374151;
+            --link-color: #0a73c3;
+
+            --section-blue-border: #0a73c3;
+            --section-blue-bg-light: #F1F7FF;
+            --section-blue-btn-bg: #0a73c3;
+            --section-blue-btn-hover-bg: #0861a5;
+            --section-blue-shadow: rgba(10, 115, 195, 0.4);
+            --section-blue-shadow-hover: rgba(10, 115, 195, 0.5);
+            --section-blue-dark-border: #3b82f6;
+            --section-blue-dark-btn-bg: #3b82f6;
+            --section-blue-dark-btn-hover-bg: #2563eb;
+            --section-blue-dark-shadow: rgba(59, 130, 246, 0.5);
+            --section-blue-dark-shadow-hover: rgba(59, 130, 246, 0.6);
+
+
+            --section-green-border: #1ccfc3;
+            --section-green-bg-light: #F6FFFD;
+            --section-green-btn-bg: #1ccfc3;
+            --section-green-btn-hover-bg: #18b6ab;
+            --section-green-shadow: rgba(28, 207, 195, 0.4);
+            --section-green-shadow-hover: rgba(28, 207, 195, 0.5);
+            --section-green-dark-border: #10b981;
+            --section-green-dark-btn-bg: #10b981;
+            --section-green-dark-btn-hover-bg: #059669;
+            --section-green-dark-shadow: rgba(16, 185, 129, 0.5);
+            --section-green-dark-shadow-hover: rgba(16, 185, 129, 0.6);
+
+            --section-red-border: #f01317;
+            --section-red-bg-light: #FFF8F8;
+            --section-red-btn-bg: #f01317;
+            --section-red-btn-hover-bg: #d10f13;
+            --section-red-shadow: rgba(240, 19, 23, 0.4);
+            --section-red-shadow-hover: rgba(240, 19, 23, 0.5);
+            --section-red-dark-border: #ef4444;
+            --section-red-dark-btn-bg: #ef4444;
+            --section-red-dark-btn-hover-bg: #dc2626;
+            --section-red-dark-shadow: rgba(239, 68, 68, 0.5);
+            --section-red-dark-shadow-hover: rgba(239, 68, 68, 0.6);
+
+
+            --section-yellow-border: #f5b508;
+            --section-yellow-bg-light: #FFFFEF;
+            --section-yellow-btn-bg: #f5b508;
+            --section-yellow-btn-hover-bg: #d99c07;
+            --section-yellow-shadow: rgba(245, 181, 8, 0.4);
+            --section-yellow-shadow-hover: rgba(245, 181, 8, 0.5);
+            --section-yellow-dark-border: #f59e0b;
+            --section-yellow-dark-btn-bg: #f59e0b;
+            --section-yellow-dark-btn-hover-bg: #d97706;
+            --section-yellow-dark-shadow: rgba(245, 158, 11, 0.5);
+            --section-yellow-dark-shadow-hover: rgba(245, 158, 11, 0.6);
+
+
+            --shadow-light-base: rgba(0, 0, 0, 0.15);
+            --shadow-light-hover: rgba(0, 0, 0, 0.2);
+            --shadow-dark-base: rgba(255, 255, 255, 0.15);
+            --shadow-dark-hover: rgba(255, 255, 255, 0.2);
+            --shadow-mobile-light-base: rgba(0, 0, 0, 0.2);
+            --shadow-mobile-light-hover: rgba(0, 0, 0, 0.25);
+            --shadow-mobile-dark-base: rgba(255, 255, 255, 0.25);
+            --shadow-mobile-dark-hover: rgba(255, 255, 255, 0.3);
+        }
+
+        /* --- Estilos Generales --- */
         body {
-            font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: #374151;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-    
-    /* Añadir imagen de fondo */
-    background-image: url("https://github.com/danielfigueroa1879/Directivas/blob/283084a753902889a5ef2d6097dad72f6820a005/101.jpg?raw=true");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color-light);
+            background-color: var(--bg-light);
+            background-image: url("https://github.com/danielfigueroa1879/Directivas/blob/283084a753902889a5ef2d6097dad72f6820a005/101.jpg?raw=true");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
         }
 
-        /* Estilo para el contenedor del QR */
-        /*.qr-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-        }*/
-      
-        /* Estilo para el logo OS10 */
-        .logo-os10 {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 80px;
-            height: auto;
-            opacity: 0.7;
-            z-index: 10;
-        }
-
-        @media (max-width: 640px) {
-            .logo-os10 {
-                width: 60px;
-                top: 15px;
-                left: 15px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo-os10 {
-                width: 50px;
-                top: 10px;
-                left: 10px;
-            }
-        }
-
-/* Estilo para el QR en la sección 4 */
-.qr-container-section4 {
-    width: 60px;
-    height: 60px;
-    float: right;
-    margin-top: 40px; /* Ajusta este valor para mover el QR más arriba o abajo */
-    margin-right: 01px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-}
-
-/* Ajuste para que el contenido no se solape con el QR */
-.section-yellow ul {
-    clear: right;
-}
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 640px) {
-    .qr-container-section4 {
-        width: 50px;
-        height: 50px;
-        margin-right: 8px;
-        margin-top: 45px;
-    }
-}
-
-@media (max-width: 480px) {
-    .qr-container-section4 {
-        width:50px;
-        height: 50px;
-        margin-right: 4px;
-        margin-top: 45px;
-    }
-}
-
-        /* Clase para textos normales - letra más oscura */
-        .normal-text {
-            color: #1f2937 !important;
-            font-weight: 400 !important;
-            font-size: 1.05rem !important;
-        }
-
-        /* Estilo base para los botones de descarga */
-        .download-btn {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            width: 190px;
-            height: 40px;
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-            padding: 10px 15px !important;
-            border-radius: 8px !important;
-            opacity: 0.9;
-            letter-spacing: 0.5px;
-            color: white !important;
-            text-align: center !important;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Colores específicos para los botones para que coincidan con las secciones */
-        .section-blue .download-btn {
-            background-color: #0a73c3 !important;
-        }
-        .section-blue .download-btn:hover {
-            background-color: #0861a5 !important;
-        }
-
-        .section-green .download-btn {
-            background-color: #1ccfc3 !important;
-        }
-        .section-green .download-btn:hover {
-            background-color: #18b6ab !important;
-        }
-
-        .section-red .download-btn {
-            background-color: #f01317 !important;
-        }
-        .section-red .download-btn:hover {
-            background-color: #d10f13 !important;
-        }
-
-        .section-yellow .download-btn {
-            background-color: #f5b508 !important;
-        }
-        .section-yellow .download-btn:hover {
-            background-color: #d99c07 !important;
-        }
-
-        /* Animación de salto para el botón de tramitar credenciales */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-15px);
-            }
-            60% {
-                transform: translateY(-7px);
-            }
-        }
-
-        .bounce-animation {
-            animation: bounce 2s ease infinite !important;
-        }
-
+        /* --- Contenedor Principal --- */
         .card-container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto 20px auto;
             padding: 30px;
-            background-color: #F2FFFD;
+            background-color: var(--card-bg-light);
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
-            animation: slideUp 1s ease-out 0.5s forwards;
-            transform-origin: center bottom;
+            animation: slideUp 0.8s ease-out forwards;
             opacity: 0;
             position: relative;
         }
 
-        /* Efectos para subtítulos (div con borde lateral) */
-        div.border-l-4 {
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-            border-color: #ffffff;
-            padding-top: 0.8rem;
-            padding-bottom: 0.8rem;
-            margin-bottom: 1.2rem;
-            background-color: #f7fdfc;
+        @keyframes slideUp {
+            from { transform: translateY(15%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* --- Logo OS10 --- */
+        .logo-os10 {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 70px;
+            height: auto;
+            opacity: 0.8;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+        .logo-os10:hover {
+            opacity: 1;
+        }
+
+        /* --- Títulos --- */
+        h1, h2 { text-align: center; }
+        h1 { font-size: 1.6rem; font-weight: 600; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.1rem; font-weight: 400; margin-bottom: 1.5rem; color: #555; }
+
+        /* --- Secciones --- */
+        .section {
+            border-left-width: 3px;
+            border-left-style: solid;
+            padding: 1rem 1rem 1rem 1rem; /* Padding derecho añadido para espacio QR */
+            margin-bottom: 1.5rem;
             border-radius: 0 4px 4px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            overflow: hidden; /* Clearfix para float (aunque ya no se usa float para QR) */
         }
 
-        /* Reglas específicas por color */
-        div.border-blue-500 {
-            border-color: #0a73c3 !important;
-            border-width: 2px !important;
-            border-radius: 0 0 0 4px !important;
-            background-color: #F1F7FF !important; /* Añadir color de fondo azul claro */
-        }
-        div.border-blue-500:hover,
-        div.border-blue-500.clicked {
-            transform: translateX(3px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-            
+        .section:hover, .section.clicked {
+            transform: translateX(4px);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
         }
 
-        div.border-green-500 {
-            border-color: #1ccfc3 !important;
-            border-width: 2px !important;
-            border-radius: 0 0 0 4px !important;
-            background-color: #F6FFFD !important; /* Añadir color de fondo verde claro */
-        }
-        div.border-green-500:hover,
-        div.border-green-500.clicked {
-            transform: translateX(3px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-        }
-
-        div.border-red-500 {
-            border-color: #f01317 !important;
-            border-width: 2px !important;
-            border-radius: 0 0 0 4px !important;
-            background-color: #FFF8F8 !important; /* Añadir color de fondo rojo claro */
-        }
-        div.border-red-500:hover,
-        div.border-red-500.clicked {
-            transform: translateX(3px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-        }
-
-        div.border-yellow-500 {
-            border-color: #f5b508 !important;
-            border-width: 2px !important;
-            border-radius: 0 0 0 4px !important;
-            background-color: #FFFFEF !important; /* Añadir color de fondo amarillo claro */
-        }
-        div.border-yellow-500:hover,
-        div.border-yellow-500.clicked {
-            transform: translateX(3px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Clase para efecto "fijo" al hacer clic */
-        .clicked {
-            transform: translateX(3px) !important;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
-        }
-
-        /* Aumentar tamaño de los títulos de sección */
-        div.border-l-4 h3 {
-            font-size: 1.3rem !important;
+        .section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
             margin-bottom: 0.8rem;
         }
 
-        /* Contenedor para botones con alineación uniforme */
-        .button-container {
-            display: flex;
-            justify-content: flex-start;
-            width: 100%;
-            margin-top: 8px;
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.5rem 0 0 0; /* Reset margin */
         }
 
-        /* Modo oscuro */
+        .section li {
+            margin-bottom: 1rem; /* Espacio entre items de lista */
+            font-size: 0.95rem;
+            color: var(--text-color-light);
+            line-height: 1.6;
+        }
+         /* Contenedor para el texto descriptivo del li */
+         .li-description {
+             display: block; /* Asegura que ocupe su propia línea */
+             margin-bottom: 0.5rem; /* Espacio antes del botón/enlace */
+             color: #4b5563;
+             font-weight: 400;
+         }
+          /* Estilo para enlaces dentro de li que NO son botones */
+         .li-description a {
+             color: var(--link-color);
+             text-decoration: underline;
+             transition: color 0.2s ease;
+         }
+          .li-description a:hover {
+              color: #0861a5;
+          }
+
+        /* Contenedor para el botón dentro del li (para asegurar bloque) */
+        .li-button-container {
+            margin-top: 0.5rem; /* Espacio sobre el botón */
+        }
+
+
+        /* Colores específicos por sección */
+        .section-blue { border-color: var(--section-blue-border); background-color: var(--section-blue-bg-light); }
+        .section-green { border-color: var(--section-green-border); background-color: var(--section-green-bg-light); }
+        .section-red { border-color: var(--section-red-border); background-color: var(--section-red-bg-light); }
+        .section-yellow { border-color: var(--section-yellow-border); background-color: var(--section-yellow-bg-light); }
+
+        /* --- Botones de Descarga --- */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            padding: 0 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: all 0.3s ease;
+            opacity: 0.95;
+            text-decoration: none;
+            min-width: 170px;
+            box-shadow: 0 4px 8px var(--shadow-light-base);
+            width: 100%; /* Ocupa el 100% del contenedor padre */
+            min-width: 170px; /* Mantén el mínimo para evitar botones demasiado pequeños */
+            max-width: 240px; /* Opcional: Limita el ancho máximo para texto largo */
+            box-sizing: border-box; /* Incluye padding y borde en el cálculo del ancho */width: 100%; /* Ocupa el 100% del contenedor padre */
+            min-width: 170px; /* Mantén el mínimo para evitar botones demasiado pequeños */
+            max-width: 240px; /* Opcional: Limita el ancho máximo para texto largo */
+            box-sizing: border-box; /* Incluye padding y borde en el cálculo del ancho */
+        }
+
+        .download-btn:hover {
+            transform: translateY(-4px);
+            opacity: 1;
+            box-shadow: 0 7px 14px var(--shadow-light-hover);
+        }
+
+        /* Colores y sombras de botones por sección */
+        .section-blue .download-btn { background-color: var(--section-blue-btn-bg); box-shadow: 0 4px 8px var(--section-blue-shadow); }
+        .section-blue .download-btn:hover { background-color: var(--section-blue-btn-hover-bg); box-shadow: 0 7px 14px var(--section-blue-shadow-hover); }
+
+        .section-green .download-btn { background-color: var(--section-green-btn-bg); box-shadow: 0 4px 8px var(--section-green-shadow); }
+        .section-green .download-btn:hover { background-color: var(--section-green-btn-hover-bg); box-shadow: 0 7px 14px var(--section-green-shadow-hover); }
+
+        .section-red .download-btn { background-color: var(--section-red-btn-bg); box-shadow: 0 4px 8px var(--section-red-shadow); }
+        .section-red .download-btn:hover { background-color: var(--section-red-btn-hover-bg); box-shadow: 0 7px 14px var(--section-red-shadow-hover); }
+
+        .section-yellow .download-btn { background-color: var(--section-yellow-btn-bg); box-shadow: 0 4px 8px var(--section-yellow-shadow); }
+        .section-yellow .download-btn:hover { background-color: var(--section-yellow-btn-hover-bg); box-shadow: 0 7px 14px var(--section-yellow-shadow-hover); }
+
+
+        /* Botón "Tramitar Credenciales" con animación */
+        #tramitarCredenciales { /* Estilos base ya aplicados por .download-btn */ }
+
+        .bounce-animation {
+            animation: bounce 1.8s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* --- QR Code en Sección 4 --- CORREGIDO */
+        .qr-container-section4 {
+            display: block; /* Asegura que sea un bloque */
+            width: 65px; /* Ligeramente más grande */
+            height: 65px;
+            margin: 1.5rem 0 0 auto; /* Margen superior, 0 abajo, 0 izq, auto derecha -> alinea a la derecha */
+            /* Si se prefiere centrado abajo: margin: 1.5rem auto 0 auto; */
+            /* Si se prefiere izquierda abajo: margin: 1.5rem auto 0 0; */
+            position: relative; /* Mantiene flujo normal */
+            clear: both; /* Asegura que esté debajo de cualquier float (aunque no hay) */
+        }
+        .qr-container-section4 img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        /* --- Footer --- */
+        .footer-info {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        .footer-info span {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+
+        /* === MODO OSCURO === */
         @media (prefers-color-scheme: dark) {
             body {
-                background-color: #111827;
-                color: #e2e8f0;
-                box-shadow: none;
+                background-color: var(--bg-dark);
+                color: var(--text-color-dark);
+                background-image: none;
             }
 
             .card-container {
-                background-color: #374151;
-                color: #e2e8f0;
-                box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+                background-color: var(--card-bg-dark);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
             }
 
-            div.border-l-4 {
-                border-color: #4b5563 !important;
-                box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
-                background-color: #374151 !important;
-            }
+             h1, h2 { color: #f9fafb; }
+             h2 { color: #cbd5e1; }
 
-            div.border-blue-500 {
-                border-color: #3b82f6 !important;
-            }
+            .section {
+                 background-color: #2d3748;
+                 box-shadow: none;
+             }
+             .section:hover, .section.clicked {
+                 box-shadow: 0 3px 6px rgba(255, 255, 255, 0.05);
+             }
+             .section li { color: var(--text-color-dark); }
+             .li-description { color: #a0aec0; }
+             .li-description a { color: #63b3ed; }
+             .li-description a:hover { color: #90cdf4; }
 
-            div.border-green-500 {
-                border-color: #10b981 !important;
-            }
 
-            div.border-red-500 {
-                border-color: #ef4444 !important;
-            }
+            /* Colores oscuros por sección */
+            .section-blue { border-color: var(--section-blue-dark-border); }
+            .section-green { border-color: var(--section-green-dark-border); }
+            .section-red { border-color: var(--section-red-dark-border); }
+            .section-yellow { border-color: var(--section-yellow-dark-border); }
 
-            div.border-yellow-500 {
-                border-color: #f59e0b !important;
-            }
 
-            h1, h2, h3, h4, h5, h6 {
-                color: #f9fafb;
-            }
-
-            .normal-text {
-                color: #e5e7eb !important;
-                font-weight: 400 !important;
-            }
-
-            a:hover {
-                color: #ffffff;
-            }
-            
+            /* Botones modo oscuro */
             .download-btn {
                 opacity: 1;
+                box-shadow: 0 4px 8px var(--shadow-dark-base);
             }
-            
-            .section-blue .download-btn {
-                background-color: #3b82f6 !important;
+            .download-btn:hover {
+                 box-shadow: 0 7px 14px var(--shadow-dark-hover);
             }
-            .section-blue .download-btn:hover {
-                background-color: #2563eb !important;
-            }
-            
-            .section-green .download-btn {
-                background-color: #10b981 !important;
-            }
-            .section-green .download-btn:hover {
-                background-color: #059669 !important;
-            }
-            
-            .section-red .download-btn {
-                background-color: #ef4444 !important;
-            }
-            .section-red .download-btn:hover {
-                background-color: #dc2626 !important;
-            }
-            
-            .section-yellow .download-btn {
-                background-color: #f59e0b !important;
-            }
-            .section-yellow .download-btn:hover {
-                background-color: #d97706 !important;
-            }
+
+             /* Colores y sombras modo oscuro */
+            .section-blue .download-btn { background-color: var(--section-blue-dark-btn-bg); box-shadow: 0 4px 8px var(--section-blue-dark-shadow); }
+            .section-blue .download-btn:hover { background-color: var(--section-blue-dark-btn-hover-bg); box-shadow: 0 7px 14px var(--section-blue-dark-shadow-hover); }
+
+            .section-green .download-btn { background-color: var(--section-green-dark-btn-bg); box-shadow: 0 4px 8px var(--section-green-dark-shadow); }
+            .section-green .download-btn:hover { background-color: var(--section-green-dark-btn-hover-bg); box-shadow: 0 7px 14px var(--section-green-dark-shadow-hover); }
+
+            .section-red .download-btn { background-color: var(--section-red-dark-btn-bg); box-shadow: 0 4px 8px var(--section-red-dark-shadow); }
+            .section-red .download-btn:hover { background-color: var(--section-red-dark-btn-hover-bg); box-shadow: 0 7px 14px var(--section-red-dark-shadow-hover); }
+
+            .section-yellow .download-btn { background-color: var(--section-yellow-dark-btn-bg); box-shadow: 0 4px 8px var(--section-yellow-dark-shadow); }
+            .section-yellow .download-btn:hover { background-color: var(--section-yellow-dark-btn-hover-bg); box-shadow: 0 7px 14px var(--section-yellow-dark-shadow-hover); }
+
+
+            #tramitarCredenciales { box-shadow: 0 4px 8px var(--section-yellow-dark-shadow); }
+            #tramitarCredenciales:hover, #tramitarCredenciales.bounce-animation { box-shadow: 0 7px 14px var(--section-yellow-dark-shadow-hover); }
+
+
+            .footer-info { color: #a0aec0; }
         }
 
-        /* Estilos para móviles */
+
+        /* === ESTILOS PARA MÓVILES (max-width: 640px) === */
         @media (max-width: 640px) {
             body {
-                font-size: 16px;
-                padding: 12px;
-                box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+                padding: 10px;
+                font-size: 15px;
             }
 
             .card-container {
-                padding: 12px;
-                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+                padding: 15px;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
             }
 
-            .normal-text {
-                font-size: 1rem !important;
-            }
+             .logo-os10 {
+                 width: 50px;
+                 top: 10px;
+                 left: 10px;
+             }
 
-            ul li {
-                margin-bottom: 0.7rem;
-            }
+            h1 { font-size: 1.4rem; }
+            h2 { font-size: 1.0rem; margin-bottom: 1rem; }
 
-            div.border-l-4 {
-                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
-                padding-top: 0.6rem;
-                padding-bottom: 0.6rem;
-                background-color: #ffffff;
-            }
+             .section {
+                 padding: 0.8rem 0.8rem 0.8rem 0.8rem; /* Ajuste padding */
+                 margin-bottom: 1rem;
+             }
+             .section h3 { font-size: 1.1rem; }
+             .section li { font-size: 0.9rem; }
+             .li-description { margin-bottom: 0.4rem; }
 
-            div.border-l-4:hover {
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+            .download-btn {
+                height: 42px;
+                padding: 0 15px;
+                font-size: 0.85rem;
+                min-width: 150px;
+                box-shadow: 0 4px 8px var(--shadow-mobile-light-base);
             }
-            
-            .qr-container {
+             .download-btn:hover {
+                  box-shadow: 0 7px 14px var(--shadow-mobile-light-hover);
+             }
+
+            .qr-container-section4 {
                 width: 55px;
                 height: 55px;
-                top: 10px;
-                right: 10px;
+                margin: 1rem 0 0 auto; /* Ajuste para móvil */
             }
-            
-            .download-btn {
-                width: 175px !important;
-                height: 48px !important;
-                font-size: 0.95rem !important;
-                padding: 8px 12px !important;
-                font-weight: 700 !important;
-                margin-left: 0 !important;
-                margin-right: auto !important;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                text-align: center;
-            }
-            
-            .button-container {
-                justify-content: flex-start !important;
-                padding-left: 0 !important;
-                margin-left: 0 !important;
-            }
-            
+
+            .footer-info { font-size: 0.8rem; }
+
+             /* Sombras específicas para móvil modo claro */
+             .section-blue .download-btn { box-shadow: 0 4px 8px rgba(10, 115, 195, 0.5); }
+             .section-blue .download-btn:hover { box-shadow: 0 7px 14px rgba(10, 115, 195, 0.6); }
+             .section-green .download-btn { box-shadow: 0 4px 8px rgba(28, 207, 195, 0.5); }
+             .section-green .download-btn:hover { box-shadow: 0 7px 14px rgba(28, 207, 195, 0.6); }
+             .section-red .download-btn { box-shadow: 0 4px 8px rgba(240, 19, 23, 0.5); }
+             .section-red .download-btn:hover { box-shadow: 0 7px 14px rgba(240, 19, 23, 0.6); }
+             .section-yellow .download-btn { box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5); }
+             .section-yellow .download-btn:hover { box-shadow: 0 7px 14px rgba(245, 181, 8, 0.6); }
+
+             #tramitarCredenciales { box-shadow: 0 4px 8px rgba(245, 181, 8, 0.6); }
+             #tramitarCredenciales:hover, #tramitarCredenciales.bounce-animation { box-shadow: 0 7px 14px rgba(245, 181, 8, 0.7); }
+
+        }
+
+        /* === ESTILOS PARA MÓVILES (max-width: 640px) - MODO OSCURO === */
+        @media (prefers-color-scheme: dark) and (max-width: 640px) {
             .card-container {
-                padding: 10px;
+                 box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
             }
-        }
 
-        /* Ajustes específicos para pantallas muy pequeñas */
-        @media (max-width: 480px) {
-            .qr-container {
-                width: 50px;
-                height: 50px;
-                top: 8px;
-                right: 8px;
-            }
-            
-            body {
-                padding: 8px;
-            }
-            
             .download-btn {
-                width: 165px !important;
-            }
+                 box-shadow: 0 4px 8px var(--shadow-mobile-dark-base);
+             }
+             .download-btn:hover {
+                  box-shadow: 0 7px 14px var(--shadow-mobile-dark-hover);
+             }
+
+             /* Sombras específicas para móvil modo oscuro */
+             .section-blue .download-btn { box-shadow: 0 4px 8px rgba(59, 130, 246, 0.6); }
+             .section-blue .download-btn:hover { box-shadow: 0 7px 14px rgba(59, 130, 246, 0.7); }
+             .section-green .download-btn { box-shadow: 0 4px 8px rgba(16, 185, 129, 0.6); }
+             .section-green .download-btn:hover { box-shadow: 0 7px 14px rgba(16, 185, 129, 0.7); }
+             .section-red .download-btn { box-shadow: 0 4px 8px rgba(239, 68, 68, 0.6); }
+             .section-red .download-btn:hover { box-shadow: 0 7px 14px rgba(239, 68, 68, 0.7); }
+             .section-yellow .download-btn { box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6); }
+             .section-yellow .download-btn:hover { box-shadow: 0 7px 14px rgba(245, 158, 11, 0.7); }
+
+             #tramitarCredenciales { box-shadow: 0 4px 8px rgba(245, 158, 11, 0.7); }
+             #tramitarCredenciales:hover, #tramitarCredenciales.bounce-animation { box-shadow: 0 7px 14px rgba(245, 158, 11, 0.8); }
         }
 
-        /* Animación */
-        @keyframes slideUp {
-            from {
-                transform: translateY(20%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        /* --- Ajustes para pantallas muy pequeñas --- */
+        @media (max-width: 480px) {
+             .logo-os10 { width: 45px; }
+             .qr-container-section4 { width: 50px; height: 50px; margin-top: 1rem;}
+             h1 { font-size: 1.3rem; }
+             h2 { font-size: 0.9rem; }
+             .section h3 { font-size: 1.0rem; }
+             .section li { font-size: 0.85rem; }
+             .download-btn { min-width: 140px; height: 40px; font-size: 0.8rem; padding: 0 12px;}
         }
-        /* Efecto de brillo para botones en modo oscuro en dispositivos móviles */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    /* Estilos generales para todos los botones de descarga */
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    /* Botones específicos por sección */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
-    a[href*="dal5.short.gy"],
-    a[href*="d6.short.gy"] {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    a[href*="dal5.short.gy"]:hover,
-    a[href*="d6.short.gy"]:hover {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-}  
-/* ===== EFECTOS DE BRILLO PARA TODOS LOS DISPOSITIVOS Y MODOS ===== */
 
-/* 1. ESTILOS BASE PARA PC - MODO CLARO */
-.download-btn {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s ease !important;
-}
-
-.download-btn:hover, 
-.download-btn:active {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Botones específicos por sección - Modo Claro PC */
-.section-blue .download-btn {
-    box-shadow: 0 4px 8px rgba(10, 115, 195, 0.4) !important;
-}
-
-.section-blue .download-btn:hover,
-.section-blue .download-btn:active {
-    box-shadow: 0 8px 15px rgba(10, 115, 195, 0.5) !important;
-}
-
-.section-green .download-btn {
-    box-shadow: 0 4px 8px rgba(28, 207, 195, 0.4) !important;
-}
-
-.section-green .download-btn:hover,
-.section-green .download-btn:active {
-    box-shadow: 0 8px 15px rgba(28, 207, 195, 0.5) !important;
-}
-
-.section-red .download-btn {
-    box-shadow: 0 4px 8px rgba(240, 19, 23, 0.4) !important;
-}
-
-.section-red .download-btn:hover,
-.section-red .download-btn:active {
-    box-shadow: 0 8px 15px rgba(240, 19, 23, 0.5) !important;
-}
-
-.section-yellow .download-btn {
-    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.4) !important;
-}
-
-.section-yellow .download-btn:hover,
-.section-yellow .download-btn:active {
-    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.5) !important;
-}
-
-/* Botón con animación de rebote - Modo Claro PC */
-#tramitarCredenciales {
-    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
-}
-
-#tramitarCredenciales:hover,
-#tramitarCredenciales:active,
-#tramitarCredenciales.bounce-animation {
-    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
-}
-
-/* 2. ESTILOS PARA PC - MODO OSCURO */
-@media (prefers-color-scheme: dark) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Oscuro PC */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Oscuro PC */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-}
-
-/* 3. ESTILOS PARA MÓVIL - MODO CLARO */
-@media (max-width: 640px) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Claro Móvil */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(10, 115, 195, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(10, 115, 195, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(28, 207, 195, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(28, 207, 195, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(240, 19, 23, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(240, 19, 23, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Claro Móvil */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.7) !important;
-    }
-}
-
-/* 4. ESTILOS PARA MÓVIL - MODO OSCURO */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Oscuro Móvil */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.7) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.7) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.7) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Oscuro Móvil */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.8) !important;
-    }
-    
-    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
-    a[href*="dal5.short.gy"],
-    a[href*="d6.short.gy"] {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    a[href*="dal5.short.gy"]:hover,
-    a[href*="d6.short.gy"]:hover {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
- 
-}
-
-/* Estilos para el pie de página - Normal para PC */
-.text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.text-sm.text-gray-200.mt-4.text-center.normal-text span {
-    font-size: 0.9rem;
-}
-
-/* Estilos para móvil - Texto más pequeño */
-@media (max-width: 640px) {
-    .text-sm.text-gray-180.mt-4.text-center.normal-text span {
-        font-size: 0.4rem !important; /* Mucho más pequeño en móvil */
-        line-height: 1.2 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text ul.space-y-3 {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text ul.space-y-3.pl-5 {
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text li {
-        margin-bottom: 0 !important;
-        line-height: 1.1 !important;
-        list-style-type: none !important;
-    }
-}
     </style>
 </head>
-<body class="text-gray-800">
-    <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
-        <!-- Logo OS10 en la esquina superior izquierda (con enlace) -->
-        <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
-            <img src="https://github.com/danielfigueroa1879/Directivas/blob/83200f0959dcef957d3e570deaeaa279f462a156/logo-os10.png?raw=true" alt="Logo OS10" class="logo-os10">
+<body>
+    <div class="card-container">
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" title="Ir a ZOSEPCAR OS10">
+            <img src="https://github.com/danielfigueroa1879/Directivas/blob/83200f0959dcef957d3e570deaeaa279f462a156/logo-os10.png?raw=true" alt="Logo OS10 Zona Seguridad Privada Carabineros" class="logo-os10">
         </a>
 
-        <h1 class="text-2xl font-bold text-center">DIRECTIVA DE FUNCIONAMIENTO</h1>
-        <h2 class="text-lg font-semibold text-center">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
-        <div class="space-y-4">
-           <div class="border-l-4 border-blue-500 pl-4 section-blue">
-                <h3 class="font-bold">1️⃣ Presentar Directiva DD.FF.</h3>
-                <ul class="list-disc pl-5 text-sm normal-text">
-                    <li>Vigencia 03 años en instalación</li>
-                    <li>Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</li>
+        <h1>DIRECTIVA DE FUNCIONAMIENTO</h1>
+        <h2>Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+
+        <div class="sections-wrapper space-y-4">
+
+           <div class="section section-blue">
+                <h3>1️⃣ Presentar Directiva DD.FF.</h3>
+                <ul>
                     <li>
-                        <a 
-                            href="https://www.bcn.cl/leychile/navegar?idNorma=9081" 
-                            target="_blank" 
-                            class="text-blue-600 hover:underline"
-                        >
-                            Dec. 93/1985
-                       </a>,
-                       <a 
-                           href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" 
-                           target="_blank" 
-                           class="text-blue-600 hover:underline"
-                       >
-                           Dec. 261 (IV.4)
-                       </a>,
-                       y 
-                       <a 
-                           href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" 
-                           target="_blank" 
-                           class="text-blue-600 hover:underline"
-                       >
-                           Dec. 32/2024
-                       </a>
+                        <span class="li-description">Vigencia 03 años en instalación.</span>
+                    </li>
+                     <li>
+                         <span class="li-description">Presentar con 15 días hábiles de anticipación a la fecha del establecimiento del servicio.</span>
+                     </li>
+                    <li>
+                        <span class="li-description">Base legal:
+                           <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank">Dec. 93/1985</a>,
+                           <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank">Dec. 261 (IV.4)</a>,
+                           <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank">Dec. 32/2024</a>.
+                        </span>
                    </li>
                </ul>
            </div>
-  
-           <div class="border-l-4 border-green-500 pl-4 section-green">
-               <h3 class="font-bold">2️⃣ Documentación</h3>
-               <ul class="space-y-3 pl-5 text-sm normal-text">
+
+           <div class="section section-green">
+               <h3>2️⃣ Documentación Requerida</h3>
+               <ul>
                    <li>
-                       <span>02 Solicitudes Simple.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/Solic" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title="Descargar Solicitud"
-                           >
-                                Descargar Solicit.
+                       <span class="li-description">02 Solicitudes Simples.</span>
+                       <div class="li-button-container">
+                           <a href="https://dal5.short.gy/Solic" target="_blank" class="download-btn" title="Descargar formato de Solicitud Simple">
+                               Descargar Solicitud
+                           </a>
+                        </div>
+                   </li>
+                   <li>
+                       <span class="li-description">01 Copia DD.FF. completa.</span>
+                       <div class="li-button-container">
+                           <a href="https://dal5.short.gy/D" target="_blank" class="download-btn" title="Descargar plantilla Word para Directiva de Funcionamiento">
+                               Descargar Word DD.FF.
                            </a>
                        </div>
                    </li>
-                   
-                   <li>
-                       <span>01 copia DD.FF. completa.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/D" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title="Descargar Word"
-                           >
-                              Descargar Word
-                           </a>
-                       </div>
-                   </li>
-                   
-                   <li>
-                       <span>Requisitos según tipo, Instalación, Eventos, Partidos de Fútbol Prof.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/Re24" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title=" Descargar Requisi."
-                           >
-                                 Descargar Requis.
-                           </a>
-                       </div>
-                   </li>
-                   
-                   <li>
-                       <span>Uniforme Decreto 32/2024.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/0u" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title="Ejemplo Uniforme"
-                           >
-                               Ejemplo Uniforme
-                           </a>
-                       </div>
-                   </li>
-                   
-                   <li>
-                       <span>Análisis de Vulnerabilidades.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/6ydn" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title="Descargar Análisis"
-                           >
-                                Descargar Anális.
+                    <li>
+                       <span class="li-description">Requisitos específicos (Instalación, Eventos, Fútbol Prof.).</span>
+                       <div class="li-button-container">
+                           <a href="https://dal5.short.gy/Re24" target="_blank" class="download-btn" title="Descargar listado de requisitos según tipo de servicio">
+                               Descargar Requisitos
                            </a>
                        </div>
                    </li>
                    <li>
-                        <span>Solicitud de Uniforme Distinto.</span>
-                        <div class="button-container">
-                        <a 
-                        href="https://d6.short.gy/G8" 
-                        target="_blank" 
-                        class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                        title="Descargar Word"
-                    >
-                                Descargar Word
+                       <span class="li-description">Ejemplo Uniforme (según Dec. 32/2024).</span>
+                       <div class="li-button-container">
+                           <a href="https://dal5.short.gy/0u" target="_blank" class="download-btn" title="Descargar ejemplo gráfico del uniforme reglamentario">
+                               Ver Ejemplo Uniforme
                            </a>
-                     </div>
+                       </div>
+                   </li>
+                   <li>
+                       <span class="li-description">Análisis de Vulnerabilidades.</span>
+                       <div class="li-button-container">
+                           <a href="https://dal5.short.gy/6ydn" target="_blank" class="download-btn" title="Descargar plantilla para Análisis de Vulnerabilidades">
+                               Descargar Análisis
+                           </a>
+                       </div>
+                   </li>
+                   <li>
+                        <span class="li-description">Solicitud de Uniforme Distinto (si aplica).</span>
+                        <div class="li-button-container">
+                             <a href="https://d6.short.gy/G8" target="_blank" class="download-btn" title="Descargar formato para solicitar autorización de uniforme distinto">
+                                 Descargar Solicitud U.D.
+                             </a>
+                         </div>
                   </li>
-                   
                </ul>
            </div>
-           
-           <div class="border-l-4 border-red-500 pl-4 section-red">
-               <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
-               <ul class="list-disc pl-5 text-sm normal-text">
+
+           <div class="section section-red">
+               <h3>3️⃣ Digitalización (Escaneo)</h3>
+               <ul>
                    <li>
-                       <span>Escanear todo en 01 archivo PDF (Pendrive)</span>
-                       <span>Página Unir PDF.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/I" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               title="Herramienta para unir PDF"
-                           >
-                               Herramienta
+                       <span class="li-description">Escanear toda la documentación en <strong>un único archivo PDF</strong> y entregar en Pendrive.</span>
+                       <span class="li-description">Herramienta online sugerida para unir PDFs:</span>
+                        <div class="li-button-container"> 
+                           <a href="https://dal5.short.gy/I" target="_blank" class="download-btn" title="Ir a herramienta online para unir archivos PDF">
+                               Unir PDF Online
                            </a>
                        </div>
                    </li>
                </ul>
            </div>
-           
-           <div class="border-l-4 border-yellow-500 pl-4 section-yellow">
-               <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
-                  
-               
-               <ul class="list-disc pl-5 text-sm normal-text">
+
+           <div class="section section-yellow">
+               <h3>4️⃣ Tramitación de Credenciales</h3>
+               <ul>
                    <li>
-                       <span>Resol. 1.199 (27.03.2025) Amplia plazo 6 meses para su tramitación.</span>
-                       <div class="button-container">
-                           <a 
-                               href="https://dal5.short.gy/rV1C1t" 
-                               target="_blank" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
-                               id="DescargarDocumentos"
-                               title="Descargar Docum.."
-                           >
-                                Descargar Docum..
+                       <span class="li-description">Plazo ampliado 6 meses (hasta 27.09.2025) según <a href="https://dal5.short.gy/rV1C1t" target="_blank" title="Ver Resolución Exenta 1.199">Resol. Ex. 1.199</a> del 27.03.2025.</span>
+                        <div class="li-button-container">
+                            <a href="https://dal5.short.gy/rV1C1t" target="_blank" class="download-btn" title="Descargar Resolución Exenta 1.199">
+                                Descargar Resol. 1.199
+                            </a>
+                        </div>
+                   </li>
+                   <li>
+                       <span class="li-description">Acceder al sistema para tramitar credenciales.</span>
+                       <div class="li-button-container">
+                           <a href="credenciales.html" class="download-btn" id="tramitarCredenciales" title="Iniciar trámite de credenciales de Guardias de Seguridad">
+                               Tramitar Credenciales
                            </a>
                        </div>
                    </li>
-
-                   
-                   <!-- Esta parte está comentada y no funcionará -->
-                   
-                   <li>
-                       <span>Tramitar credenciales.</span>
-                  
-                       <div class="button-container">
-                           <a 
-                               href="credenciales.html" 
-                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn" 
-                               id="tramitarCredenciales"
-                               title=" Tramitar Credenc.."
-                           >
-                                  Tramitar Credenc..
-                           </a>
-                       </div>
-                       
-                   </li>
-                  
-
-                   
-                    <!-- Añadir el QR aquí -->
-            <div class="qr-container-section4">
-                <img src="https://github.com/danielfigueroa1879/Directivas/blob/b9a5d8646e02a0fab209e6d578dfe1c5e24750e2/qr.png?raw=true" alt="QR Code" class="w-full h-full object-contain">
-            </div>
-              
-                   
                </ul>
-           </div>
-       </div>
-       
-       <div class="text-sm text-gray-300 mt-4 text-center normal-text">
-          <ul class="space-y-3 pl-5 text-sm normal-text">
-               <li>
-                <span>Haga clic para descargar.</span><br>
-                <span>©2025 - Daniel Figueroa Ch.</span><br>
-                <span>Ingeniero en Informática.</span>
-               </li>
 
-       </div>
-      <footer class="text-center text-gray-600 text-sm mt-4 normal-text">
-       
+                <div class="qr-container-section4">
+                    <img src="https://github.com/danielfigueroa1879/Directivas/blob/b9a5d8646e02a0fab209e6d578dfe1c5e24750e2/qr.png?raw=true" alt="Código QR para más información sobre credenciales">
+                </div>
+           </div>
+       </div> <footer class="footer-info">
+            <span>Haga clic en los botones para descargar los documentos.</span>
+            <span>&copy; 2025 - Daniel Figueroa Ch.</span>
+            <span>Ingeniero en Informática</span>
        </footer>
-        
-   </div>
-   
-   
-   <script>
-   // Script para añadir efecto click y animación de salto al botón de tramitar credenciales
+
+   </div> <script>
    document.addEventListener('DOMContentLoaded', function() {
-       // Efecto click en secciones
-       var sections = document.querySelectorAll('.border-l-4');
-       for (var i = 0; i < sections.length; i++) {
-           sections[i].addEventListener('click', function() {
-               for (var j = 0; j < sections.length; j++) {
-                   sections[j].classList.remove('clicked');
-               }
+       const sections = document.querySelectorAll('.section');
+       const botonTramitar = document.getElementById('tramitarCredenciales');
+
+       // Efecto 'clicked' en secciones
+       sections.forEach(section => {
+           section.addEventListener('click', function() {
+               sections.forEach(s => s.classList.remove('clicked'));
                this.classList.add('clicked');
            });
-       }
-       
-       // Animación para el botón de Tramitar Credenciales (cada 7 segundos)
-       var botonTramitar = document.getElementById('tramitarCredenciales');
-       if (botonTramitar) {
-           // Función para activar/desactivar la animación
-           function toggleBounce() {
-               botonTramitar.classList.add('bounce-animation');
-               
-               // Desactivar después de 2 segundos
-               setTimeout(function() {
-                   botonTramitar.classList.remove('bounce-animation');
-               }, 2000);
-           }
-           
-           // Activar cada 7 segundos
-           setInterval(toggleBounce, 3000);
-           
-           // Primera activación después de 2 segundos
-           setTimeout(toggleBounce, 2000);
-       }
+       });
+
+        // Animación para el botón "Tramitar Credenciales"
+        if (botonTramitar) {
+            let bounceInterval;
+
+            function startBounce() {
+                if (bounceInterval) clearInterval(bounceInterval);
+
+                botonTramitar.classList.add('bounce-animation');
+                setTimeout(() => {
+                    botonTramitar.classList.remove('bounce-animation');
+                }, 1800); // Duración de la animación CSS
+
+                // Repetir cada 5 segundos (1.8s animación + 3.2s pausa)
+                bounceInterval = setInterval(() => {
+                    botonTramitar.classList.add('bounce-animation');
+                    setTimeout(() => {
+                        botonTramitar.classList.remove('bounce-animation');
+                    }, 1800);
+                }, 5000);
+            }
+            setTimeout(startBounce, 1000); // Inicio retardado
+        }
    });
    </script>
 </body>
