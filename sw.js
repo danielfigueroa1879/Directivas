@@ -36,3 +36,5 @@ if ('serviceWorker' in navigator) {
       registration.update();
     });
 }
+// Forzar limpieza de caché en Service Worker
+caches.keys().then(keys => keys.forEach(caches.delete));
