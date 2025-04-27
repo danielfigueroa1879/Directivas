@@ -4,18 +4,20 @@
   "icons": [
     {
       "src": "icon-192x192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "192x192"
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
-  "start_url": "https://danielfigueroa1879.github.io/Directivas/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0a73c3",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "scope": "/"
 }
