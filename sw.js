@@ -28,3 +28,11 @@ if ('serviceWorker' in navigator) {
     .then(() => console.log('Service Worker registrado'))
     .catch((error) => console.error('Error:', error));
 }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: '/' })
+    .then(registration => {
+      console.log('SW registrado:', registration);
+      // Forzar actualización en iOS
+      registration.update();
+    });
+}
