@@ -1083,6 +1083,7 @@
            // Primera activación después de 2 segundos
            setTimeout(toggleBounce, 2000);
        }
+       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓↓
        if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
       .then(registration => {
@@ -1092,6 +1093,38 @@
         console.error('Error al registrar Service Worker:', error);
       });
      }
+       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓↓
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Muestra un botón personalizado
+  document.getElementById('install-button').style.display = 'block';
+});
+
+document.getElementById('install-button').addEventListener('click', () => {
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(choiceResult => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('¡Usuario aceptó la instalación!');
+    }
+    deferredPrompt = null;
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+       
    });
    </script>
 </body>
