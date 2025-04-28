@@ -1069,24 +1069,24 @@ document.addEventListener('DOMContentLoaded', function() {
         deferredPrompt = e;
 
         // Crear un aviso personalizado en la parte superior
-        const installBanner = document.createElement('div');
-        installBanner.style.position = 'fixed';
-        installBanner.style.top = '0';
-        installBanner.style.left = '0';
-        installBanner.style.right = '0';
-        //installBanner.style.backgroundColor = 'rgba(0, 137, 123, 0.5)'; // Verde agua oscuro semi-transparente
-        installBanner.style.backgroundColor = 'rgba(128, 128, 128, 0.6)'; // Fondo gris semi-transparente
-        installBanner.style.webkitBackdropFilter = 'blur(10px)'; // Efecto de desenfoque para iOS
-        installBanner.style.color = 'white';
-        installBanner.style.padding = '14px';
-        installBanner.style.textAlign = 'center';
-        installBanner.style.zIndex = '1000';
-        installBanner.innerHTML = `
-            ¿Quieres instalar esta app? 
-            <button style="margin-left: 10px; padding: 4px 8px; background: white; color: #0a73c3; border: none; border-radius: 4px; cursor: pointer;">
-                Instalar
-            </button>
-        `;
+    // Crear un aviso personalizado en la parte superior
+const installBanner = document.createElement('div');
+installBanner.style.position = 'fixed';
+installBanner.style.top = '0';
+installBanner.style.left = '0';
+installBanner.style.right = '0';
+installBanner.style.backgroundColor = 'rgba(0, 137, 123, 0.8)'; // Verde agua oscuro semi-transparente
+installBanner.style.color = 'white'; // Letra blanca
+installBanner.style.fontWeight = 'bold'; // Letra en negrita
+installBanner.style.padding = '20px'; // Aumenta el padding vertical
+installBanner.style.textAlign = 'center';
+installBanner.style.zIndex = '1000';
+installBanner.innerHTML = `
+    ¿Quieres instalar esta app? 
+    <button style="margin-left: 10px; padding: 8px 16px; background: white; color: #0a73c3; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+        Instalar
+    </button>
+`;
 
         // Al hacer clic en "Instalar"
         installBanner.querySelector('button').addEventListener('click', () => {
