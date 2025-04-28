@@ -826,12 +826,7 @@
         list-style-type: none !important;
     }
 }
-/* En tu archivo CSS o dentro de una etiqueta <style> */
-#temp-banner {
-  background: rgba(10, 115, 195, 0.5) !important; /* Azul semi-transparente */
-  color: white;
-  /* ... (otros estilos) ... */
-}
+
   
     </style>
 </head>
@@ -1057,122 +1052,97 @@
    
    
    <script>
-   // Script para añadir efecto click y animación de salto al botón de tramitar credenciales
-   document.addEventListener('DOMContentLoaded', function() {
-       // Efecto click en secciones
-       var sections = document.querySelectorAll('.border-l-4');
-       for (var i = 0; i < sections.length; i++) {
-           sections[i].addEventListener('click', function() {
-               for (var j = 0; j < sections.length; j++) {
-                   sections[j].classList.remove('clicked');
-               }
-               this.classList.add('clicked');
-           });
-       }
-       
-       // Animación para el botón de Tramitar Credenciales (cada 7 segundos)
-       var botonTramitar = document.getElementById('tramitarCredenciales');
-       if (botonTramitar) {
-           // Función para activar/desactivar la animación
-           function toggleBounce() {
-               botonTramitar.classList.add('bounce-animation');
-               
-               // Desactivar después de 2 segundos
-               setTimeout(function() {
-                   botonTramitar.classList.remove('bounce-animation');
-               }, 2000);
-           }
-           
-           // Activar cada 7 segundos
-           setInterval(toggleBounce, 3000);
-           
-           // Primera activación después de 2 segundos
-           setTimeout(toggleBounce, 2000);
-       }
-       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓↓
-       if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('Service Worker registrado:', registration);
-      })
-      .catch(error => {
-        console.error('Error al registrar Service Worker:', error);
-      });
-     }
-       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓↓
-let deferredPrompt;
+document.addEventListener('DOMContentLoaded', function() {
+    // Efecto click en secciones
+    var sections = document.querySelectorAll('.border-l-4');
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].addEventListener('click', function() {
+            for (var j = 0; j < sections.length; j++) {
+                sections[j].classList.remove('clicked');
+            }
+            this.classList.add('clicked');
+        });
+    }
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault(); // Evita que el navegador muestre el prompt automático
-  deferredPrompt = e;
+    // Animación para el botón de Tramitar Credenciales (cada 7 segundos)
+    var botonTramitar = document.getElementById('tramitarCredenciales');
+    if (botonTramitar) {
+        // Función para activar/desactivar la animación
+        function toggleBounce() {
+            botonTramitar.classList.add('bounce-animation');
 
+            // Desactivar después de 2 segundos
+            setTimeout(function() {
+                botonTramitar.classList.remove('bounce-animation');
+            }, 2000);
+        }
 
-// Crear el banner
-  const installBanner = document.createElement('div');
-  installBanner.id = 'temp-banner';
-  installBanner.style.background = 'rgba(10, 115, 195, 0.5)'; // Fondo semi-transparente
-  // ... (resto del código para estilos y botón) ...
+        // Activar cada 7 segundos
+        setInterval(toggleBounce, 3000);
 
-  // Eliminar el banner después de 10 segundos (10,000 milisegundos)
-  setTimeout(() => {
-    installBanner.style.animation = 'slideOut 0.5s ease-out forwards';
-    setTimeout(() => installBanner.remove(), 500);
-  }, 10000); // ⬅️ Cambiado de 20000 a 10000
-});
+        // Primera activación después de 2 segundos
+        setTimeout(toggleBounce, 2000);
+    }
 
-    
+    // Registro del Service Worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('Service Worker registrado:', registration);
+            })
+            .catch(error => {
+                console.error('Error al registrar Service Worker:', error);
+            });
+    }
 
+    // Manejo del evento beforeinstallprompt
+    let deferredPrompt;
+    let bannerTimeout;
 
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault(); // Evita que el navegador muestre el prompt automático
+        deferredPrompt = e;
 
+        // Crear un aviso personalizado en la parte superior
+        const installBanner = document.createElement('div');
+        installBanner.style.position = 'fixed';
+        installBanner.style.top = '0';
+        installBanner.style.left = '0';
+        installBanner.style.right = '0';
+        installBanner.style.backgroundColor = 'rgba(10, 115, 195, 0.8)'; // Fondo semi-transparente
+        installBanner.style.color = 'white';
+        installBanner.style.padding = '12px';
+        installBanner.style.textAlign = 'center';
+        installBanner.style.zIndex = '1000';
+        installBanner.innerHTML = `
+            ¿Quieres instalar esta app? 
+            <button style="margin-left: 10px; padding: 4px 8px; background: white; color: #0a73c3; border: none; border-radius: 4px; cursor: pointer;">
+                Instalar
+            </button>
+        `;
 
-    
-  // Mostrar un aviso personalizado en la parte superior
-  const installBanner = document.createElement('div');
-  installBanner.style.position = 'fixed';
-  installBanner.style.top = '0';
-  installBanner.style.left = '0';
-  installBanner.style.right = '0';
-  installBanner.style.backgroundColor = '#0a73c3';
-  installBanner.style.color = 'white';
-  installBanner.style.padding = '12px';
-  installBanner.style.textAlign = 'center';
-  installBanner.style.zIndex = '1000';
-  installBanner.innerHTML = `
-    ¿Quieres instalar esta app? 
-    <button style="margin-left: 10px; padding: 4px 8px; background: white; color: #0a73c3; border: none; border-radius: 4px; cursor: pointer;">
-      Instalar
-    </button>
-  `;
+        // Al hacer clic en "Instalar"
+        installBanner.querySelector('button').addEventListener('click', () => {
+            clearTimeout(bannerTimeout); // Cancelar el temporizador
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Usuario aceptó la instalación');
+                }
+                deferredPrompt = null;
+                installBanner.remove(); // Elimina el aviso después de la acción
+            });
+        });
 
-  // Al hacer clic en "Instalar"
-  installBanner.querySelector('button').addEventListener('click', () => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Usuario aceptó la instalación');
-      }
-      deferredPrompt = null;
-      installBanner.remove(); // Elimina el aviso después de la acción
+        // Eliminar el banner después de 10 segundos
+        bannerTimeout = setTimeout(() => {
+            installBanner.remove();
+        }, 10000); // 10,000 milisegundos = 10 segundos
+
+        // Agregar el aviso al body
+        document.body.appendChild(installBanner);
     });
-  });
-
-  // Agregar el aviso al body
-  document.body.appendChild(installBanner);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-       
-   });
-   </script>
+</script>
 </body>
 </html>
