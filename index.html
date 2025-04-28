@@ -1129,6 +1129,53 @@
        // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓
 
   // Mostrar un aviso personalizado en la parte superior
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // Evita que el navegador muestre el prompt automático
+  deferredPrompt = e;
+
+  // Mostrar un aviso personalizado en la parte superior
+  const installBanner = document.createElement('div');
+  installBanner.style.position = 'fixed';
+  installBanner.style.top = '0';
+  installBanner.style.left = '0';
+  installBanner.style.right = '0';
+  installBanner.style.backgroundColor = '#0a73c3';
+  installBanner.style.color = 'white';
+  installBanner.style.padding = '12px';
+  installBanner.style.textAlign = 'center';
+  installBanner.style.zIndex = '1000';
+  installBanner.innerHTML = `
+    ¿Quieres instalar esta app? 
+    <button style="margin-left: 10px; padding: 4px 8px; background: white; color: #0a73c3; border: none; border-radius: 4px; cursor: pointer;">
+      Instalar
+    </button>
+  `;
+
+  // Al hacer clic en "Instalar"
+  installBanner.querySelector('button').addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuario aceptó la instalación');
+      }
+      deferredPrompt = null;
+      installBanner.remove(); // Elimina el aviso después de la acción
+    });
+  });
+
+  // Agregar el aviso al body
+  document.body.appendChild(installBanner);
+});
+
+
+
+
+
+
+       
 document.addEventListener('DOMContentLoaded', () => {
   const banner = document.getElementById('temp-banner');
 
