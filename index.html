@@ -826,39 +826,7 @@
         list-style-type: none !important;
     }
 }
-/* Estilo del banner */
-.temp-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7); /* Fondo negro semi-transparente */
-  color: white; /* Texto blanco legible */
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: slideIn 0.5s ease-out;
-}
 
-/* Efecto de entrada */
-@keyframes slideIn {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
-}
-
-/* Botón de cierre */
-#close-banner {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  margin-left: 15px;
-  cursor: pointer;
-}
   
     </style>
 </head>
@@ -1126,10 +1094,7 @@
         console.error('Error al registrar Service Worker:', error);
       });
      }
-       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓
-
-  // Mostrar un aviso personalizado en la parte superior
-
+       // ↓↓↓ AÑADE ESTO AL FINAL DEL BLOQUE ↓↓↓
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -1175,39 +1140,14 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 
 
-       
-document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.getElementById('temp-banner');
 
-  // Eliminar banner después de 60 segundos (60,000 milisegundos)
-  setTimeout(() => {
-    if (banner) {
-      banner.style.animation = 'slideOut 0.5s ease-out forwards';
-      setTimeout(() => banner.remove(), 500); // Eliminar del DOM
-    }
-  }, 60000);
 
-  // Eliminar banner al hacer clic en el botón
-  document.getElementById('close-banner').addEventListener('click', () => {
-    banner.style.animation = 'slideOut 0.5s ease-out forwards';
-    setTimeout(() => banner.remove(), 500);
-  });
-});
 
-/* Efecto de salida */
-@keyframes slideOut {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100%); }
-}
+
+
+
        
    });
    </script>
-
-
-<!-- Banner temporal -->
-<div id="temp-banner" class="temp-banner">
-  <span>¡Bienvenido! Este banner desaparecerá en 60 segundos</span>
-  <button id="close-banner">×</button>
-</div>
 </body>
 </html>
