@@ -1053,49 +1053,6 @@
    
    <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Efecto click en secciones
-    var sections = document.querySelectorAll('.border-l-4');
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].addEventListener('click', function() {
-            for (var j = 0; j < sections.length; j++) {
-                sections[j].classList.remove('clicked');
-            }
-            this.classList.add('clicked');
-        });
-    }
-
-    // Animación para el botón de Tramitar Credenciales (cada 7 segundos)
-    var botonTramitar = document.getElementById('tramitarCredenciales');
-    if (botonTramitar) {
-        // Función para activar/desactivar la animación
-        function toggleBounce() {
-            botonTramitar.classList.add('bounce-animation');
-
-            // Desactivar después de 2 segundos
-            setTimeout(function() {
-                botonTramitar.classList.remove('bounce-animation');
-            }, 2000);
-        }
-
-        // Activar cada 7 segundos
-        setInterval(toggleBounce, 3000);
-
-        // Primera activación después de 2 segundos
-        setTimeout(toggleBounce, 2000);
-    }
-
-    // Registro del Service Worker
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('Service Worker registrado:', registration);
-            })
-            .catch(error => {
-                console.error('Error al registrar Service Worker:', error);
-            });
-    }
-
-    // Manejo del evento beforeinstallprompt
     let deferredPrompt;
     let bannerTimeout;
 
@@ -1109,7 +1066,8 @@ document.addEventListener('DOMContentLoaded', function() {
         installBanner.style.top = '0';
         installBanner.style.left = '0';
         installBanner.style.right = '0';
-        installBanner.style.backgroundColor = 'rgba(128, 128, 128, 0.8)'; // Gris semi-transparente
+        installBanner.style.backgroundColor = 'rgba(128, 128, 128, 0.8)'; // Fondo gris semi-transparente
+        installBanner.style.webkitBackdropFilter = 'blur(10px)'; // Efecto de desenfoque para iOS
         installBanner.style.color = 'white';
         installBanner.style.padding = '12px';
         installBanner.style.textAlign = 'center';
