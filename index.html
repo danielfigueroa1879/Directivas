@@ -18,13 +18,22 @@
     <meta name="application-name" content="Directivas OS10">
 
     <!-- Configuración para iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <!-- Icono para iOS -->
-  <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <!-- Iconos para iOS -->
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icon-167x167.png">
     
+    <!-- Splash screens para iOS -->
+    <link rel="apple-touch-startup-image" href="/splash-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/splash-1242x2208.png" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
+    <link rel="apple-touch-startup-image" href="/splash-1536x2048.png" media="(min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-device-pixel-ratio: 2)">
 
     <!-- Tailwind CSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -37,29 +46,20 @@
         /* Estilos generales */
         body {
             font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 20px;
-    color: #374151;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-    
-    /* Añadir imagen de fondo */
-    background-image: url("https://github.com/danielfigueroa1879/Directivas/blob/283084a753902889a5ef2d6097dad72f6820a005/101.jpg?raw=true");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            color: #374151;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+            
+            /* Añadir imagen de fondo */
+            background-image: url("https://github.com/danielfigueroa1879/Directivas/blob/283084a753902889a5ef2d6097dad72f6820a005/101.jpg?raw=true");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
-        /* Estilo para el contenedor del QR */
-        /*.qr-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-        }*/
-      
         /* Estilo para el logo OS10 */
         .logo-os10 {
             position: absolute;
@@ -87,41 +87,41 @@
             }
         }
 
-/* Estilo para el QR en la sección 4 */
-.qr-container-section4 {
-    width: 60px;
-    height: 60px;
-    float: right;
-    margin-top: 40px; /* Ajusta este valor para mover el QR más arriba o abajo */
-    margin-right: 01px;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-}
+        /* Estilo para el QR en la sección 4 */
+        .qr-container-section4 {
+            width: 60px;
+            height: 60px;
+            float: right;
+            margin-top: 40px; /* Ajusta este valor para mover el QR más arriba o abajo */
+            margin-right: 01px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
 
-/* Ajuste para que el contenido no se solape con el QR */
-.section-yellow ul {
-    clear: right;
-}
+        /* Ajuste para que el contenido no se solape con el QR */
+        .section-yellow ul {
+            clear: right;
+        }
 
-/* Ajustes para dispositivos móviles */
-@media (max-width: 640px) {
-    .qr-container-section4 {
-        width: 50px;
-        height: 50px;
-        margin-right: 8px;
-        margin-top: 45px;
-    }
-}
+        /* Ajustes para dispositivos móviles */
+        @media (max-width: 640px) {
+            .qr-container-section4 {
+                width: 50px;
+                height: 50px;
+                margin-right: 8px;
+                margin-top: 45px;
+            }
+        }
 
-@media (max-width: 480px) {
-    .qr-container-section4 {
-        width:50px;
-        height: 50px;
-        margin-right: 4px;
-        margin-top: 45px;
-    }
-}
+        @media (max-width: 480px) {
+            .qr-container-section4 {
+                width:50px;
+                height: 50px;
+                margin-right: 4px;
+                margin-top: 45px;
+            }
+        }
 
         /* Clase para textos normales - letra más oscura */
         .normal-text {
@@ -300,6 +300,81 @@
             margin-top: 8px;
         }
 
+        /* Estilos para el banner de instalación */
+        #install-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 115, 195, 0.9);
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #install-banner button {
+            margin-left: 10px;
+            padding: 8px 16px;
+            background: white;
+            color: #0a73c3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #install-banner button:hover {
+            background-color: #f0f0f0;
+        }
+
+        #ios-install-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(10, 115, 195, 0.9);
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #ios-install-banner .instructions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        #ios-install-banner .share-icon {
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+
+        #ios-install-banner button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: white;
+            color: #0a73c3;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
         /* Modo oscuro */
         @media (prefers-color-scheme: dark) {
             body {
@@ -380,6 +455,17 @@
             .section-yellow .download-btn:hover {
                 background-color: #d97706 !important;
             }
+
+            #install-banner,
+            #ios-install-banner {
+                background-color: rgba(30, 64, 175, 0.95);
+            }
+
+            #install-banner button,
+            #ios-install-banner button {
+                background-color: #f0f0f0;
+                color: #1e40af;
+            }
         }
 
         /* Estilos para móviles */
@@ -414,13 +500,6 @@
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             }
             
-            .qr-container {
-                width: 55px;
-                height: 55px;
-                top: 10px;
-                right: 10px;
-            }
-            
             .download-btn {
                 width: 175px !important;
                 height: 48px !important;
@@ -443,17 +522,24 @@
             .card-container {
                 padding: 10px;
             }
+
+            #ios-install-banner {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            #ios-install-banner .instructions {
+                flex-direction: column;
+                margin-top: 5px;
+            }
+
+            #ios-install-banner .step {
+                margin: 5px 0;
+            }
         }
 
         /* Ajustes específicos para pantallas muy pequeñas */
         @media (max-width: 480px) {
-            .qr-container {
-                width: 50px;
-                height: 50px;
-                top: 8px;
-                right: 8px;
-            }
-            
             body {
                 padding: 8px;
             }
@@ -474,371 +560,225 @@
                 opacity: 1;
             }
         }
-        /* Efecto de brillo para botones en modo oscuro en dispositivos móviles */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    /* Estilos generales para todos los botones de descarga */
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        transform: translateY(-5px) !important;
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    /* Botones específicos por sección */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
-    a[href*="dal5.short.gy"],
-    a[href*="d6.short.gy"] {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    a[href*="dal5.short.gy"]:hover,
-    a[href*="d6.short.gy"]:hover {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-}  
-/* ===== EFECTOS DE BRILLO PARA TODOS LOS DISPOSITIVOS Y MODOS ===== */
 
-/* 1. ESTILOS BASE PARA PC - MODO CLARO */
-.download-btn {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
-    transition: all 0.3s ease !important;
-}
+        /* Efecto de brillo para botones */
+        .download-btn {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+            transition: all 0.3s ease !important;
+        }
 
-.download-btn:hover, 
-.download-btn:active {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
-}
+        .download-btn:hover, 
+        .download-btn:active {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+        }
 
-/* Botones específicos por sección - Modo Claro PC */
-.section-blue .download-btn {
-    box-shadow: 0 4px 8px rgba(10, 115, 195, 0.4) !important;
-}
+        /* Botones específicos por sección - Modo Claro PC */
+        .section-blue .download-btn {
+            box-shadow: 0 4px 8px rgba(10, 115, 195, 0.4) !important;
+        }
 
-.section-blue .download-btn:hover,
-.section-blue .download-btn:active {
-    box-shadow: 0 8px 15px rgba(10, 115, 195, 0.5) !important;
-}
+        .section-blue .download-btn:hover,
+        .section-blue .download-btn:active {
+            box-shadow: 0 8px 15px rgba(10, 115, 195, 0.5) !important;
+        }
 
-.section-green .download-btn {
-    box-shadow: 0 4px 8px rgba(28, 207, 195, 0.4) !important;
-}
+        .section-green .download-btn {
+            box-shadow: 0 4px 8px rgba(28, 207, 195, 0.4) !important;
+        }
 
-.section-green .download-btn:hover,
-.section-green .download-btn:active {
-    box-shadow: 0 8px 15px rgba(28, 207, 195, 0.5) !important;
-}
+        .section-green .download-btn:hover,
+        .section-green .download-btn:active {
+            box-shadow: 0 8px 15px rgba(28, 207, 195, 0.5) !important;
+        }
 
-.section-red .download-btn {
-    box-shadow: 0 4px 8px rgba(240, 19, 23, 0.4) !important;
-}
+        .section-red .download-btn {
+            box-shadow: 0 4px 8px rgba(240, 19, 23, 0.4) !important;
+        }
 
-.section-red .download-btn:hover,
-.section-red .download-btn:active {
-    box-shadow: 0 8px 15px rgba(240, 19, 23, 0.5) !important;
-}
+        .section-red .download-btn:hover,
+        .section-red .download-btn:active {
+            box-shadow: 0 8px 15px rgba(240, 19, 23, 0.5) !important;
+        }
 
-.section-yellow .download-btn {
-    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.4) !important;
-}
+        .section-yellow .download-btn {
+            box-shadow: 0 4px 8px rgba(245, 181, 8, 0.4) !important;
+        }
 
-.section-yellow .download-btn:hover,
-.section-yellow .download-btn:active {
-    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.5) !important;
-}
+        .section-yellow .download-btn:hover,
+        .section-yellow .download-btn:active {
+            box-shadow: 0 8px 15px rgba(245, 181, 8, 0.5) !important;
+        }
 
-/* Botón con animación de rebote - Modo Claro PC */
-#tramitarCredenciales {
-    box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
-}
+        /* Botón con animación de rebote - Modo Claro PC */
+        #tramitarCredenciales {
+            box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
+        }
 
-#tramitarCredenciales:hover,
-#tramitarCredenciales:active,
-#tramitarCredenciales.bounce-animation {
-    box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
-}
-
-/* 2. ESTILOS PARA PC - MODO OSCURO */
-@media (prefers-color-scheme: dark) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.15) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.2) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Oscuro PC */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Oscuro PC */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-}
-
-/* 3. ESTILOS PARA MÓVIL - MODO CLARO */
-@media (max-width: 640px) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Claro Móvil */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(10, 115, 195, 0.5) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(10, 115, 195, 0.6) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(28, 207, 195, 0.5) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(28, 207, 195, 0.6) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(240, 19, 23, 0.5) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(240, 19, 23, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.5) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Claro Móvil */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 181, 8, 0.6) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 181, 8, 0.7) !important;
-    }
-}
-
-/* 4. ESTILOS PARA MÓVIL - MODO OSCURO */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    .download-btn {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    .download-btn:hover, 
-    .download-btn:active {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
-    
-    /* Botones específicos por sección - Modo Oscuro Móvil */
-    .section-blue .download-btn {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.6) !important;
-    }
-    
-    .section-blue .download-btn:hover,
-    .section-blue .download-btn:active {
-        box-shadow: 0 8px 15px rgba(59, 130, 246, 0.7) !important;
-    }
-    
-    .section-green .download-btn {
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.6) !important;
-    }
-    
-    .section-green .download-btn:hover,
-    .section-green .download-btn:active {
-        box-shadow: 0 8px 15px rgba(16, 185, 129, 0.7) !important;
-    }
-    
-    .section-red .download-btn {
-        box-shadow: 0 4px 8px rgba(239, 68, 68, 0.6) !important;
-    }
-    
-    .section-red .download-btn:hover,
-    .section-red .download-btn:active {
-        box-shadow: 0 8px 15px rgba(239, 68, 68, 0.7) !important;
-    }
-    
-    .section-yellow .download-btn {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.6) !important;
-    }
-    
-    .section-yellow .download-btn:hover,
-    .section-yellow .download-btn:active {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    /* Botón con animación de rebote - Modo Oscuro Móvil */
-    #tramitarCredenciales {
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.7) !important;
-    }
-    
-    #tramitarCredenciales:hover,
-    #tramitarCredenciales:active,
-    #tramitarCredenciales.bounce-animation {
-        box-shadow: 0 8px 15px rgba(245, 158, 11, 0.8) !important;
-    }
-    
-    /* Asegurar que los botones con enlaces específicos también tengan el efecto */
-    a[href*="dal5.short.gy"],
-    a[href*="d6.short.gy"] {
-        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.25) !important;
-    }
-    
-    a[href*="dal5.short.gy"]:hover,
-    a[href*="d6.short.gy"]:hover {
-        box-shadow: 0 8px 15px rgba(255, 255, 255, 0.3) !important;
-    }
- 
-}
-
-/* Estilos para el pie de página - Normal para PC */
-.text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.text-sm.text-gray-200.mt-4.text-center.normal-text span {
-    font-size: 0.9rem;
-}
-
-/* Estilos para móvil - Texto más pequeño */
-@media (max-width: 640px) {
-    .text-sm.text-gray-180.mt-4.text-center.normal-text span {
-        font-size: 0.4rem !important; /* Mucho más pequeño en móvil */
-        line-height: 1.2 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text ul.space-y-3 {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text ul.space-y-3.pl-5 {
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-180.mt-4.text-center.normal-text li {
-        margin-bottom: 0 !important;
-        line-height: 1.1 !important;
-        list-style-type: none !important;
-    }
-}
-
-  
+        #tramitarCredenciales:hover,
+        #tramitarCredenciales:active,
+        #tramitarCredenciales.bounce-animation {
+            box-shadow: 0 8px 15px rgba(245, 181, 8, 0.6) !important;
+        }
     </style>
 </head>
 <body class="text-gray-800">
+    <!-- Banner de instalación para Android -->
+    <div id="install-banner">
+        ¿Quieres instalar esta app? 
+        <button id="install-button-android">Instalar</button>
+        <button id="close-banner-android">No, gracias</button>
+    </div>
+   
+   <!-- Script para la funcionalidad de instalación -->
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+       // Variables para la instalación
+       let deferredPrompt;
+       
+       // Referencias a los elementos del DOM
+       const androidBanner = document.getElementById('install-banner');
+       const iosBanner = document.getElementById('ios-install-banner');
+       const androidInstallButton = document.getElementById('install-button-android');
+       const androidCloseBanner = document.getElementById('close-banner-android');
+       const iosCloseBanner = document.getElementById('close-banner-ios');
+       
+       // Detectar si el dispositivo es iOS
+       const isIOS = () => {
+           return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+       };
+       
+       // Detectar si es Safari en iOS
+       const isSafari = () => {
+           const ua = navigator.userAgent;
+           return /Safari/.test(ua) && /Apple/.test(ua) && !/Chrome/.test(ua) && !/Firefox/.test(ua);
+       };
+       
+       // Verificar si la app ya está instalada (modo independiente)
+       const isInStandaloneMode = () => {
+           return ('standalone' in window.navigator) && (window.navigator.standalone) || 
+                  window.matchMedia('(display-mode: standalone)').matches;
+       };
+       
+       // Función para mostrar el banner de iOS
+       const showIOSBanner = () => {
+           // Solo mostrar en iOS, en Safari y si no está en modo standalone
+           if (isIOS() && isSafari() && !isInStandaloneMode() && !localStorage.getItem('iosBannerClosed')) {
+               iosBanner.style.display = 'flex';
+               
+               // Guardar en localStorage que el usuario ha visto el banner
+               localStorage.setItem('iosBannerShown', 'true');
+               
+               // Ocultar después de 15 segundos
+               setTimeout(() => {
+                   iosBanner.style.display = 'none';
+               }, 15000);
+           }
+       };
+       
+       // Si es iOS, mostrar el banner específico
+       if (isIOS()) {
+           // Mostrar el banner después de 2 segundos para no interrumpir la carga inicial
+           setTimeout(showIOSBanner, 2000);
+           
+           // Manejar el cierre del banner de iOS
+           iosCloseBanner.addEventListener('click', () => {
+               iosBanner.style.display = 'none';
+               // Recordar que el usuario ha cerrado el banner
+               localStorage.setItem('iosBannerClosed', 'true');
+           });
+       } else {
+           // Para Android y otros dispositivos
+           window.addEventListener('beforeinstallprompt', (e) => {
+               e.preventDefault();
+               deferredPrompt = e;
+               
+               // No mostrar el banner si el usuario ya lo cerró antes
+               if (!localStorage.getItem('androidBannerClosed')) {
+                   // Mostrar el banner de instalación después de 2 segundos
+                   setTimeout(() => {
+                       androidBanner.style.display = 'block';
+                   }, 2000);
+               }
+           });
+           
+           // Acción del botón de instalación
+           androidInstallButton.addEventListener('click', () => {
+               androidBanner.style.display = 'none';
+               
+               if (deferredPrompt) {
+                   deferredPrompt.prompt();
+                   deferredPrompt.userChoice.then((choiceResult) => {
+                       if (choiceResult.outcome === 'accepted') {
+                           console.log('Usuario aceptó la instalación');
+                       }
+                       deferredPrompt = null;
+                   });
+               }
+           });
+           
+           // Cerrar el banner de Android
+           androidCloseBanner.addEventListener('click', () => {
+               androidBanner.style.display = 'none';
+               localStorage.setItem('androidBannerClosed', 'true');
+           });
+       }
+       
+       // Script para el botón de tramitar credenciales con animación
+       const tramitarBtn = document.getElementById('tramitarCredenciales');
+       if (tramitarBtn) {
+           // Función para activar/desactivar la animación
+           function toggleBounce() {
+               tramitarBtn.classList.add('bounce-animation');
+               
+               // Desactivar después de 2 segundos
+               setTimeout(function() {
+                   tramitarBtn.classList.remove('bounce-animation');
+               }, 2000);
+           }
+           
+           // Activar cada 5 segundos
+           setInterval(toggleBounce, 5000);
+           
+           // Primera activación después de 3 segundos
+           setTimeout(toggleBounce, 3000);
+       }
+       
+       // Efecto click en secciones
+       var sections = document.querySelectorAll('.border-l-4');
+       for (var i = 0; i < sections.length; i++) {
+           sections[i].addEventListener('click', function() {
+               for (var j = 0; j < sections.length; j++) {
+                   sections[j].classList.remove('clicked');
+               }
+               this.classList.add('clicked');
+           });
+       }
+       
+       // Mostrar nuevamente el banner de iOS si han pasado más de 7 días desde la última vez
+       if (isIOS() && localStorage.getItem('iosBannerShown')) {
+           const lastShown = localStorage.getItem('iosBannerShown');
+           const daysSinceShown = (new Date() - new Date(lastShown)) / (1000 * 60 * 60 * 24);
+           
+           if (daysSinceShown > 7) {
+               localStorage.removeItem('iosBannerClosed');
+               localStorage.removeItem('iosBannerShown');
+               setTimeout(showIOSBanner, 2000);
+           }
+       }
+   });
+   </script>
+
+    <!-- Banner de instalación para iOS -->
+    <div id="ios-install-banner">
+        <div>Instala esta app en tu iPhone/iPad</div>
+        <div class="instructions">
+            <div class="step">1. Toca <svg class="share-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> compartir</div>
+            <div class="step">2. Selecciona "Añadir a pantalla inicio"</div>
+        </div>
+        <button id="close-banner-ios">Entendido</button>
+    </div>
+
     <div class="card-container bg-white rounded-xl shadow-md p-6 space-y-6 relative">
         <!-- Logo OS10 en la esquina superior izquierda (con enlace) -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank">
@@ -877,6 +817,95 @@
                            Dec. 32/2024
                        </a>
                    </li>
+                   
+               </ul>
+           </div>
+           
+           <div class="border-l-4 border-red-500 pl-4 section-red">
+               <h3 class="font-bold">3️⃣ Todo escaneado en Digital.</h3>
+               <ul class="list-disc pl-5 text-sm normal-text">
+                   <li>
+                       <span>Escanear todo en 01 archivo PDF (Pendrive)</span>
+                       <span>Página Unir PDF.</span>
+                       <div class="button-container">
+                           <a 
+                               href="https://dal5.short.gy/I" 
+                               target="_blank" 
+                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
+                               title="Herramienta para unir PDF"
+                           >
+                               Herramienta
+                           </a>
+                       </div>
+                   </li>
+               </ul>
+           </div>
+           
+           <div class="border-l-4 border-yellow-500 pl-4 section-yellow">
+               <h3 class="font-bold">4️⃣ Tramitar Credenciales</h3>
+                  
+               
+               <ul class="list-disc pl-5 text-sm normal-text">
+                   <li>
+                       <span>Resol. 1.199 (27.03.2025) Amplia plazo 6 meses para su tramitación.</span>
+                       <div class="button-container">
+                           <a 
+                               href="https://dal5.short.gy/rV1C1t" 
+                               target="_blank" 
+                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn"
+                               id="DescargarDocumentos"
+                               title="Descargar Docum.."
+                           >
+                                Descargar Docum..
+                           </a>
+                       </div>
+                   </li>
+
+                   
+                   <!-- Esta parte está comentada y no funcionará -->
+                   
+                   <li>
+                       <span>Tramitar credenciales.</span>
+                  
+                       <div class="button-container">
+                           <a 
+                               href="credenciales.html" 
+                               class="text-white font-bold py-1 px-3 rounded-lg text-xs text-center download-btn" 
+                               id="tramitarCredenciales"
+                               title=" Tramitar Credenc.."
+                           >
+                                  Tramitar Credenc..
+                           </a>
+                       </div>
+                       
+                   </li>
+                  
+
+                   
+                    <!-- Añadir el QR aquí -->
+            <div class="qr-container-section4">
+                <img src="https://github.com/danielfigueroa1879/Directivas/blob/b9a5d8646e02a0fab209e6d578dfe1c5e24750e2/qr.png?raw=true" alt="QR Code" class="w-full h-full object-contain">
+            </div>
+              
+                   
+               </ul>
+           </div>
+       </div>
+       
+       <div class="text-sm text-gray-300 mt-4 text-center normal-text">
+          <ul class="space-y-3 pl-5 text-sm normal-text">
+               <li>
+                <span>Haga clic para descargar.</span><br>
+                <span>©2025 - Daniel Figueroa Ch.</span><br>
+                <span>Ingeniero en Informática.</span>
+               </li>
+          </ul>
+       </div>
+       
+      <footer class="text-center text-gray-600 text-sm mt-4 normal-text">
+      </footer>
+        
+   </div>
                </ul>
            </div>
   
