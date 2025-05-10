@@ -11,32 +11,35 @@
         /* Estilos Base */
         body {
             font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    margin: 0;
-    padding: 20px;
-    color: #1f2937;
-    line-height: 1.5;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-size: 16px; /* Tamaño base aumentado */
-    
-    /* Añadir imagen de fondo */
-    background-image: url("/Directivas/101.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+            font-weight: 400;
+            margin: 0;
+            padding: 20px;
+            color: #1f2937;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px; /* Tamaño base aumentado */
+            
+            /* Añadir imagen de fondo */
+            background-image: url("/Directivas/101.jpg"); /* Asegúrate que esta ruta es correcta */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-css/* Capa semitransparente para mejorar legibilidad del contenido */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
-    z-index: -1;
-}
+
+        /* --- ERROR CORREGIDO AQUÍ: Se eliminó la palabra "css" que estaba suelta --- */
+        /* Capa semitransparente para mejorar legibilidad del contenido */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+            z-index: -1;
+        }
+
         .text-sm, p, li, td {
             font-weight: 400;
             font-size: 1.05rem; /* Aumentado de tamaño */
@@ -50,7 +53,7 @@ body::before {
             transition: all 0.3s ease;
             animation: slideUp 1s ease-out 0.5s forwards;
             opacity: 0;
-            background-color: #FFFFEF;
+            background-color: #FFFFEF; /* Un beige muy claro, casi blanco */
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             position: relative;
@@ -77,7 +80,7 @@ body::before {
             margin-bottom: 20px;
         }
 
-        h1.main-title {
+        h1.main-title { /* Este selector es para el h1 con clase main-title, pero abajo tienes .main-title y .main-subtitle sin el h1 */
             font-size: 1.9rem;
             font-weight: bold;
             color: #EAB308;
@@ -85,7 +88,7 @@ body::before {
             margin-bottom: 1.5rem;
             letter-spacing: 0.5px;
             margin-top: 15px;
-            padding-left: 60px;
+            padding-left: 60px; /* Considerar si este padding es necesario con los nuevos estilos de título */
         }
 
         h3, h4 {
@@ -120,7 +123,8 @@ body::before {
             white-space: nowrap;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             border-radius: 7px !important;
-            font-size: 1rem; /* Tamaño aumentado para los botones *//
+            /* --- ERROR CORREGIDO AQUÍ: Se eliminó la barra extra del comentario --- */
+            font-size: 1rem; /* Tamaño aumentado para los botones */ 
             text-align: left !important; /* Alineación a la izquierda */
             padding-left: 20px !important; /* Padding izquierdo aumentado */
         }
@@ -140,17 +144,17 @@ body::before {
         }
         
         .download-btn.bg-blue-500 {
-            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4); /* Cambiado color de sombra para azul */
         }
         
         .download-btn.bg-blue-500:hover {
-            box-shadow: 0 6px 15px rgba(251, 191, 36, 0.4);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.5); /* Cambiado color de sombra para azul */
         }
         
         .download-btn.dpi-btn {
-            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4);
-            text-align: left !important; /* Alineación a la izquierda */
-            padding-left: 20px !important; /* Padding izquierdo aumentado */
+            box-shadow: 0 4px 8px rgba(251, 191, 36, 0.4); /* Sombra amarilla por defecto para dpi-btn */
+            text-align: left !important; 
+            padding-left: 20px !important; 
         }
         
         .download-btn.dpi-btn:hover {
@@ -173,7 +177,7 @@ body::before {
         .pdf-thumbnail {
             transition: transform 0.3s ease;
             cursor: zoom-in;
-            border: 1px solid #FFD700;
+            border: 1px solid #FFD700; /* Borde dorado */
             margin-bottom: 10px;
             position: relative;
             max-width: 100%;
@@ -198,7 +202,7 @@ body::before {
             overflow-x: auto;
             margin-top: 24px;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
+            scrollbar-width: thin; /* Para Firefox */
             position: relative;
             margin-bottom: 20px;
         }
@@ -219,7 +223,7 @@ body::before {
         }
         
         .responsive-table th {
-            background-color: #f1f5f9;
+            background-color: #f1f5f9; /* Tailwind gray-100 */
             position: sticky;
             top: 0;
             z-index: 10;
@@ -247,28 +251,28 @@ body::before {
             background-repeat: no-repeat;
             background-position: right 0.5rem center;
             background-size: 1em;
-            padding-right: 2rem;
+            padding-right: 2rem; /* Espacio para la flecha */
             font-size: 0.9rem;
             cursor: pointer;
         }
         
         /* Elementos adicionales */
         .conversion-link {
-            color: #EBB8A4 !important;
+            color: #EBB8A4 !important; /* Un color melocotón/salmón */
             font-weight: bold !important;
         }
         
-        .border-l-4 {
-            border-color: #FFD700 !important;
+        .border-l-4 { /* Usado para resaltar secciones */
+            border-color: #FFD700 !important; /* Dorado */
         }
         
         .border-l-4:hover {
-            border-color: #FFA000 !important;
+            border-color: #FFA000 !important; /* Naranja dorado */
         }
         
         .separator {
             height: 1px;
-            background-color: #FFD700;
+            background-color: #FFD700; /* Dorado */
             opacity: 0.3;
             margin: 24px 0;
         }
@@ -278,15 +282,15 @@ body::before {
             body {
                 padding: 16px;
                 font-size: 14px;
-                color: #374151;
+                color: #374151; /* Tailwind gray-700 */
             }
             
-            h1.main-title {
+            h1.main-title { /* Ajuste para el título principal en móvil */
                 font-size: 1.6rem;
                 letter-spacing: -0.5px;
                 margin-top: 8px;
                 margin-bottom: 1.2rem;
-                padding-left: 65px;
+                padding-left: 65px; 
                 text-align: center;
                 padding-right: 15px;
                 line-height: 1.2;
@@ -305,7 +309,7 @@ body::before {
                 font-size: 14px;
             }
             
-            .text-sm {
+            .text-sm { /* Clases de utilidad de Tailwind */
                 font-size: 14px !important;
             }
             
@@ -320,9 +324,9 @@ body::before {
             }
             
             /* Botones en móvil */
-            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btnv {
+            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btnv { /* .indep-btnv no está definido antes */
                 font-size: 1rem !important;
-                width: auto !important;
+                width: auto !important; /* Ocupan el ancho necesario */
                 min-width: 180px !important;
                 margin: 12px 0 !important;
                 margin-left: 0 !important;
@@ -331,23 +335,18 @@ body::before {
                 box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
             }
             
-            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btnv:hover {
+            /* Hover para botones en móvil (combinado para simplificar) */
+            .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btnv:hover {
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
             }
             
-            .download-btn.dpi-btn, .excel-btn, .indep-btn {
-                width: 180px !important;
+            /* Estilos específicos para .excel-btn y .indep-btn en móvil (si .indep-btnv era un typo por .indep-btn) */
+            .download-btn.dpi-btn, .excel-btn, .indep-btn { /* Asumiendo que .indep-btn es la clase correcta */
+                width: 180px !important; /* Ancho fijo */
                 min-width: 180px !important;
                 max-width: 180px !important;
-                font-weight: 900 !important;
-                margin-left: 0 !important;
-                padding-top: 14px !important;
-                padding-bottom: 14px !important;
-                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
-            }
-            
-            .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
+                font-weight: 900 !important; /* Más grueso */
+                /* margin-left, padding, box-shadow ya están cubiertos arriba, se pueden quitar si son idénticos */
             }
             
             /* QR Code en móvil */
@@ -357,45 +356,46 @@ body::before {
                 border-radius: 4px;
                 box-shadow: 0 2px 4px rgba(0,0,0,0.1);
                 padding: 2px;
-                margin-top: 215px !important;
+                margin-top: 215px !important; /* Este margen es muy grande, verificar su propósito */
             }
             
             /* Ajustes para imágenes en móvil */
             .photo-example {
                 width: 66% !important;
                 height: auto;
-                margin-left: 0 !important;
+                margin-left: 0 !important; /* Considerar centrar con margin: auto si es block */
                 margin-right: auto !important;
-                display: block;
-                padding-top: 14px !important;
+                display: block; /* Para que margin auto funcione horizontalmente */
+                padding-top: 14px !important; /* Padding dentro de la imagen? o del contenedor? */
                 padding-bottom: 14px !important;
             }
             
             /* Tabla en móvil */
             .table-container {
-                margin-left: -16px;
+                margin-left: -16px; /* Extender más allá del padding del body */
                 margin-right: -16px;
-                width: calc(100% + 32px);
-                padding: 0 16px;
+                width: calc(100% + 32px); /* Ancho completo más los paddings negativos */
+                padding: 0 16px; /* Padding interno para compensar */
             }
             
-            .table-container::after {
+            .table-container::after { /* Indicador de scroll horizontal */
                 content: '←  desplaza horizontalmente  →';
-                display: block !important;
+                display: block !important; /* Asegurar que se muestre */
                 position: absolute;
-                bottom: -20px;
+                bottom: -20px; /* Debajo de la tabla */
                 left: 0;
                 width: 100%;
                 text-align: center;
                 font-size: 14px;
-                color: #6b7280;
+                color: #6b7280; /* Tailwind gray-500 */
             }
             
-            .table-container::before {
+            .table-container::before { /* Sombra para indicar scroll */
                 content: '';
                 position: absolute;
                 right: 0;
                 top: 50%;
+                transform: translateY(-50%); /* Centrar verticalmente */
                 width: 20px;
                 height: 100%;
                 background: linear-gradient(to right, transparent, rgba(255,255,255,0.7));
@@ -405,7 +405,7 @@ body::before {
             
             .responsive-table th,
             .responsive-table td {
-                font-size: 0.9rem;
+                font-size: 0.9rem; /* Mantener tamaño de fuente en tabla */
             }
             
             .conversion-link {
@@ -416,559 +416,561 @@ body::before {
         /* Modo Oscuro */
         @media (prefers-color-scheme: dark) {
             body {
-                background-color: #111827;
-                color: #d1d5db;
-                font-size: 16px;
+                background-color: #111827; /* Tailwind gray-900 */
+                color: #d1d5db; /* Tailwind gray-300 */
+                /* font-size: 16px; ya está en el body base */
             }
             
-            .bg-white {
-                background-color: #374151;
-                color: #d1d5db;
+            .bg-white { /* Para elementos que eran blancos */
+                background-color: #374151; /* Tailwind gray-700 */
+                color: #d1d5db; /* Tailwind gray-300 */
             }
             
-            .text-sm {
-                font-size: 16px !important;
+            .text-sm { /* Si se usa text-sm en modo oscuro */
+                /* font-size: 16px !important; Esto anularía el propósito de text-sm. Revisar si es necesario. */
+                /* Si es para que el texto base sea 16px en modo oscuro, ya está en body */
             }
             
             .conversion-link {
-                color: #EBB8A4 !important;
-                font-size: 0.9rem !important;
+                color: #EBB8A4 !important; /* Mismo color que en modo claro, asegurar contraste */
+                /* font-size: 0.9rem !important; ya está definido antes */
             }
             
             .responsive-table th {
-                background-color: #374151;
-                color: #d1d5db;
+                background-color: #374151; /* Tailwind gray-700 */
+                color: #d1d5db; /* Tailwind gray-300 */
             }
             
             .responsive-table th, 
             .responsive-table td {
-                border-color: #4b5563;
+                border-color: #4b5563; /* Tailwind gray-600 */
             }
             
-            .table-container::before {
-                background: linear-gradient(to right, transparent, rgba(55,65,81,0.7));
+            .table-container::before { /* Sombra para scroll en modo oscuro */
+                background: linear-gradient(to right, transparent, rgba(55,65,81,0.7)); /* Usando gray-700 con opacidad */
             }
             
-            .table-container::after {
-                color: #9ca3af;
+            .table-container::after { /* Indicador de scroll en modo oscuro */
+                color: #9ca3af; /* Tailwind gray-400 */
             }
             
             .cargo-select,
             .color-select {
-                background-color: #2d3748;
-                color: #d1d5db;
-                border-color: #4b5563;
+                background-color: #2d3748; /* Un gris oscuro, ej. gray-800 de Tailwind no oficial */
+                color: #d1d5db; /* Tailwind gray-300 */
+                border-color: #4b5563; /* Tailwind gray-600 */
             }
             
             .cargo-select option,
             .color-select option {
-                background-color: #1f2937;
+                background-color: #1f2937; /* Tailwind gray-800 */
+                color: #d1d5db; /* Tailwind gray-300 */
             }
             
             /* Botones en modo oscuro */
-            .download-btn {
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            .download-btn { /* Sombras generales para botones en modo oscuro */
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra más oscura */
             }
             
             .download-btn:hover {
                 box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
             }
             
-            .download-btn.bg-yellow-500 {
-                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+            /* Sombras específicas para botones con color de fondo en modo oscuro */
+            .download-btn.bg-yellow-500 { /* Tailwind yellow-500 */
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5); /* Sombra amarilla más pronunciada */
             }
             
             .download-btn.bg-yellow-500:hover {
                 box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
             }
             
-            .download-btn.bg-blue-500 {
-                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.6);
+            .download-btn.bg-blue-500 { /* Tailwind blue-500 */
+                box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5); /* Sombra azul más pronunciada */
             }
             
             .download-btn.bg-blue-500:hover {
-                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
+                box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
             }
             
-            .download-btn.dpi-btn {
-                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5);
+            .download-btn.dpi-btn { /* Para botones dpi en modo oscuro */
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5); /* Sombra amarilla por defecto */
             }
             
             .download-btn.dpi-btn:hover {
                 box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6);
             }
             
-            /* Corregir color de texto en modo oscuro */
-            .text-sm.text-gray-300, 
-            .text-sm.text-gray-200,
-            .text-gray-600,
-            footer,
-            .normal-text,
+            /* Corregir color de texto en modo oscuro para clases específicas de Tailwind */
+            .text-gray-300, 
+            .text-gray-200,
+            .text-gray-600, /* Si se usa text-gray-600, se verá muy oscuro. Cambiar a un color más claro */
+            footer, /* Si hay un footer genérico */
+            .normal-text, /* Si esta clase se usa para texto general */
             .normal-text span,
             .normal-text li {
-                color: #ffffff !important;
+                color: #e5e7eb !important; /* Tailwind gray-200, un color claro general */
             }
             
-            /* Asegurar que el texto del footer es visible */
-            footer.text-center.text-gray-600.text-sm.mt-4.normal-text,
-            .text-sm.text-gray-200.mt-4.text-center.normal-text {
-                color: #ffffff !important;
+            /* Asegurar que el texto del footer es visible (ejemplos) */
+            footer.text-center.text-gray-600.text-sm.mt-4.normal-text, /* Combinación específica */
+            .text-sm.text-gray-200.mt-4.text-center.normal-text { /* Otra combinación */
+                color: #e5e7eb !important; /* Tailwind gray-200 */
             }
             
             .text-sm.text-gray-200.mt-4.text-center.normal-text span,
             .text-sm.text-gray-200.mt-4.text-center.normal-text li {
-                color: #ffffff !important;
+                color: #e5e7eb !important; /* Tailwind gray-200 */
             }
         }
 
-
-transition: all 0.3s ease;
-            margin: 16px 0;
-            padding: 13px 16px; /* Engrosado verticalmente para PC */
-            font-size: 0.95rem;
-            width: 25%;
-            display: inline-block;
-            white-space: nowrap;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            border-radius: 7px !important;
-            font-size: 1rem; /* Tamaño aumentado para los botones *
-
+        /* --- ERROR CORREGIDO: El siguiente bloque de CSS estaba huérfano (sin selector) --- */
+        /* Fue eliminado porque sus propiedades ya están (o deberían estar) en .download-btn u otros selectores.
+           Si estas propiedades eran para un elemento específico, deben ser añadidas a un selector apropiado.
+        
+           transition: all 0.3s ease;
+           margin: 16px 0;
+           padding: 13px 16px; 
+           font-size: 0.95rem; 
+           width: 25%;
+           display: inline-block;
+           white-space: nowrap;
+           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+           border-radius: 7px !important;
+           font-size: 1rem; 
+        */
+                
         /* Modo oscuro específico para móvil */
-       /* Corregir el CSS para botones en modo oscuro para móvil */
-     @media (prefers-color-scheme: dark) and (max-width: 640px) {
-    /* Corregido: Eliminar espacios extras y añadir puntos faltantes */
-    .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btn {
-        width: 180px !important;
-        min-width: 180px !important;
-        max-width: 180px !important;
-        white-space: nowrap !important;
-        font-size: 1rem !important;
-        font-weight: 900 !important;
-        text-align: left !important;
-        padding: 14px 12px 14px 20px !important;
-        margin-left: 0 !important;
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25) !important;
-    }
-    
-    .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
-        transform: translateY(-3px);
-    }
-}
+        /* Corregir el CSS para botones en modo oscuro para móvil */
+        @media (prefers-color-scheme: dark) and (max-width: 640px) {
+            /* Corregido: Eliminar espacios extras y añadir puntos faltantes */
+            /* Estos selectores ya tienen !important en la media query de (max-width: 640px) para modo claro.
+               Aquí se pueden sobreescribir o añadir específicamente para modo oscuro móvil si es necesario.
+               Muchos de estos estilos ya están cubiertos por las reglas de modo oscuro y móvil por separado.
+               Revisar si se necesitan duplicados o ajustes específicos aquí.
+            */
+            .download-btn, .download-btn.dpi-btn, .excel-btn, .indep-btn {
+                /* width, min-width, max-width, white-space, font-size, font-weight, text-align, padding, margin-left
+                   ya están definidos en @media (max-width: 640px) y deberían heredar los colores del modo oscuro.
+                   Solo se necesita ajustar box-shadow si es diferente del modo oscuro general.
+                */
+                box-shadow: 0 3px 5px rgba(0, 0, 0, 0.35) !important; /* Sombra un poco más oscura para móvil oscuro */
+            }
+            
+            .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.45) !important; /* Sombra hover más oscura */
+                transform: translateY(-3px); /* Ya está en la regla general de hover */
+            }
+        }
         
         
         /* Estilos para impresión */
+        /* --- CORRECCIÓN: Eliminado un bloque @media print duplicado --- */
         @media print {
-            img[src*="foto.jpg"] {
+            body {
+                background-image: none !important; /* Quitar fondo para imprimir */
+                color: #000000 !important; /* Texto negro para imprimir */
+            }
+
+            body::before {
+                display: none !important; /* Quitar capa semitransparente */
+            }
+
+            .card-container {
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .logo-os10, .back-btn {
+                display: none !important; /* Ocultar logo y botón de volver al imprimir */
+            }
+            
+            img[src*="foto.jpg"] { /* Asumiendo que hay una imagen de foto específica */
                 width: 35% !important;
                 height: auto !important;
             }
             
-            .mt-4.flex.justify-between {
-                position: relative !important;
-                height: 500px !important;
+            .mt-4.flex.justify-between { /* Selector muy específico, puede necesitar ajuste */
+                position: relative !important; /* ¿Para qué es este height? */
+                height: 500px !important; 
             }
             
             .qr-code-footer {
                 width: 80px !important;
                 height: 80px !important;
                 position: absolute !important;
-                top: 350px !important;
+                top: 350px !important; /* Posicionamiento absoluto puede ser problemático en impresión */
                 right: 30px !important;
                 margin-top: 0 !important;
             }
             
             .table-container {
-                transform: scale(0.4);
+                transform: scale(0.4); /* Escalar la tabla puede hacerla ilegible */
                 transform-origin: top left;
-                width: 250%;
+                width: 250%; /* Esto es muy ancho, junto con scale(0.4) podría funcionar pero es frágil */
                 margin-bottom: 70px;
+                overflow: visible !important; /* Para que no corte contenido */
             }
             
-            .table-container + div {
-                margin-top: -140px;
+            .table-container + div { /* Selector para el div que sigue a la tabla */
+                margin-top: -140px; /* Ajuste de margen negativo, frágil */
+            }
+
+            .download-btn { /* Ocultar botones de descarga al imprimir */
+                display: none !important;
             }
         }
     
-    .download-btn:hover, .download-btn.dpi-btn:hover, .excel-btn:hover, .indep-btn:hover {
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35) !important;
-        transform: translateY(-3px);
-    }
-}
-        
-        
-        /* Estilos para impresión */
-        @media print {
-            img[src*="foto.jpg"] {
-                width: 35% !important;
-                height: auto !important;
-            }
-            
-            .mt-4.flex.justify-between {
-                position: relative !important;
-                height: 500px !important;
-            }
-            
-            .qr-code-footer {
-                width: 80px !important;
-                height: 80px !important;
-                position: absolute !important;
-                top: 350px !important;
-                right: 30px !important;
-                margin-top: 0 !important;
-            }
-            
-            .table-container {
-                transform: scale(0.4);
-                transform-origin: top left;
-                width: 250%;
-                margin-bottom: 70px;
-            }
-            
-            .table-container + div {
-                margin-top: -140px;
-            }
-        }
+        /* --- CORRECCIÓN: Eliminado un bloque .download-btn:hover duplicado --- */
+
         /* Aumentar el tamaño de los subtítulos (h4) para todas las pantallas */
-h4.font-semibold, h4 {
-    font-weight: 600;
-    font-size: 1.3rem !important; /* Aumentado significativamente para todos los dispositivos */
-    margin-bottom: 1rem !important; /* Más espacio inferior */
-    color: #1f2937; /* Color base para modo claro */
-}
+        h4.font-semibold, h4 { /* h4 ya cubre h4.font-semibold si font-semibold es una clase de utilidad */
+            font-weight: 600;
+            font-size: 1.3rem !important; 
+            margin-bottom: 1rem !important; 
+            color: #1f2937; /* Color base para modo claro (Tailwind gray-800) */
+        }
 
-/* Asegurar que el aumento de subtítulos se aplique en modo oscuro */
-@media (prefers-color-scheme: dark) {
-    h4.font-semibold, h4 {
-        color: #e5e7eb; /* Color más claro para modo oscuro */
-    }
-}
+        /* Asegurar que el aumento de subtítulos se aplique en modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            h4.font-semibold, h4 {
+                color: #e5e7eb; /* Color más claro para modo oscuro (Tailwind gray-200) */
+            }
+        }
 
-/* Ajustes específicos para móvil - manteniendo el tamaño grande */
-@media (max-width: 640px) {
-    h4.font-semibold, h4 {
-        font-size: 1.2rem !important; /* Ligeramente más pequeño en móvil pero aún grande */
-        margin-bottom: 0.85rem !important;
-    }
-    
-    /* Ajuste adicional para botones en móvil */
-    .download-btn, .dpi-btn, .excel-btn, .indep-btn {
-        text-align: left !important;
-        padding-left: 20px !important;
-    }
-}
-/* Sombras y efectos de brillo para TODOS los botones en modo oscuro móvil */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    /* Aplicar sombra base a TODOS los tipos de botones */
-    .download-btn,
-    .dpi-btn,
-    .excel-btn,
-    .indep-btn,
-    a[href*="Cr3d"],
-    a[href*="Ind"],
-    a[href*="bv"],
-    a[href*="dal5.short.gy/0"],
-    a[href*="dal5.short.gy/j"] {
-        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
-        transition: all 0.3s ease !important;
-    }
+        /* Ajustes específicos para móvil - manteniendo el tamaño grande */
+        @media (max-width: 640px) {
+            h4.font-semibold, h4 {
+                font-size: 1.2rem !important; 
+                margin-bottom: 0.85rem !important;
+            }
+            
+            /* Ajuste adicional para botones en móvil */
+            /* Estos estilos ya están definidos en la media query (max-width: 640px) para .download-btn
+               Si .dpi-btn, .excel-btn, .indep-btn necesitan estos específicamente, está bien.
+            */
+            .download-btn, .dpi-btn, .excel-btn, .indep-btn {
+                text-align: left !important;
+                padding-left: 20px !important;
+            }
+        }
 
-    /* Aplicar efecto hover a TODOS los tipos de botones */
-    .download-btn:hover,
-    .dpi-btn:hover,
-    .excel-btn:hover,
-    .indep-btn:hover,
-    a[href*="Cr3d"]:hover,
-    a[href*="Ind"]:hover,
-    a[href*="bv"]:hover,
-    a[href*="dal5.short.gy/0"]:hover,
-    a[href*="dal5.short.gy/j"]:hover {
-        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
-        transform: translateY(-3px) !important;
-    }
+        /* Sombras y efectos de brillo para TODOS los botones en modo oscuro móvil */
+        @media (prefers-color-scheme: dark) and (max-width: 640px) {
+            /* Aplicar sombra base a TODOS los tipos de botones */
+            .download-btn,
+            .dpi-btn, /* .download-btn.dpi-btn es más específico si siempre van juntos */
+            .excel-btn,
+            .indep-btn,
+            a[href*="Cr3d"], /* Selectores de atributo pueden ser menos mantenibles */
+            a[href*="Ind"],
+            a[href*="bv"],
+            a[href*="dal5.short.gy/0"],
+            a[href*="dal5.short.gy/j"] {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important; /* Sombra amarilla para todos */
+                transition: all 0.3s ease !important;
+            }
 
-    /* Específicamente para botones amarillos */
-    .bg-yellow-500 {
-        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
-    }
+            /* Aplicar efecto hover a TODOS los tipos de botones */
+            .download-btn:hover,
+            .dpi-btn:hover,
+            .excel-btn:hover,
+            .indep-btn:hover,
+            a[href*="Cr3d"]:hover,
+            a[href*="Ind"]:hover,
+            a[href*="bv"]:hover,
+            a[href*="dal5.short.gy/0"]:hover,
+            a[href*="dal5.short.gy/j"]:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important; /* Sombra amarilla hover */
+                transform: translateY(-3px) !important;
+            }
 
-    .bg-yellow-500:hover {
-        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
-    }
+            /* Específicamente para botones amarillos (si tienen .bg-yellow-500) */
+            /* Esta regla podría ser redundante si todos los botones ya tienen sombra amarilla arriba */
+            .bg-yellow-500 { 
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+            }
 
-    /* Específicamente para botones azules */
-    .bg-blue-500 {
-        box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important;
-    }
+            .bg-yellow-500:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+            }
 
-    .bg-blue-500:hover {
-        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6) !important;
-    }
-}
-/* Corrección específica para botones de conversión DPI */
-@media (prefers-color-scheme: dark) and (max-width: 640px) {
-    /* Selección muy específica para los botones de 300 DPI */
-    a[href="https://dal5.short.gy/0"].download-btn.dpi-btn,
-    a[href="https://dal5.short.gy/j"].download-btn.dpi-btn {
-        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
-        transition: all 0.3s ease !important;
-        width: 180px !important;
-        min-width: 180px !important;
-        max-width: 180px !important;
-        text-align: left !important;
-        font-weight: 600 !important;
-        padding: 14px 12px 14px 20px !important;
-    }
+            /* Específicamente para botones azules (si tienen .bg-blue-500) */
+            .bg-blue-500 {
+                box-shadow: 0 4px 8px rgba(59, 130, 246, 0.5) !important; /* Sombra azul */
+            }
 
-    a[href="https://dal5.short.gy/0"].download-btn.dpi-btn:hover,
-    a[href="https://dal5.short.gy/j"].download-btn.dpi-btn:hover {
-        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
-        transform: translateY(-3px) !important;
-    }
-    
-    /* Asegurarse que todos los botones dpi-btn tengan los mismos efectos */
-    .download-btn.dpi-btn {
-        box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
-        transition: all 0.3s ease !important;
-    }
-    
-    .download-btn.dpi-btn:hover {
-        box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
-        transform: translateY(-3px) !important;
-    }
-}
-/* Estilos para el pie de página - Normal para PC */
-.text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+            .bg-blue-500:hover {
+                box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6) !important; /* Sombra azul hover */
+            }
+        }
 
-.text-sm.text-gray-200.mt-4.text-center.normal-text span {
-    font-size: 0.9rem;
-}
+        /* Corrección específica para botones de conversión DPI */
+        @media (prefers-color-scheme: dark) and (max-width: 640px) {
+            /* Selección muy específica para los botones de 300 DPI */
+            a[href="https://dal5.short.gy/0"].download-btn.dpi-btn,
+            a[href="https://dal5.short.gy/j"].download-btn.dpi-btn {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+                transition: all 0.3s ease !important;
+                width: 180px !important;
+                min-width: 180px !important;
+                max-width: 180px !important;
+                text-align: left !important;
+                font-weight: 600 !important; /* Diferente de 900 en otras reglas */
+                padding: 14px 12px 14px 20px !important;
+            }
 
-/* Estilos para móvil - Texto más pequeño */
-@media (max-width: 640px) {
-    .text-sm.text-gray-200.mt-4.text-center.normal-text span {
-        font-size: 0.7rem !important; /* Mucho más pequeño en móvil */
-        line-height: 1.2 !important;
-    }
-    
-    .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3.pl-5 {
-        padding-left: 0 !important;
-    }
-    
-    .text-sm.text-gray-200.mt-4.text-center.normal-text li {
-        margin-bottom: 0 !important;
-        line-height: 1.1 !important;
-        list-style-type: none !important;
-    }
-}
+            a[href="https://dal5.short.gy/0"].download-btn.dpi-btn:hover,
+            a[href="https://dal5.short.gy/j"].download-btn.dpi-btn:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+                transform: translateY(-3px) !important;
+            }
+            
+            /* Asegurarse que todos los botones dpi-btn tengan los mismos efectos
+               Esta regla es menos específica que la anterior y podría ser redundante o
+               servir como fallback si los href no coinciden.
+            */
+            .download-btn.dpi-btn {
+                box-shadow: 0 4px 8px rgba(251, 191, 36, 0.5) !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .download-btn.dpi-btn:hover {
+                box-shadow: 0 6px 15px rgba(251, 191, 36, 0.6) !important;
+                transform: translateY(-3px) !important;
+            }
+        }
 
-/* Dividir el título en dos líneas SOLO para móviles */
-@media (max-width: 640px) {
-    h1.main-title {
-        font-size: 1.6rem !important;
-        letter-spacing: -0.5px;
-        line-height: 1.3;
-        padding-left: 60px;
-        padding-right: 10px;
-        margin-top: 6px;
-        margin-bottom: 1rem;
-    }
-    
-    /* Clase adicional para aplicar solo en móviles */
-    .mobile-break {
-        display: block !important; /* Hace que el span actúe como bloque y genere el salto de línea */
-        margin-top: 2px;
-    }
-}
+        /* Estilos para el pie de página - Normal para PC */
+        .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 { /* Selector muy específico */
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-/* Para pantallas más grandes, ocultar el salto de línea */
-.mobile-break {
-    display: none; /* Por defecto, el span no genera salto de línea */
-}
+        .text-sm.text-gray-200.mt-4.text-center.normal-text span {
+            font-size: 0.9rem;
+        }
 
-/* Para pantallas muy pequeñas, reducir aún más */
-@media (max-width: 380px) {
-    h1.main-title {
-        font-size: 1.4rem !important;
-        letter-spacing: -0.5px;
-        padding-left: 55px;
-        line-height: 1.3;
-    }
-}
-/* De aqui solo para titulo ______________________________________________________*/
-/* Estilos base para ambas líneas del título con efectos balanceados */
-.title-container {
-  text-align: center;
-  margin-top: 1rem;
-  line-height: 0.8;
-}
+        /* Estilos para móvil - Texto más pequeño */
+        @media (max-width: 640px) {
+            .text-sm.text-gray-200.mt-4.text-center.normal-text span {
+                font-size: 0.7rem !important; 
+                line-height: 1.2 !important;
+            }
+            
+            .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3 {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                padding-left: 0 !important; /* Quitar padding de lista */
+            }
+            
+            .text-sm.text-gray-200.mt-4.text-center.normal-text ul.space-y-3.pl-5 { /* Si tiene clase pl-5 */
+                padding-left: 0 !important; /* Anularla */
+            }
+            
+            .text-sm.text-gray-200.mt-4.text-center.normal-text li {
+                margin-bottom: 0 !important;
+                line-height: 1.1 !important;
+                list-style-type: none !important; /* Quitar viñetas */
+            }
+        }
 
-.main-title, .main-subtitle {
-  color: #EAB308; /* Color amarillo dorado para ambos */
-  font-weight: bold;
-  line-height: 0.8;
-  display: block;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); /* Sombra ligeramente visible */
-  transition: all 0.3s ease;
-}
+        /* Dividir el título en dos líneas SOLO para móviles */
+        @media (max-width: 640px) {
+            h1.main-title { /* Este selector puede entrar en conflicto con .main-title de abajo */
+                font-size: 1.6rem !important; /* Ya definido en otra media query (max-width: 640px) */
+                letter-spacing: -0.5px;
+                line-height: 1.3;
+                padding-left: 60px;
+                padding-right: 10px;
+                margin-top: 6px;
+                margin-bottom: 1rem;
+            }
+            
+            /* Clase adicional para aplicar solo en móviles */
+            .mobile-break {
+                display: block !important; 
+                margin-top: 2px;
+            }
+        }
 
-/* Posicionamiento ajustado - CREDENCIAL con mínimo desplazamiento */
-.main-title {
-  font-size: 1.75rem;
-  margin-bottom: -0.3rem;
-  transform: translateX(-3px); /* Se mueve a la derecha - Reducido a -3px */
-  filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3)); /* Brillo sutil pero visible */
-}
+        /* Para pantallas más grandes, ocultar el salto de línea */
+        .mobile-break {
+            display: none; 
+        }
 
-.main-subtitle {
-  font-size: 1.5rem;
-  margin-top: -0.25rem;
-  transform: translateX(10px); /* Segunda línea a la derecha */
-  filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3));
-}
+        /* Para pantallas muy pequeñas, reducir aún más */
+        @media (max-width: 380px) {
+            h1.main-title {
+                font-size: 1.4rem !important;
+                letter-spacing: -0.5px;
+                padding-left: 55px;
+                line-height: 1.3;
+            }
+        }
+        /* De aqui solo para titulo ______________________________________________________*/
+        /* Estilos base para ambas líneas del título con efectos balanceados */
+        .title-container {
+          text-align: center;
+          margin-top: 1rem;
+          line-height: 0.8; /* Puede causar solapamiento, ajustar según sea necesario */
+        }
 
-/* Efecto hover ligeramente perceptible */
-.title-container:hover .main-title,
-.title-container:hover .main-subtitle {
-  text-shadow: 0 2px 6px rgba(245, 158, 11, 0.5); /* Sombra aumentada en hover */
-}
+        .main-title, .main-subtitle { /* Estas clases son para h1 y h2 en el HTML */
+          color: #EAB308; 
+          font-weight: bold;
+          line-height: 0.8; /* Heredado o puede ser específico */
+          display: block;
+          text-align: center;
+          padding: 0;
+          margin: 0;
+          text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); 
+          transition: all 0.3s ease;
+        }
 
-/* Ajuste específico para móviles */
-@media (max-width: 640px) {
-  .main-title {
-    font-size: 1.5rem;
-    margin-bottom: -0.35rem;
-    transform: translateX(-4px); /* Reducido de -8px a -4px */
-  }
-  
-  .main-subtitle {
-    font-size: 1.3rem;
-    margin-top: -0.3rem;
-    transform: translateX(12px);
-  }
-}
+        /* Posicionamiento ajustado - CREDENCIAL con mínimo desplazamiento */
+        .main-title { /* Aplicado a h1 */
+          font-size: 1.75rem;
+          margin-bottom: -0.3rem; /* Puede causar solapamiento */
+          transform: translateX(-3px); 
+          filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3)); 
+        }
 
-/* Ajustes para tablets y escritorio */
-@media (min-width: 768px) {
-  .main-title {
-    font-size: 2.25rem;
-    margin-bottom: -0.4rem;
-    transform: translateX(-2px); /* CAMBIO AQUÍ: Valor más cercano a 0 para mover más a la derecha */
-    text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45); /* Sombra ligeramente más visible en PC */
-  }
-  
-  .main-subtitle {
-    font-size: 2rem;
-    margin-top: -0.35rem;
-    transform: translateX(30px);
-    text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45);
-  }
-}
-/* Ajuste para que el contenedor ocupe casi todo el ancho en móvil */
-@media (max-width: 640px) {
-    body {
-        padding: 8px !important; /* Padding reducido pero no eliminado */
-    }
-    
-    .card-container {
-        max-width: 100% !important; /* Ancho máximo al 100% */
-        width: 100% !important; /* Ancho 100% */
-        padding: 15px !important; /* Padding interno ligeramente más grande */
-        margin-left: auto !important; /* Margen automático */
-        margin-right: auto !important; /* Margen automático */
-        border-radius: 8px !important; /* Mantiene bordes redondeados más pequeños */
-    }
-    
-    /* Ajuste para el contenido interno */
-    .content-container {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
-    
-    /* Ajustes para las secciones con borde */
-    .border-l-4 {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding-right: 8px !important;
-    }
-}
+        .main-subtitle { /* Aplicado a h2 */
+          font-size: 1.5rem;
+          margin-top: -0.25rem; /* Puede causar solapamiento */
+          transform: translateX(10px); 
+          filter: drop-shadow(0 0 3px rgba(245, 158, 11, 0.3));
+        }
 
-/* Estilos para el botón de volver */
-.back-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 10px 14px;
-    border-radius: 7px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-}
+        /* Efecto hover ligeramente perceptible */
+        .title-container:hover .main-title,
+        .title-container:hover .main-subtitle {
+          text-shadow: 0 2px 6px rgba(245, 158, 11, 0.5); 
+        }
 
-.back-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+        /* Ajuste específico para móviles */
+        @media (max-width: 640px) {
+          .main-title {
+            font-size: 1.5rem;
+            margin-bottom: -0.35rem;
+            transform: translateX(-4px); 
+          }
+          
+          .main-subtitle {
+            font-size: 1.3rem;
+            margin-top: -0.3rem;
+            transform: translateX(12px);
+          }
+        }
 
-.back-btn svg {
-    margin-right: 5px;
-    height: 20px;
-    width: 20px;
-}
+        /* Ajustes para tablets y escritorio */
+        @media (min-width: 768px) {
+          .main-title {
+            font-size: 2.25rem;
+            margin-bottom: -0.4rem;
+            transform: translateX(-2px); 
+            text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45); 
+          }
+          
+          .main-subtitle {
+            font-size: 2rem;
+            margin-top: -0.35rem;
+            transform: translateX(30px);
+            text-shadow: 0 2px 5px rgba(245, 158, 11, 0.45);
+          }
+        }
+        /* Ajuste para que el contenedor ocupe casi todo el ancho en móvil */
+        @media (max-width: 640px) {
+            body { /* Se redefine padding de body aquí, ya estaba en otra media query (max-width: 640px) */
+                padding: 8px !important; 
+            }
+            
+            .card-container { /* Se redefine card-container aquí, ya estaba en otra media query (max-width: 640px) */
+                max-width: 100% !important; 
+                width: 100% !important; 
+                padding: 15px !important; 
+                margin-left: auto !important; 
+                margin-right: auto !important; 
+                border-radius: 8px !important; 
+            }
+            
+            /* Ajuste para el contenido interno */
+            .content-container { /* Se redefine content-container aquí, ya estaba en otra media query (max-width: 640px) */
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            
+            /* Ajustes para las secciones con borde */
+            .border-l-4 {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-right: 8px !important; /* Ajustar padding si es necesario */
+            }
+        }
 
-/* Ajustes para móvil */
-@media (max-width: 640px) {
-    .back-btn {
-        top: auto;
-        bottom: 20px;
-        right: 20px;
-        padding: 10px 14px;
-        font-size: 1rem;
-        font-weight: bold;
-        border-radius: 30px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        height: auto;
-        min-width: 40px;
-        min-height: 40px;
-    }
-    
-    .back-btn:active {
-        transform: scale(0.8);
-    }
-}
+        /* Estilos para el botón de volver */
+        .back-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 10px 14px;
+            border-radius: 7px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            z-index: 10; /* Asegurar que esté por encima de otros elementos */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Quitar subrayado de enlace */
+        }
 
-/* Estilos para modo oscuro */
-@media (prefers-color-scheme: dark) {
-    .back-btn.bg-yellow-500 {
-        box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4);
-    }
-    
-    .back-btn.bg-yellow-500:hover {
-        box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5);
-    }
-}
-      
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-btn svg {
+            margin-right: 5px;
+            height: 20px;
+            width: 20px;
+        }
+
+        /* Ajustes para móvil */
+        @media (max-width: 640px) {
+            .back-btn {
+                top: auto; /* Cambiar a bottom en móvil */
+                bottom: 20px;
+                right: 20px;
+                padding: 10px 14px; /* Mantener padding o ajustar si es necesario */
+                font-size: 1rem; /* Un poco más grande en móvil */
+                font-weight: bold;
+                border-radius: 30px; /* Botón redondo */
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+                /* display, align-items, justify-content ya están definidos */
+                width: auto; /* Ancho automático */
+                height: auto; /* Alto automático */
+                min-width: 40px; /* Tamaño mínimo para tap */
+                min-height: 40px;
+            }
+            
+            .back-btn:active { /* Efecto al presionar en táctil */
+                transform: scale(0.95); /* Ligeramente más pequeño */
+            }
+        }
+
+        /* Estilos para modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            .back-btn.bg-yellow-500 { /* Si el botón de volver tiene fondo amarillo */
+                box-shadow: 0 2px 5px rgba(251, 191, 36, 0.4); /* Sombra amarilla */
+            }
+            
+            .back-btn.bg-yellow-500:hover {
+                box-shadow: 0 4px 10px rgba(251, 191, 36, 0.5);
+            }
+        }
+            
     </style>
 </head>
 <body class="text-gray-800">
