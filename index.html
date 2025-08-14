@@ -3,30 +3,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- Meta Tags Principales y de PWA -->
     <title>Directivas de Funcionamiento OS10</title>
     <meta name="description" content="Requisitos e información para Directivas de Funcionamiento de Seguridad Privada OS10 mientras se tramita la acreditación o credencial.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#ffffff"/>
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-    <!-- Configuración para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
-    <!-- Favicons y Iconos Estándar -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
-    <!-- Dependencias y Estilos -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Estilos personalizados -->
     <style>
         body { 
             font-family: 'Poppins', sans-serif; 
-            background-image: url('assets/images/101.jpg');
+            background-image: url('https://placehold.co/1200x800/2563eb/ffffff?text=Fondo+OS10');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -35,7 +30,7 @@
             max-width: 750px; 
             width: 90%; 
             margin: 0.5rem auto; 
-            position: relative; /* Ensure it's relative for absolute internal elements */
+            position: relative;
         }
         .logo-os10-container { 
             position: absolute;
@@ -56,11 +51,10 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
         .response-button { transition: all 0.2s ease; }
         .response-button:hover { transform: translateX(4px); }
-        /* Chatbot Styles - Adjusted */
         #chat-widget-container { 
             position: fixed; 
-            bottom: 6.5rem; /* Base vertical offset from the bottom of the viewport - MODIFIED */
-            right: 1.5rem; /* Base horizontal offset from the right of the viewport */
+            bottom: 6.5rem;
+            right: 1.5rem;
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
@@ -97,41 +91,32 @@
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1.0); }
         }
-        /* Adjustments for larger screens (PC) */
         @media (min-width: 1024px) {
             #chat-widget-container {
-                /* Calculate right position relative to the centered card-container */
-                /* card-container max-width is 750px, margin is auto. */
-                /* (100vw - 750px) / 2 gives the left/right margin on the viewport. */
-                /* Adding 1.5rem to this positions it outside the card by that amount. */
                 right: calc((100vw - 750px) / 2 + 1.5rem); 
-                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-toggle-button {
                 width: 90px;
                 height: 90px;
             }
         }
-       /* Adjustments for medium screens (tablets) */
        @media (min-width: 768px) and (max-width: 1023px) {
             #chat-widget-container {
-                /* For tablets, card-container width is 90% */
                 right: calc((102vw - 85vw) / 2 + 1.5rem); 
-                bottom: 7.9rem; /* Keep consistent vertical floating - MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-popup {
-                /* Adjust popup width for tablets */
                 width: 400px; 
             }
         }
-        /* Adjustments for small screens (Mobile) */
         @media (max-width: 767px) {
             .card-container {
-                width: 98%; /* Ensure card-container is also responsive */
+                width: 98%;
             }
             #chat-widget-container {
-                right: 1.8rem; /* Smaller margin for small screens */
-                bottom: 7.9rem; /* Smaller margin for small screens - MODIFIED */
+                right: 1.8rem;
+                bottom: 7.9rem;
             }
             #chat-popup {
                 position: fixed;
@@ -142,32 +127,30 @@
                 height: 500px;
             }
             #chat-toggle-button {
-                width: 70px; /* Slightly smaller for mobile */
+                width: 70px;
                 height: 70px;
             }
         }
-        /* Additional adjustment for very small mobile screens if needed */
         @media (max-width: 480px) {
             #chat-widget-container {
                 right: 1.7rem;
-                bottom: 7.9rem; /* MODIFIED */
+                bottom: 7.9rem;
             }
             #chat-toggle-button {
                 width: 67px;
                 height: 67px;
             }
         }
-        /* ===== ESTILOS PARA CREDENCIALES ===== */
         .credenciales-section {
             display: none;
-            position: relative; /* Important for positioning the back button */
+            position: relative;
         }
         .credenciales-section.active {
             display: block;
         }
         .credenciales-title-container {
             text-align: center;
-            margin-top: 2rem; /* Added margin-top for content spacing */
+            margin-top: 2rem;
             line-height: 1;
         }
         .credenciales-main-title, .credenciales-main-subtitle {
@@ -319,23 +302,21 @@
             height: 20px;
             width: 20px;
         }
-        /* New arrow button in the top right corner of card-container */
         #credenciales-arrow-back-btn {
             position: absolute;
-            top: 1rem; /* Aligned with the logo top */
-            right: 0.5rem; /* Positioned in the right corner */
-            z-index: 20; /* Ensure it's above other content elements */
-            color: #4B5563; /* Tailwind gray-700 color */
+            top: 1rem;
+            right: 0.5rem;
+            z-index: 20;
+            color: #4B5563;
             transition: all 0.2s ease;
             cursor: pointer;
-            padding: 0.5rem; /* Small padding for easier clicking */
-            border-radius: 9999px; /* For circular shape if SVG is square */
+            padding: 0.5rem;
+            border-radius: 9999px;
         }
         #credenciales-arrow-back-btn:hover {
-            color: #2563EB; /* Tailwind blue-600 color */
-            background-color: rgba(0, 0, 0, 0.05); /* Slight background on hover */
+            color: #2563EB;
+            background-color: rgba(0, 0, 0, 0.05);
         }
-        /* Specific animations */
         .indep-btn.bounce-animation {
             animation: bounce 2s ease infinite !important;
         }
@@ -344,7 +325,6 @@
             40% { transform: translateY(-12px); }
             60% { transform: translateY(-6px); }
         }
-        /* Responsive for credentials */
         @media (max-width: 640px) {
             .credenciales-main-title {
                 font-size: 1.4rem;
@@ -386,45 +366,39 @@
             .credenciales-back-btn svg {
                 margin-right: 0;
             }
-             /* Adjustments for the new arrow button on smaller mobiles */
             #credenciales-arrow-back-btn {
-                width: 2rem; /* w-8 */
-                height: 2rem; /* h-8 */
-                top: 0.5rem; /* Higher */
-                right: 1.5rem; /* More to the left */
-                padding: 0.2rem; /* Less padding */
+                width: 2rem;
+                height: 2rem;
+                top: 0.5rem;
+                right: 1.5rem;
+                padding: 0.2rem;
             }
         }
-        /* Font size adjustment for banner */
         .banner-text-small {
-            font-size: 0.75rem; /* Tailwind text-xs */
+            font-size: 0.75rem;
         }
-        /* Adjustment for large screens (PC) */
         @media (min-width: 1024px) {
             .banner-text-small {
-                font-size: 0.875rem; /* Tailwind text-sm */
+                font-size: 0.875rem;
             }
         }
         .banner-content-wrapper {
-            position: relative; /* Ensures absolute elements inside are positioned correctly */
+            position: relative;
         }
         .os10-coquimbo-center {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            height: 100%; /* So the click area is the full banner height */
-            display: flex; /* To vertically center the text */
-            align-items: center; /* To vertically center the text */
-            padding: 0 1rem; /* Padding to prevent text from touching edges */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
         }
     </style>
 </head>
 <body class="pt-10">
-    <!-- Fixed info banner -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1100] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-10 flex items-center justify-center shadow-sm">
-        <!-- Wrapper to limit banner content width and center it -->
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
-            <!-- Left Section: Credentials Menu -->
             <div class="flex items-center">
                 <button id="credenciales-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
                     Credenciales
@@ -432,7 +406,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
-                <!-- Dropdown Menu -->
                 <div id="credenciales-dropdown" class="absolute top-full left-0 mt-1 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-md shadow-lg min-w-[220px] hidden z-50">
                     <button onclick="handleCredencialEmpresa()" class="w-full text-left px-4 py-2 text-sm hover:bg-blue-50 hover:text-blue-600 transition-colors border-b border-gray-100">
                         Credencial Empresa
@@ -442,11 +415,9 @@
                     </button>
                 </div>
             </div>
-            <!-- Center Section: O.S.10 Coquimbo (clickable) -->
             <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center">
                 O.S.10 Coquimbo
             </a>
-            <!-- Right Section: Visit Counter -->
             <div class="flex items-center text-xs space-x-2">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -456,19 +427,15 @@
             </div>
         </div>
     </div>
-    <!-- Main Content -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6">
-        <!-- Logo inside the container -->
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
-            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy">
+            <img src="https://placehold.co/100x60/2563eb/ffffff?text=OS10" alt="OS10 Logo" class="h-full" loading="lazy">
         </a>
-        <!-- New arrow back button in the top right corner of card-container -->
         <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showMain()">
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
             </svg>
         </button>
-        <!-- MAIN SECTION (HOME) -->
         <section id="main-section" class="main-content">
             <header class="text-center pt-8">
                 <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
@@ -492,27 +459,27 @@
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>02 Solicitudes Simple.</p>
-                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                            <a href="https://example.com/solicitud" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
                         </li>
                         <li>
                             <p>01 copia DD.FF. completa.</p>
-                            <a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                            <a href="https://example.com/ddff" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
                         </li>
                         <li>
                             <p>Requisitos según tipo.</p>
-                            <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
+                            <a href="https://example.com/requisitos" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
                         </li>
                         <li>
                             <p>Uniforme Decreto 32/2024.</p>
-                            <a href="https://dal5.short.gy/0u" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
+                            <a href="https://example.com/uniforme" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
                         </li>
                         <li>
                             <p>Análisis de Vulnerabilidades.</p>
-                            <a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
+                            <a href="https://example.com/vulnerabilidades" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
                         </li>
                         <li>
                             <p>Solicitud Uniforme Distinto.</p>
-                            <a href="https://d6.short.gy/G8" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
+                            <a href="https://example.com/uniforme-distinto" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Descargar</a>
                         </li>
                     </ul>
                 </section>
@@ -521,7 +488,7 @@
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>Escanear en 01 archivo PDF.</p>
-                            <a href="https://dal5.short.gy/I" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
+                            <a href="https://example.com/pdf-tool" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
                         </li>
                     </ul>
                 </section>
@@ -530,7 +497,7 @@
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p>Resol. 1480 (10.04.2025).</p>
-                            <a href="https://d6.short.gy/dsds" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Download Documents">Download</a>
+                            <a href="https://example.com/resolucion" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Download Documents">Download</a>
                         </li>
                         <li>
                             <p>Tramitar credenciales.</p>
@@ -545,12 +512,10 @@
                     <span>©2025 - Daniel Figueroa Ch.</span><br>
                     <span>Ingeniero en Informática.</span>
                 </div>
-                <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
+                <img src="https://placehold.co/60x60/2563eb/ffffff?text=QR" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy">
             </footer>
         </section>
-        <!-- CREDENTIALS SECTION -->
         <section id="credenciales-section" class="credenciales-section">
-            <!-- The original back button (if still needed at the bottom right) -->
             <button onclick="showMain()" class="credenciales-back-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
@@ -565,12 +530,11 @@
                     <section class="main-section">
                         <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
                         <div class="space-y-8">
-                            <!-- Required documents -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Documentos requeridos:</h4>
                                 <ul class="list-disc pl-5">
                                     <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
-                                    <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="https://example.com/solicitud-credencial" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
                                     Descargar
                                 </a>
                                     <li>Fotocopia de cédula de identidad (ambas caras).</li>
@@ -578,7 +542,6 @@
                                     <li>Certificado de Antecedentes para Fines Especiales.</li>
                                 </ul>
                             </div>
-                            <!-- Digital photograph -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Fotografía digital:</h4>
                                 <ul class="list-disc pl-5">
@@ -588,19 +551,18 @@
                                     <li>Fotografia almacenada en un Pendrive.</li>
                                 </ul>
                                 <div class="mt-4">
-                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
+                                    <img src="https://placehold.co/200x250/cccccc/969696?text=Foto+Ejemplo" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy">
                                 </div>
                                 <div class="flex flex-col space-y-3 mt-4">
                                     <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
-                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="https://example.com/dpi-tool1" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         1 Convert. 300 DPI
                                     </a>
-                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                    <a href="https://example.com/dpi-tool2" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
                                         2 Convert. 300 DPI
                                     </a>
                                 </div>
                             </div>
-                            <!-- Excel Format -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">Formato Excel:</h4>
                                 <ul class="list-disc pl-5">
@@ -636,11 +598,10 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                                <a href="https://example.com/excel-format" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
                                 <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
-                                <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                                <a href="https://example.com/credencial-independiente" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
                             </div>
-                            <!-- Payment Slip -->
                             <div class="requirement-block">
                                 <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
                                 <ul class="list-disc pl-5">
@@ -650,11 +611,11 @@
                                     <li>Teléfono OS.10.: +562512651024</li>
                                 </ul>
                                 <div class="flex items-end justify-between mt-4">
-                                    <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
-                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
+                                    <a href="https://example.com/valores.pdf" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                        <img src="https://placehold.co/200x100/2563eb/ffffff?text=Valores" alt="Payment Values" class="credenciales-valores-example" loading="lazy">
                                     </a>
-                                    <a href="https://dal5.short.gy/C√" target="_blank">
-                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
+                                    <a href="https://example.com/qr-credenciales" target="_blank">
+                                       <img src="https://placehold.co/80x80/2563eb/ffffff?text=QR" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy">
                                     </a>
                                 </div>
                             </div>
@@ -669,14 +630,12 @@
             </div>
         </section>
     </div>
-    <!-- ===== FLOATING CHATBOT WITH VOICE ===== -->
     <div id="chat-widget-container">
         <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
-            <!-- Header -->
             <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
-                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain">
+                        <img src="https://placehold.co/40x40/2563eb/ffffff?text=AI" alt="Bot Icon" class="h-full w-full object-contain">
                     </div>
                     <div>
                         <h1 class="text-base font-bold">Asistente OS10 🎤</h1>
@@ -688,17 +647,14 @@
                     <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
                 </div>
             </header>
-            <!-- Chat messages container -->
             <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto"></main>
             <footer class="p-3 border-t border-green-500/30">
                 <div class="mb-2 text-xs text-center text-gray-500"><span>Alt+V para micrófono</span></div>
                 <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
                     <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Enable/Disable Auto-Read">
-                        <!-- Speaker On Icon -->
                         <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
-                        <!-- Speaker Off Icon (hidden by default) -->
                         <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
@@ -710,30 +666,23 @@
             </footer>
         </div>
         <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Open Virtual Assistant with Voice">
-            <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain">
+            <img src="https://placehold.co/80x80/2563eb/ffffff?text=AI" alt="Chatbot Icon" class="h-full w-full object-contain">
         </button>
     </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
-    <!-- Scripts -->
     <script>
-        // Functions to switch between sections
         function showCredenciales() {
             document.getElementById('main-section').style.display = 'none';
             document.getElementById('credenciales-section').classList.add('active');
-            // Show the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
-            // Scroll to top
             window.scrollTo(0, 0);
         }
         function showMain() {
             document.getElementById('credenciales-section').classList.remove('active');
             document.getElementById('main-section').style.display = 'block';
-            // Hide the new arrow back button (now outside credenciales-section)
             document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
-            // Scroll to top
             window.scrollTo(0, 0);
         }
-        // Functions for the credentials menu in the banner
         function handleCredencialEmpresa() {
             showCredenciales();
             closeCredencialesMenu();
@@ -745,7 +694,6 @@
             }
             closeCredencialesMenu();
         }
-        // Dropdown menu control
         function toggleCredencialesMenu() {
             const dropdown = document.getElementById('credenciales-dropdown');
             const arrow = document.getElementById('credenciales-arrow');
@@ -771,16 +719,13 @@
             const altura = Math.ceil(banner.getBoundingClientRect().height);
             contenido.style.paddingTop = altura + 'px';
         }
-        // Adjust on load and when window is resized
         window.addEventListener('load', ajustarPadding);
         window.addEventListener('resize', ajustarPadding);
-        // Event listeners for menu and other elements
         document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = document.getElementById('credenciales-menu-btn');
             if (menuBtn) {
                 menuBtn.addEventListener('click', toggleCredencialesMenu);
             }
-            // Close menu when clicking outside
             document.addEventListener('click', (e) => {
                 const dropdown = document.getElementById('credenciales-dropdown');
                 const menuBtn = document.getElementById('credenciales-menu-btn');
@@ -788,7 +733,6 @@
                     closeCredencialesMenu();
                 }
             });
-            // Original independent button logic
             const independentButton = document.querySelector('.indep-btn');
             if (independentButton) {
                 setInterval(() => {
@@ -804,7 +748,6 @@
                     }, 2000);
                 }, 3000);
             }
-            // Automatic PDF download when clicking "valores.png" image
             const valoresImageLink = document.getElementById('valoresImageLink');
             if (valoresImageLink) {
                 valoresImageLink.addEventListener('click', (event) => {
@@ -820,193 +763,152 @@
                     console.log(`Attempting to download: ${fileName} from ${pdfUrl}`);
                 });
             }
-            // Event listener for OS10 Home Button (in banner)
             document.getElementById('os10-home-btn').addEventListener('click', showMain);
-            // Initial state for the new arrow back button
             if (!document.getElementById('credenciales-section').classList.contains('active')) {
                 document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
             }
         });
-    </script>
-    <script type="module">
-        // FIREBASE SCRIPT (Visit Counter)
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        const firebaseConfig = {
-          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
-          authDomain: "cuenta-946e2.firebaseapp.com",
-          projectId: "cuenta-946e2",
-          storageBucket: "cuenta-946e2.firebasestorage.app",
-          messagingSenderId: "816979648502",
-          appId: "1:816979648502:web:809beffeea8ba7968031d7",
-          measurementId: "G-RX9KZSC0F4"
-        };
-        async function runCounter() {
-            const counterSpan = document.getElementById('visit-counter');
-            try {
-                const app = initializeApp(firebaseConfig);
-                const db = getFirestore(app);
-                const auth = getAuth(app);
-                await signInAnonymously(auth);
-                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
-                const newCount = await runTransaction(db, async (transaction) => {
-                    const counterDoc = await transaction.get(counterRef);
-                    let count = 1;
-                    if (counterDoc.exists()) {
-                        count = counterDoc.data().count + 1;
-                        transaction.update(counterRef, { count: count });
-                    } else {
-                        transaction.set(counterRef, { count: count });
-                    }
-                    return count;
-                });
-                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
-            } catch (error) {
-                console.error("ERROR: Counter process failed.", error);
-                if (counterSpan) counterSpan.textContent = "Error";
-            }
-        }
-        runCounter();
-    </script>
-    <!-- Load rules from external file -->
-    <script src="./rules/chatbot-rules.js"></script>
-    <!-- MAIN CHATBOT SCRIPT -->
-    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // FORCE LIGHT MODE ALWAYS - DARK MODE COMPLETELY REMOVED
             document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
-            // --- Chatbot Logic ---
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const speechSynth = window.speechSynthesis;
             let recognition;
             let isListening = false;
             let availableVoices = [];
             let isAutoReadEnabled = true;
-            // Load rules from the single file
-            const allRules = Object.values(window.responses || {});
-            const systemPrompt = window.systemPrompt || 'You are a help assistant.'; 
+            
+            const responses = {
+                "menu": {
+                    keywords: ["menú", "menu", "opciones", "ayuda"],
+                    response: "Puedo ayudarte con información sobre Directivas de Funcionamiento, Credenciales, Documentación requerida, y más. ¿Qué necesitas?"
+                },
+                "directiva": {
+                    keywords: ["directiva", "directivas", "dd.ff", "ddff"],
+                    response: "Para presentar una Directiva de Funcionamiento debes:\n1. Presentarla con 15 días hábiles de anticipación.\n2. Vigencia de 3 años en instalación.\n3. Basarte en los Decretos 93/1985, 261 y 32/2024."
+                },
+                "documentacion": {
+                    keywords: ["documentación", "documentos", "solicitud", "requerida"],
+                    response: "La documentación requerida incluye:\n- 02 Solicitudes simples\n- 01 copia completa de DD.FF.\n- Requisitos según tipo\n- Uniforme según Decreto 32/2024\n- Análisis de vulnerabilidades"
+                },
+                "credenciales": {
+                    keywords: ["credenciales", "credencial", "proceso", "tramitar"],
+                    response: "Para tramitar credenciales debes:\n1. Presentar documentos requeridos\n2. Foto digital con especificaciones\n3. Formato Excel\n4. Pago con vale vista\nConsulta la sección de Credenciales para más detalles."
+                },
+                "horario": {
+                    keywords: ["horario", "atención", "oficina", "horas"],
+                    response: "La oficina OS10 Coquimbo tiene horario de atención de lunes a viernes de 09:00 a 17:00 horas."
+                },
+                "valores": {
+                    keywords: ["valores", "precio", "costo", "pago"],
+                    response: "El valor para tramitar credenciales es de $5.890 CLP mediante vale vista a nombre de ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS (RUT: 61.944.800-6)."
+                }
+            };
+            
             function loadVoices() {
                 availableVoices = speechSynth.getVoices();
-                if (availableVoices.length > 0) {
-                     console.log("Voices loaded.");
-                }
+                console.log("Voces disponibles:", availableVoices.length);
             }
+            
             loadVoices();
             if (speechSynth.onvoiceschanged !== undefined) {
                 speechSynth.onvoiceschanged = loadVoices;
             }
+            
             if (SpeechRecognition) {
                 recognition = new SpeechRecognition();
-                recognition.lang = 'es-CL';
+                recognition.lang = 'es-ES';
                 recognition.continuous = false;
                 recognition.interimResults = false;
             } else {
-                console.warn("Speech recognition is not supported in this browser.");
+                console.warn("Reconocimiento de voz no soportado");
                 document.getElementById('voice-btn').style.display = 'none';
             }
-            // === IMPROVED CROSS-PLATFORM SPEECH SYNTHESIS FUNCTION ===
-             function detectDevice() {
+            
+            function detectDevice() {
                 const userAgent = navigator.userAgent.toLowerCase();
                 const platform = navigator.platform.toLowerCase();
-                // iOS detection (includes iPad with iOS 13+)
                 const isIOS = /iphone|ipad|ipod/.test(userAgent) || 
                              (platform === 'macintel' && navigator.maxTouchPoints > 1);
-                // Android detection
                 const isAndroid = /android/.test(userAgent);
-                // Safari detection
-                const isSafari = /safari/.test(userAgent) && !/chrome|chromium|edg/.test(userAgent);
-                // Chrome Mobile detection
-                const isChromeMobile = /chrome/.test(userAgent) && /mobile/.test(userAgent);
                 return {
                     isIOS,
                     isAndroid,
-                    isSafari,
-                    isChromeMobile,
                     isMobile: isIOS || isAndroid,
                     isDesktop: !isIOS && !isAndroid
                 };
             }
+            
             function getPlatformSpeechConfig(device) {
                 if (device.isIOS) {
-                    // iOS tends to play too fast, needs slower rate
                     return {
-                        rate: 1.0,      // Reduced speed for iOS
-                        pitch: 0.8,     // Slightly higher pitch for modern female voices
-                        volume: 1.0,    // Full volume
+                        rate: 0.9,
+                        pitch: 0.5,
+                        volume: 1.0,
                         lang: 'es-ES'
                     };
                 } else if (device.isAndroid) {
-                    // Android usually plays at normal or slow speed
                     return {
-                        rate: 1.2,      // Slightly increased speed
-                        pitch: 1.0,     // Higher pitch for female voice
-                        volume: 1.0,    // Max volume
-                        lang: 'es-CL'
+                        rate: 1.1,
+                        pitch: 0.3,
+                        volume: 1.0,
+                        lang: 'es-ES'
                     };
                 } else {
-                    // Desktop/other devices
                     return {
-                        rate: 0.9,      // Standard speed
-                        pitch: 0.8,     // Higher pitch for female voice
-                        volume: 1.0,    // Full volume
-                        lang: 'es-CL'
+                        rate: 1.0,
+                        pitch: 0.4,
+                        volume: 1.0,
+                        lang: 'es-ES'
                     };
                 }
             }
+            
             function speakText(text) {
-                const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
-                const emojiRegex = /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g;
-                const cleanText = text
-                    .replace(urlRegex, '')
-                    .replace(emojiRegex, '')
-                    .replace(/<br>/g, '. ')
-                    .replace(/<strong>/g, '')
-                    .replace(/<\/strong>/g, '')
-                    .replace(/
-/g, '. ')
-                    .replace(/\*/g, '');
-                if (!cleanText.trim() || !speechSynth) return;
+                if (!text.trim() || !speechSynth) return;
+                
                 speechSynth.cancel();
-                // Detect device and get configuration
                 const device = detectDevice();
                 const platformConfig = getPlatformSpeechConfig(device);
-                const utterance = new SpeechSynthesisUtterance(cleanText);
-                // Select the best female voice for mobile devices
+                const utterance = new SpeechSynthesisUtterance(text);
+                
                 let selectedVoice = null;
-                if (device.isMobile && availableVoices.length > 0) {
-                    // Prioritize female voices for mobile devices
-                    selectedVoice = availableVoices.find(voice => 
-                        voice.name.toLowerCase().includes('monica') && voice.lang.startsWith('es')) ||
-                        availableVoices.find(voice => 
-                            (voice.name.toLowerCase().includes('paulina') || voice.name.toLowerCase().includes('camila')) && voice.lang.startsWith('es')) ||
-                        availableVoices.find(voice => 
-                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/diego|jorge|carlos/i)) ||
-                        availableVoices.find(voice => voice.lang.startsWith('es'));
-                } else if (availableVoices.length > 0) {
-                    // For desktop, keep existing logic
-                    selectedVoice = availableVoices.find(voice => 
-                        voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
-                        availableVoices.find(voice => 
-                            (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
-                        availableVoices.find(voice => 
-                            voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
-                        availableVoices.find(voice => voice.lang.startsWith('es'));
+                if (availableVoices.length > 0) {
+                    if (device.isMobile) {
+                        selectedVoice = availableVoices.find(voice => 
+                            voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                            availableVoices.find(voice => 
+                                (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos') || voice.name.toLowerCase().includes('miguel')) && voice.lang.startsWith('es')) ||
+                            availableVoices.find(voice => 
+                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel|monica|sara/i)) ||
+                            availableVoices.find(voice => voice.lang.startsWith('es'));
+                    } else {
+                        selectedVoice = availableVoices.find(voice => 
+                            voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                            availableVoices.find(voice => 
+                                (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
+                            availableVoices.find(voice => 
+                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
+                            availableVoices.find(voice => voice.lang.startsWith('es'));
+                    }
                 }
+                
                 if (selectedVoice) {
                     utterance.voice = selectedVoice;
-                    console.log('🗣️ Using voice:', selectedVoice.name);
+                    console.log('🗣️ Usando voz:', selectedVoice.name);
                 }
-                // Apply cross-platform configuration
+                
                 utterance.lang = platformConfig.lang;
                 utterance.rate = platformConfig.rate;
                 utterance.pitch = platformConfig.pitch;
                 utterance.volume = platformConfig.volume;
-                console.log(`📱 Device: ${device.isIOS ? 'iOS' : device.isAndroid ? 'Android' : 'Desktop'}`);
-                console.log(`⚙️ Config: rate=${platformConfig.rate}, pitch=${platformConfig.pitch}, volume=${platformConfig.volume}`);
+                
+                console.log(`📱 Dispositivo: ${device.isIOS ? 'iOS' : device.isAndroid ? 'Android' : 'Desktop'}`);
+                console.log(`⚙️ Configuración: rate=${platformConfig.rate}, pitch=${platformConfig.pitch}`);
+                
                 speechSynth.speak(utterance);
             }
+            
             function toggleChat() {
                 const popup = document.getElementById('chat-popup');
                 const backdrop = document.getElementById('chat-backdrop');
@@ -1016,140 +918,67 @@
                 backdrop.classList.toggle('hidden');
                 button.classList.toggle('hidden', isHidden);
             }
+            
             function addMessage(sender, text, buttons = []) {
                 const chatMessages = document.getElementById('chat-messages');
                 const messageDiv = document.createElement('div');
                 let content = '';
+                
                 if (sender === 'user') {
                     messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
                     content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
                 } else {
                     messageDiv.className = 'flex items-start space-x-2 mb-1';
-                    const urlRegex = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
-                    let formattedText = text.replace(/
-/g, '<br>').replace(/\*(.*?)\*/g, '<strong>$1</strong>');
-                    formattedText = formattedText.replace(urlRegex, (url) => {
-                        const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
-                        let fullUrl = cleanedUrl.startsWith('http') ? cleanedUrl : 'https://' + cleanedUrl;
-                        let buttonText = "🔗 Abrir";
-                        if (/(dal5\.short\.gy|os10\.short\.gy|d6\.short\.gy)/.test(cleanedUrl)) buttonText = "📄 Descargar";
-                        else if (cleanedUrl.includes('bcn.cl')) buttonText = "⚖️ Ver ley";
-                        else if (cleanedUrl.includes('zosepcar.cl')) buttonText = "🏢 Ver OS10";
-                        return ` <button onclick="window.open('${fullUrl}', '_blank')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium">${buttonText}</button>`;
-                    });
-                    const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
-                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
-                    if (isAutoReadEnabled) setTimeout(() => speakText(text), 300);
+                    let formattedText = text.replace(/\n/g, '<br>');
+                    const buttonsHtml = buttons.length > 0 ? 
+                        '<div class="mt-2 space-y-1">' + 
+                        buttons.map(btn => 
+                            `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`
+                        ).join('') + 
+                        '</div>' : '';
+                    content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="https://placehold.co/40x40/2563eb/ffffff?text=AI" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
+                    
+                    if (isAutoReadEnabled) {
+                        setTimeout(() => speakText(text), 300);
+                    }
                 }
+                
                 messageDiv.innerHTML = content;
                 chatMessages.appendChild(messageDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
+            
             window.handleUserButtonClick = (text) => {
-                 document.getElementById('user-input').value = text;
-                 handleMessage();
+                document.getElementById('user-input').value = text;
+                handleMessage();
             }
-            // IMPROVED FUNCTION TO FIND EXACT MATCHES
-            function findExactMatch(userText, allRules) {
+            
+            function findResponse(userText) {
                 const normalizedUserText = userText.toLowerCase().trim();
-                // 1. Search for exact match first
-                for (const rule of allRules) {
-                    if (rule && rule.keywords) {
-                        for (const keyword of rule.keywords) {
-                            const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                            // Exact match
-                            if (normalizedUserText === normalizedKeyword) {
-                                console.log(`🎯 EXACT match found: "${normalizedUserText}" === "${normalizedKeyword}"`);
-                                return rule.response;
-                            }
+                
+                for (const [key, rule] of Object.entries(responses)) {
+                    for (const keyword of rule.keywords) {
+                        if (normalizedUserText.includes(keyword)) {
+                            return rule.response;
                         }
                     }
                 }
-                // 2. If no exact match, search by inclusion (only for longer phrases)
-                if (normalizedUserText.length > 5) {
-                    for (const rule of allRules) {
-                        if (rule && rule.keywords) {
-                            for (const keyword of rule.keywords) {
-                                const normalizedKeyword = keyword.replace(/\*/g, '').toLowerCase().trim();
-                                // Only search for inclusion if the keyword has more than 3 characters
-                                if (normalizedUserText.includes(normalizedKeyword)) {
-                                    console.log(`🔍 INCLUSION match: "${normalizedUserText}" includes "${normalizedKeyword}"`);
-                                    return rule.response;
-                                }
-                            }
-                        }
-                    }
-                }
-                return null;
+                
+                return "Lo siento, no entendí tu consulta. ¿Puedes reformularla? Puedo ayudarte con información sobre directivas, documentación, credenciales, horarios y más.";
             }
-            async function handleMessage() {
+            
+            function handleMessage() {
                 const input = document.getElementById('user-input');
                 const text = input.value.trim();
                 if (!text) return;
+                
                 addMessage('user', text);
                 input.value = '';
-                // Use the new improved search function
-                const response = findExactMatch(text, allRules);
-                // If a response is found in the rules, display it
-                if (response) {
-                    setTimeout(() => addMessage('bot', response), 500);
-                    return; // End execution here
-                }
-                // If NO response is found, query the AI
-                addTypingIndicator();
-                try {
-                    // Combine the system prompt with the user's question
-                    const fullPrompt = `${systemPrompt}
-**User Query:**
-${text}
-**Knowledge Base for reference (JSON):**
-\`\`\`json
-${JSON.stringify(allRules, null, 2)}
-\`\`\`
-**Response:**`;
-                    // Build the request body for the Gemini API
-                    const geminiPayload = {
-                        contents: [{ parts: [{ text: fullPrompt }] }],
-                        safetySettings: [
-                            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
-                        ],
-                    };
-                    const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(geminiPayload),
-                    });
-                    removeTypingIndicator();
-                    if (!apiResponse.ok) {
-                        const errorData = await apiResponse.json();
-                        console.error("Error from proxy:", errorData);
-                        throw new Error(`Server error: ${apiResponse.status}`);
-                    }
-                    const data = await apiResponse.json();
-                    const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || "Could not get a response from the smart assistant.";
-                    addMessage('bot', aiResponse);
-                } catch (error) {
-                    console.error("Error contacting AI assistant:", error);
-                    removeTypingIndicator();
-                    addMessage('bot', "There was a connection problem with the smart assistant. Please try again later.");
-                }
+                
+                const response = findResponse(text);
+                setTimeout(() => addMessage('bot', response), 500);
             }
-            function addTypingIndicator() {
-                const chatMessages = document.getElementById('chat-messages');
-                const typingDiv = document.createElement('div');
-                typingDiv.id = 'typing-indicator';
-                typingDiv.className = 'flex items-start space-x-2 mb-3';
-                typingDiv.innerHTML = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
-                chatMessages.appendChild(typingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-            function removeTypingIndicator() {
-                const indicator = document.getElementById('typing-indicator');
-                if (indicator) indicator.remove();
-            }
+            
             function startVoiceInput() {
                 if (!recognition) return;
                 const voiceBtn = document.getElementById('voice-btn');
@@ -1159,30 +988,42 @@ ${JSON.stringify(allRules, null, 2)}
                 }
                 isListening = true;
                 voiceBtn.classList.add('animate-pulse');
+                
                 recognition.start();
                 recognition.onresult = (event) => {
                     document.getElementById('user-input').value = event.results[0][0].transcript;
                     handleMessage();
                 };
-                recognition.onerror = (event) => console.error("Voice recognition error:", event.error);
+                recognition.onerror = (event) => {
+                    console.error("Error de reconocimiento:", event.error);
+                    isListening = false;
+                    voiceBtn.classList.remove('animate-pulse');
+                };
                 recognition.onend = () => {
                     isListening = false;
                     voiceBtn.classList.remove('animate-pulse');
                 };
             }
+            
             function readLastMessage() {
                 const messages = document.querySelectorAll('#chat-messages .text-gray-800');
-                if (messages.length > 0) speakText(messages[messages.length - 1].innerText);
+                if (messages.length > 0) {
+                    speakText(messages[messages.length - 1].innerText);
+                }
             }
-            // --- Event Assignment ---
+            
             document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
             document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
             document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
             document.getElementById('send-button').addEventListener('click', handleMessage);
-            document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
+            document.getElementById('user-input').addEventListener('keypress', e => {
+                if (e.key === 'Enter') handleMessage();
+            });
+            
             const toggleSpeakBtn = document.getElementById('toggle-speak-btn');
             const speakerOnIcon = document.getElementById('speaker-on-icon');
             const speakerOffIcon = document.getElementById('speaker-off-icon');
+            
             toggleSpeakBtn.addEventListener('click', () => {
                 isAutoReadEnabled = !isAutoReadEnabled;
                 speakerOnIcon.classList.toggle('hidden', !isAutoReadEnabled);
@@ -1193,16 +1034,20 @@ ${JSON.stringify(allRules, null, 2)}
                 toggleSpeakBtn.classList.toggle('hover:bg-gray-600', !isAutoReadEnabled);
                 if (!isAutoReadEnabled) speechSynth.cancel();
             });
-            if (recognition) document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
-            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
-            document.addEventListener('keydown', e => { if (e.altKey && e.key === 'v') { e.preventDefault(); startVoiceInput(); } });
-            // --- Rule loading and welcome message verification ---
-            if(allRules.length === 0) {
-                console.error("Warning! Rules could not be loaded from 'rules/chatbot-rules.js'. The bot will operate in 'AI-only' mode.");
+            
+            if (recognition) {
+                document.getElementById('voice-btn').addEventListener('click', startVoiceInput);
             }
-            // The bot will always welcome.
+            document.getElementById('speak-btn').addEventListener('click', readLastMessage);
+            document.addEventListener('keydown', e => {
+                if (e.altKey && e.key === 'v') {
+                    e.preventDefault();
+                    startVoiceInput();
+                }
+            });
+            
             setTimeout(() => {
-                const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
+                const welcomeButtons = ['Menú OS10', 'Directiva', 'Documentación', 'Credenciales', 'Horario'];
                 addMessage('bot', '¡Hola! Soy tu asistente virtual de la oficina OS10 Coquimbo. ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
