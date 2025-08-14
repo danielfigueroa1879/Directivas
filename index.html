@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,7 +21,7 @@
     <style>
         body { 
             font-family: 'Poppins', sans-serif; 
-            background-image: url('https://placehold.co/1200x800/2563eb/ffffff?text=Fondo+OS10');
+            background-image: url('https://images.unsplash.com/photo-1542744095-291d1f67b221?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -842,21 +843,21 @@
                 if (device.isIOS) {
                     return {
                         rate: 0.9,
-                        pitch: 0.5,
+                        pitch: 1.8,
                         volume: 1.0,
                         lang: 'es-ES'
                     };
                 } else if (device.isAndroid) {
                     return {
                         rate: 1.1,
-                        pitch: 0.3,
+                        pitch: 1.6,
                         volume: 1.0,
                         lang: 'es-ES'
                     };
                 } else {
                     return {
                         rate: 1.0,
-                        pitch: 0.4,
+                        pitch: 1.5,
                         volume: 1.0,
                         lang: 'es-ES'
                     };
@@ -875,19 +876,19 @@
                 if (availableVoices.length > 0) {
                     if (device.isMobile) {
                         selectedVoice = availableVoices.find(voice => 
-                            voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                            voice.name.toLowerCase().includes('monica') && voice.lang.startsWith('es')) ||
                             availableVoices.find(voice => 
-                                (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos') || voice.name.toLowerCase().includes('miguel')) && voice.lang.startsWith('es')) ||
+                                (voice.name.toLowerCase().includes('paulina') || voice.name.toLowerCase().includes('camila')) && voice.lang.startsWith('es')) ||
                             availableVoices.find(voice => 
-                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel|monica|sara/i)) ||
+                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/diego|jorge|carlos/i)) ||
                             availableVoices.find(voice => voice.lang.startsWith('es'));
                     } else {
                         selectedVoice = availableVoices.find(voice => 
-                            voice.name.toLowerCase().includes('diego') && voice.lang.startsWith('es')) ||
+                            voice.name.toLowerCase().includes('monica') && voice.lang.startsWith('es')) ||
                             availableVoices.find(voice => 
-                                (voice.name.toLowerCase().includes('jorge') || voice.name.toLowerCase().includes('carlos')) && voice.name.toLowerCase().includes('es')) ||
+                                (voice.name.toLowerCase().includes('paulina') || voice.name.toLowerCase().includes('camila')) && voice.lang.startsWith('es')) ||
                             availableVoices.find(voice => 
-                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/laura|helena|paulina|isabelle|sofia|camila|elena|isabel/i)) ||
+                                voice.lang.startsWith('es') && !voice.name.toLowerCase().match(/diego|jorge|carlos/i)) ||
                             availableVoices.find(voice => voice.lang.startsWith('es'));
                     }
                 }
@@ -1053,3 +1054,4 @@
     </script>
 </body>
 </html>
+```
