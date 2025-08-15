@@ -1084,6 +1084,9 @@
                 document.getElementById('voice-btn').style.display = 'none';
             }
 
+            // Variable para controlar si el mensaje de fallback ya se mostró.
+            let fallbackMessageShown = false;
+
             // ===== FUNCIONES DE SÍNTESIS DE VOZ MODERNAS (Google Cloud TTS primero, luego Navegador) =====
             
             // Utilidad para convertir base64 a ArrayBuffer (necesario para audio de Google Cloud)
@@ -1157,8 +1160,15 @@
                 try {
                     // 1. Intentar Google Cloud TTS primero (PREMIUM)
                     await speakWithGoogleCloudTTS(cleanText);
+                    // Si Google Cloud tiene éxito, restablecer el flag de mensaje de fallback
+                    fallbackMessageShown = false;
                 } catch (error) {
                     console.warn('Google Cloud TTS falló, usando voz mejorada del navegador:', error);
+                    // Solo mostrar el mensaje de fallback si no se ha mostrado antes en esta sesión
+                    if (!fallbackMessageShown) {
+                        addMessage('bot', 'Cambio a voz navegador'); // Mensaje corto
+                        fallbackMessageShown = true; // Marcar que ya se mostró
+                    }
                     // 2. Fallback a voz mejorada del navegador
                     speakWithEnhancedBrowser(cleanText);
                 }
@@ -1193,8 +1203,7 @@
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    console.error('Google Cloud TTS API error:', error.status, errorData);
-                    addMessage('bot', '⚠️ Error al usar la voz de Google Cloud. Usando voz del navegador...');
+                    console.error('Google Cloud TTS API error:', response.status, errorData); // Log status for better debugging
                     throw new Error(`Google Cloud TTS API error: ${response.status}`);
                 }
 
@@ -1244,7 +1253,7 @@
                     utterance.lang = preferredVoices[0].lang; // Usar el idioma de la voz seleccionada
                     console.log('🗣️ Usando voz:', preferredVoices[0].name, 'Idioma:', preferredVoices[0].lang);
                 } else {
-                    // Fallback si no se encuentra una voz preferida
+                    // Fallback si no se encontró una voz preferida
                     utterance.lang = 'es-ES'; // Por defecto a español general
                     console.warn('🗣️ No se encontró voz preferida, usando es-ES por defecto.');
                 }
@@ -1345,8 +1354,12 @@
                     speechReadyText = speechReadyText.replace(/\s+/g, ' ').trim();
                     
                     // --- PREPARACIÓN DEL TEXTO PARA LA VISUALIZACIÓN EN CHAT ---
-                    // Mantener el formato original con negritas y URLs convertidas a botones
-                    let formattedText = text.replace(/\n/g, '<br>').replace(/\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    // Convertir Markdown a HTML para la visualización
+                    let formattedText = text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Markdown negritas a HTML strong
+                        .replace(/\*(.*?)\*/g, '<em>$1</em>')         // Markdown cursivas a HTML em
+                        .replace(/\n/g, '<br>');                        // Saltos de línea a <br>
+
                     const urlRegexForDisplay = /(\b(?:https?:\/\/)?[a-zA-Z0-9-.]+\.[a-zA-Z]{2,}(?:\/[a-zA-Z0-9\-_./?=&%#]*)?)/g;
                     formattedText = formattedText.replace(urlRegexForDisplay, (url) => {
                         const cleanedUrl = url.replace(/[.,!?)\]]*$/, '');
@@ -1557,7 +1570,7 @@
             // El bot siempre dará la bienvenida con información de voz moderna.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎯 ¡Hola! Soy **DANIEL** tu asistente virtual de OS10 Coquimbo ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '🎯 ¡Hola! Soy **Daniel**, tu asistente virtual de OS10 Coquimbo ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
