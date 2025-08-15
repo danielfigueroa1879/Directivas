@@ -1043,7 +1043,7 @@
             
             // **IMPORTANTE**: Reemplaza 'TU_GOOGLE_CLOUD_API_KEY' con tu clave API real de Google Cloud.
             // Si la dejas vacía, el chatbot usará la voz del navegador como respaldo.
-            let googleCloudApiKey = 'AIzaSyDwJx2U16H39dxdCN9SXkn-_AWyydTAx7U'; 
+            let googleCloudApiKey = ''; 
 
             // Variables de voz globales
             let selectedVoiceConfig = GOOGLE_CLOUD_VOICES.Adam; // Voz predeterminada: Adam (Google Cloud)
@@ -1557,7 +1557,7 @@
             // El bot siempre dará la bienvenida con información de voz moderna.
             setTimeout(() => {
                 const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
-                addMessage('bot', '🎯 ¡Hola! Soy *DANIEL*, tu asistente virtual de OS10 Coquimbo ¿En qué puedo ayudarte hoy?', welcomeButtons);
+                addMessage('bot', '🎯 ¡Hola! Soy **DANIEL**, tu asistente virtual de OS10 Coquimbo ¿En qué puedo ayudarte hoy?', welcomeButtons);
             }, 1000);
         });
     </script>
