@@ -476,18 +476,11 @@
         }
 
         .banner-text-small { font-size: 0.75rem; }
-        @media (min-width: 1024px) { .banner-text-small { font-size: 0.875rem; } }
-
-        .os10-coquimbo-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-            padding: 0 1rem; 
+        .banner-content-wrapper {
+            position: relative; 
         }
-        
+        /* Eliminada la clase .os10-coquimbo-center que usaba posicionamiento absoluto */
+
         /* --- NUEVA ANIMACIÓN PARA EL MENÚ DE TRÁMITES --- */
         #tramites-dropdown {
             position: absolute;
@@ -639,41 +632,48 @@
 
     <!-- Banner superior fijo -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/50 backdrop-blur-sm border-b border-gray-200/50 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-8 relative">
-            <div class="flex items-center relative">
-                <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small p-2 rounded-md">
-                    Tramites
-                    <svg class="w-3 h-3 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                
-                <div id="tramites-dropdown" class="hidden">
-                    <div id="tramites-dropdown-header">
-                        <h3>Menu de Tramites</h3>
-                    </div>
-                    <div id="tramites-dropdown-content">
-                        <button onclick="handleDirectiva()">Directiva</button>
-                        <button onclick="handleCredenciales()">Credenciales</button>
-                        <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
-                        <button onclick="handleValores()">Valores</button>
-                        <button onclick="handleValorPlan()">Valor Plan</button>
-                        <button onclick="handleCursoFormacion()">Curso de Formacion</button>
-                        <button onclick="handleLeyes()">Leyes</button>
+        <div class="w-full max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
+            <!-- Izquierda -->
+            <div class="flex-1 flex justify-start">
+                <div class="relative"> <!-- Contenedor relativo para el dropdown -->
+                    <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small p-2 rounded-md">
+                        Tramites
+                        <svg class="w-3 h-3 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    
+                    <div id="tramites-dropdown" class="hidden">
+                        <div id="tramites-dropdown-header">
+                            <h3>Menu de Tramites</h3>
+                        </div>
+                        <div id="tramites-dropdown-content">
+                            <button onclick="handleDirectiva()">Directiva</button>
+                            <button onclick="handleCredenciales()">Credenciales</button>
+                            <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
+                            <button onclick="handleValores()">Valores</button>
+                            <button onclick="handleValorPlan()">Valor Plan</button>
+                            <button onclick="handleCursoFormacion()">Curso de Formacion</button>
+                            <button onclick="handleLeyes()">Leyes</button>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <a id="os10-home-btn" class="font-medium text-base banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center">
+            <!-- Centro -->
+            <a id="os10-home-btn" class="font-medium text-base banner-text-small cursor-pointer hover:text-blue-600 transition-colors flex-shrink-0">
                 O.S.10 Coquimbo
             </a>
 
-            <div class="flex items-center text-xs space-x-2">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                </svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            <!-- Derecha -->
+            <div class="flex-1 flex justify-end">
+                <div class="flex items-center text-xs space-x-2">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+                </div>
             </div>
         </div>
     </div>
@@ -1261,6 +1261,27 @@
                 });
             }
 
+            // --- CÓDIGO AÑADIDO PARA CERRAR EL CHATBOT ---
+            const closeButtonInternal = document.getElementById('chat-close-btn-internal');
+            const chatPopup = document.getElementById('chat-popup');
+            const chatBackdrop = document.getElementById('chat-backdrop');
+            
+            function closeChat() {
+                if (chatPopup) chatPopup.classList.add('hidden');
+                if (chatBackdrop) chatBackdrop.classList.add('hidden');
+                if (chatToggleButton) chatToggleButton.classList.remove('hidden');
+            }
+
+            if (closeButtonInternal) {
+                closeButtonInternal.addEventListener('click', closeChat);
+            }
+            if (chatBackdrop) {
+                chatBackdrop.addEventListener('click', closeChat);
+            }
+            // --- FIN DEL CÓDIGO AÑADIDO ---
+
+
+            // Start background rotation & initialize homepage
             setInterval(rotateBackground, 12000);
             showHomepage();
         });
@@ -1316,4 +1337,5 @@
     <script src="assets/js/chatbot.js"></script>
 </body>
 </html>
+
 
