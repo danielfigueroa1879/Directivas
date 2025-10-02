@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (window.innerWidth > 1024) {
                     if (isNestedSubmenu) {
-                        submenu.style.left = `${rect.right + 15}px`;
+                        submenu.style.left = `${rect.right + 5}px`; // Ajuste para que no se sobreponga
                         submenu.style.top = `${rect.top - 10}px`;
                     } else {
                         submenu.style.left = `${rect.right + 1}px`;
