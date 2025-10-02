@@ -295,7 +295,10 @@
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p> ➢&nbsp;&nbsp;&nbsp;Dos Solicitudes Simple o carta conductora.</p>
-                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                            <div class="flex space-x-2">
+                                <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar PDF">Descargar</a>
+                                <button onclick="showSolicitudTemplate()" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-colors" title="Ver Plantilla de Texto">Ver Plantilla</button>
+                            </div>
                         </li>
                         <li>
                             <p>➢&nbsp;&nbsp;&nbsp;Una copia DD.FF. completa.</p>
@@ -698,6 +701,44 @@
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </button>
     
+    <!-- Modal Plantilla Solicitud Simple -->
+    <div id="solicitud-modal" class="hidden fixed inset-0 bg-black/60 z-[1300] flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative">
+            <button onclick="hideSolicitudTemplate()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Plantilla de Solicitud Simple</h2>
+            <div id="solicitud-content" class="text-gray-700 prose max-w-none text-left">
+                <p><strong>DE:</strong> [Su Nombre Completo o Razón Social de la Empresa]</p>
+                <p><strong>RUT:</strong> [Su RUT o RUT de la Empresa]</p>
+                <p><strong>A:</strong> SEÑOR JEFE DE LA OFICINA DE SEGURIDAD PRIVADA O.S.10 COQUIMBO</p>
+                <hr class="my-4">
+                <p>Junto con saludar, y por medio de la presente, solicito a Ud. tenga a bien autorizar [Describir brevemente lo que solicita, ej: la Directiva de Funcionamiento para la instalación ubicada en... / la acreditación como Guardia de Seguridad para el personal que se detalla...].</p>
+                <p>Para dichos efectos, se adjunta la siguiente documentación:</p>
+                <ul>
+                    <li>[Listar documento 1]</li>
+                    <li>[Listar documento 2]</li>
+                    <li>[Listar los demás documentos...]</li>
+                </ul>
+                <p>Sin otro particular, saluda atentamente a Ud.,</p>
+                <br>
+                <br>
+                <p class="text-center">______________________________</p>
+                <p class="text-center"><strong>[Su Nombre Completo / Representante Legal]</strong></p>
+                <p class="text-center"><strong>[Su RUT / RUT del Representante]</strong></p>
+                <p class="text-center"><strong>[Su Cargo, si corresponde]</strong></p>
+                <p class="text-center"><strong>[Su Teléfono de Contacto]</strong></p>
+            </div>
+            <button onclick="copySolicitud()" class="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                <span>Copiar Texto</span>
+            </button>
+            <p id="copy-success-msg" class="text-green-600 mt-2 hidden font-medium">¡Texto copiado al portapapeles!</p>
+        </div>
+    </div>
+
     <!-- Deferred scripts for non-blocking load -->
     <script src="assets/js/inicio.js?v=2" defer></script>
     <script src="assets/js/main.js" defer></script>
