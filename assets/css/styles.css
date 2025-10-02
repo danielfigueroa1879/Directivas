@@ -49,8 +49,9 @@ body.homepage {
 .response-button { transition: all 0.2s ease; }
 .response-button:hover { transform: translateX(4px); }
 
-/* ===== ESTILOS CORREGIDOS PARA SUBMENU FLYOUT SIN PARPADEO ===== */
+/* ===== MENÚS DROPDOWN - SISTEMA COMPLETO CON 3 NIVELES ===== */
 
+/* MENÚ PRINCIPAL (NIVEL 1) */
 .dropdown-menu {
     position: absolute;
     top: 40px;
@@ -92,7 +93,7 @@ body.homepage {
     color: rgba(31, 41, 55, 0.95);
 }
 
-/* MENÚ PRINCIPAL (PC) */
+/* BOTONES MENÚ PRINCIPAL */
 .dropdown-menu button {
     width: 100%;
     text-align: left;
@@ -118,8 +119,7 @@ body.homepage {
     background-color: rgba(59, 130, 246, 0.25);
 }
 
-/* SUBMENU FLYOUT */
-
+/* SUBMENU NIVEL 2 (FLYOUT) */
 .dropdown-menu .has-submenu {
     position: relative;
 }
@@ -139,7 +139,7 @@ body.homepage {
     visibility: hidden;
     pointer-events: none;
     transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
 }
 
 .dropdown-menu .submenu.show {
@@ -147,9 +147,10 @@ body.homepage {
     visibility: visible;
     transform: translateX(0) scale(1);
     pointer-events: auto;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* SUBMENU ANIDADO NIVEL 2 */
+/* SUBMENU NIVEL 3 (ANIDADO) - CORREGIDO */
 .dropdown-menu .nested-submenu {
     position: relative;
 }
@@ -163,13 +164,13 @@ body.homepage {
     border: 2px solid rgba(59, 130, 246, 0.3);
     border-radius: 12px;
     box-shadow: 20px 10px 50px rgba(59, 130, 246, 0.25);
-    z-index: 1400;
+    z-index: 1400; /* Mayor que nivel 2 */
     padding: 8px 0;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
 }
 
 .dropdown-menu .nested-level-2.show {
@@ -177,6 +178,7 @@ body.homepage {
     visibility: visible;
     transform: translateX(0) scale(1);
     pointer-events: auto;
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 /* ILUMINACIÓN del botón padre (SOLO PC) */
@@ -192,7 +194,7 @@ body.homepage {
     }
 }
 
-/* BOTONES DENTRO DEL SUBMENU */
+/* BOTONES DENTRO SUBMENU NIVEL 2 */
 .dropdown-menu .submenu button {
     width: 100%;
     text-align: left;
@@ -211,7 +213,7 @@ body.homepage {
     border-bottom: none;
 }
 
-/* BOTONES DEL NIVEL 2 */
+/* BOTONES NIVEL 3 */
 .dropdown-menu .nested-level-2 button {
     width: 100%;
     text-align: left;
@@ -251,10 +253,10 @@ body.homepage {
 
 #tramites-menu-btn.panel-active #tramites-arrow,
 .dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(2deg);
+    transform: rotate(0deg);
 }
 
-/* Responsive - Ajustes para móvil y tablet */
+/* Responsive - Móvil y Tablet */
 @media (max-width: 1024px) {
     .dropdown-menu {
         position: fixed;
