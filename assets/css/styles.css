@@ -54,7 +54,7 @@ body.homepage {
 /* MENÚ PRINCIPAL (NIVEL 1) */
 .dropdown-menu {
     position: absolute;
-    top: 40px;
+    top: 50px; /* Posición inicial para animación */
     left: 0;
     width: 260px;
     height: auto;
@@ -65,15 +65,16 @@ body.homepage {
     border-radius: 0 0 12px 12px;
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease-out, top 0.3s ease-out; /* Animación de 'top' en lugar de 'transform' */
     opacity: 0;
     pointer-events: none;
     overflow-y: auto;
     scrollbar-width: thin;
 }
 
-.dropdown-menu:not(.hidden) {
+.dropdown-menu.show {
     opacity: 1;
+    top: 40px; /* Posición final visible */
     pointer-events: auto;
 }
 
