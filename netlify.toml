@@ -1,0 +1,17 @@
+# netlify.toml
+
+# Configuración base de construcción del sitio.
+[build]
+  # Le dice a Netlify dónde encontrar las funciones del servidor.
+  functions = "netlify/functions/"
+
+# Redirección específica y segura para nuestra API.
+[[redirects]]
+  # Cuando el código del frontend llame a esta ruta "amigable"...
+  from = "/api/gemini"
+  # ...Netlify ejecutará internamente la función que está en esta ruta real.
+  to = "/.netlify/functions/gemini-proxy"
+  # El status 200 significa que es una reescritura, no una redirección visible.
+  status = 200
+  # 'force = true' asegura que esta regla tenga prioridad.
+  force = true
