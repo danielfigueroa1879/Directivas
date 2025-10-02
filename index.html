@@ -138,43 +138,44 @@
                             <button onclick="handleCerofilas()">Cerofilas</button>   
                             <!-- Submenu Componentes -->
                             <div class="has-submenu">
-                                <button class="submenu-parent-btn flex justify-between items-center w-full">
-                                    Componentes
-                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </button>
-                                <div class="submenu">
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
-                                    
-                                    <!-- Submenu anidado de Asesor -->
-                                    <div class="has-submenu nested-submenu">
-                                        <button class="submenu-parent-btn flex justify-between items-center w-full">
-                                            6. Asesor de Seguridad
-                                            <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </button>
-                                        <div class="submenu nested-level-2">
-                                            <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">📋 Guía Asesor</button>
-                                            <button onclick="openNewLink('https://bit.ly/3r5HrBg')">📜 Resol. 4070 (Sin Diplomado)</button>
-                                            <button onclick="openNewLink('https://bit.ly/44PRW9w')">📜 Resol. 2660 (Con Diplomado)</button>
-                                            <button onclick="openNewLink('https://bit.ly/3tGuM9a')">🆔 Credencial Asesor</button>
-                                        </div>
-                                    </div>
-                                    
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
-                                </div>
-                            </div>
+                            <button class="submenu-parent-btn flex justify-between items-center w-full">
+                            Componentes
+                            <svg class="submenu-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </button>
+    <div class="submenu">
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
+        
+        <!-- ============ SUBMENU ANIDADO DE ASESOR (NIVEL 3) ============ -->
+        <div class="has-submenu nested-submenu">
+            <button class="submenu-parent-btn flex justify-between items-center w-full">
+                6. Asesor de Seguridad
+                <svg class="submenu-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="submenu nested-level-2">
+                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">📋 Guía Asesor</button>
+                <button onclick="openNewLink('https://bit.ly/3r5HrBg')">📜 Resol. 4070 (Sin Diplomado)</button>
+                <button onclick="openNewLink('https://bit.ly/44PRW9w')">📜 Resol. 2660 (Con Diplomado)</button>
+                <button onclick="openNewLink('https://bit.ly/3tGuM9a')">🆔 Credencial Asesor</button>
+            </div>
+        </div>
+        <!-- ============ FIN SUBMENU ASESOR ============ -->
+        
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
+        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
+    </div>
+</div>
                            <!-- Submenu Doc. editable -->
                             <div class="has-submenu">
                                 <button class="submenu-parent-btn flex justify-between items-center w-full">
