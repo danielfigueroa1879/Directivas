@@ -65,7 +65,7 @@ body.homepage {
     border-radius: 0 0 12px 12px;
     box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
     z-index: 1201;
-    transition: opacity 0.3s ease-out, top 0.3s ease-out; /* Animación de 'top' en lugar de 'transform' */
+    transition: opacity 0.3s ease-out, top 0.3s ease-out;
     opacity: 0;
     pointer-events: none;
     overflow-y: auto;
@@ -113,26 +113,23 @@ body.homepage {
 .dropdown-menu button:hover {
     background-color: rgba(59, 130, 246, 0.2);
     color: rgba(37, 99, 235, 1);
-    backdrop-filter: blur(10px);
 }
 
 .dropdown-menu button:active {
     background-color: rgba(59, 130, 246, 0.25);
 }
 
-/* SUBMENU NIVEL 2 (FLYOUT) */
+/* SUBMENU NIVEL 2 y 3 (FLYOUT) */
 .dropdown-menu .has-submenu {
     position: relative;
 }
 
 .dropdown-menu .submenu {
-    position: absolute; /* Cambiado a absolute para PC */
+    position: absolute; /* Usar 'absolute' para PC */
     top: 0;
     left: 100%;
     width: 320px;
     background-color: rgba(255, 255, 255, 0.97);
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(229, 231, 235, 1);
     border-radius: 12px;
     box-shadow: 15px 5px 40px rgba(0, 0, 0, 0.2);
@@ -153,38 +150,10 @@ body.homepage {
     transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
-/* SUBMENU NIVEL 3 (ANIDADO) - CORREGIDO */
-.dropdown-menu .nested-submenu {
-    position: relative;
-}
-
 .dropdown-menu .nested-level-2 {
-    position: absolute; /* Cambiado a absolute para PC */
-    top: -10px;
-    left: 100%;
-    width: 300px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(240, 247, 255, 0.98));
-    backdrop-filter: blur(40px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 2px solid rgba(59, 130, 246, 0.3);
-    border-radius: 12px;
-    box-shadow: 20px 10px 50px rgba(59, 130, 246, 0.25);
-    z-index: 1400; /* Mayor que nivel 2 */
-    padding: 8px 0;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateX(-5px) scale(0.98);
-    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+    top: -10px; /* Ajuste vertical */
 }
 
-.dropdown-menu .nested-level-2.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0) scale(1);
-    pointer-events: auto;
-    transition: opacity 0.15s ease, transform 0.15s ease;
-}
 
 /* ILUMINACIÓN del botón padre (SOLO PC) */
 @media (min-width: 1025px) {
@@ -267,16 +236,11 @@ body.homepage {
         position: fixed;
         top: 60px;
         left: 10px;
-        background-color: rgba(255, 255, 255, 0.9);
         z-index: 1201;
     }
 
-    .dropdown-menu .submenu,
-    .dropdown-menu .nested-level-2 {
-        position: fixed; /* En móvil, volvemos a 'fixed' porque funcionaba bien */
-    }
-
     .dropdown-menu .submenu {
+        position: fixed; /* En móvil, volvemos a 'fixed' */
         top: 90px;
         width: 300px;
         right: 20px !important;
@@ -289,6 +253,7 @@ body.homepage {
     }
     
     .dropdown-menu .nested-level-2 {
+        position: fixed; /* En móvil, volvemos a 'fixed' */
         top: 100px;
         width: 280px;
         right: 15px !important;
@@ -300,7 +265,7 @@ body.homepage {
         transform: translateX(0) translateY(0) scale(1);
     }
 
-    #tramites-overlay, #editables-overlay {
+    #tramites-overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -322,14 +287,12 @@ body.homepage {
     .dropdown-menu .submenu {
         width: 260px;
         right: 15px !important;
-        left: auto !important;
         top: 95px;
     }
     
     .dropdown-menu .nested-level-2 {
         width: 250px;
         right: 10px !important;
-        left: auto !important;
         top: 105px;
     }
     
@@ -353,14 +316,12 @@ body.homepage {
     .dropdown-menu .submenu {
         width: 240px;
         right: 10px !important;
-        left: auto !important;
         top: 95px;
     }
     
     .dropdown-menu .nested-level-2 {
         width: 230px;
         right: 8px !important;
-        left: auto !important;
         top: 105px;
     }
     
@@ -772,4 +733,23 @@ body.homepage {
     display: flex;
     align-items: center;
     padding: 0 1rem;
+}
+
+/* --- ESTILOS MODAL PLANTILLA --- */
+#solicitud-modal {
+    transition: opacity 0.3s ease;
+}
+#solicitud-modal > div {
+    transition: transform 0.3s ease;
+    transform: scale(0.95);
+}
+#solicitud-modal:not(.hidden) > div {
+    transform: scale(1);
+}
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+.prose p, .prose ul, .prose li, .prose strong {
+    margin-bottom: 0.75rem;
 }
