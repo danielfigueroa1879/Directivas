@@ -90,6 +90,75 @@ function handleValores() {
 function handleValorPlan() { window.open('https://os10.short.gy/Pl4n', '_blank'); }
 function handleCursoFormacion() { window.open('https://dal5.short.gy/Form', '_blank'); }
 
+// --- Funciones para el Modal de Plantilla ---
+function showSolicitudTemplate() {
+    const modal = document.getElementById('solicitud-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+}
+
+function hideSolicitudTemplate() {
+    const modal = document.getElementById('solicitud-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+function copySolicitud() {
+    const contentEl = document.getElementById('solicitud-content');
+    if (!contentEl) return;
+    const content = contentEl.innerText;
+    const successMsg = document.getElementById('copy-success-msg');
+    
+    // Usar el API de portapapeles si está disponible (más moderno)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(content).then(() => {
+            if (successMsg) {
+                successMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 2000);
+            }
+        }).catch(err => {
+            console.error('Error al copiar con API de portapapeles:', err);
+            copyFallback(content, successMsg); // Usar fallback si falla
+        });
+    } else {
+        copyFallback(content, successMsg); // Usar fallback si el API no está
+    }
+}
+
+// Fallback para navegadores antiguos o entornos sin acceso al clipboard API
+function copyFallback(text, successMsg) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+            if (successMsg) {
+                successMsg.classList.remove('hidden');
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 2000);
+            }
+        } else {
+            console.error('Fallback: No se pudo copiar el texto');
+            alert('No se pudo copiar el texto. Por favor, selecciónelo y cópielo manualmente.');
+        }
+    } catch (err) {
+        console.error('Fallback: Error al intentar copiar', err);
+        alert('No se pudo copiar el texto. Por favor, selecciónelo y cópielo manualmente.');
+    }
+    document.body.removeChild(textArea);
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Non-menu related listeners and initializers
     document.getElementById('os10-home-btn')?.addEventListener('click', showHomepage);
