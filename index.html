@@ -17,8 +17,18 @@
     <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
     <!-- =================================================================== -->
-    <!-- CRITICAL: Main Stylesheet loaded first to prevent FOUC             -->
+    <!-- SOLUCIÓN FOUC (Flash Of Unstyled Content)                           -->
+    <!-- 1. Ocultamos el cuerpo para evitar el parpadeo.                     -->
     <!-- =================================================================== -->
+    <style>
+        body {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+
+    <!-- CRITICAL: Main Stylesheet loaded first -->
     <link rel="stylesheet" href="assets/css/styles.css?v=3">
 
     <!-- Preload critical assets -->
@@ -827,20 +837,28 @@
     runCounter();
 </script>
 
+<!-- =================================================================== -->
+<!-- SOLUCIÓN FOUC (Flash Of Unstyled Content)                           -->
+<!-- 2. Hacemos visible el cuerpo cuando el DOM está completamente listo.-->
+<!-- =================================================================== -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // A small timeout can help ensure external scripts like Tailwind have finished.
+        setTimeout(() => {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+        }, 150); // A slightly longer delay just to be safe
+    });
+</script>
+
 <!-- Notification script -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Notification banner is commented out in HTML,
-        // but the initialization script is kept in case it's uncommented in the future.
         const banner = document.getElementById('notification-banner');
-        
         if (banner) {
-            // Show the banner after 1 second
             setTimeout(() => {
                 banner.classList.add('show');
             }, 1000);
-
-            // Hide the banner after 9 seconds (1s delay + 8s visible)
             setTimeout(() => {
                 banner.classList.remove('show');
             }, 9000); 
@@ -866,3 +884,26 @@
 </script>
 </body>
 </html>
+```
+
+### **Resumen de los Cambios Clave:**
+
+1.  **En el `<head>` (línea 30):**
+    * He añadido un bloque `<style>` que oculta el `<body>` por defecto.
+    ```css
+    body {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out;
+    }
+    ```
+
+2.  **Al final del `<body>` (línea 865):**
+    * He añadido un nuevo bloque `<script>` que se ejecuta cuando el DOM está listo. Este script cambia la visibilidad del `<body>` para mostrar la página ya con todos los estilos aplicados.
+    ```javascript
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+        }, 150); 
+    });
