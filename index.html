@@ -884,26 +884,3 @@
 </script>
 </body>
 </html>
-```
-
-### **Resumen de los Cambios Clave:**
-
-1.  **En el `<head>` (línea 30):**
-    * He añadido un bloque `<style>` que oculta el `<body>` por defecto.
-    ```css
-    body {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease-in-out;
-    }
-    ```
-
-2.  **Al final del `<body>` (línea 865):**
-    * He añadido un nuevo bloque `<script>` que se ejecuta cuando el DOM está listo. Este script cambia la visibilidad del `<body>` para mostrar la página ya con todos los estilos aplicados.
-    ```javascript
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = '1';
-        }, 150); 
-    });
