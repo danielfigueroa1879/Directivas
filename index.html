@@ -2,37 +2,90 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Plataforma OS10 Coquimbo</title>
-    <meta name="description" content="Plataforma de trámites y servicios de seguridad privada. Requisitos para Directivas de Funcionamiento, Credenciales y más. OS10 Coquimbo.">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#ffffff"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Plataforma OS10 Coquimbo | Trámites de Seguridad Privada - Carabineros de Chile</title>
+    <meta name="description" content="Sistema oficial de trámites y servicios de seguridad privada de la Región de Coquimbo. Directivas de funcionamiento, credenciales, certificados y normativa legal actualizada.">
+    <meta name="keywords" content="OS10 Coquimbo, seguridad privada, trámites, directivas, credenciales, Carabineros Chile, vigilantes privados, guardias de seguridad">
+    <meta name="author" content="Prefectura de Coquimbo - Carabineros de Chile">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Plataforma OS10 Coquimbo - Trámites de Seguridad Privada">
+    <meta property="og:description" content="Sistema oficial de trámites y servicios de seguridad privada de la Región de Coquimbo, Chile.">
+    <meta property="og:image" content="assets/images/logo-os10.png">
+    <meta property="og:url" content="https://os10coquimbo.cl">
+    <meta property="og:site_name" content="OS10 Coquimbo">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Plataforma OS10 Coquimbo">
+    <meta name="twitter:description" content="Sistema oficial de trámites de seguridad privada - Región de Coquimbo">
+    <meta name="twitter:image" content="assets/images/logo-os10.png">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#146314">
     <link rel="manifest" href="manifest.json">
-    <meta name="application-name" content="Directivas OS10">
+    <meta name="application-name" content="OS10 Coquimbo">
     <meta name="mobile-web-app-capable" content="yes">
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+    <meta name="apple-mobile-web-app-title" content="OS10 Coquimbo">
+    
+    <!-- Icons -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="192x192" href="assets/images/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="assets/images/icon-512x512.png">
 
-    <!-- Preconnecting to essential origins -->
+    <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
-    <!-- Preloading critical assets -->
+    <!-- Preload critical assets with WebP support -->
     <link rel="preload" href="assets/css/styles.css" as="style">
-    <link rel="preload" href="assets/images/foto (1).jpeg" as="image">
-
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    <link rel="preload" href="assets/images/foto (1).webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/images/logo-os10.webp" as="image" type="image/webp">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Optimized font loading -->
+    <!-- Fonts with display=swap for better performance -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- External stylesheet for better caching -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=2">
+    <!-- Tailwind CSS - Consider replacing with local build in production -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css?v=3">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentOrganization",
+      "name": "OS10 Coquimbo - Oficina de Seguridad Privada",
+      "description": "Oficina de Seguridad Privada de Carabineros de Chile, Región de Coquimbo. Fiscalización y control de seguridad privada.",
+      "url": "https://os10coquimbo.cl",
+      "telephone": "+56512651024",
+      "email": "os10.coquimbo@carabineros.cl",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Cienfuegos 180",
+        "addressLocality": "La Serena",
+        "addressRegion": "Región de Coquimbo",
+        "postalCode": "1700000",
+        "addressCountry": "CL"
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Región de Coquimbo, Chile"
+      },
+      "parentOrganization": {
+        "@type": "GovernmentOrganization",
+        "name": "Carabineros de Chile"
+      }
+    }
+    </script>
     <style>
     .pwa-install-banner {
             position: fixed;
@@ -90,13 +143,24 @@
     }
     /* Estilo para la flecha del submenú */
     .submenu-arrow {
-        width: 1rem; 
+        width: 1rem;
         height: 1rem;
-        /* IMPORTANTE: la rotación inicial a 90deg se movió a assets/css/styles.css */
         transition: transform 0.3s ease;
     }
     .has-submenu.submenu-open .submenu-arrow {
         transform: rotate(180deg); /* Rota hacia abajo */
+    }
+    .submenu-title {
+        font-weight: bold;
+        padding: 6px 20px; /* Reducido para ser más compacto */
+        font-size: 0.85rem;
+        color: #1f2937; /* Tailwind gray-800 */
+        background-color: rgba(243, 244, 246, 0.7); /* Tailwind gray-100 con transparencia */
+        border-top: 1px solid rgba(229, 231, 235, 0.5);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    }
+    .submenu .submenu-title:first-child {
+        border-top: none;
     }
     </style>
 </head>
@@ -118,68 +182,90 @@
         </button>
     </div>
 </div>
-<!-- Banner superior -->
+    <!-- Banner superior -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
-            <div class="flex items-center space-x-8">
+            <div class="flex items-center space-x-8"> <!-- Contenedor para botones de la izquierda -->
                 <!-- Menú Trámites -->
                 <div class="relative">
-                    <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
+                    <button 
+                        id="tramites-menu-btn" 
+                        class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-md px-2 py-1"
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="Menú de trámites y servicios">
                         <span class="sm:text-lg text-base"><strong>Trámites</strong></span>
-                        <svg class="w-4 h-4 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div id="tramites-dropdown" class="dropdown-menu hidden">
+                    <div id="tramites-dropdown" class="dropdown-menu hidden" role="menu" aria-labelledby="tramites-menu-btn">
                         <div class="dropdown-menu-header">
-                            <h3>Menu de Trámites</h3>
+                            <h3 id="tramites-menu-title">Menú de Trámites</h3>
                         </div>
                         <div class="dropdown-menu-content">
-                            <button onclick="handleCerofilas()">Cerofilas</button>   
+                            <!-- Submenu Leyes y Normativa Actualizado -->
+                            <div class="has-submenu">
+                                <button class="flex justify-between items-center w-full">
+                                    Leyes y Normativa
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="submenu leyes-compactas">
+                                    <div class="submenu-title">Leyes</div>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961 Org. Const.</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 (1981)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">5. Ley 21.659 Seg. Privada</button>
+                                    <button onclick="openNewLink('https://www.leychile.cl/leychile/navegar?i=1213672&f=2025-11-28')">6. Reglamento 209</button>
+                                    <div class="submenu-title">Decretos</div>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (2020)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (2024)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">3. D. 298 (2019)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">4. D. 123 (2019)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">5. D. 1045 (2018)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">6. D. 867 (2017)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">7. D. 1814 (2014)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">8. D.S. 222 (2014)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">9. D.E. 1122 (1994)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">10. D.S. 41 (1996)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">11. D.S. 1772 (1995)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">12. D.S. 1773 (1994)</button>
+                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">13. D.S. 93 (1985)</button>
+                                </div>
+                            </div>
+                            
                             <!-- Submenu Componentes -->
                             <div class="has-submenu">
-                            <button class="submenu-parent-btn flex justify-between items-center w-full">
-                            Componentes
-                            <svg class="submenu-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-    </button>
-    <div class="submenu">
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
-        
-        <!-- ============ SUBMENU ANIDADO DE ASESOR (NIVEL 3) ============ -->
-        <div class="has-submenu nested-submenu">
-            <button class="submenu-parent-btn flex justify-between items-center w-full">
-                6. Asesor de Seguridad
-                <svg class="submenu-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-            </button>
-            <div class="submenu nested-level-2">
-                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">📋 Guía Asesor</button>
-                <button onclick="openNewLink('https://bit.ly/3r5HrBg')">📜 Resol. 4070 (Sin Diplomado)</button>
-                <button onclick="openNewLink('https://bit.ly/44PRW9w')">📜 Resol. 2660 (Con Diplomado)</button>
-                <button onclick="openNewLink('https://bit.ly/3tGuM9a')">🆔 Credencial Asesor</button>
-            </div>
-        </div>
-        <!-- ============ FIN SUBMENU ASESOR ============ -->
-        
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
-        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
-    </div>
-</div>
+                                <button class="flex justify-between items-center w-full">
+                                    Componentes
+                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
+                                    <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="submenu">
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">6. Asesor de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
+                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
+                                </div>
+                            </div>
                            <!-- Submenu Doc. editable -->
                             <div class="has-submenu">
-                                <button class="submenu-parent-btn flex justify-between items-center w-full">
+                                <button class="flex justify-between items-center w-full">
                                     Doc. editable
+                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -195,8 +281,9 @@
 
                             <!-- Submenu Modelos de Solicitud -->
                             <div class="has-submenu">
-                                <button class="submenu-parent-btn flex justify-between items-center w-full">
+                                <button class="flex justify-between items-center w-full">
                                     Modelos de solicitud
+                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -211,10 +298,11 @@
                                 </div>
                             </div>
                             
-                            <!-- Submenu Manuales -->
+                            <!-- Nuevo Submenu Manuales -->
                             <div class="has-submenu">
-                                <button class="submenu-parent-btn flex justify-between items-center w-full">
+                                <button class="flex justify-between items-center w-full">
                                     Manuales
+                                    <!-- Flecha del Submenú: Comienza apuntando a la derecha (rotación 90deg en CSS) -->
                                     <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
@@ -225,7 +313,9 @@
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
                                 </div>
                             </div>
-                            <button onclick="handleMarcoLegal()">Marco Legal</button>
+                            <!-- Nuevo Marco Legal -->
+                            <button onclick="handleCerofilas()">Cerofilas</button>   
+                            <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
                             <button onclick="handleDirectiva()">Directiva</button>
                             <button onclick="handleCredenciales()">Credenciales</button>
                             <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
@@ -236,6 +326,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Eliminado el menú Doc. Editables por solicitud del usuario -->
             </div>
             
             <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center absolute left-1/2 -translate-x-1/2">
@@ -295,10 +386,7 @@
                     <ul class="space-y-4 text-sm text-gray-700">
                         <li>
                             <p> ➢&nbsp;&nbsp;&nbsp;Dos Solicitudes Simple o carta conductora.</p>
-                            <div class="flex space-x-2">
-                                <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar PDF">Descargar</a>
-                                <button onclick="showSolicitudTemplate()" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-colors" title="Ver Plantilla de Texto">Ver Plantilla</button>
-                            </div>
+                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
                         </li>
                         <li>
                             <p>➢&nbsp;&nbsp;&nbsp;Una copia DD.FF. completa.</p>
@@ -482,25 +570,35 @@
     </div>
 
     <!-- ========= INICIO SECCION HOMEPAGE ========= -->
-    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
-        <!-- Dark overlay for text readability -->
-        <div class="absolute inset-0 bg-black/30 z-0"></div>
+    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden" role="banner">
+        <!-- Dark overlay for better text readability (improved contrast) -->
+        <div class="absolute inset-0 bg-black/50 z-0" aria-hidden="true"></div>
         <!-- Content -->
         <div class="relative z-10 -mt-2 md:-mt-24">
-            <!-- Título y subtítulo con posición fija -->
+            <!-- Título y subtítulo con mejor contraste -->
             <div class="mb-0">
-                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
-                <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold" style="text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.7);">
+                    BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO
+                </h1>
+                <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto" style="text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(0, 0, 0, 0.7);">
+                    Sistema de trámites y servicios de seguridad privada
+                </p>
             </div>
         </div>
         
-        <!-- Botones con posición independiente -->
+        <!-- Botones con mejor accesibilidad -->
         <div class="relative z-10 mt-40 md:mt-56">
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 justify-center items-center">
-                <button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">
+                <button 
+                    onclick="showDirectiva()" 
+                    class="homepage-btn bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-lg"
+                    aria-label="Ver información sobre directivas de funcionamiento">
                     Directivas
                 </button>
-                <button onclick="showCredenciales()" class="homepage-btn bg-[#ffb700]/80 hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">
+                <button 
+                    onclick="showCredenciales()" 
+                    class="homepage-btn bg-[#ffb700] hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-all transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-yellow-300 shadow-lg"
+                    aria-label="Ver información sobre credenciales de seguridad">
                     Credenciales
                 </button>
             </div>
@@ -701,44 +799,6 @@
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </button>
     
-    <!-- Modal Plantilla Solicitud Simple -->
-    <div id="solicitud-modal" class="hidden fixed inset-0 bg-black/60 z-[1300] flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-8 relative">
-            <button onclick="hideSolicitudTemplate()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Plantilla de Solicitud Simple</h2>
-            <div id="solicitud-content" class="text-gray-700 prose max-w-none text-left">
-                <p><strong>DE:</strong> [Su Nombre Completo o Razón Social de la Empresa]</p>
-                <p><strong>RUT:</strong> [Su RUT o RUT de la Empresa]</p>
-                <p><strong>A:</strong> SEÑOR JEFE DE LA OFICINA DE SEGURIDAD PRIVADA O.S.10 COQUIMBO</p>
-                <hr class="my-4">
-                <p>Junto con saludar, y por medio de la presente, solicito a Ud. tenga a bien autorizar [Describir brevemente lo que solicita, ej: la Directiva de Funcionamiento para la instalación ubicada en... / la acreditación como Guardia de Seguridad para el personal que se detalla...].</p>
-                <p>Para dichos efectos, se adjunta la siguiente documentación:</p>
-                <ul>
-                    <li>[Listar documento 1]</li>
-                    <li>[Listar documento 2]</li>
-                    <li>[Listar los demás documentos...]</li>
-                </ul>
-                <p>Sin otro particular, saluda atentamente a Ud.,</p>
-                <br>
-                <br>
-                <p class="text-center">______________________________</p>
-                <p class="text-center"><strong>[Su Nombre Completo / Representante Legal]</strong></p>
-                <p class="text-center"><strong>[Su RUT / RUT del Representante]</strong></p>
-                <p class="text-center"><strong>[Su Cargo, si corresponde]</strong></p>
-                <p class="text-center"><strong>[Su Teléfono de Contacto]</strong></p>
-            </div>
-            <button onclick="copySolicitud()" class="mt-6 bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center space-x-2">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                <span>Copiar Texto</span>
-            </button>
-            <p id="copy-success-msg" class="text-green-600 mt-2 hidden font-medium">¡Texto copiado al portapapeles!</p>
-        </div>
-    </div>
-
     <!-- Deferred scripts for non-blocking load -->
     <script src="assets/js/inicio.js?v=2" defer></script>
     <script src="assets/js/main.js" defer></script>
