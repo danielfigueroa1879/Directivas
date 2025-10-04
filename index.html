@@ -21,10 +21,11 @@
     <!-- 1. Ocultamos el cuerpo para evitar el parpadeo.                     -->
     <!-- =================================================================== -->
     <style>
+        /* Oculta el cuerpo por defecto para prevenir el FOUC */
         body {
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
         }
     </style>
 
@@ -838,21 +839,23 @@
 </script>
 
 <!-- =================================================================== -->
-<!-- SOLUCIÓN FOUC (Flash Of Unstyled Content)                           -->
-<!-- 2. Hacemos visible el cuerpo cuando el DOM está completamente listo.-->
+<!-- SOLUCIÓN FOUC (Flash Of Unstyled Content) - CORREGIDA               -->
+<!-- 2. Usamos 'window.onload' para garantizar que TODO esté cargado.    -->
 <!-- =================================================================== -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // A small timeout can help ensure external scripts like Tailwind have finished.
-        setTimeout(() => {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = '1';
-        }, 150); // A slightly longer delay just to be safe
+    window.addEventListener('load', () => {
+        // El evento 'load' se dispara después de que todos los recursos (CSS, JS, imágenes)
+        // se hayan cargado por completo. Esto asegura que Tailwind haya terminado de 
+        // generar los estilos antes de que mostremos la página.
+        document.body.style.visibility = 'visible';
+        document.body.style.opacity = '1';
     });
 </script>
 
 <!-- Notification script -->
 <script>
+    // Se mueve este listener para que no haya dos 'DOMContentLoaded'
+    // y se asegura que el script principal de visibilidad se ejecute sin interferencia.
     document.addEventListener('DOMContentLoaded', () => {
         const banner = document.getElementById('notification-banner');
         if (banner) {
@@ -884,26 +887,3 @@
 </script>
 </body>
 </html>
-```
-
-### **Resumen de los Cambios Clave:**
-
-1.  **En el `<head>` (línea 30):**
-    * He añadido un bloque `<style>` que oculta el `<body>` por defecto.
-    ```css
-    body {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease-in-out;
-    }
-    ```
-
-2.  **Al final del `<body>` (línea 865):**
-    * He añadido un nuevo bloque `<script>` que se ejecuta cuando el DOM está listo. Este script cambia la visibilidad del `<body>` para mostrar la página ya con todos los estilos aplicados.
-    ```javascript
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = '1';
-        }, 150); 
-    });
