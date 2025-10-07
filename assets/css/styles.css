@@ -158,7 +158,7 @@ body.homepage {
     backdrop-filter: blur(20px);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
     transform: translateX(-105%); /* Inicia un poco más a la izquierda */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
     padding: 1rem 0;
@@ -208,7 +208,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0,0,0,0.04); 
+    background-color: rgba(245, 222, 179, 0.2); /* Color arena suave */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -344,8 +344,30 @@ body.homepage {
 @media (min-width: 1024px) {
   #banner > div {
     justify-content: center !important; /* Centra los grupos */
-    gap: 24rem; /* Aumenta el espacio entre los grupos para separarlos del centro */
+    gap: 36rem; /* Aumenta el espacio entre los grupos para separarlos del centro */
+  }
+
+  /* Estilos para el menú desplegable en PC */
+  .mobile-dropdown {
+    position: absolute;
+    left: 1rem; /* Alineado cerca del logo */
+    top: 3.5rem; /* Un poco más cerca del banner */
+    width: 320px;
+    height: auto;
+    max-height: calc(100vh - 5rem);
+    transform: translateY(-15px);
+    opacity: 0;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    pointer-events: none;
+  }
+
+  .mobile-dropdown.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+  }
+  
+  #mobile-menu-overlay {
+      display: none !important; /* No se necesita overlay en PC */
   }
 }
-
-
