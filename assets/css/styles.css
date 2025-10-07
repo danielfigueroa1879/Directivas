@@ -195,10 +195,15 @@ body.homepage {
     display: none;
     padding-left: 1rem;
     background-color: rgba(0,0,0,0.03);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
+    max-height: 1000px; /* A large enough value to show all content */
 }
+
 .mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
