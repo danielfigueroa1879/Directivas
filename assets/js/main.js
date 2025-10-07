@@ -117,6 +117,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- LÓGICA CHATBOT (RESTAURADA) ---
     const chatToggleButton = document.getElementById('chat-toggle-button');
     const chatbotTooltip = document.getElementById('chatbot-tooltip');
+    const chatPopup = document.getElementById('chat-popup');
+    const chatBackdrop = document.getElementById('chat-backdrop');
+    const chatCloseBtn = document.getElementById('chat-close-btn-internal');
+
+    const toggleChat = () => {
+        chatPopup.classList.toggle('hidden');
+        chatBackdrop.classList.toggle('hidden');
+        chatToggleButton.classList.toggle('hidden');
+    };
+
+    if (chatToggleButton) {
+        chatToggleButton.addEventListener('click', toggleChat);
+    }
+    if (chatCloseBtn) {
+        chatCloseBtn.addEventListener('click', toggleChat);
+    }
+    if(chatBackdrop) {
+        chatBackdrop.addEventListener('click', toggleChat);
+    }
+
 
     if (chatToggleButton && chatbotTooltip) {
         // Mostrar el tooltip por 15 segundos
