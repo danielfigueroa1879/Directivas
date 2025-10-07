@@ -376,8 +376,13 @@ body.homepage {
     font-size: 0.9rem; /* Compacto */
 }
 
+/* --- AJUSTE TAMAÑO TEXTO BANNER --- */
+.banner-text-small {
+    font-size: 0.875rem; /* Aumentado ligeramente de text-xs (14px) */
+}
+
 /* El resto de los estilos se mantienen */
-.voice-button, .response-button, .typing-indicator, .voice-selector, .banner-text-small, .os10-coquimbo-center {
+.voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center {
     /* Estilos existentes se mantienen */
 }
 
