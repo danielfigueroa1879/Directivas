@@ -113,9 +113,9 @@ body.homepage {
 /* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        /* Se centra perfectamente en la pantalla */
+        /* Se centra en la pantalla y se desplaza 60% a la izquierda */
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-60%);
         bottom: 7.9rem;
     }
 
@@ -275,14 +275,23 @@ body.homepage {
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
 }
+
+/* Efecto hover azul para los botones de submenú principales */
+.mobile-dropdown .submenu-parent-btn:hover {
+    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
+    color: #1d4ed8; /* Azul oscuro */
+}
+
 .mobile-dropdown .submenu-arrow {
     transition: transform 0.3s;
     width: 1.25rem; 
     height: 1.25rem;
 }
+
+/* Estado abierto del submenú principal cambia a azul */
 .mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
-    background-color: rgba(34, 197, 94, 0.1); /* Verde claro cuando está abierto */
-    color: #166534; /* Verde oscuro para el texto */
+    background-color: rgba(59, 130, 246, 0.1); /* Azul claro cuando está abierto */
+    color: #1d4ed8; /* Azul oscuro para el texto */
 }
 
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
@@ -342,11 +351,18 @@ body.homepage {
     transition: background-color 0.2s, color 0.2s; /* Añadida transición */
 }
 
-/* Efecto hover verde para el menú móvil */
-.mobile-dropdown .submenu button:hover, .mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
+/* Efecto hover verde para los items DENTRO del submenú */
+.mobile-dropdown .submenu button:hover {
     background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
     color: #15803d; /* Verde oscuro para el texto */
 }
+
+/* Efecto hover azul para los items principales que no son submenú */
+.mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
+    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
+    color: #1d4ed8; /* Azul oscuro */
+}
+
 
 .mobile-dropdown .dropdown-menu-header {
     padding: 0.5rem 1.5rem; /* Compacto */
