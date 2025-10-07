@@ -60,36 +60,65 @@ async function installPWA() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MANEJO DEL MENÚ MÓVIL ---
+    // --- MANEJO DEL MENÚ (MÓVIL Y ESCRITORIO) ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    let menuTimeout;
 
-    const toggleMobileMenu = () => {
-        const isHidden = mobileDropdown.classList.contains('hidden');
-        if (isHidden) {
+    const openMenu = () => {
+        clearTimeout(menuTimeout);
+        if (mobileDropdown.classList.contains('hidden')) {
             mobileDropdown.classList.remove('hidden');
             setTimeout(() => mobileDropdown.classList.add('show'), 10);
-            mobileMenuOverlay.classList.remove('hidden');
-        } else {
-            mobileDropdown.classList.remove('show');
-            setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-            mobileMenuOverlay.classList.add('hidden');
+            if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
+                mobileMenuOverlay.classList.remove('hidden');
+            }
         }
     };
 
-    if (mobileMenuBtn) {
+    const closeMenu = (immediate = false) => {
+        const delay = immediate ? 0 : 300;
+        menuTimeout = setTimeout(() => {
+            if (mobileDropdown.classList.contains('show')) {
+                mobileDropdown.classList.remove('show');
+                setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+                 if (window.innerWidth < 1024) {
+                    mobileMenuOverlay.classList.add('hidden');
+                }
+            }
+        }, delay);
+    };
+
+    const toggleMenu = () => {
+        if (mobileDropdown.classList.contains('hidden')) {
+            openMenu();
+        } else {
+            closeMenu(true);
+        }
+    };
+
+    if (mobileMenuBtn && mobileDropdown) {
+        // Comportamiento de clic para todos los dispositivos
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            toggleMobileMenu();
+            toggleMenu();
         });
+
+        // Comportamiento de hover solo para escritorio (PC)
+        if (window.innerWidth >= 1024) {
+            mobileMenuBtn.addEventListener('mouseenter', openMenu);
+            mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
+            mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
+            mobileDropdown.addEventListener('mouseleave', () => closeMenu());
+        }
     }
 
     if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
     }
     
-    // Lógica para submenús en el menú móvil
+    // Lógica para submenús 
     const submenuParentBtns = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
     submenuParentBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -161,26 +190,26 @@ window.addEventListener('appinstalled', (e) => {
     bannerShown = false;
 });
 
+// Función global para cerrar el menú desde los enlaces
+function closeActiveMenu() {
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    if (mobileDropdown && mobileDropdown.classList.contains('show')) {
+        mobileDropdown.classList.remove('show');
+        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+        if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+    }
+}
+
 // Handlers de navegación (globales)
 window.openNewLink = function(url) {
     window.open(url, '_blank');
-    closeMobileMenu();
+    closeActiveMenu();
 };
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); closeMobileMenu(); }
-window.handleCredenciales = function() { showCredenciales(); closeMobileMenu(); }
+window.handleDirectiva = function() { showDirectiva(); closeActiveMenu(); }
+window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
 window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
 window.handleBuscarCurso = function(url) { openNewLink(url); }
-
-function closeMobileMenu() {
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileDropdown && mobileMenuOverlay && mobileDropdown.classList.contains('show')) {
-        mobileDropdown.classList.remove('show');
-        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-        mobileMenuOverlay.classList.add('hidden');
-    }
-}
-
