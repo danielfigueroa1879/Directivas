@@ -227,6 +227,17 @@ body.homepage {
     background-color: rgba(0,0,0,0.06);
 }
 
+.leyes-compactas-desktop .desktop-dropdown-title {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.6rem;
+    margin-top: 0.2rem;
+}
+.leyes-compactas-desktop button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
     max-height: 2000px; /* Aumentado para permitir todo el contenido */
@@ -260,3 +271,8 @@ body.homepage {
     border-color: transparent;
     box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
 }
+
+.homepage-section {
+    height: 85vh; /* Aumentado para dar más espacio */
+}
+
