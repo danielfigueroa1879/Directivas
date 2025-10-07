@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeMenu = (immediate = false) => {
-        const delay = immediate ? 0 : 300;
+        const delay = immediate ? 0 : 200;
         menuTimeout = setTimeout(() => {
             if (mobileDropdown.classList.contains('show')) {
                 mobileDropdown.classList.remove('show');
@@ -119,15 +119,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Lógica para submenús 
-    const submenuParentBtns = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
-    submenuParentBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const parent = btn.closest('.has-submenu');
-            const siblings = [...parent.parentElement.children].filter(child => child !== parent && child.classList.contains('has-submenu'));
-            siblings.forEach(sibling => sibling.classList.remove('submenu-open'));
-            parent.classList.toggle('submenu-open');
-        });
+    const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
+    submenuContainers.forEach(parent => {
+        const btn = parent.querySelector('.submenu-parent-btn');
+        if (!btn) return;
+
+        if (window.innerWidth >= 1024) {
+            // Lógica de hover para escritorio
+            let submenuTimeout;
+            parent.addEventListener('mouseenter', () => {
+                clearTimeout(submenuTimeout);
+                // Cerrar otros submenús abiertos
+                submenuContainers.forEach(other => {
+                    if (other !== parent) {
+                        other.classList.remove('submenu-open');
+                    }
+                });
+                // Abrir este submenú
+                parent.classList.add('submenu-open');
+            });
+            parent.addEventListener('mouseleave', () => {
+                submenuTimeout = setTimeout(() => {
+                    parent.classList.remove('submenu-open');
+                }, 200); // Retraso para permitir que el cursor entre al submenú
+            });
+        } else {
+            // Lógica de clic para móviles
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const siblings = [...parent.parentElement.children].filter(child => child !== parent && child.classList.contains('has-submenu'));
+                siblings.forEach(sibling => sibling.classList.remove('submenu-open'));
+                parent.classList.toggle('submenu-open');
+            });
+        }
     });
 
 
