@@ -55,7 +55,7 @@ body.homepage {
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
 
 #desktop-menu {
-    margin-left: -2rem; /* Mueve el menú a la izquierda */
+    margin-left: -1rem; /* Mueve el menú a la derecha, más cerca del centro */
 }
 
 .menu-item {
@@ -63,15 +63,15 @@ body.homepage {
     cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 0.5rem 0.5rem; /* Padding horizontal reducido */
+    padding: 0.5rem 0.5rem; 
     border-radius: 0.375rem;
     transition: color 0.2s, background-color 0.2s;
     white-space: nowrap;
-    font-size: 0.65rem; /* Letra más pequeña */
+    font-size: 0.6rem; /* Letra más pequeña */
 }
 @media (min-width: 1280px) {
     .menu-item {
-        font-size: 0.75rem; /* Un poco más grande en pantallas muy anchas */
+        font-size: 0.7rem; 
         padding: 0.5rem 0.6rem;
     }
 }
@@ -182,33 +182,56 @@ body.homepage {
     width: 100%;
     padding: 0.75rem 1.5rem;
     font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
 }
 .mobile-dropdown .submenu-arrow {
     transition: transform 0.3s;
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 1rem; /* Flecha más grande */
+    height: 1rem;
 }
+.mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
+}
+
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
     transform: rotate(90deg);
 }
+
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0,0,0,0.03);
+    background-color: rgba(0,0,0,0.04); /* Fondo gris para el submenú */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.4s ease-out;
 }
+
+.mobile-dropdown .submenu.leyes-compactas button {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    padding-left: 2rem;
+    font-size: 0.8rem;
+}
+.mobile-dropdown .submenu.leyes-compactas .submenu-title {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 2rem;
+    font-size: 0.7rem;
+    background-color: rgba(0,0,0,0.06);
+}
+
+
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
-    max-height: 1000px; /* A large enough value to show all content */
+    max-height: 1500px; /* Aumentado para permitir todo el contenido */
 }
 
 .mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.6rem 1.5rem 0.6rem 1.5rem;
+    padding: 0.6rem 1.5rem 0.6rem 2.5rem; /* Aumentado padding izquierdo */
     font-size: 0.9rem;
     color: #374151;
 }
