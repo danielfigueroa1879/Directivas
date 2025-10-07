@@ -1,7 +1,7 @@
 /* --- ESTILOS BASE Y CHATBOT --- */
 body {
     font-family: 'Poppins', sans-serif;
-    background-image: url('../images/101.jpg');
+    background-image: url('../images/101.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -134,7 +134,15 @@ body.homepage {
     #chat-toggle-button { 
         width: 70px; 
         height: 70px; 
-    } 
+    }
+    #chat-popup {
+        position: fixed;
+        bottom: 0.75rem; /* Un poco más abajo */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 97%; /* Ancho ajustado al 97% */
+        height: 500px;
+    }
 }
 
 
