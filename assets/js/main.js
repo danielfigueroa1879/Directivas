@@ -2,6 +2,7 @@
  * assets/js/main.js
  * Este archivo contiene la lógica para la interfaz de usuario,
  * animaciones y el banner para instalar la PWA.
+ * -- VERSIÓN CORREGIDA: Se eliminó la lógica duplicada del chatbot. --
  */
 
 // Variables globales para PWA
@@ -177,43 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA CHATBOT (RESTAURADA) ---
-    const chatToggleButton = document.getElementById('chat-toggle-button');
-    const chatbotTooltip = document.getElementById('chatbot-tooltip');
-    const chatPopup = document.getElementById('chat-popup');
-    const chatBackdrop = document.getElementById('chat-backdrop');
-    const chatCloseBtn = document.getElementById('chat-close-btn-internal');
-
-    const toggleChat = () => {
-        chatPopup.classList.toggle('hidden');
-        chatBackdrop.classList.toggle('hidden');
-        chatToggleButton.classList.toggle('hidden');
-    };
-
-    if (chatToggleButton) {
-        chatToggleButton.addEventListener('click', toggleChat);
-    }
-    if (chatCloseBtn) {
-        chatCloseBtn.addEventListener('click', toggleChat);
-    }
-    if(chatBackdrop) {
-        chatBackdrop.addEventListener('click', toggleChat);
-    }
-
-
-    if (chatToggleButton && chatbotTooltip) {
-        // Mostrar el tooltip por 15 segundos
-        chatbotTooltip.classList.remove('hidden');
-        chatbotTooltip.classList.add('show');
-        
-        setTimeout(() => {
-            chatbotTooltip.classList.remove('show');
-            setTimeout(() => {
-                chatbotTooltip.classList.add('hidden');
-            }, 500); // Duración de la transición de opacidad
-        }, 15000); // 15 segundos
-    }
-
+    // --- LÓGICA DEL CHATBOT ELIMINADA DE AQUÍ ---
+    // Toda la lógica de toggleChat, listeners para el botón del chatbot,
+    // el backdrop y el botón de cierre ha sido removida de este archivo
+    // para evitar conflictos. La gestión completa ahora está en `chatbot.js`.
 
     console.log('✅ All components initialized successfully');
 });
