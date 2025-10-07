@@ -158,7 +158,7 @@ body.homepage {
     backdrop-filter: blur(20px);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
     transform: translateX(-105%); /* Inicia un poco más a la izquierda */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
     padding: 1rem 0;
@@ -208,7 +208,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0, 0, 0, 0.04); /* Tono gris más sutil */
+    background-color: rgba(0, 0, 0, 0.05); /* Tono gris un poco más sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -340,6 +340,7 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
+
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
@@ -349,26 +350,24 @@ body.homepage {
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    position: absolute;
-    left: 50%; /* Posicionado relativo al centro */
+    position: fixed; /* Cambiado a fixed para que se base en la ventana */
+    left: 0; /* Anclado a la izquierda */
     top: 4rem; /* Debajo del banner */
     width: 320px;
-    height: auto;
+    height: auto; /* Altura automática */
     max-height: calc(100vh - 5rem);
-    transform: translateX(-80%) translateY(-15px); /* Desplazado a la izquierda del centro */
-    opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
+    transform: translateX(-105%); /* Inicia fuera de la pantalla a la izquierda */
+    opacity: 1; /* Para que la transición sea visible */
+    transition: transform 0.3s ease-in-out;
     pointer-events: none;
-    transform-origin: top center; /* Anclaje de animación al centro superior */
+    /* Los demás estilos como fondo, sombra, etc., se heredan */
   }
 
   .mobile-dropdown.show {
-      transform: translateX(-80%); /* Mantiene la posición final al mostrarse */
+      transform: translateX(1rem); /* Lo desliza a la vista con un margen */
       opacity: 1;
       pointer-events: auto;
   }
   
-  #mobile-menu-overlay {
-      display: none !important; /* No se necesita overlay en PC */
-  }
+  /* Se elimina la regla para #mobile-menu-overlay para que el overlay funcione en PC */
 }
