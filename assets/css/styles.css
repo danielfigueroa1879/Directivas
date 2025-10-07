@@ -274,6 +274,7 @@ body.homepage {
     padding: 0.6rem 1.5rem; /* Compacto */
     font-weight: 500;
     transition: background-color 0.2s, color 0.2s;
+    font-size: 0.82rem; /* REDUCIDO */
 }
 
 /* Efecto hover azul para los botones de submenú principales */
@@ -312,7 +313,7 @@ body.homepage {
     padding-top: 0.3rem; /* Compacto */
     padding-bottom: 0.3rem; /* Compacto */
     padding-left: 2rem;
-    font-size: 0.8rem; /* Ligeramente más pequeño */
+    font-size: 0.78rem; /* REDUCIDO */
 }
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem; /* Compacto */
@@ -346,7 +347,7 @@ body.homepage {
     width: 100%;
     text-align: left;
     padding: 0.5rem 1.5rem; /* Compacto */
-    font-size: 0.85rem; /* Más pequeño */
+    font-size: 0.82rem; /* REDUCIDO */
     color: #374151;
     transition: background-color 0.2s, color 0.2s; /* Añadida transición */
 }
