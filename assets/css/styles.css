@@ -38,20 +38,104 @@ body.homepage {
     border-radius: 0.5rem;
 }
 
-/* ===== ESTILOS CHATBOT (RESTAURADOS) ===== */
-#chat-widget-container { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000; display: flex; flex-direction: column; align-items: flex-end;}
-#chat-popup { width: 450px; height: 600px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-.chat-popup-hidden { display: none !important; }
-.chat-popup-visible { display: flex !important; }
-#chat-toggle-button { width: 80px; height: 80px; box-shadow: 0 6px 15px rgba(0,0,0,0.2); animation: floatAnimation 2s ease-in-out infinite; transition: all 0.3s ease; position: relative; border: 1px solid #0c640c; }
-@keyframes floatAnimation { 0%, 100% { transform: translateY(0px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); } 50% { transform: translateY(-15px); box-shadow: 0 12px 20px rgba(0,0,0,0.25); } }
-#chat-toggle-button:hover { animation-play-state: paused; transform: translateY(-8px) scale(1.05); box-shadow: 0 10px 18px rgba(0,0,0,0.3); }
-#chat-toggle-button::before { content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px; background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); border-radius: 50%; animation: pulseGlow 4s ease-in-out infinite; z-index: -1; }
-@keyframes pulseGlow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.1); } }
-.chat-messages-container { scroll-behavior: smooth; }
-.typing-indicator span { height: 8px; width: 8px; margin: 0 2px; background-color: #9ca3af; border-radius: 50%; display: inline-block; animation: bounce 1.4s infinite ease-in-out both; }
-@keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
-@media (max-width: 767px) { #chat-widget-container { right: 1rem; bottom: 1rem; } #chat-toggle-button { width: 70px; height: 70px; } }
+/* ===== ESTILOS CHATBOT (RESTAURADOS Y CORREGIDOS) ===== */
+#chat-widget-container { 
+    position: fixed; 
+    bottom: 1.5rem; 
+    right: 1.5rem; 
+    z-index: 1000; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end;
+}
+#chat-popup { 
+    width: 450px; 
+    height: 600px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+}
+.chat-popup-hidden { 
+    display: none !important; 
+}
+.chat-popup-visible { 
+    display: flex !important; 
+}
+#chat-toggle-button { 
+    width: 80px; 
+    height: 80px; 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+    animation: floatAnimation 2s ease-in-out infinite; 
+    transition: all 0.3s ease; 
+    position: relative; 
+    border: 1px solid #0c640c; 
+}
+@keyframes floatAnimation { 
+    0%, 100% { transform: translateY(0px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); } 
+    50% { transform: translateY(-15px); box-shadow: 0 12px 20px rgba(0,0,0,0.25); } 
+}
+#chat-toggle-button:hover { 
+    animation-play-state: paused; 
+    transform: translateY(-8px) scale(1.05); 
+    box-shadow: 0 10px 18px rgba(0,0,0,0.3); 
+}
+#chat-toggle-button::before { 
+    content: ''; 
+    position: absolute; 
+    top: -5px; 
+    left: -5px; 
+    right: -5px; 
+    bottom: -5px; 
+    background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); 
+    border-radius: 50%; 
+    animation: pulseGlow 4s ease-in-out infinite; 
+    z-index: -1; 
+}
+@keyframes pulseGlow { 
+    0%, 100% { opacity: 0.3; transform: scale(1); } 
+    50% { opacity: 0.6; transform: scale(1.1); } 
+}
+.chat-messages-container { 
+    scroll-behavior: smooth; 
+}
+.typing-indicator span { 
+    height: 8px; 
+    width: 8px; 
+    margin: 0 2px; 
+    background-color: #9ca3af; 
+    border-radius: 50%; 
+    display: inline-block; 
+    animation: bounce 1.4s infinite ease-in-out both; 
+}
+@keyframes bounce { 
+    0%, 80%, 100% { transform: scale(0); } 
+    40% { transform: scale(1.0); } 
+}
+
+/* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        /* Se elimina 'right' y se usan 'left' y 'transform' para centrar con un ligero desplazamiento */
+        left: 50%;
+        transform: translateX(-40%); /* Ajusta este valor para moverlo más a la derecha o izquierda del centro */
+        bottom: 7.9rem;
+    }
+
+    #chat-toggle-button {
+        width: 90px;
+        height: 90px;
+        animation: floatAnimation 1.9s ease-in-out infinite;
+    }
+}
+
+@media (max-width: 767px) { 
+    #chat-widget-container { 
+        right: 1rem; 
+        bottom: 1rem; 
+    } 
+    #chat-toggle-button { 
+        width: 70px; 
+        height: 70px; 
+    } 
+}
 
 
 /* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
