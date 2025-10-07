@@ -340,3 +340,10 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
+/* Ajuste para centrar elementos del banner en PC */
+@media (min-width: 1024px) {
+  #banner > div {
+    justify-content: center !important; /* Centra los grupos */
+    gap: 8rem; /* Aumenta el espacio entre los grupos para separarlos del centro */
+  }
+}
