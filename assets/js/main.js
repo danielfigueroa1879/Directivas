@@ -2,7 +2,6 @@
  * assets/js/main.js
  * Este archivo contiene la lógica para la interfaz de usuario,
  * animaciones y el banner para instalar la PWA.
- * -- VERSIÓN CORREGIDA: Se eliminó la lógica duplicada del chatbot. --
  */
 
 // Variables globales para PWA
@@ -124,43 +123,55 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
     }
     
-    // Lógica para submenús 
+    // --- LÓGICA DE SUBMENÚS (MODIFICADA) ---
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
+        const arrow = parent.querySelector('.submenu-arrow');
         if (!btn) return;
 
-        // Lógica de CLIC para TODOS los dispositivos (Móvil y PC)
+        // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Previene que el menú principal se cierre al interactuar
+            e.stopPropagation(); // Previene que el menú principal se cierre
             
-            const wasOpen = parent.classList.contains('submenu-open');
-
-            // Cierra otros submenús para un comportamiento limpio
+            // Cierra otros submenús abiertos
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
                 if (other !== parent) {
                     other.classList.remove('submenu-open');
                 }
             });
             
-            // Abre o cierra el submenú actual
+            // Alterna el estado del submenú actual
             parent.classList.toggle('submenu-open');
         });
 
-        // Lógica de HOVER adicional, solo para ESCRITORIO (PC)
-        if (window.innerWidth >= 1024) {
+        // Lógica de HOVER solo para la FLECHA en ESCRITORIO
+        if (window.innerWidth >= 1024 && arrow) {
             let submenuTimeout;
-            parent.addEventListener('mouseenter', () => {
+
+            // Abre el submenú cuando el cursor entra en la flecha
+            arrow.addEventListener('mouseenter', (e) => {
+                e.stopPropagation();
                 clearTimeout(submenuTimeout);
-                // Abre el submenú al pasar el mouse por encima
+                 // Cierra otros submenús abiertos
+                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
+                    if (other !== parent) {
+                        other.classList.remove('submenu-open');
+                    }
+                });
                 parent.classList.add('submenu-open');
             });
-
+            
+            // Programa el cierre cuando el cursor sale del elemento padre completo
             parent.addEventListener('mouseleave', () => {
-                // Cierra el submenú al alejar el mouse, con un pequeño retraso
                 submenuTimeout = setTimeout(() => {
                     parent.classList.remove('submenu-open');
                 }, 300);
+            });
+
+            // Cancela el cierre si el cursor entra de nuevo en el elemento padre (para poder navegar al submenú)
+            parent.addEventListener('mouseenter', () => {
+                 clearTimeout(submenuTimeout);
             });
         }
     });
@@ -177,11 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pwaBanner) pwaBanner.classList.remove('show');
         });
     }
-
-    // --- LÓGICA DEL CHATBOT ELIMINADA DE AQUÍ ---
-    // Toda la lógica de toggleChat, listeners para el botón del chatbot,
-    // el backdrop y el botón de cierre ha sido removida de este archivo
-    // para evitar conflictos. La gestión completa ahora está en `chatbot.js`.
 
     console.log('✅ All components initialized successfully');
 });
