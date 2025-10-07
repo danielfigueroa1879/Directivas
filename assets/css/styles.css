@@ -208,7 +208,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0, 0, 0, 0.04); /* Tono gris más sutil */
+    background-color: rgba(220, 220, 220, 0.2); /* Color gris sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -350,20 +350,20 @@ body.homepage {
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
     position: absolute;
-    left: 1rem; /* Posicionado a la izquierda, cerca del botón de menú */
-    top: 4rem; /* Debajo del banner */
+    left: 1rem; /* Alineado cerca del logo */
+    top: 3.5rem; /* Un poco más cerca del banner */
     width: 320px;
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateY(-15px); /* Inicia un poco arriba */
+    transform: translateX(-30px) scale(0.95); /* Inicia desde la izquierda y más pequeño */
     opacity: 0;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
     pointer-events: none;
-    transform-origin: top left; /* El anclaje de la animación es la esquina superior izquierda */
+    transform-origin: top left; /* El punto de anclaje de la animación es la esquina superior izquierda */
   }
 
   .mobile-dropdown.show {
-      transform: translateY(0); /* Termina en su posición Y final */
+      transform: translateX(0) scale(1); /* Termina en su posición y tamaño normal */
       opacity: 1;
       pointer-events: auto;
   }
@@ -371,4 +371,8 @@ body.homepage {
   #mobile-menu-overlay {
       display: none !important; /* No se necesita overlay en PC */
   }
+
+
+
+    
 }
