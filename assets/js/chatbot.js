@@ -575,14 +575,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function toggleChat() {
+        console.log('🔄 toggleChat() llamado');
         const popup = document.getElementById('chat-popup');
         const backdrop = document.getElementById('chat-backdrop');
         const button = document.getElementById('chat-toggle-button');
         
-        const isHidden = popup.classList.contains('hidden');
-        popup.classList.toggle('hidden');
-        backdrop.classList.toggle('hidden');
-        button.classList.toggle('hidden', isHidden);
+        console.log('Popup:', popup ? '✅' : '❌');
+        console.log('Backdrop:', backdrop ? '✅' : '❌');
+        console.log('Button:', button ? '✅' : '❌');
+        
+        if (!popup || !backdrop || !button) {
+            console.error('❌ Error: No se encontraron los elementos del chatbot');
+            return;
+        }
+        
+        const isHidden = popup.classList.contains('chat-popup-hidden');
+        console.log('Estado actual - isHidden:', isHidden);
+        
+        if (isHidden) {
+            // Abrir el chat
+            popup.classList.remove('chat-popup-hidden');
+            popup.classList.add('chat-popup-visible');
+            backdrop.classList.remove('hidden');
+            button.style.display = 'none';
+            console.log('✅ Chat ABIERTO');
+        } else {
+            // Cerrar el chat
+            popup.classList.remove('chat-popup-visible');
+            popup.classList.add('chat-popup-hidden');
+            backdrop.classList.add('hidden');
+            button.style.display = 'flex';
+            console.log('✅ Chat CERRADO');
+        }
     }
 
     // FUNCIÓN CORREGIDA PARA MOSTRAR NEGRITAS
@@ -766,11 +790,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // --- Asignación de Eventos ---
-    document.getElementById('chat-toggle-button').addEventListener('click', toggleChat);
-    document.getElementById('chat-close-btn-internal').addEventListener('click', toggleChat);
-    document.getElementById('chat-backdrop').addEventListener('click', toggleChat);
-    document.getElementById('send-button').addEventListener('click', handleMessage);
-    document.getElementById('user-input').addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
+    const chatToggleBtn = document.getElementById('chat-toggle-button');
+    const chatCloseBtn = document.getElementById('chat-close-btn-internal');
+    const chatBackdrop = document.getElementById('chat-backdrop');
+    const sendButton = document.getElementById('send-button');
+    const userInput = document.getElementById('user-input');
+    
+    console.log('🤖 Chatbot: Inicializando eventos...');
+    console.log('Botón toggle:', chatToggleBtn ? '✅ Encontrado' : '❌ NO encontrado');
+    console.log('Botón cerrar:', chatCloseBtn ? '✅ Encontrado' : '❌ NO encontrado');
+    console.log('Backdrop:', chatBackdrop ? '✅ Encontrado' : '❌ NO encontrado');
+    
+    if (chatToggleBtn) {
+        chatToggleBtn.addEventListener('click', function(e) {
+            console.log('🖱️ Click en botón de chatbot detectado');
+            toggleChat();
+        });
+    }
+    
+    if (chatCloseBtn) chatCloseBtn.addEventListener('click', toggleChat);
+    if (chatBackdrop) chatBackdrop.addEventListener('click', toggleChat);
+    if (sendButton) sendButton.addEventListener('click', handleMessage);
+    if (userInput) userInput.addEventListener('keypress', e => e.key === 'Enter' && handleMessage());
     
     // Evento para cambiar el selector de voz
     document.getElementById('voiceSelector').addEventListener('change', (e) => {
