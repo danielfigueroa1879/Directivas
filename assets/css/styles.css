@@ -202,7 +202,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0, 0, 0, 0.05); /* Color gris más sutil */
+    background-color: rgba(0, 0, 0, 0.08); /* Color gris un poco más notorio */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -339,22 +339,23 @@ body.homepage {
   #banner > div {
     position: relative;
     justify-content: space-between !important;
-    max-width: 800px; /* Reducido para acercar los elementos al centro */
+    max-width: 800px;
     margin: 0 auto;
   }
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    position: absolute; /* Cambiado a absoluto para que sea relativo al banner */
-    left: 40; /* Se alinea a la izquierda del contenedor del banner */
-    top: 8rem; /* Debajo del banner */
-    transform: translateX(-60px); /* Inicia ligeramente a la izquierda */
+    position: fixed;
+    left: calc((100vw - 800px) / 2 + 1rem); /* Alinea el menú con el contenido del banner */
+    top: 4rem; 
+    transform: translateX(-20px);
     opacity: 0;
     transition: transform 0.25s ease-out, opacity 0.2s ease-out;
+    transform-origin: top left;
   }
 
   .mobile-dropdown.show {
-    transform: translateX(0); /* Se desliza a su posición final */
+    transform: translateX(0); 
     opacity: 1;
   }
   
@@ -362,6 +363,3 @@ body.homepage {
     background-color: transparent; /* Overlay transparente en PC */
   }
 }
-
-
-
