@@ -350,20 +350,20 @@ body.homepage {
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
     position: absolute;
-    left: 50%; /* Centrado en la página */
+    left: 1rem; /* Posicionado a la izquierda, cerca del botón de menú */
     top: 4rem; /* Debajo del banner */
     width: 320px;
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateX(-50%) translateY(-15px); /* Inicia centrado y un poco arriba */
+    transform: translateY(-15px); /* Inicia un poco arriba */
     opacity: 0;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
     pointer-events: none;
-    transform-origin: top center; /* El anclaje de la animación es el centro superior */
+    transform-origin: top left; /* El anclaje de la animación es la esquina superior izquierda */
   }
 
   .mobile-dropdown.show {
-      transform: translateX(-50%) translateY(0); /* Termina centrado y en su posición Y final */
+      transform: translateY(0); /* Termina en su posición Y final */
       opacity: 1;
       pointer-events: auto;
   }
