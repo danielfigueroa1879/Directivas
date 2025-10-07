@@ -421,6 +421,11 @@ body.homepage {
         margin-top: -6rem; 
     }
 }
+@media (min-width: 768px) {
+    .homepage-title-container {
+        margin-top: -8rem; /* Sube el título en pantallas de PC y tablet */
+    }
+}
 
 
 .background-transition { animation: none; }
