@@ -394,6 +394,17 @@ body.homepage {
     /* Estilos existentes se mantienen */
 }
 
+/* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
+#tramites-principales {
+    padding-top: 5rem; /* Se aumenta el padding superior para bajar la sección */
+}
+
+@media (min-width: 768px) {
+    #tramites-principales {
+        padding-top: 7rem; /* Ajuste para pantallas medianas y grandes */
+    }
+}
+
 /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
 .homepage-section {
     display: none;
