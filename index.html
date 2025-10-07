@@ -9,274 +9,165 @@
     <link rel="manifest" href="manifest.json">
     <meta name="application-name" content="Directivas OS10">
     <meta name="mobile-web-app-capable" content="yes">
-
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Directivas OS10">
 
-    <!-- Preconnecting to essential origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
 
-    <!-- =========== OPTIMIZATION START: LCP & CSS CRÍTICO =========== -->
-    <!-- Preloading critical assets to improve LCP -->
-    <!-- Le damos prioridad a la imagen de fondo inicial -->
     <link rel="preload" href="assets/images/foto%20(1).webp" as="image" fetchpriority="high">
     <link rel="preload" href="assets/css/styles.css" as="style">
-    <!-- Cargamos el CSS crítico de la homepage aquí para evitar que la carga externa lo bloquee -->
+    
     <style>
-        /* Estilos críticos para LCP (fondo de la sección homepage) */
-        .homepage-section {
-            background-image: url('assets/images/foto%20(1).webp');
-            background-size: cover;
-            background-position: center 40%;
-            transition: background-image 5.5s ease-in-out;
-        }
-        body.homepage {
-            background-color: white; 
-            background-image: none;
-        }
-        /* Estilos para el banner de instalación PWA */
-        .pwa-install-banner {
-            position: fixed;
-            top: 64px;
-            left: 0;
-            right: 0;
-            background-color: #f1f5f9; 
-            border-bottom: 2px solid #3b82f6;
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1100;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            transition: all 0.5s ease-in-out;
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-        .pwa-install-banner.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        /* Estilos de notificaciones */
-        .notification-banner {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -100%); 
-            width: 100%; 
-            max-width: 750px;
-            background-color: #51a351; 
-            color: white;
-            padding: 1.3rem 2.0rem;
-            border-radius: 0 0 12px 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1300; 
-            text-align: center;
-            opacity: 0;
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
-        }
-        .notification-banner.show {
-            transform: translate(-50%, 0); 
-            opacity: 1;
-        }
-        @media (max-width: 768px) {
-            .notification-banner {
-                width: 100%;
-                border-radius: 0 0 0 0;
-            }
-        }
-        .mover-derecha {
-            margin-left: 25px; 
-        }
-        /* Estilos de menú (necesarios para evitar CLS) */
-        .submenu-arrow {
-            width: 1rem;
-            height: 1rem;
-            transition: transform 0.3s ease;
-        }
-        .has-submenu.submenu-open .submenu-arrow {
-            transform: rotate(180deg); 
-        }
-        .submenu-title {
-            font-weight: bold;
-            padding: 6px 20px; 
-            font-size: 0.85rem;
-            color: #1f2937; 
-            background-color: rgba(243, 244, 246, 0.7); 
-            border-top: 1px solid rgba(229, 231, 235, 0.5);
-            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
-        }
-        .submenu .submenu-title:first-child {
-            border-top: none;
-        }
+        .homepage-section { background-image: url('assets/images/foto%20(1).webp'); background-size: cover; background-position: center 40%; transition: background-image 5.5s ease-in-out; }
+        body.homepage { background-color: white; background-image: none; }
+        .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
+        .pwa-install-banner.show { transform: translateY(0); opacity: 1; }
+        .submenu-arrow { transition: transform 0.3s ease; }
+        .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
     </style>
-    <!-- =========== OPTIMIZATION END =========== -->
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="assets/images/icon-192x192.webp">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Optimized font loading -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- External stylesheet for non-critical styles (will be loaded non-blockingly) -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=4">
+    <link rel="stylesheet" href="assets/css/styles.css?v=5">
 </head>
 <body class="homepage background-transition">
-<!-- PWA Install Banner -->
-<div id="pwa-install-banner" class="pwa-install-banner md:hidden">
-    <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
-    <div class="flex items-center space-x-2">
-        <button id="install-button" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-sm">Instalar</button>
-        <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </button>
+    
+    <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
+        <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
+        <div class="flex items-center space-x-2">
+            <button id="install-button" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-sm">Instalar</button>
+            <button id="close-install-banner" class="text-gray-500 hover:text-gray-800 p-1 rounded-full"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
     </div>
-</div>
-    <!-- Banner superior -->
+
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-full md:max-w-6xl mx-auto h-full flex items-center justify-between px-4 relative">
+        <div class="w-full max-w-7xl mx-auto h-full flex items-center justify-between px-4">
             
-            <!-- Contenedor del menú para PC (horizontal) y móvil (botón) -->
             <div class="flex items-center">
-                <!-- Botón de menú para móvil -->
-                <button id="mobile-menu-btn" class="md:hidden font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <a href="#" onclick="showHomepage()" class="flex items-center space-x-2 mr-4">
+                    <img src="assets/images/logo-os10.webp" alt="OS10 Logo" class="h-10 w-10" loading="lazy">
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4-6h4"></path></svg>
                 </button>
-
-                <!-- Menú horizontal para PC -->
-                <nav id="desktop-menu" class="hidden md:flex items-center space-x-6 text-sm">
-                    
-                    <a href="#" onclick="showHomepage()" class="flex items-center space-x-2 font-bold text-gray-700 hover:text-blue-600">
-                        <img src="assets/images/logo-os10.webp" alt="OS10 Logo" class="h-8 w-8" loading="lazy">
-                        <span>Inicio</span>
-                    </a>
-
-                    <!-- Item 1: Trámites -->
-                    <div class="relative group">
-                        <button class="menu-item">Trámites<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="desktop-dropdown">
-                            <button onclick="handleDirectiva()">Directiva</button>
-                            <button onclick="handleCredenciales()">Credenciales</button>
-                            <button onclick="handleCredencialIndependiente()">Credencial Independiente</button>
-                            <button onclick="handleValores()">Valores</button>
-                            <button onclick="handleValorPlan()">Valor Plan</button>
-                        </div>
-                    </div>
-
-                    <!-- Item 2: Documentos -->
-                    <div class="relative group">
-                        <button class="menu-item">Documentos<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="desktop-dropdown">
-                             <div class="has-submenu relative">
-                                <button class="submenu-parent-btn">Doc. Editables</button>
-                                <div class="submenu">
-                                    <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
-                                    <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
-                                </div>
-                            </div>
-                            <div class="has-submenu relative">
-                                <button class="submenu-parent-btn">Modelos Solicitud</button>
-                                <div class="submenu">
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Pers. Natural</button>
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Empresas</button>
-                                </div>
-                            </div>
-                            <div class="has-submenu relative">
-                                <button class="submenu-parent-btn">Manuales</button>
-                                <div class="submenu">
-                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Funcionamiento</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Item 3: Capacitación -->
-                    <div class="relative group">
-                        <button class="menu-item">Capacitación<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="desktop-dropdown">
-                           <button onclick="openNewLink('https://d6.short.gy/Cap')">Empresas Capacitación</button>
-                           <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
-                        </div>
-                    </div>
-
-                    <!-- Item 4: Normativa -->
-                    <div class="relative group">
-                        <button class="menu-item">Normativa<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="desktop-dropdown">
-                            <div class="has-submenu relative">
-                                <button class="submenu-parent-btn">Leyes</button>
-                                <div class="submenu">
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">2. Ley 21.659</button>
-                                </div>
-                            </div>
-                             <div class="has-submenu relative">
-                                <button class="submenu-parent-btn">Decretos</button>
-                                <div class="submenu">
-                                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (2020)</button>
-                                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (2024)</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                     <!-- Item 5: Consultas -->
-                     <div class="relative group">
-                        <button class="menu-item">Consultas<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                        <div class="desktop-dropdown">
-                           <button onclick="handleCerofilas()">Cerofilas</button>
-                           <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
-                           <button onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
-                        </div>
-                    </div>
-                </nav>
             </div>
-            
-            <a id="os10-home-btn-center" class="hidden md:flex font-bold text-gray-700 banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center absolute left-1/2 -translate-x-1/2">
-                O.S.10 COQUIMBO
-            </a>
+
+            <nav id="desktop-menu" class="hidden md:flex items-center justify-center flex-grow space-x-1 lg:space-x-2 text-xs lg:text-sm">
+                 <div class="relative group">
+                    <button class="menu-item">Leyes y Normativa<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="desktop-dropdown">
+                        <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">Constitución Política</button>
+                        <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">Ley 21.659 Seg. Privada</button>
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">D.E. 261 (2020)</button>
+                        <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">D.E. 32 (2024)</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Componentes<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                     <div class="desktop-dropdown">
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">Vigilante Privado</button>
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">Guardia de Seguridad</button>
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">Jefe de Seguridad</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Doc. Editables<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                     <div class="desktop-dropdown">
+                        <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
+                        <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Modelos Solicitud<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="desktop-dropdown">
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">Pers. Natural</button>
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">Empresas</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Manuales<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                     <div class="desktop-dropdown">
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">Manual de Funcionamiento</button>
+                        <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">Manual de Capacitación</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Capacitación<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="desktop-dropdown">
+                       <button onclick="openNewLink('https://d6.short.gy/Cap')">Empresas Capacitación</button>
+                       <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <button class="menu-item">Credenciales<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
+                    <div class="desktop-dropdown">
+                        <button onclick="handleCredenciales()">Credencial Empresa</button>
+                        <button onclick="handleCredencialIndependiente()">Credencial Independiente</button>
+                    </div>
+                </div>
+                <a href="#" onclick="handleCerofilas()" class="menu-item">Cerofilas</a>
+                <a href="#" onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')" class="menu-item">Consultar Curso</a>
+                <a href="#" onclick="handleDirectiva()" class="menu-item">Directiva</a>
+                <a href="#" onclick="handleValores()" class="menu-item">Valores</a>
+                <a href="#" onclick="handleValorPlan()" class="menu-item">Valor Plan</a>
+                <a href="#" onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')" class="menu-item">Ubicación</a>
+            </nav>
 
             <div class="flex items-center text-xs space-x-2">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                </svg>
-                <span class="banner-text-small">Visitas: <span id="visit-counter" class="font-bold visit-counter-number">--</span></span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                <span class="banner-text-small">Visitas: <span id="visit-counter" class="font-bold">--</span></span>
             </div>
         </div>
     </div>
 
     <!-- Menú desplegable para móvil -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
-         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
-         <div class="dropdown-menu-content">
-             <div class="has-submenu">
-                 <button class="submenu-parent-btn">Trámites<svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
-                 <div class="submenu">
-                     <button onclick="handleDirectiva()">Directiva</button>
-                     <button onclick="handleCredenciales()">Credenciales</button>
-                 </div>
-             </div>
-             <div class="has-submenu">
-                 <button class="submenu-parent-btn">Documentos<svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
-                 <div class="submenu">
-                     <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
-                 </div>
-             </div>
-             <button onclick="handleCerofilas()">Cerofilas</button>
+        <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
+        <div class="dropdown-menu-content">
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Leyes y Normativa <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">Constitución</button><button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">Ley 21.659</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Componentes <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">Vigilante Privado</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Doc. Editables <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Modelos Solicitud <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">Pers. Natural</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">Funcionamiento</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="openNewLink('https://d6.short.gy/Cap')">Empresas</button></div>
+            </div>
+            <div class="has-submenu">
+                <button class="submenu-parent-btn">Credenciales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <div class="submenu"><button onclick="handleCredenciales()">Empresa</button></div>
+            </div>
+            <button onclick="handleCerofilas()">Cerofilas</button>
+            <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
+            <button onclick="handleDirectiva()">Directiva</button>
+            <button onclick="handleValores()">Valores</button>
+            <button onclick="handleValorPlan()">Valor Plan</button>
+            <button onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
          </div>
     </div>
-    <div id="mobile-menu-overlay" class="hidden"></div>
+    <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-[1199]"></div>
     
-    <!-- Contenido principal -->
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
         <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
             <img src="assets/images/logo-os10.webp" alt="OS10 Logo" class="h-full" loading="lazy" width="60" height="60">
@@ -284,64 +175,164 @@
         <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showHomepage()">
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path></svg>
         </button>
-        <!-- El resto del contenido de las secciones (main-section, credenciales-section) no cambia -->
-         <section id="main-section" class="main-content" style="display: none;">
+        <section id="main-section" class="main-content" style="display: none;">
             <header class="text-center pt-8">
-                <div class="flex items-center justify-center space-x-2">
-                    <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
-                </div>
+                <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
                 <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
             </header>
-            
             <main class="space-y-4">
                 <section class="section-card border-blue-500 bg-blue-100/80">
-                    <h3 class="font-bold text-blue-800">1&nbsp;- Presentar Directiva DD.FF.</h3>
+                    <h3 class="font-bold text-blue-800">1 Presentar Directiva DD.FF.</h3>
                     <ul class="list-disc pl-5 text-sm text-gray-700">
-                        <li>&nbsp;Vigencia 03 años en instalación.</li>
-                        <li>&nbsp;Presentar con 15 días hábiles de anticipación.</li>
-                        <li>
-                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
-                            <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261</a>,
-                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
-                       </li>
+                        <li>Vigencia 03 años en instalación.</li>
+                        <li>Presentar con 15 días hábiles de anticipación.</li>
+                        <li><a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>, <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261</a>, <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.</li>
                    </ul>
                 </section>
-                
                 <section class="section-card border-green-500 bg-green-100/80">
-                    <h3 class="font-bold text-green-800">2&nbsp;- Documentación a presentar.</h3>
+                    <h3 class="font-bold text-green-800">2 Documentación</h3>
                     <ul class="space-y-4 text-sm text-gray-700">
-                        <li>
-                            <p> ➢&nbsp;&nbsp;&nbsp;Dos Solicitudes Simple o carta conductora.</p>
-                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
-                        </li>
-                        <li>
-                            <p>➢&nbsp;&nbsp;&nbsp;Una copia DD.FF. completa.</p>
-                            <a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Editable</a>
-                        </li>
-                        <li>
-                            <p>➢&nbsp;&nbsp;&nbsp;Requisitos según Tipo:<br> 
-                            <span class="mover-derecha">1&nbsp;.- Instalación.</span><br>
-                            <span class="mover-derecha">2.- Partidos de futbol Profesional.</span><br>
-                            <span class="mover-derecha">3.- Eventos masivos.</span></p>
-                            <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
-                        </li>
+                        <li><p>02 Solicitudes Simple.</p><a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a></li>
+                        <li><p>01 copia DD.FF. completa.</p><a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Editable</a></li>
+                        <li><p>Requisitos según tipo.</p><a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a></li>
+                        <li><p>Uniforme Decreto 32/2024.</p><a href="https://dal5.short.gy/0u" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a></li>
+                        <li><p>Análisis de Vulnerabilidades.</p><a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a></li>
+                        <li><p>Solicitud Uniforme Distinto.</p><a href="https://d6.short.gy/G8" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Editable</a></li>
+                    </ul>
+                </section>
+                <section class="section-card border-red-500 bg-red-100/80">
+                    <h3 class="font-bold text-red-800">3 Todo escaneado en Digital.</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li><p>Escanear en 01 archivo PDF.</p><a href="https://dal5.short.gy/I" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a></li>
+                    </ul>
+                </section>
+                <section class="section-card border-yellow-500 bg-yellow-100/80">
+                    <h3 class="font-bold text-yellow-800">4 Tramitar Credenciales</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li><p>Resol. 1480 (10.04.2025).</p><a href="https://d6.short.gy/dsds" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Download Documents">Download</a></li>
+                        <li><p>Tramitar credenciales.</p><button onclick="showCredenciales()" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" id="tramitarCredencialesBtn" title="Process Credentials">Process</button></li>
                     </ul>
                 </section>
             </main>
+            <footer class="relative mt-6 border-t border-gray-200 pt-4">
+                <div class="text-center text-sm text-gray-600 leading-tight pr-16"><span>Haga clic para descargar.</span><br><span>©2025 - Daniel Figueroa Ch.</span><br><span>Ingeniero en Informática.</span></div>
+                <img src="assets/images/qr.webp" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy" width="56" height="56">
+            </footer>
         </section>
         <section id="credenciales-section" class="credenciales-section"></section>
     </div>
 
-    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden"></section>
+    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <div class="relative z-10 -mt-2 md:-mt-24"><div class="mb-0"><h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1><p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p></div></div>
+        <div class="relative z-10 mt-40 md:mt-56"><div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 justify-center items-center"><button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Directivas</button><button onclick="showCredenciales()" class="homepage-btn bg-[#ffb700]/80 hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Credenciales</button></div></div>
+    </section>
 
     <div id="homepage-content-wrapper">
-        <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm"></section>
-        <section id="nuestra-labor" class="py-16 md:py-24 bg-white"></section>
+        <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-2">
+                        <a href="https://www.zosepcar.cl/OS10.php" target="_blank"><img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-10 md:h-12 md:w-12" loading="lazy"></a>
+                        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Trámites Principales</h2>
+                    </div>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div onclick="openNewLink('https://dal5.short.gy/CFil')" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-green-500/20 text-green-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Certificados O.S.10 Online - Cerofila</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Certificado para Guardias de Seguridad, Conserjes y Vigilantes Privados. (Certificados componentes de seguridad privada).</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                    <div onclick="showDirectiva()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Directivas de Funcionamiento</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                    <div onclick="showCredenciales()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-500/20 text-yellow-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path></svg></div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Credenciales</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Encuentra todos los formularios y requisitos para la acreditación de personal.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="nuestra-labor" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nuestra Labor</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Comprometidos con la fiscalización y el control de la seguridad privada en la región.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="elegant-card">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-gray-900">Misión</h4>
+                            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 text-justify">El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada en el territorio de la Región de Coquimbo, en conformidad con las disposiciones legales vigentes que se encomienda a Carabineros de Chile. Nuestra responsabilidad abarca la autorización, capacitación, certificación y acreditación de los actores del sistema de seguridad privada, así como la aprobación de estudios de seguridad, planes de seguridad, medidas de seguridad y directivas de funcionamiento, con el objetivo fundamental de contribuir eficazmente a la seguridad pública mediante la prevención de hechos delictuales y la protección de personas y bienes.</p>
+                        </div>
+                    </div>
+                    <div class="elegant-card">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-gray-900">Visión</h4>
+                            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 text-justify">Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada a nivel nacional, ser reconocidos por nuestro profesionalismo, eficiencia y compromiso con la legalidad. Aspiramos a ser un referente técnico que, mediante una estructura organizacional sólida, procesos estandarizados y el uso de inteligencia artificial avanzada, brinde atención rápida y de calidad en materias de seguridad privada, promoviendo el desarrollo de un sistema íntegro y competente que contribuya significativamente al fortalecimiento de la seguridad pública en la Región de Coquimbo y sirva como modelo tecnológico e innovador para otras oficinas similares a nivel nacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <footer id="main-footer" class="bg-[#146314] backdrop-blur-sm text-gray-300"></footer>
+    <footer id="main-footer" class="bg-[#146314] backdrop-blur-sm text-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div><h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3><p class="mt-2 text-sm">Prefectura de Coquimbo.</p></div>
+                <div><h3 class="text-lg font-semibold text-white">Contacto</h3><ul class="mt-4 space-y-2 text-sm"><li><a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a></li><li><a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a></li></ul></div>
+                <div><h3 class="text-lg font-semibold text-white">Dirección</h3><p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, región de Coquimbo.</p></div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
+                <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. - Ingeniero en Informática</p>
+            </div>
+        </div>
+    </footer>
     
-    <div id="chat-widget-container"></div>
+    <div id="chat-widget-container">
+        <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
+            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.webp" alt="Bot Icon" class="h-full w-full object-contain" width="40" height="40" loading="lazy"></div>
+                    <div><h1 class="text-base font-bold">Asistente O.S.10</h1><p class="text-xs text-gray-500">O.S.10 Coquimbo.👍✅</p></div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <select id="voiceSelector" class="voice-selector text-xs"><option value="Diego">Diego</option><option value="Antoni">Antoni</option><option value="Josh">Josh</option><option value="Adam">Adam</option><option value="Alejandro" selected>Alejandro</option></select>
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="Leer último mensaje"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg></button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                </div>
+            </header>
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto"></main>
+            <footer class="p-3 border-t border-green-500/30">
+                <div class="mb-2 text-xs text-center text-gray-500"><span>Alt+V para micrófono</span></div>
+                <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
+                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-lectura"><svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg><svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"></path></svg></button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="Hablar"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="23"></line><line x1="8" x2="16" y1="23" y2="23"></line></svg></button>
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+                </div>
+            </footer>
+        </div>
+        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
+            <span id="chatbot-tooltip" class="absolute hidden bg-white text-gray-800 text-sm font-bold px-3 py-2 rounded-lg shadow-lg">Abrir Chatbot</span>
+            <img src="assets/images/poli.webp" alt="Chatbot Icon" class="h-full w-full object-contain" width="80" height="80" loading="lazy">
+        </button>
+    </div>
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
