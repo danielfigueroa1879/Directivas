@@ -95,10 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const parent = btn.closest('.has-submenu');
-            // Cierra otros submenús abiertos en el mismo nivel
             const siblings = [...parent.parentElement.children].filter(child => child !== parent && child.classList.contains('has-submenu'));
             siblings.forEach(sibling => sibling.classList.remove('submenu-open'));
-            // Abre o cierra el actual
             parent.classList.toggle('submenu-open');
         });
     });
@@ -125,7 +123,7 @@ window.addEventListener('appinstalled', (e) => {
     bannerShown = false;
 });
 
-// Handlers de navegación de secciones (Hacemos que sean globales)
+// Handlers de navegación (globales)
 window.openNewLink = function(url) {
     window.open(url, '_blank');
     const mobileDropdown = document.getElementById('mobile-dropdown');
@@ -136,19 +134,20 @@ window.openNewLink = function(url) {
         mobileMenuOverlay.classList.add('hidden');
     }
 };
+window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
+window.handleDirectiva = function() { showDirectiva(); closeMobileMenu(); }
+window.handleCredenciales = function() { showCredenciales(); closeMobileMenu(); }
+window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
+window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
+window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
+window.handleBuscarCurso = function(url) { openNewLink(url); }
 
-window.handleCerofilas = function() { window.openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); }
-window.handleCredenciales = function() { showCredenciales(); }
-window.handleCredencialIndependiente = function() {
-    const link = document.querySelector('.indep-btn');
-    if (link) window.openNewLink(link.href);
+function closeMobileMenu() {
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    if (mobileDropdown && mobileMenuOverlay && mobileDropdown.classList.contains('show')) {
+        mobileDropdown.classList.remove('show');
+        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+        mobileMenuOverlay.classList.add('hidden');
+    }
 }
-window.handleValores = function() {
-    const link = document.getElementById('valoresImageLink');
-    if (link) window.openNewLink(link.href);
-}
-window.handleValorPlan = function() { window.openNewLink('https://os10.short.gy/Pl4n'); }
-window.handleCursoFormacion = function() { window.openNewLink('https://dal5.short.gy/Form'); }
-window.handleBuscarCurso = function(url) { window.openNewLink(url); }
-
