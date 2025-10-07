@@ -60,43 +60,49 @@ async function installPWA() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MANEJO DEL MENÚ ---
+    // --- MANEJO DEL MENÚ MÓVIL ---
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
+    const toggleMobileMenu = () => {
+        const isHidden = mobileDropdown.classList.contains('hidden');
+        if (isHidden) {
+            mobileDropdown.classList.remove('hidden');
+            setTimeout(() => mobileDropdown.classList.add('show'), 10);
+            mobileMenuOverlay.classList.remove('hidden');
+        } else {
+            mobileDropdown.classList.remove('show');
+            setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
+            mobileMenuOverlay.classList.add('hidden');
+        }
+    };
+
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isHidden = mobileDropdown.classList.contains('hidden');
-            if (isHidden) {
-                mobileDropdown.classList.remove('hidden');
-                setTimeout(() => mobileDropdown.classList.add('show'), 10);
-                mobileMenuOverlay.classList.remove('hidden');
-            } else {
-                mobileDropdown.classList.remove('show');
-                setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-                mobileMenuOverlay.classList.add('hidden');
-            }
+            toggleMobileMenu();
         });
     }
 
     if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', () => {
-            mobileDropdown.classList.remove('show');
-            setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-            mobileMenuOverlay.classList.add('hidden');
-        });
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
     }
-
-    const submenuParentBtns = document.querySelectorAll('.submenu-parent-btn');
+    
+    // Lógica para submenús en el menú móvil
+    const submenuParentBtns = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
     submenuParentBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const parent = btn.closest('.has-submenu');
+            // Cierra otros submenús abiertos en el mismo nivel
+            const siblings = [...parent.parentElement.children].filter(child => child !== parent && child.classList.contains('has-submenu'));
+            siblings.forEach(sibling => sibling.classList.remove('submenu-open'));
+            // Abre o cierra el actual
             parent.classList.toggle('submenu-open');
         });
     });
+
 
     // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
@@ -124,7 +130,7 @@ window.openNewLink = function(url) {
     window.open(url, '_blank');
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileDropdown && mobileMenuOverlay) {
+    if (mobileDropdown && mobileMenuOverlay && mobileDropdown.classList.contains('show')) {
         mobileDropdown.classList.remove('show');
         setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         mobileMenuOverlay.classList.add('hidden');
@@ -145,3 +151,4 @@ window.handleValores = function() {
 window.handleValorPlan = function() { window.openNewLink('https://os10.short.gy/Pl4n'); }
 window.handleCursoFormacion = function() { window.openNewLink('https://dal5.short.gy/Form'); }
 window.handleBuscarCurso = function(url) { window.openNewLink(url); }
+
