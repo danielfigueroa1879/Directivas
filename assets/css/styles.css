@@ -351,17 +351,18 @@ body.homepage {
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    position: absolute;
-    left: 1rem; /* Alineado cerca del logo */
-    top: 3.5rem; /* Un poco más cerca del banner */
+    position: fixed; /* Se mantiene fijo respecto a la ventana */
+    /* Calculamos la posición izquierda para que se alinee con el contenido centrado */
+    left: calc(50% - 400px); /* 50% del ancho de la ventana - la mitad del max-width del banner */
+    top: 4rem; /* Justo debajo del banner */
     width: 380px; /* Ancho aumentado */
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateX(-30px) scale(0.95); /* Inicia desde la izquierda y más pequeño */
+    transform: translateX(0) scale(0.95); /* Inicia un poco más pequeño */
     opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Animación más suave */
     pointer-events: none;
-    transform-origin: top left; /* El punto de anclaje de la animación es la esquina superior izquierda */
+    transform-origin: top left;
   }
 
   .mobile-dropdown.show {
