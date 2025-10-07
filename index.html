@@ -34,7 +34,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=13">
+    <link rel="stylesheet" href="assets/css/styles.css?v=15">
 </head>
 <body class="homepage background-transition">
     
@@ -61,7 +61,7 @@
             <nav id="desktop-menu" class="hidden md:flex items-center justify-start flex-grow space-x-1 lg:space-x-2">
                 <div class="relative group">
                     <button class="menu-item">Leyes y Normativa<svg class="w-4 h-4 ml-1 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg></button>
-                    <div class="desktop-dropdown">
+                    <div class="desktop-dropdown leyes-compactas-desktop">
                         <div class="desktop-dropdown-title">Leyes</div>
                         <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
                         <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961 Org. Const.</button>
@@ -315,7 +315,95 @@
                 <img src="assets/images/qr.webp" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy" width="56" height="56">
             </footer>
         </section>
-        <section id="credenciales-section" class="credenciales-section"></section>
+
+        <!-- SECCIÓN DE CREDENCIALES RESTAURADA -->
+        <section id="credenciales-section" class="credenciales-section">
+             <header class="credenciales-title-container">
+                <h1 class="credenciales-main-title">CREDENCIAL</h1>
+                <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
+            </header>
+            <main class="content-container">
+                <section class="main-section">
+                    <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+                    <div class="space-y-8">
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Documentos requeridos:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                                <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">Descargar</a>
+                                <li>Fotocopia de cédula de identidad (ambas caras).</li>
+                                <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
+                                <li>Certificado de Antecedentes para Fines Especiales.</li>
+                            </ul>
+                        </div>
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Fotografía digital:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                                <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                                <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                                <li>Fotografia almacenada en un Pendrive.</li>
+                            </ul>
+                            <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
+                            <div class="flex flex-col space-y-3 mt-4">
+                                <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                                <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">1 Convert. 300 DPI</a>
+                                <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">2 Convert. 300 DPI</a>
+                            </div>
+                        </div>
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">Formato Excel:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                                <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                            </ul>
+                            <div class="credenciales-table-container">
+                                <table class="credenciales-responsive-table">
+                                    <thead><tr><th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th></tr></thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
+                                            <td><select class="credenciales-table-select"><option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option></select></td>
+                                            <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
+                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                            <td></td><td>camilaleyton@gmail.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
+                                            <td><select class="credenciales-table-select"><option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option></select></td>
+                                            <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
+                                            <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                            <td></td><td>danielvega@gmail.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                            <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
+                            <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                        </div>
+                        <div class="requirement-block">
+                            <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
+                            <ul class="list-disc pl-5">
+                                <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
+                                <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                                <li>R.U.T.: 61.944.800-6</li>
+                                <li>Teléfono OS.10.: +562512651024</li>
+                            </ul>
+                            <div class="flex flex-col sm:flex-row sm:items-end justify-start sm:justify-between mt-4 gap-4">
+                                <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink"><img src="assets/images/valores.webp" alt="Payment Values" class="credenciales-valores-example" loading="lazy" width="220" height="100"></a>
+                                <a href="https://dal5.short.gy/Câˆš" target="_blank"><img src="assets/images/qrcred.webp" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy" width="80" height="80"></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer class="footer-text text-center mt-6 text-sm text-gray-600">
+              <span>Haga clic en los botones para descargar.</span><br>
+              <span>©2025 - Daniel Figueroa Ch.</span><br>
+              <span>Ingeniero en Informática.</span>
+            </footer>
+        </section>
     </div>
 
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
@@ -472,3 +560,4 @@
     </script>
 </body>
 </html>
+
