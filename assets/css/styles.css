@@ -344,26 +344,26 @@ body.homepage {
 @media (min-width: 1024px) {
   #banner > div {
     justify-content: center !important; /* Centra los grupos */
-    gap: 28rem; /* Espacio ajustado entre los grupos */
+    gap: 20rem; /* Espacio reducido para acercar los elementos */
   }
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
     position: absolute;
-    left: 1rem; /* Posicionado a la izquierda, cerca del botón de menú */
+    left: 50%; /* Posicionado relativo al centro */
     top: 4rem; /* Debajo del banner */
     width: 320px;
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateY(-15px); /* Inicia un poco arriba */
+    transform: translateX(-80%) translateY(-15px); /* Desplazado a la izquierda del centro */
     opacity: 0;
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
     pointer-events: none;
-    transform-origin: top left; /* El anclaje de la animación es la esquina superior izquierda */
+    transform-origin: top center; /* Anclaje de animación al centro superior */
   }
 
   .mobile-dropdown.show {
-      transform: translateY(0); /* Termina en su posición Y final */
+      transform: translateX(-80%); /* Mantiene la posición final al mostrarse */
       opacity: 1;
       pointer-events: auto;
   }
