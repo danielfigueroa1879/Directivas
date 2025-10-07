@@ -408,9 +408,9 @@ body.homepage {
 /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
 .homepage-section {
     display: none;
-    height: 65vh; 
-    max-height: 600px;
-    min-height: 400px;
+    height: 75vh; 
+    max-height: 700px;
+    min-height: 450px;
 }
 .homepage-title-container {
     position: relative;
