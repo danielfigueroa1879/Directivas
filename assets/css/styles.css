@@ -121,7 +121,6 @@ body.homepage {
     margin-top: 0.4rem;
     border-top: 1px solid #e5e7eb;
 }
-
 .desktop-dropdown .desktop-dropdown-title:first-of-type {
     margin-top: 0;
     border-top: none;
@@ -213,7 +212,8 @@ body.homepage {
     transition: max-height 0.4s ease-out;
 }
 
-.mobile-dropdown .submenu.leyes-compactas button {
+.mobile-dropdown .submenu.leyes-compactas button,
+.mobile-dropdown .submenu.submenu-compact button {
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
     padding-left: 2rem;
@@ -226,13 +226,6 @@ body.homepage {
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
-
-.mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    font-size: 0.8rem;
-}
-
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
@@ -263,3 +256,7 @@ body.homepage {
     /* Estilos existentes se mantienen */
 }
 
+.elegant-card:hover {
+    border-color: transparent;
+    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
+}
