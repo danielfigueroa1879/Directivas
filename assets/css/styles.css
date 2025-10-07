@@ -344,6 +344,8 @@ body.homepage {
 @media (min-width: 1024px) {
   #banner > div {
     justify-content: center !important; /* Centra los grupos */
-    gap: 8rem; /* Aumenta el espacio entre los grupos para separarlos del centro */
+    gap: 24rem; /* Aumenta el espacio entre los grupos para separarlos del centro */
   }
 }
+
+
