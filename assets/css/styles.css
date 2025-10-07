@@ -344,28 +344,29 @@ body.homepage {
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: center !important; /* Centra los grupos */
-    gap: 20rem; /* Espacio reducido para acercar los elementos */
+    justify-content: space-between !important; /* Asegura que los elementos se vayan a los extremos */
+    max-width: 1100px; /* Controla la separación máxima */
+    margin: 0 auto;
   }
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    position: fixed; /* Cambiado a fixed para que se base en la ventana */
-    left: 0; /* Anclado a la izquierda */
+    position: fixed; /* Se mantiene fijo para estar relativo a la ventana */
+    left: 1rem; /* Se alinea con el padding del contenedor del banner */
     top: 4rem; /* Debajo del banner */
     width: 320px;
     height: auto; /* Altura automática */
     max-height: calc(100vh - 5rem);
-    transform: translateX(-105%); /* Inicia fuera de la pantalla a la izquierda */
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición más suave */
+    transform-origin: top left; /* La animación se origina desde la esquina superior izquierda */
+    transform: scale(0.95) translateY(-10px); /* Estado inicial: ligeramente más pequeño y arriba */
+    opacity: 0; /* Estado inicial: invisible */
+    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Transición sutil */
     pointer-events: none;
-    /* Los demás estilos como fondo, sombra, etc., se heredan */
   }
 
   .mobile-dropdown.show {
-      transform: translateX(1rem); /* Lo desliza a la vista con un margen */
+      transform: scale(1) translateY(0); /* Estado final: tamaño normal en su posición */
+      opacity: 1; /* Se hace visible */
       pointer-events: auto;
   }
-  
-  /* Se elimina la regla para #mobile-menu-overlay para que el overlay funcione en PC */
 }
