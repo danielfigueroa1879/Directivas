@@ -113,9 +113,9 @@ body.homepage {
 /* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
 @media (min-width: 1024px) {
     #chat-widget-container {
-        /* Se elimina 'right' y se usan 'left' y 'transform' para centrar con un ligero desplazamiento */
+        /* Se elimina 'right' y se usan 'left' y 'transform' para centrar */
         left: 50%;
-        transform: translateX(-40%); /* Ajusta este valor para moverlo más a la derecha o izquierda del centro */
+        transform: translateX(-50%); /* Corregido a -50% para un centrado perfecto */
         bottom: 7.9rem;
     }
 
