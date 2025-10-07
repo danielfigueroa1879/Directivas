@@ -183,3 +183,4 @@ function closeMobileMenu() {
         mobileMenuOverlay.classList.add('hidden');
     }
 }
+
