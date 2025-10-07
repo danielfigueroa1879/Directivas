@@ -208,7 +208,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0, 0, 0, 0.05); /* Tono gris un poco más sutil */
+    background-color: rgba(0, 0, 0, 0.06); /* Tono gris un poco más visible y sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -357,15 +357,13 @@ body.homepage {
     height: auto; /* Altura automática */
     max-height: calc(100vh - 5rem);
     transform: translateX(-105%); /* Inicia fuera de la pantalla a la izquierda */
-    opacity: 1; /* Para que la transición sea visible */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición más suave */
     pointer-events: none;
     /* Los demás estilos como fondo, sombra, etc., se heredan */
   }
 
   .mobile-dropdown.show {
       transform: translateX(1rem); /* Lo desliza a la vista con un margen */
-      opacity: 1;
       pointer-events: auto;
   }
   
