@@ -115,7 +115,7 @@ body.homepage {
     #chat-widget-container {
         /* Se elimina 'right' y se usan 'left' y 'transform' para centrar */
         left: 50%;
-        transform: translateX(-55%); /* Corregido a -50% para un centrado perfecto */
+        transform: translateX(-60%); /* Corregido a -50% para un centrado perfecto */
         bottom: 7.9rem;
     }
 
