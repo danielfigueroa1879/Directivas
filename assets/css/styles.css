@@ -346,8 +346,8 @@ body.homepage {
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
     position: absolute; /* Cambiado a absoluto para que sea relativo al banner */
-    left: 0; /* Se alinea a la izquierda del contenedor del banner */
-    top: 4rem; /* Debajo del banner */
+    left: 40; /* Se alinea a la izquierda del contenedor del banner */
+    top: 8rem; /* Debajo del banner */
     transform: translateX(-60px); /* Inicia ligeramente a la izquierda */
     opacity: 0;
     transition: transform 0.25s ease-out, opacity 0.2s ease-out;
