@@ -1,24 +1,30 @@
 // Background rotation for homepage
 let backgroundImages = [
-    'assets/images/foto (1).jpeg',
-    'assets/images/foto (2).jpeg',
-    'assets/images/foto (3).jpeg',
-    'assets/images/foto (4).jpeg',
-    'assets/images/foto (5).jpeg',
-    'assets/images/foto (6).jpeg',
-    'assets/images/foto (7).jpeg',
-    'assets/images/foto (8).jpeg',
-    'assets/images/foto (9).jpeg',
-    'assets/images/foto (10).jpeg',
-    'assets/images/foto (11).jpeg',
-    'assets/images/foto (12).jpeg',
-    'assets/images/foto (13).jpeg',
-    'assets/images/foto (14).jpeg',
-    'assets/images/foto (15).jpeg',
-    'assets/images/foto (16).jpeg',
-    'assets/images/foto (17).jpeg',
-    'assets/images/foto (18).jpeg',
-    'assets/images/foto (19).jpeg'
+    'assets/images/foto (1).webp',
+    'assets/images/foto (2).webp',
+    'assets/images/foto (3).webp',
+    'assets/images/foto (4).webp',
+    'assets/images/foto (5).webp',
+    'assets/images/foto (6).webp',
+    'assets/images/foto (7).webp',
+    'assets/images/foto (8).webp',
+    'assets/images/foto (9).webp',
+    'assets/images/foto (10).webp',
+    'assets/images/foto (11).webp',
+    'assets/images/foto (12).webp',
+    'assets/images/foto (13).webp',
+    'assets/images/foto (14).webp',
+    'assets/images/foto (15).webp',
+    'assets/images/foto (16).webp',
+    'assets/images/foto (17).webp',
+    'assets/images/foto (18).webp',
+    'assets/images/foto (19).webp',
+    'assets/images/foto (20).webp',
+    'assets/images/foto (21).webp',
+    'assets/images/foto (223).webp', /* Se reemplaza foto (22).webp por una existente */
+    'assets/images/foto (224).webp', /* Se reemplaza foto (23).webp por una existente */
+    'assets/images/foto (226).webp', /* Se reemplaza foto (24).webp por una existente */
+    'assets/images/foto (2333).webp' /* Se reemplaza foto (25).webp por una existente */
 ];
 
 let currentImageIndex = 0;
