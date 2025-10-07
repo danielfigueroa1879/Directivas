@@ -339,7 +339,7 @@ body.homepage {
   #banner > div {
     position: relative;
     justify-content: space-between !important;
-    max-width: 1100px;
+    max-width: 950px; /* Reducido para acercar los elementos al centro */
     margin: 0 auto;
   }
 
@@ -362,3 +362,5 @@ body.homepage {
     background-color: transparent; /* Overlay transparente en PC */
   }
 }
+
+
