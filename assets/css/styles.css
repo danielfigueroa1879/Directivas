@@ -423,7 +423,7 @@ body.homepage {
 }
 @media (min-width: 768px) {
     .homepage-title-container {
-        margin-top: -14rem; /* Sube el título aún más en PC y tablet */
+        margin-top: -16rem; /* Sube el título aún más en PC y tablet */
     }
 }
 
