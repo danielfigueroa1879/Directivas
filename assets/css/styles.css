@@ -158,7 +158,7 @@ body.homepage {
     backdrop-filter: blur(20px);
     box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
     transform: translateX(-105%); /* Inicia un poco más a la izquierda */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
     padding: 1rem 0;
@@ -208,7 +208,7 @@ body.homepage {
 .mobile-dropdown .submenu {
     display: none;
     padding-left: 1rem;
-    background-color: rgba(0, 0, 0, 0.06); /* Tono gris un poco más visible y sutil */
+    background-color: rgba(0, 0, 0, 0.04); /* Tono gris más sutil */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -340,33 +340,35 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
-
 /* Ajuste para centrar elementos del banner en PC */
 @media (min-width: 1024px) {
   #banner > div {
-    justify-content: space-between !important; /* Asegura que los elementos se vayan a los extremos */
-    max-width: 1100px; /* Controla la separación máxima */
-    margin: 0 auto;
+    justify-content: center !important; /* Centra los grupos */
+    gap: 28rem; /* Espacio ajustado entre los grupos */
   }
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
-    position: fixed; /* Se mantiene fijo para estar relativo a la ventana */
-    left: 1rem; /* Se alinea con el padding del contenedor del banner */
+    position: absolute;
+    left: 1rem; /* Posicionado a la izquierda, cerca del botón de menú */
     top: 4rem; /* Debajo del banner */
     width: 320px;
-    height: auto; /* Altura automática */
+    height: auto;
     max-height: calc(100vh - 5rem);
-    transform-origin: top left; /* La animación se origina desde la esquina superior izquierda */
-    transform: scale(0.95) translateY(-10px); /* Estado inicial: ligeramente más pequeño y arriba */
-    opacity: 0; /* Estado inicial: invisible */
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Transición sutil */
+    transform: translateY(-15px); /* Inicia un poco arriba */
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s ease-out;
     pointer-events: none;
+    transform-origin: top left; /* El anclaje de la animación es la esquina superior izquierda */
   }
 
   .mobile-dropdown.show {
-      transform: scale(1) translateY(0); /* Estado final: tamaño normal en su posición */
-      opacity: 1; /* Se hace visible */
+      transform: translateY(0); /* Termina en su posición Y final */
+      opacity: 1;
       pointer-events: auto;
+  }
+  
+  #mobile-menu-overlay {
+      display: none !important; /* No se necesita overlay en PC */
   }
 }
