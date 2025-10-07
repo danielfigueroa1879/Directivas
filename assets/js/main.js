@@ -126,13 +126,7 @@ window.addEventListener('appinstalled', (e) => {
 // Handlers de navegación (globales)
 window.openNewLink = function(url) {
     window.open(url, '_blank');
-    const mobileDropdown = document.getElementById('mobile-dropdown');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    if (mobileDropdown && mobileMenuOverlay && mobileDropdown.classList.contains('show')) {
-        mobileDropdown.classList.remove('show');
-        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
-        mobileMenuOverlay.classList.add('hidden');
-    }
+    closeMobileMenu();
 };
 window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
 window.handleDirectiva = function() { showDirectiva(); closeMobileMenu(); }
