@@ -1,28 +1,54 @@
 // sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.4'; // Increment version for updates
+const CACHE_NAME = 'directivas-os10-cache-v1.5'; // Increment version for updates
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
   '/',
   './index.html',
   './manifest.json',
-  './assets/css/styles.css', // CORREGIDO: era style.css
+  './assets/css/styles.css',
   './assets/css/credenciales.css',
   './assets/js/main.js',
-  './assets/js/inicio.js', // AGREGADO: archivo que existe
+  './assets/js/inicio.js',
   './assets/js/credenciales.js',
-  './assets/js/chatbot.js', // AGREGADO: archivo que existe
-  './rules/chatbot-rules.js', // AGREGADO: archivo que existe
+  './assets/js/chatbot.js',
+  './rules/chatbot-rules.js',
+  // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
   './assets/images/logo-os10.png',
-  './assets/images/101.jpg',
-  './assets/images/qr.png',
-  './assets/images/qrcred.png',
-  './assets/images/foto.jpg',
-  './assets/images/valores.png',
-  './assets/images/poli.png', // AGREGADO: imagen del chatbot
-  './assets/images/favicon.ico', // AGREGADO
+  './assets/images/poli.png',
+  './assets/images/favicon.ico',
+  // Imágenes críticas y del carrusel (versiones WebP)
+  './assets/images/foto (1).webp',
+  './assets/images/foto (2).webp',
+  './assets/images/foto (3).webp',
+  './assets/images/foto (4).webp',
+  './assets/images/foto (5).webp',
+  './assets/images/foto (6).webp',
+  './assets/images/foto (7).webp',
+  './assets/images/foto (8).webp',
+  './assets/images/foto (9).webp',
+  './assets/images/foto (10).webp',
+  './assets/images/foto (11).webp',
+  './assets/images/foto (12).webp',
+  './assets/images/foto (13).webp',
+  './assets/images/foto (14).webp',
+  './assets/images/foto (15).webp',
+  './assets/images/foto (16).webp',
+  './assets/images/foto (17).webp',
+  './assets/images/foto (18).webp',
+  './assets/images/foto (19).webp',
+  './assets/images/foto (20).webp',
+  './assets/images/foto (21).webp',
+  './assets/images/foto (22).webp',
+  './assets/images/foto (23).webp',
+  './assets/images/foto (24).webp',
+  './assets/images/foto (25).webp',
+  './assets/images/valores.webp',
+  './assets/images/qr.webp',
+  './assets/images/qrcred.webp',
+  './assets/images/foto.webp',
   // Fonts
   'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'
 ];
@@ -91,19 +117,22 @@ self.addEventListener('fetch', (event) => {
       .then((cachedResponse) => {
         // Si el recurso está en la caché, lo devolvemos desde ahí.
         if (cachedResponse) {
-          console.log(`📦 Desde caché: ${event.request.url}`);
+          // No logueamos cada hit de caché para no saturar la consola
+          // console.log(`📦 Desde caché: ${event.request.url}`);
           return cachedResponse;
         }
 
         // Si no está en la caché, vamos a la red.
-        console.log(`🌐 Desde red: ${event.request.url}`);
         return fetch(event.request).then((networkResponse) => {
             // Solo cachear respuestas exitosas
-            if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
-              return caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, networkResponse.clone());
-                return networkResponse;
-              });
+            if (networkResponse && networkResponse.status === 200) {
+              // No clonamos para recursos no 'basic' para evitar errores
+              if (networkResponse.type === 'basic' || event.request.url.startsWith('https://fonts.')) {
+                  return caches.open(CACHE_NAME).then((cache) => {
+                  cache.put(event.request, networkResponse.clone());
+                  return networkResponse;
+                });
+              }
             }
             return networkResponse;
           }
