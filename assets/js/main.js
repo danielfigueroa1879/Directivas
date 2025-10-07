@@ -99,6 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (mobileMenuBtn && mobileDropdown) {
+        // Detener la propagación de clics dentro del menú para evitar que se cierre
+        mobileDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
         // Comportamiento de clic para todos los dispositivos
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -124,32 +129,37 @@ document.addEventListener('DOMContentLoaded', () => {
         const btn = parent.querySelector('.submenu-parent-btn');
         if (!btn) return;
 
+        // Lógica de CLIC para TODOS los dispositivos (Móvil y PC)
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Previene que el menú principal se cierre al interactuar
+            
+            const wasOpen = parent.classList.contains('submenu-open');
+
+            // Cierra otros submenús para un comportamiento limpio
+            document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
+                if (other !== parent) {
+                    other.classList.remove('submenu-open');
+                }
+            });
+            
+            // Abre o cierra el submenú actual
+            parent.classList.toggle('submenu-open');
+        });
+
+        // Lógica de HOVER adicional, solo para ESCRITORIO (PC)
         if (window.innerWidth >= 1024) {
-            // Lógica de hover para escritorio
             let submenuTimeout;
             parent.addEventListener('mouseenter', () => {
                 clearTimeout(submenuTimeout);
-                // Cerrar otros submenús abiertos
-                submenuContainers.forEach(other => {
-                    if (other !== parent) {
-                        other.classList.remove('submenu-open');
-                    }
-                });
-                // Abrir este submenú
+                // Abre el submenú al pasar el mouse por encima
                 parent.classList.add('submenu-open');
             });
+
             parent.addEventListener('mouseleave', () => {
+                // Cierra el submenú al alejar el mouse, con un pequeño retraso
                 submenuTimeout = setTimeout(() => {
                     parent.classList.remove('submenu-open');
-                }, 200); // Retraso para permitir que el cursor entre al submenú
-            });
-        } else {
-            // Lógica de clic para móviles
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const siblings = [...parent.parentElement.children].filter(child => child !== parent && child.classList.contains('has-submenu'));
-                siblings.forEach(sibling => sibling.classList.remove('submenu-open'));
-                parent.classList.toggle('submenu-open');
+                }, 300);
             });
         }
     });
