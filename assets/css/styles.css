@@ -130,36 +130,31 @@ body.homepage {
 }
 
 /* ===== MENÚ DESPLEGABLE MÓVIL Y ESCRITORIO ===== */
-
-/* --- Estilos base para el menú desplegable (Móvil primero) --- */
 .mobile-dropdown {
     position: fixed;
-    top: 4rem; /* Debajo del banner */
-    right: 0; /* Anclado a la derecha */
+    top: 4rem;
+    right: 0;
     width: 320px; 
     height: calc(100vh - 4rem);
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1); /* Sombra a la izquierda */
-    transform: translateX(105%); /* Oculto fuera de la pantalla a la derecha */
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(105%);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
     border-left: 1px solid rgba(0,0,0,0.05);
     opacity: 0;
     pointer-events: none;
-    border-radius: 0; /* Cuadrado */
 }
 
-/* Estado visible del menú */
 .mobile-dropdown.show {
-    transform: translateX(0); /* Se desliza a la vista desde la derecha */
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Overlay para el fondo en móvil */
 #mobile-menu-overlay {
     position: fixed;
     inset: 0;
@@ -169,73 +164,41 @@ body.homepage {
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
 }
-#mobile-menu-overlay.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
 #mobile-menu-overlay:not(.hidden) {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* --- Estilos para el menú en PC (más de 1024px) --- */
 @media (min-width: 1024px) {
-    
     .mobile-dropdown {
         position: absolute; 
-        left: auto;
-        right: 0;
-        top: calc(100% + 0.5rem); /* Posición justo debajo del contenedor del botón */
+        top: calc(100% + 0.5rem);
         width: 380px;
         height: auto;
         max-height: calc(100vh - 5rem);
-        border-radius: 0; /* Cuadrado */
         transform-origin: top right;
-        transform: translateX(30px) scale(0.98); /* Inicia desde la derecha */
-        opacity: 0;
-        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        transform: translateX(30px) scale(0.98);
     }
-
     .mobile-dropdown.show {
-        transform: translateX(0) scale(1); /* Termina en su posición */
+        transform: translateX(0) scale(1);
     }
-
-    #mobile-menu-overlay {
-        display: none !important;
-    }
-
-    #chat-widget-container {
-        left: 80%; /* Más a la derecha */
-        right: auto;
-        bottom: 5rem; /* Más arriba */
-        transform: translateX(-50%);
-    }
-
-    #chat-toggle-button {
-        width: 90px;
-        height: 90px;
-        animation: floatAnimation 1.9s ease-in-out infinite;
-    }
+    #mobile-menu-overlay { display: none !important; }
 }
 
-/* Botón del submenú con flecha y texto alineado a la izquierda */
+/* Botón del submenú */
 .mobile-dropdown .submenu-parent-btn {
     display: flex;
-    justify-content: flex-start; /* Alinea contenido (flecha y texto) a la izquierda */
+    justify-content: flex-start;
     align-items: center;
-    position: relative;
-    text-align: left; /* Alinea el texto a la izquierda */
+    text-align: left;
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
     font-size: 0.82rem;
 }
 
 .mobile-dropdown .submenu-arrow {
-    margin-right: 0.5rem; /* Espacio entre la flecha y el texto */
-    position: static; /* Quita el posicionamiento absoluto */
-    transform: translateY(0) rotate(0deg); /* Resetea la transformación */
+    margin-right: 0.5rem;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -255,30 +218,36 @@ body.homepage {
 
 .mobile-dropdown .submenu {
     display: none;
-    padding-left: 0;
     background-color: rgba(229, 231, 235, 0.6);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0;
+    margin: 0;
 }
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
-    max-height: 2000px; 
+    max-height: 2000px;
 }
 
-/* Corrección para que cada botón ocupe una fila y esté alineado a la izquierda */
+/* Alineación de la lista numerada */
+.mobile-dropdown .submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el bloque de la lista */
+}
+
 .mobile-dropdown .submenu button,
 .mobile-dropdown .submenu .submenu-title {
     display: block;
-    width: 100%;
-    text-align: left;
-    padding-left: 2.5rem;
-    padding-right: 1.5rem;
+    width: 90%; /* Ancho del bloque de texto */
+    text-align: left; /* Alineación interna a la izquierda */
+    padding-left: 4rem; /* Padding para correr el texto a la derecha */
 }
 
-.mobile-dropdown .submenu.leyes-compactas button,
-.mobile-dropdown .submenu.submenu-compact button {
+.mobile-dropdown .submenu.leyes-compactas button {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
     font-size: 0.78rem;
@@ -291,23 +260,17 @@ body.homepage {
     background-color: rgba(0,0,0,0.06);
 }
 
-/* Botones principales del menú */
 .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: left; /* Alineado a la izquierda */
+    text-align: left;
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
-    color: #374151;
-    transition: background-color 0.2s, color 0.2s;
 }
 
-.mobile-dropdown .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15);
-    color: #15803d;
-}
-
-.mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
+.mobile-dropdown .submenu button:hover,
+.mobile-dropdown .dropdown-menu-content > button:hover, 
+.mobile-dropdown .dropdown-menu-content > a:hover {
     background-color: rgba(59, 130, 246, 0.1);
     color: #1d4ed8;
 }
@@ -318,82 +281,30 @@ body.homepage {
     margin-bottom: 0.5rem;
 }
 .mobile-dropdown .dropdown-menu-header h3 {
-    font-weight: 600;
-    color: #1f2937;
-    font-size: 0.9rem;
-    text-align: left; /* Alineado a la izquierda */
+    text-align: left;
 }
 
-.banner-text-small {
-    font-size: 0.875rem;
-}
-
-.voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center {
+/* Resto de estilos */
+.banner-text-small,
+.voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center,
+#tramites-principales, .homepage-section, .elegant-card, .credenciales-section
+{
     /* Estilos existentes se mantienen */
 }
 
-#tramites-principales {
-    padding-top: 5rem;
-}
-
-@media (min-width: 768px) {
-    #tramites-principales {
-        padding-top: 7rem;
-    }
-}
-
-.homepage-section {
-    display: none;
-    height: 75vh; 
-    max-height: 700px;
-    min-height: 450px;
-}
-
-.background-transition { animation: none; }
 .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
 .text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
-.elegant-card {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-}
-
-.elegant-card:hover {
-    border-color: transparent;
-    box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6);
-}
-
 .homepage-btn { min-width: 250px; padding: 0.75rem 2rem; }
 
 @media (max-width: 640px) {
-   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; background-color: rgba(59, 130, 246, 0.7); color: white; }
-   .homepage-btn.bg-[#ffb700] { background-color: rgba(255, 183, 0, 0.7); color: white; }
+   .homepage-btn { width: 60%; padding: 0.5rem 1.5rem; }
 }
 
-.credenciales-section { display: none; }
-.credenciales-section.active { display: block; }
-.credenciales-title-container { text-align: center; margin-top: 2rem; line-height: 1; }
-.credenciales-main-title, .credenciales-main-subtitle { color: #EAB308; font-weight: bold; display: block; text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4); transition: all 0.3s ease; margin: 0; padding: 0; }
-.credenciales-main-title { font-size: 2.2rem; transform: translateX(-2px); }
-.credenciales-main-subtitle { font-size: 1.6rem; transform: translateX(10px); }
-.credenciales-section-title { color: #F54C38; font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem; }
-.credenciales-download-btn { display: inline-flex; justify-content: center; align-items: center; padding: 8px 24px; margin: 0.5rem 0; width: auto; min-width: 240px; font-size: 1rem; font-weight: bold; color: white; border-radius: 7px; text-align: center; transition: all 0.3s ease; text-decoration: none; }
+.credenciales-main-title, .credenciales-main-subtitle { color: #EAB308; }
+.credenciales-section-title { color: #F54C38; }
 .credenciales-download-btn:hover { transform: translateY(-3px); }
-.credenciales-photo-example, .credenciales-valores-example { max-width: 100%; border-radius: 8px; }
-.credenciales-table-container { overflow-x: auto; margin-top: 1.5rem; margin-bottom: 1.5rem; }
+.credenciales-table-container { overflow-x: auto; }
 .credenciales-responsive-table { width: 100%; border-collapse: collapse; }
-.credenciales-responsive-table th, .credenciales-responsive-table td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95rem; white-space: nowrap; }
-.credenciales-responsive-table th { background-color: #f1f5f9; position: sticky; top: 0; z-index: 10; }
-.credenciales-table-select { min-width: 200px; }
-.credenciales-qr-image { width: 80px; height: auto; }
-#credenciales-arrow-back-btn { position: absolute; top: 1rem; right: 0.5rem; z-index: 20; color: #4B5563; transition: all 0.2s ease; cursor: pointer; padding: 0.5rem; border-radius: 9999px; }
-#credenciales-arrow-back-btn:hover { color: #2563EB; background-color: rgba(0, 0, 0, 0.05); }
-
-@media (max-width: 640px) {
-    .credenciales-main-title { font-size: 1.4rem; }
-    .credenciales-main-subtitle { font-size: 1.0rem; }
-    .credenciales-section-title { font-size: 1.1rem; }
-}
+.credenciales-responsive-table th, .credenciales-responsive-table td { border: 1px solid #ddd; padding: 12px; }
+.credenciales-responsive-table th { background-color: #f1f5f9; }
+#credenciales-arrow-back-btn:hover { background-color: rgba(0, 0, 0, 0.05); }
