@@ -62,7 +62,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center relative">
+            <div class="flex items-center relative" id="menu-container">
                 <button id="mobile-menu-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -436,6 +436,7 @@
     <script>
     // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
     document.addEventListener('DOMContentLoaded', () => {
+        const menuContainer = document.getElementById('menu-container');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileDropdown = document.getElementById('mobile-dropdown');
         const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -450,13 +451,13 @@
         };
 
         const closeMenu = (immediate = false) => {
-            const delay = immediate ? 0 : 300; // Delay for hover-out
+            const delay = immediate ? 0 : 300;
             menuTimeout = setTimeout(() => {
                 mobileDropdown.classList.remove('show');
                 if (window.innerWidth < 1024) {
                     mobileMenuOverlay.classList.add('hidden');
                 }
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(openSubmenu => {
+                document.querySelectorAll('.has-submenu.submenu-open').forEach(openSubmenu => {
                     openSubmenu.classList.remove('submenu-open');
                 });
             }, delay);
@@ -472,19 +473,14 @@
 
         // --- Event Listeners ---
         if (mobileMenuBtn && mobileDropdown) {
-            const menuContainer = mobileMenuBtn.parentElement;
-
             mobileMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleMenu();
             });
 
-            // Hover logic for PC
             if (window.innerWidth >= 1024) {
                 menuContainer.addEventListener('mouseenter', openMenu);
                 menuContainer.addEventListener('mouseleave', () => closeMenu());
-                mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-                mobileDropdown.addEventListener('mouseleave', () => closeMenu());
             }
         }
         
@@ -492,22 +488,19 @@
             mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
         }
         
-        // Close menu when clicking outside of it 
         document.addEventListener('click', (e) => {
              if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                  closeMenu(true);
              }
         });
 
-
-        document.querySelectorAll('#mobile-dropdown .has-submenu .submenu-parent-btn').forEach(btn => {
+        document.querySelectorAll('.submenu-parent-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const parent = btn.closest('.has-submenu');
                 const wasOpen = parent.classList.contains('submenu-open');
                 
-                // This ensures only one submenu is open at a time
-                document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(other => {
+                document.querySelectorAll('.has-submenu').forEach(other => {
                     other.classList.remove('submenu-open');
                 });
 
@@ -632,4 +625,3 @@
     </script>
 </body>
 </html>
-
