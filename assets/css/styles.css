@@ -506,3 +506,13 @@ body.homepage {
       display: none !important; /* No se necesita overlay en PC */
   }
 }
+.banner-text-small {
+    font-size: 0.875rem; /* Reducido a petición del usuario */
+}
+
+/* Ajuste para centrar elementos del banner en PC */
+@media (min-width: 1024px) {
+  #banner > div {
+    max-width: 1152px; /* Ajustado para un balance entre separación y centrado */
+  }
+}
