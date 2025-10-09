@@ -303,8 +303,20 @@ body.homepage {
     color: #1d4ed8; /* Azul oscuro para el texto */
 }
 
-.mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(90deg);
+/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
+
+/* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
+
+/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
+#tramites-arrow, .submenu-arrow {
+    transform: rotate(-360deg);
+    transition: transform 0.3s ease;
+}
+
+/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
+#tramites-menu-btn.panel-active #tramites-arrow,
+.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
+    transform: rotate(2deg);
 }
 
 .mobile-dropdown .submenu {
@@ -386,7 +398,7 @@ body.homepage {
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 0.875rem; /* Aumentado ligeramente de text-xs (14px) */
+    font-size: 0.875rem; /* Reducido a petición del usuario */
 }
 
 /* El resto de los estilos se mantienen */
@@ -412,21 +424,6 @@ body.homepage {
     max-height: 700px;
     min-height: 450px;
 }
-.homepage-title-container {
-    position: relative;
-    z-index: 10;
-}
-@media (max-width: 767px) {
-    .homepage-title-container {
-        margin-top: -6rem; 
-    }
-}
-@media (min-width: 768px) {
-    .homepage-title-container {
-        margin-top: -18rem; /* Sube el título aún más en PC y tablet */
-    }
-}
-
 
 .background-transition { animation: none; }
 .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
@@ -478,7 +475,13 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
-
+/* Ajuste para centrar elementos del banner en PC */
+@media (min-width: 1024px) {
+  #banner > div {
+    justify-content: center !important; /* Centra los grupos */
+    gap: 34rem; /* Espacio ajustado entre los grupos */
+    max-width: 1200px; /* Ancho máximo reducido */
+  }
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
@@ -489,7 +492,7 @@ body.homepage {
     width: 380px; /* Ancho aumentado */
     height: auto;
     max-height: calc(100vh - 5rem);
-    transform: translateX(0) scale(0.95); /* Inicia un poco más pequeño */
+    transform: translateX(-20px) scale(0.98); /* Inicia desde la izquierda y un poco más pequeño */
     opacity: 0;
     transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Animación más suave */
     pointer-events: none;
@@ -504,15 +507,5 @@ body.homepage {
   
   #mobile-menu-overlay {
       display: none !important; /* No se necesita overlay en PC */
-  }
-}
-.banner-text-small {
-    font-size: 0.875rem; /* Reducido a petición del usuario */
-}
-
-/* Ajuste para centrar elementos del banner en PC */
-@media (min-width: 1024px) {
-  #banner > div {
-    max-width: 1152px; /* Ajustado para un balance entre separación y centrado */
   }
 }
