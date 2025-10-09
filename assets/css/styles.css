@@ -180,10 +180,6 @@ body.homepage {
 
 /* --- Estilos para el menú en PC (más de 1024px) --- */
 @media (min-width: 1024px) {
-    /* Centra el contenido del banner */
-    #banner > div {
-        max-width: 750px; 
-    }
     
     .mobile-dropdown {
         position: absolute; 
@@ -209,7 +205,7 @@ body.homepage {
     }
 
     #chat-widget-container {
-        left: 60%; /* Ligeramente más a la derecha del centro */
+        left: 80%; /* Más a la derecha */
         right: auto;
         bottom: 5rem; /* Más arriba */
         transform: translateX(-50%);
@@ -222,11 +218,13 @@ body.homepage {
     }
 }
 
-/* Botón del submenú con texto centrado */
+/* Botón del submenú con texto centrado y flecha a la izquierda */
 .mobile-dropdown .submenu-parent-btn {
-    display: block;
+    display: flex; /* Cambiado a flex */
+    justify-content: center; /* Centra el contenido (texto) */
+    align-items: center;
     position: relative;
-    text-align: center; /* Centra el texto */
+    text-align: center; /* Asegura que el texto dentro esté centrado */
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -235,13 +233,12 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
-    position: absolute; /* Posición absoluta para no afectar el centrado del texto */
-    left: 1.5rem;
+    position: absolute;
+    left: 1.5rem; /* Fija la flecha a la izquierda */
     top: 50%;
-    transform: translateY(-50%) rotate(0deg); /* Centrado verticalmente */
+    transform: translateY(-50%) rotate(0deg);
     transition: transform 0.3s ease-in-out;
 }
-
 
 /* --- FLECHAS DEL SUBMENÚ --- */
 /* Estado CERRADO: flecha apunta a la izquierda (<) */
@@ -269,27 +266,34 @@ body.homepage {
 
 .mobile-dropdown .submenu {
     display: none;
-    padding-left: 0.5rem;
+    padding-left: 0; /* Eliminado padding para centrar correctamente */
     background-color: rgba(229, 231, 235, 0.6);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
 }
 
+
+/* --- ALINEACIÓN CENTRADA PARA SUBMENÚS --- */
+.mobile-dropdown .submenu button,
+.mobile-dropdown .submenu .submenu-title {
+    text-align: center; /* Centra el texto */
+    padding-left: 1.5rem; /* Mantiene un padding general */
+    padding-right: 1.5rem;
+}
+
+
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    padding-left: 2rem;
     font-size: 0.78rem;
 }
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
-    padding-left: 2rem;
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
-    text-align: center; /* Centrado */
 }
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
@@ -297,10 +301,10 @@ body.homepage {
     max-height: 2000px; 
 }
 
-.mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
+.mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: center; /* Centrado */
+    text-align: right; /* Alineado a la derecha */
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
     color: #374151;
@@ -328,6 +332,7 @@ body.homepage {
     font-weight: 600;
     color: #1f2937;
     font-size: 0.9rem;
+    text-align: right;
 }
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
