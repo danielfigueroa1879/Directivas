@@ -1,4 +1,3 @@
-
 /* --- ESTILOS BASE Y CHATBOT --- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -166,6 +165,10 @@ body.homepage {
     transition: opacity 0.3s ease-in-out;
     pointer-events: none;
 }
+#mobile-menu-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
 #mobile-menu-overlay:not(.hidden) {
     opacity: 1;
     pointer-events: auto;
@@ -175,7 +178,7 @@ body.homepage {
 @media (min-width: 1024px) {
     /* Centra el contenido del banner */
     #banner > div {
-        max-width: 1000px; /* Reduce el ancho para acercar los elementos */
+        max-width: 950px; /* Reduce el ancho para acercar los elementos */
     }
 
     #mobile-menu-btn {
