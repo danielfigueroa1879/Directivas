@@ -274,11 +274,11 @@ body.homepage {
 }
 
 
-/* --- ALINEACIÓN CENTRADA PARA SUBMENÚS --- */
+/* --- ALINEACIÓN IZQUIERDA PARA SUBMENÚS --- */
 .mobile-dropdown .submenu button,
 .mobile-dropdown .submenu .submenu-title {
-    text-align: center; /* Centra el texto */
-    padding-left: 1.5rem; /* Mantiene un padding general */
+    text-align: left; /* Alinea el texto a la izquierda */
+    padding-left: 2.5rem; /* Aumenta padding para indentar */
     padding-right: 1.5rem;
 }
 
