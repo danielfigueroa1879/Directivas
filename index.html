@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=33">
+    <link rel="stylesheet" href="assets/css/styles.css?v=34">
 </head>
 <body class="homepage background-transition">
     
@@ -44,20 +44,11 @@
         </div>
     </div>
 
+    <!-- INICIO: Banner Corregido -->
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-7xl mx-auto h-full flex items-center justify-center gap-8 px-4">
+        <div class="w-full max-w-7xl mx-auto h-full flex items-center justify-between px-4">
             
-            <!-- Elemento 1: Contador de Visitas -->
-            <div class="flex items-center space-x-2 text-sm">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                </svg>
-                <span class="hidden sm:inline">Visitas:</span>
-                <span id="visit-counter" class="font-bold">--</span>
-            </div>
-
-            <!-- Elemento 2: Logo y Menú (a la derecha) -->
+            <!-- Elemento 1: Logo y Menú (Agrupados a la izquierda) -->
             <div class="flex items-center space-x-2">
                 <a href="#" onclick="showHomepage(); return false;" class="flex items-center">
                     <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-auto" loading="lazy" width="42" height="42">
@@ -70,7 +61,7 @@
                         </svg>
                     </button>
                     <div id="mobile-dropdown" class="mobile-dropdown">
-                        <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
+                         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
                         <div class="dropdown-menu-content">
                             <div class="has-submenu">
                                 <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Leyes y Normativa </button>
@@ -164,8 +155,20 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Elemento 2: Contador de Visitas -->
+            <div class="flex items-center space-x-2 text-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <span class="hidden sm:inline">Visitas:</span>
+                <span id="visit-counter" class="font-bold">--</span>
+            </div>
         </div>
     </div>
+    <!-- FIN: Banner Corregido -->
+
 
     <div id="mobile-menu-overlay" class="hidden"></div>
     
