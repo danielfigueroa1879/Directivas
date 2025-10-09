@@ -194,7 +194,13 @@ body.homepage {
         max-height: calc(100vh - 5rem);
         border-radius: 12px;
         transform-origin: top right;
-        transform: scale(0.95) translateY(-10px);
+        transform: translateX(30px) scale(0.98); /* Inicia desde la derecha */
+        opacity: 0;
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+    }
+
+    .mobile-dropdown.show {
+        transform: translateX(0) scale(1); /* Termina en su posición */
     }
 
     #mobile-menu-overlay {
@@ -202,7 +208,7 @@ body.homepage {
     }
 
     #chat-widget-container {
-        left: 50%;
+        left: 55%; /* Ligeramente a la derecha del centro */
         right: auto;
         bottom: 5rem; /* Más arriba */
         transform: translateX(-50%);
@@ -215,10 +221,11 @@ body.homepage {
     }
 }
 
+/* Botón del submenú con texto centrado */
 .mobile-dropdown .submenu-parent-btn {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: block;
+    position: relative;
+    text-align: center; /* Centra el texto */
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -227,20 +234,23 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
+    position: absolute; /* Posición absoluta para no afectar el centrado del texto */
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg); /* Centrado verticalmente */
     transition: transform 0.3s ease-in-out;
-    margin-right: 0.75rem; 
 }
 
 
 /* --- FLECHAS DEL SUBMENÚ --- */
 /* Estado CERRADO: flecha apunta a la izquierda (<) */
 .mobile-dropdown .submenu-arrow {
-    transform: rotate(0deg);
+    transform: translateY(-50%) rotate(0deg);
 }
 
 /* Estado ABIERTO: flecha gira 90 grados para apuntar hacia abajo (v) */
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
 
 
@@ -396,4 +406,3 @@ body.homepage {
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
 }
-
