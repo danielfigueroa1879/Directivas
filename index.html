@@ -34,7 +34,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=18">
+    <link rel="stylesheet" href="assets/css/styles.css?v=23">
 </head>
 <body class="homepage background-transition">
     
@@ -47,23 +47,23 @@
     </div>
 
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-full mx-auto h-full flex items-center justify-between px-4">
+        <div class="w-full lg:max-w-7xl mx-auto h-full flex items-center justify-between px-6 lg:px-8">
             
             <div class="flex items-center">
-                <a href="#" onclick="showHomepage()" class="flex items-center space-x-2 mr-4">
-                    <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-10" loading="lazy">
-                </a>
-                <button id="mobile-menu-btn" class="p-2">
+                <button id="mobile-menu-btn" class="p-2 mr-6">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
+                <a href="#" onclick="showHomepage()" class="flex items-center space-x-2">
+                    <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-10" loading="lazy">
+                </a>
             </div>
 
             <nav id="desktop-menu" class="hidden items-center justify-start flex-grow space-x-1 lg:space-x-2">
                 <!-- El menú de escritorio ahora está oculto -->
             </nav>
 
-            <div class="flex items-center text-xs space-x-2 banner-text-small">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+            <div class="flex items-center space-x-2 banner-text-small">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
             </div>
         </div>
@@ -148,7 +148,7 @@
             <div class="has-submenu">
                 <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
                 <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://d6.short.gy/Cap')">Empresas de Capacitación</button>
+                    <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
@@ -307,16 +307,28 @@
             </main>
             <footer class="footer-text text-center mt-6 text-sm text-gray-600">
               <span>Haga clic en los botones para descargar.</span><br>
-              <span>©2025 - Daniel Figueroa Ch.</span><br>
+              <span>©2025 - Daniel Figueroa Chacama.</span><br>
               <span>Ingeniero en Informática.</span>
             </footer>
         </section>
     </div>
 
-    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
+    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-between text-center text-white p-4 overflow-hidden">
         <div class="absolute inset-0 bg-black/30 z-0"></div>
-        <div class="relative z-10 homepage-title-container"><div class="mb-0"><h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1><p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p></div></div>
-        <div class="relative z-10 mt-8 md:mt-12"><div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 justify-center items-center"><button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Directivas</button><button onclick="showCredenciales()" class="homepage-btn bg-[#ffb700]/80 hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Credenciales</button></div></div>
+        
+        <!-- Contenedor del Título (empujado hacia arriba) -->
+        <div class="relative z-10 pt-6 md:pt-12">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
+        </div>
+    
+        <!-- Contenedor de los Botones (empujado hacia abajo) -->
+        <div class="relative z-10 pb-24 md:pb-48">
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 justify-center items-center">
+                <button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Directivas</button>
+                <button onclick="showCredenciales()" class="homepage-btn bg-[#ffb700]/80 hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Credenciales</button>
+            </div>
+        </div>
     </section>
 
     <div id="homepage-content-wrapper">
