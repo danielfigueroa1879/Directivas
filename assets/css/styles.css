@@ -183,10 +183,7 @@ body.homepage {
     #banner > div {
         max-width: 750px; 
     }
-
-    #mobile-menu-btn {
-        position: relative; 
-    }
+    
     .mobile-dropdown {
         position: absolute; 
         left: auto;
@@ -198,16 +195,6 @@ body.homepage {
         border-radius: 12px;
         transform-origin: top right;
         transform: scale(0.95) translateY(-10px);
-        opacity: 0;
-        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-        pointer-events: none;
-        border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    .mobile-dropdown.show {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-        pointer-events: auto;
     }
 
     #mobile-menu-overlay {
@@ -409,3 +396,4 @@ body.homepage {
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
 }
+
