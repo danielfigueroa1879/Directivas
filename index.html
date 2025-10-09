@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=28">
+    <link rel="stylesheet" href="assets/css/styles.css?v=29">
 </head>
 <body class="homepage background-transition">
     
@@ -452,12 +452,13 @@
         };
 
         const closeMenu = (immediate = false) => {
-            const delay = immediate ? 0 : 300; // Increased delay for hover-out
+            const delay = immediate ? 0 : 300; // Delay for hover-out
             menuTimeout = setTimeout(() => {
                 mobileDropdown.classList.remove('show');
                 if (window.innerWidth < 1024) {
                     mobileMenuOverlay.classList.add('hidden');
                 }
+                // Close all submenus when the main menu is closed
                 document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(openSubmenu => {
                     openSubmenu.classList.remove('submenu-open');
                 });
@@ -481,6 +482,7 @@
                 toggleMenu();
             });
 
+            // Hover logic for PC
             if (window.innerWidth >= 1024) {
                 menuContainer.addEventListener('mouseenter', openMenu);
                 menuContainer.addEventListener('mouseleave', () => closeMenu());
@@ -490,6 +492,16 @@
         if (mobileMenuOverlay) {
             mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
         }
+        
+        // Close menu when clicking outside of it on PC
+        document.addEventListener('click', (e) => {
+             if (window.innerWidth >= 1024) {
+                if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    closeMenu(true);
+                }
+             }
+        });
+
 
         document.querySelectorAll('#mobile-dropdown .has-submenu .submenu-parent-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -497,6 +509,7 @@
                 const parent = btn.closest('.has-submenu');
                 const wasOpen = parent.classList.contains('submenu-open');
                 
+                // This ensures only one submenu is open at a time
                 document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(other => {
                     other.classList.remove('submenu-open');
                 });
