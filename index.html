@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=27">
+    <link rel="stylesheet" href="assets/css/styles.css?v=28">
 </head>
 <body class="homepage background-transition">
     
@@ -435,9 +435,8 @@
     <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
-    <script src="assets/js/inicio.js?v=3" defer></script>
-    
     <script>
+    // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
     document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileDropdown = document.getElementById('mobile-dropdown');
@@ -453,13 +452,12 @@
         };
 
         const closeMenu = (immediate = false) => {
-            const delay = immediate ? 0 : 200;
+            const delay = immediate ? 0 : 300; // Increased delay for hover-out
             menuTimeout = setTimeout(() => {
                 mobileDropdown.classList.remove('show');
                 if (window.innerWidth < 1024) {
                     mobileMenuOverlay.classList.add('hidden');
                 }
-                // Close all submenus when the main menu is closed
                 document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(openSubmenu => {
                     openSubmenu.classList.remove('submenu-open');
                 });
@@ -467,62 +465,117 @@
         };
 
         const toggleMenu = () => {
-            if (!mobileDropdown.classList.contains('show')) {
-                openMenu();
-            } else {
+            if (mobileDropdown.classList.contains('show')) {
                 closeMenu(true);
+            } else {
+                openMenu();
             }
         };
 
+        // --- Event Listeners ---
         if (mobileMenuBtn && mobileDropdown) {
-            mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
+            const menuContainer = mobileMenuBtn.parentElement;
+
             mobileMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleMenu();
             });
 
             if (window.innerWidth >= 1024) {
-                const menuContainer = mobileMenuBtn.parentElement;
                 menuContainer.addEventListener('mouseenter', openMenu);
                 menuContainer.addEventListener('mouseleave', () => closeMenu());
             }
         }
-
+        
         if (mobileMenuOverlay) {
             mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
         }
 
-        const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
-        submenuContainers.forEach(parent => {
-            const btn = parent.querySelector('.submenu-parent-btn');
-            if (!btn) return;
+        document.querySelectorAll('#mobile-dropdown .has-submenu .submenu-parent-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
+                const parent = btn.closest('.has-submenu');
                 const wasOpen = parent.classList.contains('submenu-open');
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
+                
+                document.querySelectorAll('#mobile-dropdown .has-submenu').forEach(other => {
                     other.classList.remove('submenu-open');
                 });
+
                 if (!wasOpen) {
                     parent.classList.add('submenu-open');
                 }
             });
         });
+        
+        // Background rotation
+        const backgroundImages = [
+            'assets/images/foto (1).webp', 'assets/images/foto (2).webp', 'assets/images/foto (3).webp', 
+            'assets/images/foto (4).webp', 'assets/images/foto (5).webp', 'assets/images/foto (6).webp',
+            'assets/images/foto (7).webp', 'assets/images/foto (8).webp', 'assets/images/foto (9).webp'
+        ];
+        let currentImageIndex = 0;
+        const homepageSection = document.getElementById('homepage-section');
+
+        if (homepageSection) {
+            setInterval(() => {
+                if (document.body.classList.contains('homepage')) {
+                    currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                    homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+                }
+            }, 12000);
+        }
+
+        showHomepage(); // Show homepage on initial load
     });
 
     function closeActiveMenu() {
         const mobileDropdown = document.getElementById('mobile-dropdown');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
         if (mobileDropdown && mobileDropdown.classList.contains('show')) {
             mobileDropdown.classList.remove('show');
-            if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+            document.getElementById('mobile-menu-overlay')?.classList.add('hidden');
         }
     }
 
-    // Handlers for menu links
+    // --- Page switching functions ---
+    function showHomepage() {
+        document.getElementById('homepage-section').style.display = 'flex';
+        document.getElementById('homepage-content-wrapper').style.display = 'block';
+        document.getElementById('main-footer').style.display = 'block';
+        document.getElementById('contenido').style.display = 'none';
+        document.body.className = 'homepage background-transition';
+        document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function showDirectiva() {
+        document.getElementById('homepage-section').style.display = 'none';
+        document.getElementById('homepage-content-wrapper').style.display = 'none';
+        document.getElementById('main-footer').style.display = 'none';
+        document.getElementById('contenido').style.display = 'block';
+        document.getElementById('main-section').style.display = 'block';
+        document.getElementById('credenciales-section')?.classList.remove('active');
+        document.body.className = '';
+        document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+        window.scrollTo(0, 0);
+        closeActiveMenu();
+    }
+
+    function showCredenciales() {
+        document.getElementById('homepage-section').style.display = 'none';
+        document.getElementById('homepage-content-wrapper').style.display = 'none';
+        document.getElementById('main-footer').style.display = 'none';
+        document.getElementById('contenido').style.display = 'block';
+        document.getElementById('main-section').style.display = 'none';
+        document.getElementById('credenciales-section')?.classList.add('active');
+        document.body.className = '';
+        document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+        window.scrollTo(0, 0);
+        closeActiveMenu();
+    }
+    
+    // --- Menu link handlers ---
     function openNewLink(url) { window.open(url, '_blank'); closeActiveMenu(); }
     function handleCerofilas() { openNewLink('https://dal5.short.gy/CFil'); }
-    function handleDirectiva() { showDirectiva(); closeActiveMenu(); }
-    function handleCredenciales() { showCredenciales(); closeActiveMenu(); }
     function handleCredencialIndependiente() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
     function handleValores() { openNewLink('https://dal5.short.gy/val'); }
     function handleValorPlan() { openNewLink('https://os10.short.gy/Pl4n'); }
@@ -569,4 +622,3 @@
     </script>
 </body>
 </html>
-
