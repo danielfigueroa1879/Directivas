@@ -110,21 +110,6 @@ body.homepage {
     40% { transform: scale(1.0); } 
 }
 
-/* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
-@media (min-width: 1024px) {
-  #banner > div {
-    justify-content: center !important; /* Centra los grupos */
-    gap: 34rem; /* Espacio ajustado entre los grupos */
-    max-width: 1200px; /* Ancho máximo reducido */
-  }
-
-    #chat-toggle-button {
-        width: 90px;
-        height: 90px;
-        animation: floatAnimation 1.9s ease-in-out infinite;
-    }
-}
-
 @media (max-width: 767px) { 
     #chat-widget-container { 
         right: 1rem; 
@@ -144,122 +129,33 @@ body.homepage {
     }
 }
 
+/* ===== MENÚ DESPLEGABLE MÓVIL Y ESCRITORIO ===== */
 
-/* ===== NUEVOS ESTILOS PARA EL MENÚ ===== */
-
-#desktop-menu {
-    margin-left: 1rem; /* Reducido para estar más cerca del centro */
-}
-
-.menu-item {
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 0.4rem 0.25rem; /* Más compacto */
-    border-radius: 0.375rem;
-    transition: color 0.2s, background-color 0.2s;
-    white-space: nowrap;
-    font-size: 0.6rem; /* Letra más pequeña */
-}
-
-@media (min-width: 1400px) {
-    .menu-item {
-        font-size: 0.65rem; /* Un poco más grande en pantallas muy anchas */
-        padding: 0.4rem 0.4rem;
-    }
-     #desktop-menu {
-        margin-left: 2rem; 
-    }
-}
-
-.menu-item:hover {
-    color: #2563eb;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.desktop-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    padding: 0.5rem;
-    width: 280px; 
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    pointer-events: none;
-    z-index: 1250;
-    border: 1px solid rgba(0,0,0,0.05);
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
-}
-
-.group:hover .desktop-dropdown {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.desktop-dropdown .desktop-dropdown-title {
-    padding: 0.2rem 0.6rem; /* Más compacto */
-    font-size: 0.6rem; /* Más pequeño */
-    text-transform: uppercase;
-    color: #6b7280;
-    font-weight: 600;
-    margin-top: 0.2rem;
-    border-top: 1px solid #e5e7eb;
-}
-.desktop-dropdown .desktop-dropdown-title:first-of-type {
-    margin-top: 0;
-    border-top: none;
-}
-
-
-.desktop-dropdown button,
-.desktop-dropdown a {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 0.3rem 0.6rem; /* Más compacto */
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    font-size: 0.75rem; /* Más pequeño */
-    color: #374151;
-}
-
-.desktop-dropdown button:hover,
-.desktop-dropdown a:hover {
-    background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
-    color: #15803d; /* Verde oscuro para el texto */
-}
-/* ===== MENÚ DESPLEGABLE DESDE LA DERECHA ===== */
+/* --- Estilos base para el menú desplegable (Móvil primero) --- */
 .mobile-dropdown {
     position: fixed;
-    top: 4rem;
-    right: 0; /* Cambiado de left a right */
+    top: 4rem; /* Debajo del banner */
+    right: 0; /* Anclado a la derecha */
     width: 320px; 
     height: calc(100vh - 4rem);
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1); /* Sombra a la IZQUIERDA */
-    transform: translateX(105%); /* Se OCULTA hacia la derecha */
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1); /* Sombra a la izquierda */
+    transform: translateX(105%); /* Oculto fuera de la pantalla a la derecha */
+    transition: transform 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
-    padding: 0.5rem 0;
-    border-left: 1px solid rgba(0,0,0,0.05); /* Borde a la izquierda */
+    border-left: 1px solid rgba(0,0,0,0.05);
+    opacity: 1; /* Aseguramos que sea visible cuando se transforma */
 }
 
+/* Estado visible del menú */
 .mobile-dropdown.show {
-    transform: translateX(0); /* Aparece en su posición */
+    transform: translateX(0); /* Se desliza a la vista desde la derecha */
 }
 
+/* Overlay para el fondo en móvil */
 #mobile-menu-overlay {
     position: fixed;
     inset: 0;
@@ -274,55 +170,93 @@ body.homepage {
     pointer-events: auto;
 }
 
-.mobile-dropdown .submenu-parent-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0.6rem 1.5rem; /* Compacto */
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
-    font-size: 0.82rem; /* REDUCIDO */
+/* --- Estilos para el menú en PC (más de 1024px) --- */
+@media (min-width: 1024px) {
+    /* El menú se convierte en un dropdown debajo del botón */
+    #mobile-menu-btn {
+        position: relative; /* Contenedor relativo para el menú absoluto */
+    }
+    .mobile-dropdown {
+        position: absolute; /* Posición relativa al botón del menú */
+        left: auto; /* Reseteamos 'left' */
+        right: 0; /* Alineado a la derecha del contenedor del botón */
+        top: calc(100% + 0.5rem); /* Justo debajo del botón con un pequeño espacio */
+        width: 380px;
+        height: auto;
+        max-height: calc(100vh - 5rem);
+        border-radius: 12px; /* Redondeado por todos lados */
+        transform-origin: top right;
+        /* La animación de entrada será controlada por clases 'show' y 'hidden' */
+        transform: scale(0.95) translateY(-10px);
+        opacity: 0;
+        transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        pointer-events: none; /* No interactuable cuando está oculto */
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .mobile-dropdown.show {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        pointer-events: auto; /* Interactuable cuando es visible */
+    }
+
+    /* El overlay no se usa en PC */
+    #mobile-menu-overlay {
+        display: none !important;
+    }
+
+    #chat-toggle-button {
+        width: 90px;
+        height: 90px;
+        animation: floatAnimation 1.9s ease-in-out infinite;
+    }
 }
 
-/* Efecto hover azul para los botones de submenú principales */
-.mobile-dropdown .submenu-parent-btn:hover {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
-    color: #1d4ed8; /* Azul oscuro */
+.mobile-dropdown .submenu-parent-btn {
+    display: flex;
+    justify-content: flex-start; /* Alinea los items al inicio */
+    align-items: center;
+    width: 100%;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 0.82rem;
 }
 
 .mobile-dropdown .submenu-arrow {
-    transition: transform 0.3s;
-    width: 1.25rem; 
-    height: 1.25rem;
+    transition: transform 0.3s ease-in-out;
+    margin-right: 0.75rem; /* Espacio entre la flecha y el texto */
+}
+
+
+/* --- FLECHAS DEL SUBMENÚ --- */
+/* Estado CERRADO: flecha apunta a la izquierda (SVG es <) */
+.mobile-dropdown .submenu-arrow {
+    transform: rotate(0deg);
+}
+
+/* Estado ABIERTO: flecha gira -90 grados para apuntar hacia abajo (v) */
+.mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
+    transform: rotate(90deg); /* Corrección: 90deg para que apunte hacia abajo */
+}
+
+
+/* Efecto hover azul para los botones de submenú principales */
+.mobile-dropdown .submenu-parent-btn:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
 /* Estado abierto del submenú principal cambia a azul */
 .mobile-dropdown .has-submenu.submenu-open > .submenu-parent-btn {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro cuando está abierto */
-    color: #1d4ed8; /* Azul oscuro para el texto */
-}
-
-/* --- ROTACIÓN DEL MENÚ PRINCIPAL (TRÁMITES) Y SUBMENÚS --- */
-
-/* La flecha por defecto (M19 9l-7 7-7-7) apunta ABAJO. */
-
-/* ESTADO INICIAL CERRADO: Apunta a la IZQUIERDA (Rotación -90deg) */
-#tramites-arrow, .submenu-arrow {
-    transform: rotate(-360deg);
-    transition: transform 0.3s ease;
-}
-
-/* ESTADO ACTIVO ABIERTO: Apunta hacia ARRIBA (Rotación 270deg) */
-#tramites-menu-btn.panel-active #tramites-arrow,
-.dropdown-menu .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(2deg);
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
 .mobile-dropdown .submenu {
     display: none;
-    padding-left: 0.5rem; /* Compacto */
-    background-color: rgba(229, 231, 235, 0.6); /* Gris más sutil */
+    padding-left: 0.5rem;
+    background-color: rgba(229, 231, 235, 0.6);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
@@ -330,32 +264,18 @@ body.homepage {
 
 .mobile-dropdown .submenu.leyes-compactas button,
 .mobile-dropdown .submenu.submenu-compact button {
-    padding-top: 0.3rem; /* Compacto */
-    padding-bottom: 0.3rem; /* Compacto */
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
     padding-left: 2rem;
-    font-size: 0.78rem; /* REDUCIDO */
+    font-size: 0.78rem;
 }
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-    padding-top: 0.2rem; /* Compacto */
-    padding-bottom: 0.2rem; /* Compacto */
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     padding-left: 2rem;
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
 }
-
-.leyes-compactas-desktop {
-    width: 320px; 
-}
-.leyes-compactas-desktop .desktop-dropdown-title {
-    padding: 0.2rem 0.6rem;
-    font-size: 0.6rem;
-    margin-top: 0.2rem;
-}
-.leyes-compactas-desktop button {
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-}
-
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
     display: block;
@@ -366,39 +286,38 @@ body.homepage {
     display: block;
     width: 100%;
     text-align: left;
-    padding: 0.5rem 1.5rem; /* Compacto */
-    font-size: 0.82rem; /* REDUCIDO */
+    padding: 0.5rem 1.5rem;
+    font-size: 0.82rem;
     color: #374151;
-    transition: background-color 0.2s, color 0.2s; /* Añadida transición */
+    transition: background-color 0.2s, color 0.2s;
 }
 
 /* Efecto hover verde para los items DENTRO del submenú */
 .mobile-dropdown .submenu button:hover {
-    background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
-    color: #15803d; /* Verde oscuro para el texto */
+    background-color: rgba(34, 197, 94, 0.15);
+    color: #15803d;
 }
 
 /* Efecto hover azul para los items principales que no son submenú */
 .mobile-dropdown .dropdown-menu-content > button:hover, .mobile-dropdown .dropdown-menu-content > a:hover {
-    background-color: rgba(59, 130, 246, 0.1); /* Azul claro */
-    color: #1d4ed8; /* Azul oscuro */
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #1d4ed8;
 }
 
-
 .mobile-dropdown .dropdown-menu-header {
-    padding: 0.5rem 1.5rem; /* Compacto */
+    padding: 0.5rem 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     margin-bottom: 0.5rem;
 }
 .mobile-dropdown .dropdown-menu-header h3 {
     font-weight: 600;
     color: #1f2937;
-    font-size: 0.9rem; /* Compacto */
+    font-size: 0.9rem;
 }
 
 /* --- AJUSTE TAMAÑO TEXTO BANNER --- */
 .banner-text-small {
-    font-size: 0.875rem; /* Reducido a petición del usuario */
+    font-size: 0.875rem;
 }
 
 /* El resto de los estilos se mantienen */
@@ -408,12 +327,12 @@ body.homepage {
 
 /* ===== AJUSTE SECCIÓN TRÁMITES PRINCIPALES ===== */
 #tramites-principales {
-    padding-top: 5rem; /* Se aumenta el padding superior para bajar la sección */
+    padding-top: 5rem;
 }
 
 @media (min-width: 768px) {
     #tramites-principales {
-        padding-top: 7rem; /* Ajuste para pantallas medianas y grandes */
+        padding-top: 7rem;
     }
 }
 
@@ -473,41 +392,4 @@ body.homepage {
     .credenciales-main-title { font-size: 1.4rem; }
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
-}
-/* Ajustes para PC (opcional, puedes mantener el menú en escritorio si quieres) */
-@media (min-width: 1024px) {
-    .mobile-dropdown {
-        right: 1rem; /* Separación del borde */
-        width: 380px;
-        height: auto;
-        max-height: calc(100vh - 5rem);
-        border-radius: 0 0 12px 12px; /* Bordes redondeados abajo */
-    }
-}
-
-  /* Estilos para el menú desplegable en PC */
-  .mobile-dropdown {
-    position: fixed; /* Se mantiene fijo respecto a la ventana */
-    /* Calculamos la posición izquierda para que se alinee con el contenido centrado */
-    left: calc(50% - 400px); /* 50% del ancho de la ventana - la mitad del max-width del banner */
-    top: 4rem; /* Justo debajo del banner */
-    width: 380px; /* Ancho aumentado */
-    height: auto;
-    max-height: calc(100vh - 5rem);
-    transform: translateX(-20px) scale(0.98); /* Inicia desde la izquierda y un poco más pequeño */
-    opacity: 0;
-    transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Animación más suave */
-    pointer-events: none;
-    transform-origin: top left;
-  }
-
-  .mobile-dropdown.show {
-      transform: translateX(0) scale(1); /* Termina en su posición y tamaño normal */
-      opacity: 1;
-      pointer-events: auto;
-  }
-  
-  #mobile-menu-overlay {
-      display: none !important; /* No se necesita overlay en PC */
-  }
 }
