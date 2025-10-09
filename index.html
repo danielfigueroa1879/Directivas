@@ -49,27 +49,34 @@
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
         <div class="w-full max-w-full mx-auto h-full flex items-center justify-between px-4">
             
-            <div class="flex items-center">
-                <button id="mobile-menu-btn" class="p-2 mr-4">
-                    <svg class="w7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </button>
-                <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center space-x-1">
-                    <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="42" height="42">
+            <div class="flex items-center space-x-3">
+                <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center">
+                    <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-auto" loading="lazy" width="42" height="42">
                 </a>
+                
+                <div class="flex items-center space-x-2 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Visitas:</span>
+                    <span id="visit-counter" class="font-bold">--</span>
+                </div>
             </div>
 
             <nav id="desktop-menu" class="hidden items-center justify-start flex-grow space-x-1 lg:space-x-2">
-                <!-- El menú de escritorio ahora está oculto -->
             </nav>
 
-            <div class="flex items-center space-x-2 banner-text-small">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            <div class="flex items-center">
+                <button id="mobile-menu-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Menú desplegable para móvil y ahora también para PC -->
     <div id="mobile-dropdown" class="mobile-dropdown hidden">
         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
         <div class="dropdown-menu-content">
@@ -223,7 +230,6 @@
             </footer>
         </section>
 
-        <!-- SECCIÓN DE CREDENCIALES RESTAURADA -->
         <section id="credenciales-section" class="credenciales-section">
              <header class="credenciales-title-container">
                 <h1 class="credenciales-main-title">CREDENCIAL</h1>
@@ -316,13 +322,11 @@
     <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-between text-center text-white p-4 overflow-hidden">
         <div class="absolute inset-0 bg-black/30 z-0"></div>
         
-        <!-- Contenedor del Título (empujado hacia arriba) -->
         <div class="relative z-10 pt-6 md:pt-12">
             <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
             <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
         </div>
     
-        <!-- Contenedor de los Botones (empujado hacia abajo) -->
         <div class="relative z-10 pb-24 md:pb-48">
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 justify-center items-center">
                 <button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Directivas</button>
