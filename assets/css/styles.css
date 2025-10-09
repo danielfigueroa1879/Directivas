@@ -208,7 +208,7 @@ body.homepage {
     }
 
     #chat-widget-container {
-        left: 55%; /* Ligeramente a la derecha del centro */
+        left: 60%; /* Ligeramente más a la derecha del centro */
         right: auto;
         bottom: 5rem; /* Más arriba */
         transform: translateX(-50%);
@@ -221,11 +221,11 @@ body.homepage {
     }
 }
 
-/* Botón del submenú con texto centrado */
+/* Botón del submenú con texto a la derecha */
 .mobile-dropdown .submenu-parent-btn {
     display: block;
     position: relative;
-    text-align: center; /* Centra el texto */
+    text-align: right; 
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -234,10 +234,10 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
-    position: absolute; /* Posición absoluta para no afectar el centrado del texto */
+    position: absolute; 
     left: 1.5rem;
     top: 50%;
-    transform: translateY(-50%) rotate(0deg); /* Centrado verticalmente */
+    transform: translateY(-50%) rotate(0deg); 
     transition: transform 0.3s ease-in-out;
 }
 
@@ -298,7 +298,7 @@ body.homepage {
 .mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: left;
+    text-align: right;
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
     color: #374151;
