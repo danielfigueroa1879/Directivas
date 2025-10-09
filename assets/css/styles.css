@@ -188,6 +188,21 @@ body.homepage {
         bottom: 2rem;
         right: 2rem; /* Movido a la derecha */
     }
+
+    /* AJUSTE TAMAÑO DE LETRA PARA PC */
+    .mobile-dropdown .submenu-parent-btn,
+    .mobile-dropdown .dropdown-menu-content > button, 
+    .mobile-dropdown .dropdown-menu-content > a {
+        font-size: 0.75rem; /* Reducido para PC */
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas button {
+        font-size: 0.7rem; /* Reducido para PC */
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas .submenu-title {
+        font-size: 0.65rem; /* Reducido para PC */
+    }
 }
 
 /* Botón del submenú */
