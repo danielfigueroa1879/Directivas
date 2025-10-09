@@ -478,13 +478,7 @@ body.homepage {
     .credenciales-section-title { font-size: 1.1rem; }
 }
 
-/* Ajuste para centrar elementos del banner en PC */
-@media (min-width: 1024px) {
-  #banner > div {
-    justify-content: center !important; /* Centra los grupos */
-    gap: 28rem; /* Espacio ajustado entre los grupos */
-    max-width: 800px; /* Ancho máximo reducido */
-  }
+
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
