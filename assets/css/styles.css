@@ -149,6 +149,7 @@ body.homepage {
     border-left: 1px solid rgba(0,0,0,0.05);
     opacity: 0;
     pointer-events: none;
+    border-radius: 0; /* Cuadrado */
 }
 
 /* Estado visible del menú */
@@ -192,7 +193,7 @@ body.homepage {
         width: 380px;
         height: auto;
         max-height: calc(100vh - 5rem);
-        border-radius: 12px;
+        border-radius: 0; /* Cuadrado */
         transform-origin: top right;
         transform: translateX(30px) scale(0.98); /* Inicia desde la derecha */
         opacity: 0;
@@ -221,11 +222,11 @@ body.homepage {
     }
 }
 
-/* Botón del submenú con texto a la derecha */
+/* Botón del submenú con texto centrado */
 .mobile-dropdown .submenu-parent-btn {
     display: block;
     position: relative;
-    text-align: right; 
+    text-align: center; /* Centra el texto */
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -234,10 +235,10 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
-    position: absolute; 
+    position: absolute; /* Posición absoluta para no afectar el centrado del texto */
     left: 1.5rem;
     top: 50%;
-    transform: translateY(-50%) rotate(0deg); 
+    transform: translateY(-50%) rotate(0deg); /* Centrado verticalmente */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -288,6 +289,7 @@ body.homepage {
     padding-left: 2rem;
     font-size: 0.7rem;
     background-color: rgba(0,0,0,0.06);
+    text-align: center; /* Centrado */
 }
 
 .mobile-dropdown .has-submenu.submenu-open > .submenu {
@@ -298,7 +300,7 @@ body.homepage {
 .mobile-dropdown .submenu button, .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: right;
+    text-align: center; /* Centrado */
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
     color: #374151;
@@ -406,3 +408,4 @@ body.homepage {
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
 }
+
