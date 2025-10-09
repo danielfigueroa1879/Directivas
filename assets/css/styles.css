@@ -38,15 +38,15 @@ body.homepage {
     border-radius: 0.5rem;
 }
 
-/* ===== ESTILOS CHATBOT (RESTAURADOS Y CORREGIDOS) ===== */
+/* ===== ESTILOS CHATBOT (POSICIÓN CORREGIDA) ===== */
 #chat-widget-container { 
     position: fixed; 
     bottom: 1.5rem; 
-    right: 1.5rem; 
+    left: 1.5rem; /* Movido a la izquierda */
     z-index: 1000; 
     display: flex; 
     flex-direction: column; 
-    align-items: flex-end;
+    align-items: flex-start; /* Alineado a la izquierda */
 }
 #chat-popup { 
     width: 450px; 
@@ -112,7 +112,7 @@ body.homepage {
 
 @media (max-width: 767px) { 
     #chat-widget-container { 
-        right: 1rem; 
+        left: 1rem; /* Movido a la izquierda */
         bottom: 1rem; 
     } 
     #chat-toggle-button { 
@@ -121,10 +121,10 @@ body.homepage {
     }
     #chat-popup {
         position: fixed;
-        bottom: 0.75rem; /* Un poco más abajo */
+        bottom: 0.75rem;
         left: 50%;
         transform: translateX(-50%);
-        width: 97%; /* Ancho ajustado al 97% */
+        width: 97%;
         height: 500px;
     }
 }
@@ -183,6 +183,11 @@ body.homepage {
         transform: translateX(0) scale(1);
     }
     #mobile-menu-overlay { display: none !important; }
+
+    #chat-widget-container {
+        bottom: 2rem;
+        left: 2rem;
+    }
 }
 
 /* Botón del submenú */
@@ -222,7 +227,7 @@ body.homepage {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
-    list-style-type: none; /* Remove default list bullets */
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
@@ -242,9 +247,9 @@ body.homepage {
 .mobile-dropdown .submenu button,
 .mobile-dropdown .submenu .submenu-title {
     display: block;
-    width: 90%; /* Ancho del bloque de texto */
-    text-align: left; /* Alineación interna a la izquierda */
-    padding-left: 4rem; /* Padding para correr el texto a la derecha */
+    width: 90%; 
+    text-align: left;
+    padding-left: 5rem; /* Aumentado para correr más a la derecha */
 }
 
 .mobile-dropdown .submenu.leyes-compactas button {
