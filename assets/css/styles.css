@@ -178,7 +178,7 @@ body.homepage {
 @media (min-width: 1024px) {
     /* Centra el contenido del banner */
     #banner > div {
-        max-width: 950px; /* Reduce el ancho para acercar los elementos */
+        max-width: 800px; /* Reduce el ancho para acercar los elementos */
     }
 
     #mobile-menu-btn {
@@ -398,4 +398,26 @@ body.homepage {
     .credenciales-main-title { font-size: 1.4rem; }
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
+}
+
+/* Ocultar menú por defecto, será manejado por JS */
+.mobile-dropdown {
+    transform: translateX(105%);
+    pointer-events: none;
+}
+.mobile-dropdown.show {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+@media (min-width: 1024px) {
+    .mobile-dropdown {
+        transform: scale(0.95) translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+    }
+    .mobile-dropdown.show {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
