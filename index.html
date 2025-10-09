@@ -25,8 +25,6 @@
         body.homepage { background-color: white; background-image: none; }
         .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
         .pwa-install-banner.show { transform: translateY(0); opacity: 1; }
-        .submenu-arrow { transition: transform 0.3s ease; }
-        .has-submenu.submenu-open .submenu-arrow { transform: rotate(90deg); }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -34,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=23">
+    <link rel="stylesheet" href="assets/css/styles.css?v=24">
 </head>
 <body class="homepage background-transition">
     
@@ -81,7 +79,7 @@
         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
         <div class="dropdown-menu-content">
             <div class="has-submenu">
-                <button class="submenu-parent-btn">Leyes y Normativa <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Leyes y Normativa <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu leyes-compactas">
                     <div class="submenu-title">Leyes</div>
                     <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
@@ -107,7 +105,7 @@
                 </div>
             </div>
              <div class="has-submenu">
-                <button class="submenu-parent-btn">Componentes <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Componentes <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
@@ -124,7 +122,7 @@
                 </div>
             </div>
             <div class="has-submenu">
-                <button class="submenu-parent-btn">Doc. Editables <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Doc. Editables <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
                     <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
@@ -134,7 +132,7 @@
                 </div>
             </div>
             <div class="has-submenu">
-                <button class="submenu-parent-btn">Modelos Solicitud <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Modelos Solicitud <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Mod. Decl. jurada Pers. Nat.</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Mod. Decl. jurada para emp.</button>
@@ -145,7 +143,7 @@
                 </div>
             </div>
             <div class="has-submenu">
-                <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Manuales <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
@@ -153,7 +151,7 @@
                 </div>
             </div>
             <div class="has-submenu">
-                <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
+                <button class="submenu-parent-btn">Capacitación <svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
                 <div class="submenu submenu-compact">
                     <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
                     <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
@@ -161,16 +159,10 @@
                     <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
                 </div>
             </div>
-            <div class="has-submenu">
-                <button class="submenu-parent-btn">Credenciales <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg></button>
-                <div class="submenu submenu-compact">
-                    <button onclick="handleCredenciales()">Empresa</button>
-                    <button onclick="handleCredencialIndependiente()">Independiente</button>
-                </div>
-            </div>
             <button onclick="handleCerofilas()">Cerofilas</button>
             <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
             <button onclick="handleDirectiva()">Directiva</button>
+            <button onclick="handleCredenciales()">Credenciales</button>
             <button onclick="handleValores()">Valores</button>
             <button onclick="handleValorPlan()">Valor Plan</button>
             <button onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
