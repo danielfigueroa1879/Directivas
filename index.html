@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=29">
+    <link rel="stylesheet" href="assets/css/styles.css?v=30">
 </head>
 <body class="homepage background-transition">
     
@@ -62,112 +62,110 @@
                 </div>
             </div>
 
-            <nav id="desktop-menu" class="hidden items-center justify-start flex-grow space-x-1 lg:space-x-2">
-            </nav>
-
             <div class="flex items-center relative">
                 <button id="mobile-menu-btn" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
+                <div id="mobile-dropdown" class="mobile-dropdown">
+                    <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
+                    <div class="dropdown-menu-content">
+                        <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Leyes y Normativa </button>
+                            <div class="submenu leyes-compactas">
+                                <div class="submenu-title">Leyes</div>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961 Org. Const.</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 (1981)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">5. Ley 21.659 Seg. Privada</button>
+                                <button onclick="openNewLink('https://www.leychile.cl/leychile/navegar?i=1213672&f=2025-11-28')">6. Reglamento 209</button>
+                                <div class="submenu-title">Decretos</div>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (2020)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (2024)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">3. D. 298 (2019)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">4. D. 123 (2019)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">5. D. 1045 (2018)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">6. D. 867 (2017)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">7. D. 1814 (2014)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">8. D.S. 222 (2014)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">9. D.E. 1122 (1994)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">10. D.S. 41 (1996)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">11. D.S. 1772 (1995)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">12. D.S. 1773 (1994)</button>
+                                <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">13. D.S. 93 (1985)</button>
+                            </div>
+                        </div>
+                         <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Componentes </button>
+                            <div class="submenu submenu-compact">
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">6. Asesor de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
+                            </div>
+                        </div>
+                        <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Doc. Editables </button>
+                            <div class="submenu submenu-compact">
+                                <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
+                                <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
+                                <button onclick="openNewLink('https://dal5.short.gy/M3')">Medidas de seguridad</button>
+                                <button onclick="openNewLink('https://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit')">Directiva de funcionamiento</button>
+                                <button onclick="openNewLink('https://dal5.short.gy/H23wIF')">Solicitud simple</button>
+                            </div>
+                        </div>
+                        <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Modelos Solicitud </button>
+                            <div class="submenu submenu-compact">
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Mod. Decl. jurada Pers. Nat.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Mod. Decl. jurada para emp.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf')">3. Solic. simple acred. de emp.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf')">4. Mod. Solic. Pers. Natural Dep.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf')">5. Mod. de solic. Acred. Asesor.</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf')">6. Mod. Acred. Capacitador.</button>
+                            </div>
+                        </div>
+                        <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Manuales </button>
+                            <div class="submenu submenu-compact">
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
+                                <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
+                            </div>
+                        </div>
+                        <div class="has-submenu">
+                            <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Capacitación </button>
+                            <div class="submenu submenu-compact">
+                                <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
+                                <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
+                                <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
+                                <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
+                            </div>
+                        </div>
+                        <button onclick="handleCerofilas()">Cerofilas</button>
+                        <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
+                        <button onclick="handleDirectiva()">Directiva</button>
+                        <button onclick="handleCredenciales()">Credenciales</button>
+                        <button onclick="handleValores()">Valores</button>
+                        <button onclick="handleValorPlan()">Valor Plan</button>
+                        <button onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
+                     </div>
+                </div>
             </div>
+
         </div>
     </div>
 
-    <div id="mobile-dropdown" class="mobile-dropdown">
-        <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
-        <div class="dropdown-menu-content">
-            <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Leyes y Normativa </button>
-                <div class="submenu leyes-compactas">
-                    <div class="submenu-title">Leyes</div>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=242302')">1. Constitución Política</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30329')">2. Ley 18.961 Org. Const.</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=30670')">3. Ley 19.303</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=7193')">4. D.L. 3.607 (1981)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1202067&tipoVersion=0')">5. Ley 21.659 Seg. Privada</button>
-                    <button onclick="openNewLink('https://www.leychile.cl/leychile/navegar?i=1213672&f=2025-11-28')">6. Reglamento 209</button>
-                    <div class="submenu-title">Decretos</div>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/Decreto-261.pdf')">1. D.E. 261 (2020)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1200633')">2. D.E. 32 (2024)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1136545&idParte=10054790&idVersion=2019-09-17')">3. D. 298 (2019)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1130300&idParte=10013741&idVersion=2019-04-05')">4. D. 123 (2019)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1122982&idParte=9948603&idVersion=2018-09-12')">5. D. 1045 (2018)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1116274')">6. D. 867 (2017)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1069299')">7. D. 1814 (2014)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1055580')">8. D.S. 222 (2014)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=1072929')">9. D.E. 1122 (1994)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=19870')">10. D.S. 41 (1996)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18592')">11. D.S. 1772 (1995)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=18594')">12. D.S. 1773 (1994)</button>
-                    <button onclick="openNewLink('https://www.bcn.cl/leychile/navegar?idNorma=9081')">13. D.S. 93 (1985)</button>
-                </div>
-            </div>
-             <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Componentes </button>
-                <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado_PDF.pdf')">1. Vigilante Privado</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf')">2. Guardia de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf')">3. Jefe de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf')">6. Asesor de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf')">9. Operador de Cajeros (ATM)</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf')">10. Instalador Técnico</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf')">11. Operador de CC.TV.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf')">12. Empresas prestadoras</button>
-                </div>
-            </div>
-            <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Doc. Editables </button>
-                <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://bit.ly/3QbfmlT')">Estudio de seguridad</button>
-                    <button onclick="openNewLink('https://d6.short.gy/Pl4n')">Planes de seguridad</button>
-                    <button onclick="openNewLink('https://dal5.short.gy/M3')">Medidas de seguridad</button>
-                    <button onclick="openNewLink('https://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit')">Directiva de funcionamiento</button>
-                    <button onclick="openNewLink('https://dal5.short.gy/H23wIF')">Solicitud simple</button>
-                </div>
-            </div>
-            <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Modelos Solicitud </button>
-                <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf')">1. Mod. Decl. jurada Pers. Nat.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf')">2. Mod. Decl. jurada para emp.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf')">3. Solic. simple acred. de emp.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf')">4. Mod. Solic. Pers. Natural Dep.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf')">5. Mod. de solic. Acred. Asesor.</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf')">6. Mod. Acred. Capacitador.</button>
-                </div>
-            </div>
-            <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Manuales </button>
-                <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf')">1. Manual de Funcionamiento</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf')">2. Manual de Capacitación</button>
-                    <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/manual_organizacion.pdf')">3. Manual de Organización</button>
-                </div>
-            </div>
-            <div class="has-submenu">
-                <button class="submenu-parent-btn"><svg class="submenu-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg> Capacitación </button>
-                <div class="submenu submenu-compact">
-                    <button onclick="openNewLink('https://drive.google.com/file/d/1RsYHWNpeNAmhTIO1kXOscZbia7Yepktp/view')">Empresas de Capacitación</button>
-                    <button onclick="openNewLink('https://drive.google.com/file/d/1hpZrzhXCnGyLkFLRhj0FOY_zDwTEUIaN/view')">Capacitadores</button>
-                    <button onclick="openNewLink('https://drive.google.com/file/d/1swqlfBX5-7Ko-3u_H95pnGzbLkhUnrwy/view')">Valor Curso Formación</button>
-                    <button onclick="openNewLink('https://drive.google.com/file/d/1q2qS2AQUgoma8TmOppO9IOV1LX4PJS9Z/view')">Valor Curso Perfeccionamiento</button>
-                </div>
-            </div>
-            <button onclick="handleCerofilas()">Cerofilas</button>
-            <button onclick="handleBuscarCurso('https://www.zosepcar.cl/OS10.php#buscador')">Consultar Curso</button>
-            <button onclick="handleDirectiva()">Directiva</button>
-            <button onclick="handleCredenciales()">Credenciales</button>
-            <button onclick="handleValores()">Valores</button>
-            <button onclick="handleValorPlan()">Valor Plan</button>
-            <button onclick="openNewLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
-         </div>
-    </div>
     <div id="mobile-menu-overlay" class="hidden"></div>
     
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
@@ -458,7 +456,6 @@
                 if (window.innerWidth < 1024) {
                     mobileMenuOverlay.classList.add('hidden');
                 }
-                // Close all submenus when the main menu is closed
                 document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(openSubmenu => {
                     openSubmenu.classList.remove('submenu-open');
                 });
@@ -486,6 +483,8 @@
             if (window.innerWidth >= 1024) {
                 menuContainer.addEventListener('mouseenter', openMenu);
                 menuContainer.addEventListener('mouseleave', () => closeMenu());
+                mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
+                mobileDropdown.addEventListener('mouseleave', () => closeMenu());
             }
         }
         
@@ -493,12 +492,10 @@
             mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
         }
         
-        // Close menu when clicking outside of it on PC
+        // Close menu when clicking outside of it 
         document.addEventListener('click', (e) => {
-             if (window.innerWidth >= 1024) {
-                if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    closeMenu(true);
-                }
+             if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                 closeMenu(true);
              }
         });
 
@@ -635,3 +632,4 @@
     </script>
 </body>
 </html>
+
