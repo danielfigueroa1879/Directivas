@@ -1,3 +1,4 @@
+
 /* --- ESTILOS BASE Y CHATBOT --- */
 body {
     font-family: 'Poppins', sans-serif;
@@ -172,35 +173,37 @@ body.homepage {
 
 /* --- Estilos para el menú en PC (más de 1024px) --- */
 @media (min-width: 1024px) {
-    /* El menú se convierte en un dropdown debajo del botón */
+    /* Centra el contenido del banner */
+    #banner > div {
+        max-width: 1000px; /* Reduce el ancho para acercar los elementos */
+    }
+
     #mobile-menu-btn {
-        position: relative; /* Contenedor relativo para el menú absoluto */
+        position: relative; 
     }
     .mobile-dropdown {
-        position: absolute; /* Posición relativa al botón del menú */
-        left: auto; /* Reseteamos 'left' */
-        right: 0; /* Alineado a la derecha del contenedor del botón */
-        top: calc(100% + 0.5rem); /* Justo debajo del botón con un pequeño espacio */
+        position: absolute; 
+        left: auto;
+        right: 0;
+        top: calc(100% + 0.5rem);
         width: 380px;
         height: auto;
         max-height: calc(100vh - 5rem);
-        border-radius: 12px; /* Redondeado por todos lados */
+        border-radius: 12px;
         transform-origin: top right;
-        /* La animación de entrada será controlada por clases 'show' y 'hidden' */
         transform: scale(0.95) translateY(-10px);
         opacity: 0;
         transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-        pointer-events: none; /* No interactuable cuando está oculto */
+        pointer-events: none;
         border: 1px solid rgba(0,0,0,0.05);
     }
 
     .mobile-dropdown.show {
         transform: scale(1) translateY(0);
         opacity: 1;
-        pointer-events: auto; /* Interactuable cuando es visible */
+        pointer-events: auto;
     }
 
-    /* El overlay no se usa en PC */
     #mobile-menu-overlay {
         display: none !important;
     }
@@ -214,7 +217,7 @@ body.homepage {
 
 .mobile-dropdown .submenu-parent-btn {
     display: flex;
-    justify-content: flex-start; /* Alinea los items al inicio */
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     padding: 0.6rem 1.5rem;
@@ -225,19 +228,19 @@ body.homepage {
 
 .mobile-dropdown .submenu-arrow {
     transition: transform 0.3s ease-in-out;
-    margin-right: 0.75rem; /* Espacio entre la flecha y el texto */
+    margin-right: 0.75rem; 
 }
 
 
 /* --- FLECHAS DEL SUBMENÚ --- */
-/* Estado CERRADO: flecha apunta a la izquierda (SVG es <) */
+/* Estado CERRADO: flecha apunta a la izquierda (<) */
 .mobile-dropdown .submenu-arrow {
     transform: rotate(0deg);
 }
 
-/* Estado ABIERTO: flecha gira -90 grados para apuntar hacia abajo (v) */
+/* Estado ABIERTO: flecha gira 90 grados para apuntar hacia abajo (v) */
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(90deg); /* Corrección: 90deg para que apunte hacia abajo */
+    transform: rotate(90deg);
 }
 
 
