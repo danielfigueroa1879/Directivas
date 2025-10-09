@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=26">
+    <link rel="stylesheet" href="assets/css/styles.css?v=27">
 </head>
 <body class="homepage background-transition">
     
@@ -45,10 +45,10 @@
     </div>
 
     <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/35 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
-        <div class="w-full max-w-full mx-auto h-full flex items-center justify-between px-4">
+        <div class="w-full mx-auto h-full flex items-center justify-between px-4">
             
             <div class="flex items-center space-x-3">
-                <a href="https://www.zosepcar.cl/OS10.php" onclick="showHomepage()" class="flex items-center">
+                <a href="#" onclick="showHomepage(); return false;" class="flex items-center">
                     <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-10 w-auto" loading="lazy" width="42" height="42">
                 </a>
                 
@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <div id="mobile-dropdown" class="mobile-dropdown hidden">
+    <div id="mobile-dropdown" class="mobile-dropdown">
         <div class="dropdown-menu-header"><h3>Menú Principal</h3></div>
         <div class="dropdown-menu-content">
             <div class="has-submenu">
@@ -171,7 +171,7 @@
     <div id="mobile-menu-overlay" class="hidden"></div>
     
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
-        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
+        <a href="#" onclick="showHomepage(); return false;" aria-label="Volver al inicio" class="logo-os10-container">
             <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="60" height="60">
         </a>
         <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showHomepage()">
@@ -436,7 +436,101 @@
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
     <script src="assets/js/inicio.js?v=3" defer></script>
-    <script src="assets/js/main.js" defer></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        let menuTimeout;
+
+        const openMenu = () => {
+            clearTimeout(menuTimeout);
+            mobileDropdown.classList.add('show');
+            if (window.innerWidth < 1024) {
+                mobileMenuOverlay.classList.remove('hidden');
+            }
+        };
+
+        const closeMenu = (immediate = false) => {
+            const delay = immediate ? 0 : 200;
+            menuTimeout = setTimeout(() => {
+                mobileDropdown.classList.remove('show');
+                if (window.innerWidth < 1024) {
+                    mobileMenuOverlay.classList.add('hidden');
+                }
+                // Close all submenus when the main menu is closed
+                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(openSubmenu => {
+                    openSubmenu.classList.remove('submenu-open');
+                });
+            }, delay);
+        };
+
+        const toggleMenu = () => {
+            if (!mobileDropdown.classList.contains('show')) {
+                openMenu();
+            } else {
+                closeMenu(true);
+            }
+        };
+
+        if (mobileMenuBtn && mobileDropdown) {
+            mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            if (window.innerWidth >= 1024) {
+                const menuContainer = mobileMenuBtn.parentElement;
+                menuContainer.addEventListener('mouseenter', openMenu);
+                menuContainer.addEventListener('mouseleave', () => closeMenu());
+            }
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
+        }
+
+        const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
+        submenuContainers.forEach(parent => {
+            const btn = parent.querySelector('.submenu-parent-btn');
+            if (!btn) return;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const wasOpen = parent.classList.contains('submenu-open');
+                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
+                    other.classList.remove('submenu-open');
+                });
+                if (!wasOpen) {
+                    parent.classList.add('submenu-open');
+                }
+            });
+        });
+    });
+
+    function closeActiveMenu() {
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        if (mobileDropdown && mobileDropdown.classList.contains('show')) {
+            mobileDropdown.classList.remove('show');
+            if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
+        }
+    }
+
+    // Handlers for menu links
+    function openNewLink(url) { window.open(url, '_blank'); closeActiveMenu(); }
+    function handleCerofilas() { openNewLink('https://dal5.short.gy/CFil'); }
+    function handleDirectiva() { showDirectiva(); closeActiveMenu(); }
+    function handleCredenciales() { showCredenciales(); closeActiveMenu(); }
+    function handleCredencialIndependiente() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
+    function handleValores() { openNewLink('https://dal5.short.gy/val'); }
+    function handleValorPlan() { openNewLink('https://os10.short.gy/Pl4n'); }
+    function handleBuscarCurso(url) { openNewLink(url); }
+    function handleCursoFormacion() { openNewLink('https://www.zosepcar.cl/OS10.php'); }
+
+    </script>
+    
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
@@ -475,3 +569,4 @@
     </script>
 </body>
 </html>
+
