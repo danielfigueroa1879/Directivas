@@ -238,26 +238,27 @@ body.homepage {
     background-color: rgba(34, 197, 94, 0.15); /* Verde claro */
     color: #15803d; /* Verde oscuro para el texto */
 }
-
-/* --- Menú Móvil --- */
+/* ===== MENÚ DESPLEGABLE DESDE LA DERECHA ===== */
 .mobile-dropdown {
     position: fixed;
     top: 4rem;
-    left: 0;
+    right: 0; /* Cambiado de left a right */
     width: 320px; 
     height: calc(100vh - 4rem);
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
-    transform: translateX(-105%); 
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1); /* Sombra a la IZQUIERDA */
+    transform: translateX(105%); /* Se OCULTA hacia la derecha */
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
-    padding: 0.5rem 0; /* Compacto */
+    padding: 0.5rem 0;
+    border-left: 1px solid rgba(0,0,0,0.05); /* Borde a la izquierda */
 }
 
 .mobile-dropdown.show {
-    transform: translateX(0);
+    transform: translateX(0); /* Aparece en su posición */
 }
 
 #mobile-menu-overlay {
@@ -474,14 +475,16 @@ body.homepage {
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
 }
-
-/* Ajuste para centrar elementos del banner en PC */
+/* Ajustes para PC (opcional, puedes mantener el menú en escritorio si quieres) */
 @media (min-width: 1024px) {
-  #banner > div {
-    justify-content: center !important; /* Centra los grupos */
-    gap: 34rem; /* Espacio ajustado entre los grupos */
-    max-width: 1200px; /* Ancho máximo reducido */
-  }
+    .mobile-dropdown {
+        right: 1rem; /* Separación del borde */
+        width: 380px;
+        height: auto;
+        max-height: calc(100vh - 5rem);
+        border-radius: 0 0 12px 12px; /* Bordes redondeados abajo */
+    }
+}
 
   /* Estilos para el menú desplegable en PC */
   .mobile-dropdown {
