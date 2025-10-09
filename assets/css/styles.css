@@ -42,11 +42,11 @@ body.homepage {
 #chat-widget-container { 
     position: fixed; 
     bottom: 1.5rem; 
-    left: 1.5rem; /* Movido a la izquierda */
+    right: 1.5rem; /* Movido a la derecha */
     z-index: 1000; 
     display: flex; 
     flex-direction: column; 
-    align-items: flex-start; /* Alineado a la izquierda */
+    align-items: flex-end; /* Alineado a la derecha */
 }
 #chat-popup { 
     width: 450px; 
@@ -112,7 +112,7 @@ body.homepage {
 
 @media (max-width: 767px) { 
     #chat-widget-container { 
-        left: 1rem; /* Movido a la izquierda */
+        right: 1rem; /* Movido a la derecha */
         bottom: 1rem; 
     } 
     #chat-toggle-button { 
@@ -186,16 +186,17 @@ body.homepage {
 
     #chat-widget-container {
         bottom: 2rem;
-        left: 2rem;
+        right: 2rem; /* Movido a la derecha */
     }
 }
 
 /* Botón del submenú */
 .mobile-dropdown .submenu-parent-btn {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center; /* Centrado */
     align-items: center;
-    text-align: left;
+    position: relative; /* Para la flecha */
+    text-align: center; /* Centrado */
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -203,12 +204,16 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
-    margin-right: 0.5rem;
+    position: absolute;
+    left: 1.5rem; /* Flecha a la izquierda */
+    top: 50%;
+    transform: translateY(-50%);
     transition: transform 0.3s ease-in-out;
 }
 
+
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
-    transform: rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
 
 .mobile-dropdown .submenu-parent-btn:hover {
@@ -249,7 +254,7 @@ body.homepage {
     display: block;
     width: 90%; 
     text-align: left;
-    padding-left: 5rem; /* Aumentado para correr más a la derecha */
+    padding-left: 5rem;
 }
 
 .mobile-dropdown .submenu.leyes-compactas button {
@@ -268,7 +273,7 @@ body.homepage {
 .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: left;
+    text-align: center; /* Centrado */
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
 }
@@ -286,7 +291,7 @@ body.homepage {
     margin-bottom: 0.5rem;
 }
 .mobile-dropdown .dropdown-menu-header h3 {
-    text-align: left;
+    text-align: center; /* Centrado */
 }
 
 /* Resto de estilos */
