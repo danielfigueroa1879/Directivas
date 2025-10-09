@@ -218,13 +218,13 @@ body.homepage {
     }
 }
 
-/* Botón del submenú con texto centrado y flecha a la izquierda */
+/* Botón del submenú con flecha y texto alineado a la izquierda */
 .mobile-dropdown .submenu-parent-btn {
-    display: flex; 
-    justify-content: center;
+    display: flex;
+    justify-content: flex-start; /* Alinea contenido (flecha y texto) a la izquierda */
     align-items: center;
     position: relative;
-    text-align: center;
+    text-align: left; /* Alinea el texto a la izquierda */
     width: 100%;
     padding: 0.6rem 1.5rem;
     font-weight: 500;
@@ -233,15 +233,14 @@ body.homepage {
 }
 
 .mobile-dropdown .submenu-arrow {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
+    margin-right: 0.5rem; /* Espacio entre la flecha y el texto */
+    position: static; /* Quita el posicionamiento absoluto */
+    transform: translateY(0) rotate(0deg); /* Resetea la transformación */
     transition: transform 0.3s ease-in-out;
 }
 
 .mobile-dropdown .has-submenu.submenu-open .submenu-arrow {
-    transform: translateY(-50%) rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .mobile-dropdown .submenu-parent-btn:hover {
@@ -268,12 +267,13 @@ body.homepage {
     max-height: 2000px; 
 }
 
+/* Corrección para que cada botón ocupe una fila y esté alineado a la izquierda */
 .mobile-dropdown .submenu button,
 .mobile-dropdown .submenu .submenu-title {
     display: block;
     width: 100%;
-    text-align: center;
-    padding-left: 1.5rem;
+    text-align: left;
+    padding-left: 2.5rem;
     padding-right: 1.5rem;
 }
 
@@ -283,6 +283,7 @@ body.homepage {
     padding-bottom: 0.3rem;
     font-size: 0.78rem;
 }
+
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
@@ -290,10 +291,11 @@ body.homepage {
     background-color: rgba(0,0,0,0.06);
 }
 
+/* Botones principales del menú */
 .mobile-dropdown .dropdown-menu-content > button, .mobile-dropdown .dropdown-menu-content > a {
     display: block;
     width: 100%;
-    text-align: center;
+    text-align: left; /* Alineado a la izquierda */
     padding: 0.5rem 1.5rem;
     font-size: 0.82rem;
     color: #374151;
@@ -319,7 +321,7 @@ body.homepage {
     font-weight: 600;
     color: #1f2937;
     font-size: 0.9rem;
-    text-align: center;
+    text-align: left; /* Alineado a la izquierda */
 }
 
 .banner-text-small {
