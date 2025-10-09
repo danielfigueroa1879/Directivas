@@ -191,13 +191,13 @@ body.homepage {
         position: absolute; 
         left: auto;
         right: 0;
-        top: calc(100% + 0.5rem);
+        top: calc(100% + 0.5rem); /* Posición justo debajo del contenedor del botón */
         width: 380px;
         height: auto;
         max-height: calc(100vh - 5rem);
         border-radius: 12px;
         transform-origin: top right;
-        transform: translateX(20px) scale(0.98);
+        transform: scale(0.95) translateY(-10px);
         opacity: 0;
         transition: transform 0.2s ease-out, opacity 0.2s ease-out;
         pointer-events: none;
@@ -205,13 +205,20 @@ body.homepage {
     }
 
     .mobile-dropdown.show {
-        transform: translateX(0) scale(1);
+        transform: scale(1) translateY(0);
         opacity: 1;
         pointer-events: auto;
     }
 
     #mobile-menu-overlay {
         display: none !important;
+    }
+
+    #chat-widget-container {
+        left: 50%;
+        right: auto;
+        bottom: 5rem; /* Más arriba */
+        transform: translateX(-50%);
     }
 
     #chat-toggle-button {
