@@ -143,16 +143,19 @@ body.homepage {
     -webkit-backdrop-filter: blur(20px);
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1); /* Sombra a la izquierda */
     transform: translateX(105%); /* Oculto fuera de la pantalla a la derecha */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     z-index: 1200;
     overflow-y: auto;
     border-left: 1px solid rgba(0,0,0,0.05);
-    opacity: 1; /* Aseguramos que sea visible cuando se transforma */
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Estado visible del menú */
 .mobile-dropdown.show {
     transform: translateX(0); /* Se desliza a la vista desde la derecha */
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Overlay para el fondo en móvil */
@@ -178,7 +181,7 @@ body.homepage {
 @media (min-width: 1024px) {
     /* Centra el contenido del banner */
     #banner > div {
-        max-width: 800px; /* Reduce el ancho para acercar los elementos */
+        max-width: 750px; 
     }
 
     #mobile-menu-btn {
@@ -194,7 +197,7 @@ body.homepage {
         max-height: calc(100vh - 5rem);
         border-radius: 12px;
         transform-origin: top right;
-        transform: scale(0.95) translateY(-10px);
+        transform: translateX(20px) scale(0.98);
         opacity: 0;
         transition: transform 0.2s ease-out, opacity 0.2s ease-out;
         pointer-events: none;
@@ -202,7 +205,7 @@ body.homepage {
     }
 
     .mobile-dropdown.show {
-        transform: scale(1) translateY(0);
+        transform: translateX(0) scale(1);
         opacity: 1;
         pointer-events: auto;
     }
@@ -398,26 +401,4 @@ body.homepage {
     .credenciales-main-title { font-size: 1.4rem; }
     .credenciales-main-subtitle { font-size: 1.0rem; }
     .credenciales-section-title { font-size: 1.1rem; }
-}
-
-/* Ocultar menú por defecto, será manejado por JS */
-.mobile-dropdown {
-    transform: translateX(105%);
-    pointer-events: none;
-}
-.mobile-dropdown.show {
-    transform: translateX(0);
-    pointer-events: auto;
-}
-@media (min-width: 1024px) {
-    .mobile-dropdown {
-        transform: scale(0.95) translateY(-10px);
-        opacity: 0;
-        pointer-events: none;
-    }
-    .mobile-dropdown.show {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-        pointer-events: auto;
-    }
 }
