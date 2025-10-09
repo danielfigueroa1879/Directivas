@@ -112,12 +112,11 @@ body.homepage {
 
 /* ===== CORRECCIÓN DE POSICIONAMIENTO PARA PC ===== */
 @media (min-width: 1024px) {
-    #chat-widget-container {
-        /* Se centra en la pantalla y se desplaza 60% a la izquierda */
-        left: 50%;
-        transform: translateX(-60%);
-        bottom: 7.9rem;
-    }
+  #banner > div {
+    justify-content: center !important; /* Centra los grupos */
+    gap: 34rem; /* Espacio ajustado entre los grupos */
+    max-width: 1200px; /* Ancho máximo reducido */
+  }
 
     #chat-toggle-button {
         width: 90px;
