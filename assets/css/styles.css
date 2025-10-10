@@ -14,6 +14,7 @@ body.homepage {
 }
 
 #homepage-section {
+    min-height: 100vh; /* Ajustado para ocupar toda la altura */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -42,11 +43,11 @@ body.homepage {
 #chat-widget-container { 
     position: fixed; 
     bottom: 1.5rem; 
-    right: 1.5rem; /* Movido a la derecha */
+    left: 1.5rem; /* Movido a la izquierda */
     z-index: 1000; 
     display: flex; 
     flex-direction: column; 
-    align-items: flex-end; /* Alineado a la derecha */
+    align-items: flex-start; /* Alineado a la izquierda */
 }
 #chat-popup { 
     width: 450px; 
@@ -110,9 +111,19 @@ body.homepage {
     40% { transform: scale(1.0); } 
 }
 
+@media (min-width: 1024px) {
+    #chat-widget-container {
+        left: calc((100vw - 750px) / 2); /* Alineado con el contenido principal a la izquierda */
+        right: auto;
+        bottom: 2rem;
+    }
+}
+
+
 @media (max-width: 767px) { 
     #chat-widget-container { 
-        right: 1rem; /* Movido a la derecha */
+        left: 1rem; /* Movido a la izquierda */
+        right: auto; /* Anular 'right' */
         bottom: 1rem; 
     } 
     #chat-toggle-button { 
@@ -184,24 +195,23 @@ body.homepage {
     }
     #mobile-menu-overlay { display: none !important; }
 
-    #chat-widget-container {
-        bottom: 2rem;
-        right: 2rem; /* Movido a la derecha */
-    }
-
     /* AJUSTE TAMAÑO DE LETRA PARA PC */
     .mobile-dropdown .submenu-parent-btn,
     .mobile-dropdown .dropdown-menu-content > button, 
     .mobile-dropdown .dropdown-menu-content > a {
-        font-size: 0.75rem; /* Reducido para PC */
-    }
-
-    .mobile-dropdown .submenu.leyes-compactas button {
         font-size: 0.7rem; /* Reducido para PC */
     }
 
+    .mobile-dropdown .submenu button {
+        font-size: 0.65rem; /* Reducido para submenus en PC */
+    }
+
+    .mobile-dropdown .submenu.leyes-compactas button {
+        font-size: 0.6rem; /* Reducido para PC */
+    }
+
     .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-        font-size: 0.65rem; /* Reducido para PC */
+        font-size: 0.58rem; /* Reducido para PC */
     }
 }
 
@@ -270,18 +280,19 @@ body.homepage {
     width: 90%; 
     text-align: left;
     padding-left: 5rem;
+    font-size: 0.7rem; /* Tamaño reducido para MÓVIL */
 }
 
 .mobile-dropdown .submenu.leyes-compactas button {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    font-size: 0.78rem;
+    font-size: 0.68rem; /* Tamaño reducido para MÓVIL */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
-    font-size: 0.7rem;
+    font-size: 0.62rem; /* Tamaño reducido para MÓVIL */
     background-color: rgba(0,0,0,0.06);
 }
 
@@ -312,7 +323,7 @@ body.homepage {
 /* Resto de estilos */
 .banner-text-small,
 .voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center,
-#tramites-principales, .homepage-section, .elegant-card, .credenciales-section
+#tramites-principales, .elegant-card, .credenciales-section
 {
     /* Estilos existentes se mantienen */
 }
