@@ -14,7 +14,7 @@ body.homepage {
 }
 
 #homepage-section {
-    min-height: 100vh; /* Ajustado para ocupar toda la altura */
+    min-height: 90vh; /* Altura reducida para juntar los elementos */
     transition: background-image 5.5s ease-in-out;
 }
 
@@ -43,11 +43,12 @@ body.homepage {
 #chat-widget-container { 
     position: fixed; 
     bottom: 1.5rem; 
-    left: 1.5rem; /* Movido a la izquierda */
+    right: 1.5rem; /* Por defecto a la derecha en móvil */
+    left: auto;
     z-index: 1000; 
     display: flex; 
     flex-direction: column; 
-    align-items: flex-start; /* Alineado a la izquierda */
+    align-items: flex-end; 
 }
 #chat-popup { 
     width: 450px; 
@@ -113,17 +114,20 @@ body.homepage {
 
 @media (min-width: 1024px) {
     #chat-widget-container {
-        left: calc((100vw - 750px) / 2); /* Alineado con el contenido principal a la izquierda */
+        left: 50%; /* Centrado */
+        transform: translateX(-50%);
+        margin-left: 10rem; /* Desplazado un poco a la derecha */
         right: auto;
         bottom: 2rem;
+        align-items: center;
     }
 }
 
 
 @media (max-width: 767px) { 
     #chat-widget-container { 
-        left: 1rem; /* Movido a la izquierda */
-        right: auto; /* Anular 'right' */
+        left: auto;
+        right: 1rem;
         bottom: 1rem; 
     } 
     #chat-toggle-button { 
@@ -199,19 +203,19 @@ body.homepage {
     .mobile-dropdown .submenu-parent-btn,
     .mobile-dropdown .dropdown-menu-content > button, 
     .mobile-dropdown .dropdown-menu-content > a {
-        font-size: 0.7rem; /* Reducido para PC */
+        font-size: 0.8rem; /* Aumentado */
     }
 
     .mobile-dropdown .submenu button {
-        font-size: 0.65rem; /* Reducido para submenus en PC */
+        font-size: 0.75rem; /* Aumentado */
     }
 
     .mobile-dropdown .submenu.leyes-compactas button {
-        font-size: 0.6rem; /* Reducido para PC */
+        font-size: 0.75rem; /* Aumentado */
     }
 
     .mobile-dropdown .submenu.leyes-compactas .submenu-title {
-        font-size: 0.58rem; /* Reducido para PC */
+        font-size: 0.7rem; /* Aumentado */
     }
 }
 
@@ -280,19 +284,19 @@ body.homepage {
     width: 90%; 
     text-align: left;
     padding-left: 5rem;
-    font-size: 0.7rem; /* Tamaño reducido para MÓVIL */
+    font-size: 0.78rem; /* Aumentado para MÓVIL */
 }
 
 .mobile-dropdown .submenu.leyes-compactas button {
     padding-top: 0.3rem;
     padding-bottom: 0.3rem;
-    font-size: 0.68rem; /* Tamaño reducido para MÓVIL */
+    font-size: 0.75rem; /* Aumentado para MÓVIL */
 }
 
 .mobile-dropdown .submenu.leyes-compactas .submenu-title {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
-    font-size: 0.62rem; /* Tamaño reducido para MÓVIL */
+    font-size: 0.7rem; /* Aumentado para MÓVIL */
     background-color: rgba(0,0,0,0.06);
 }
 
