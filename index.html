@@ -32,7 +32,7 @@
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/styles.css?v=39">
+    <link rel="stylesheet" href="assets/css/styles.css?v=40">
 </head>
 <body class="homepage background-transition">
     
@@ -262,7 +262,7 @@
                             <h4 class="requirement-subtitle">Formato Excel:</h4>
                             <ul class="list-disc pl-5">
                                 <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
-                                <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                                <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESas. Datos de los agentes</strong>.</li>
                             </ul>
                             <div class="credenciales-table-container">
                                 <table class="credenciales-responsive-table">
@@ -438,8 +438,8 @@
     <button id="back-to-top" class="hidden fixed bottom-5 right-5"></button>
     
     <script>
-    // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
     document.addEventListener('DOMContentLoaded', () => {
+        // --- LÓGICA DE NAVEGACIÓN Y MENÚ ---
         const menuContainer = document.getElementById('menu-container');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileDropdown = document.getElementById('mobile-dropdown');
@@ -493,7 +493,7 @@
         }
         
         document.addEventListener('click', (e) => {
-             if (!mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+             if (mobileDropdown && !mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                  closeMenu(true);
              }
         });
@@ -531,6 +531,19 @@
                 }
             }, 12000);
         }
+
+        const backToTopButton = document.getElementById('back-to-top');
+        if (backToTopButton) {
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            };
+            backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+        }
+
 
         showHomepage(); // Show homepage on initial load
     });
@@ -588,7 +601,6 @@
     function handleValorPlan() { openNewLink('https://os10.short.gy/Pl4n'); }
     function handleBuscarCurso(url) { openNewLink(url); }
     function handleCursoFormacion() { openNewLink('https://www.zosepcar.cl/OS10.php'); }
-
     </script>
     
     <script type="module">
