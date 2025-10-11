@@ -105,34 +105,8 @@
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf')">4. Encargado de Seguridad</button>
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf')">5. Supervisor de Seguridad</button>
                                     
-                                    <div class="has-submenu-left">
-                                        <button class="submenu-parent-btn-left">
-                                            6. Asesor de Seguridad 
-                                            <svg class="submenu-arrow-right w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                                        </button>
-                                        <div class="submenu-left-content">
-                                            <h3>🤖 ASESOR</h3>
-                                            <p><strong>GUÍA:</strong> <a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank">https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf</a></p>
-                                            <p><strong>Títulos afines:</strong></p>
-                                            <p>Resol. 4070 20.10.2021- link: <a href="https://bit.ly/3r5HrBg" target="_blank">https://bit.ly/3r5HrBg</a></p>
-                                            <p>➢ SIN DIPLOMADO EN SEGURIDAD PRIVADA</p>
-                                            <ol>
-                                                <li>INGENIERO DE EJECUCIÓN EN GESTIÓN DE SEGURIDAD PRIVADA.</li>
-                                                <li>INGENIERO EN GESTIÓN DE SEGURIDAD Y VIGILANCIA PRIVADA.</li>
-                                            </ol>
-                                            <p>➢ CON DIPLOMADO EN SEGURIDAD PRIVADA</p>
-                                            <ol>
-                                                <li>INGENIERO EN SEGURIDAD Y PREVENCIÓN DE RIESGO.</li>
-                                                <li>INGENIERO EN PREVENCIÓN DE RIESGOS.</li>
-                                                <li>PARA LOS EX MIEMBROS DE LAS FUERZAS ARMADAS, CARABINEROS DE CHILE, POLICÍA DE INVESTIGACIONES Y GENDARMERÍA DE CHILE exigirá EL TITULO DE OFICIAL EGRESADO de/las Fuerzas primadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile.</li>
-                                            </ol>
-                                            <p>Resol. 2660 20.07.2023-link: <a href="https://bit.ly/44PRW9w" target="_blank">https://bit.ly/44PRW9w</a></p>
-                                            <ol>
-                                                <li>INGENIERÍA EN ADMINISTRACIÓN MENCIÓN SEGURIDAD PRIVADA</li>
-                                            </ol>
-                                            <p><strong>CREDENCIAL:</strong> <a href="https://bit.ly/3tGuM9a" target="_blank">https://bit.ly/3tGuM9a</a></p>
-                                        </div>
-                                    </div>
+                                    <button onclick="showAsesorPanel()">6. Asesor de Seguridad</button>
+
                                     
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf')">7. Capacitador de Seguridad</button>
                                     <button onclick="openNewLink('https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf')">8. Técnico en Seguridad</button>
@@ -194,6 +168,34 @@
         </div>
     </div>
     <div id="mobile-menu-overlay" class="hidden"></div>
+
+    <div id="asesor-panel" class="fixed bottom-0 left-0 right-0 bg-white p-8 transform translate-y-full transition-transform duration-500 ease-in-out z-[1100]" style="max-height: calc(100vh - 64px); overflow-y: auto;">
+        <button onclick="hideAsesorPanel()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <div id="asesor-content" class="prose max-w-none">
+            <h3 class="text-2xl font-bold text-gray-800">🤖 ASESOR</h3>
+            <p><strong>GUÍA:</strong> <a href="https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf" target="_blank">https://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf</a></p>
+            <p><strong>Títulos afines:</strong></p>
+            <p>Resol. 4070 20.10.2021- link: <a href="https://bit.ly/3r5HrBg" target="_blank">https://bit.ly/3r5HrBg</a></p>
+            <p>➢ SIN DIPLOMADO EN SEGURIDAD PRIVADA</p>
+            <ol>
+                <li>INGENIERO DE EJECUCIÓN EN GESTIÓN DE SEGURIDAD PRIVADA.</li>
+                <li>INGENIERO EN GESTIÓN DE SEGURIDAD Y VIGILANCIA PRIVADA.</li>
+            </ol>
+            <p>➢ CON DIPLOMADO EN SEGURIDAD PRIVADA</p>
+            <ol>
+                <li>INGENIERO EN SEGURIDAD Y PREVENCIÓN DE RIESGO.</li>
+                <li>INGENIERO EN PREVENCIÓN DE RIESGOS.</li>
+                <li>PARA LOS EX MIEMBROS DE LAS FUERZAS ARMADAS, CARABINEROS DE CHILE, POLICÍA DE INVESTIGACIONES Y GENDARMERÍA DE CHILE exigirá EL TITULO DE OFICIAL EGRESADO de/las Fuerzas primadas, de las Fuerzas de Orden y Seguridad Pública o Gendarmería de Chile.</li>
+            </ol>
+            <p>Resol. 2660 20.07.2023-link: <a href="https://bit.ly/44PRW9w" target="_blank">https://bit.ly/44PRW9w</a></p>
+            <ol>
+                <li>INGENIERÍA EN ADMINISTRACIÓN MENCIÓN SEGURIDAD PRIVADA</li>
+            </ol>
+            <p><strong>CREDENCIAL:</strong> <a href="https://bit.ly/3tGuM9a" target="_blank">https://bit.ly/3tGuM9a</a></p>
+        </div>
+    </div>
     
     <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
         <a href="#" onclick="showHomepage(); return false;" aria-label="Volver al inicio" class="logo-os10-container">
