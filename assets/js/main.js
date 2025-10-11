@@ -68,22 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openMenu = () => {
         clearTimeout(menuTimeout);
-        if (!mobileDropdown.classList.contains('show')) {
-            mobileDropdown.classList.add('show');
-            if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
-                mobileMenuOverlay.classList.remove('hidden');
-            }
+        mobileDropdown.classList.add('show');
+        if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
+            mobileMenuOverlay.classList.remove('hidden');
         }
     };
 
     const closeMenu = (immediate = false) => {
         const delay = immediate ? 0 : 200;
         menuTimeout = setTimeout(() => {
-            if (mobileDropdown.classList.contains('show')) {
-                mobileDropdown.classList.remove('show');
-                 if (window.innerWidth < 1024) {
-                    mobileMenuOverlay.classList.add('hidden');
-                }
+            mobileDropdown.classList.remove('show');
+            if (window.innerWidth < 1024) {
+                mobileMenuOverlay.classList.add('hidden');
             }
         }, delay);
     };
@@ -97,18 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (mobileMenuBtn && mobileDropdown) {
-        // Detener la propagación de clics dentro del menú para evitar que se cierre
-        mobileDropdown.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Comportamiento de clic para todos los dispositivos
+        mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
 
-        // Comportamiento de hover solo para escritorio (PC)
         if (window.innerWidth >= 1024) {
             mobileMenuBtn.closest('#menu-container').addEventListener('mouseenter', openMenu);
             mobileMenuBtn.closest('#menu-container').addEventListener('mouseleave', () => closeMenu());
@@ -119,50 +109,37 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
     }
     
-    // --- LÓGICA DE SUBMENÚS (MODIFICADA) ---
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
         if (!btn) return;
-
         btn.addEventListener('click', (e) => {
             e.stopPropagation(); 
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent) {
-                    other.classList.remove('submenu-open');
-                }
+                if (other !== parent) other.classList.remove('submenu-open');
             });
             parent.classList.toggle('submenu-open');
         });
     });
 
-    // --- LÓGICA PARA SUBMENÚ A LA IZQUIERDA (Evitar clipping) ---
-    document.querySelectorAll('.has-submenu-left').forEach(item => {
-        // No se necesita JS, el hover se maneja por CSS
-    });
-
-
-    // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
     if (installButton) installButton.addEventListener('click', installPWA);
 
     const closeButton = document.getElementById('close-install-banner');
     if (closeButton) {
         closeButton.addEventListener('click', () => {
-            const pwaBanner = document.getElementById('pwa-install-banner');
-            if (pwaBanner) pwaBanner.classList.remove('show');
+            document.getElementById('pwa-install-banner')?.classList.remove('show');
         });
     }
 
     // --- LÓGICA ASESOR PANEL ---
     const asesorPanel = document.getElementById('asesor-panel');
     const asesorCloseBtn = document.getElementById('asesor-close-btn');
-
     if(asesorPanel && asesorCloseBtn) {
         asesorCloseBtn.addEventListener('click', closeAsesorPanel);
     }
     
-    // Background rotation and other initializations
+    // --- ROTACIÓN DE IMÁGENES Y OTROS ---
     const backgroundImages = [
         'assets/images/foto (1).webp', 'assets/images/foto (2).webp', 'assets/images/foto (3).webp', 
         'assets/images/foto (4).webp', 'assets/images/foto (5).webp', 'assets/images/foto (6).webp',
@@ -192,9 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
     }
 
-
-    showHomepage(); // Show homepage on initial load
-
+    showHomepage();
     console.log('✅ All components initialized successfully');
 });
 
@@ -204,7 +179,6 @@ window.addEventListener('appinstalled', (e) => {
     bannerShown = false;
 });
 
-// Función global para cerrar el menú desde los enlaces
 function closeActiveMenu() {
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -268,7 +242,7 @@ window.showAsesorPanel = function() {
     if (asesorPanel) {
         asesorPanel.classList.add('show');
     }
-    closeActiveMenu(); // Cierra el menú principal si está abierto
+    closeActiveMenu();
 }
 
 window.closeAsesorPanel = function() {
