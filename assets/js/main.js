@@ -138,15 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA PARA SUBMENÚ A LA IZQUIERDA (Evitar clipping) ---
     document.querySelectorAll('.has-submenu-left').forEach(item => {
-        const parentSubmenu = item.closest('.submenu');
-        if (parentSubmenu) {
-            item.addEventListener('mouseenter', () => {
-                parentSubmenu.classList.add('overflow-visible');
-            });
-            item.addEventListener('mouseleave', () => {
-                parentSubmenu.classList.remove('overflow-visible');
-            });
-        }
+        // No se necesita JS, el hover se maneja por CSS
     });
 
 
@@ -161,6 +153,47 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pwaBanner) pwaBanner.classList.remove('show');
         });
     }
+
+    // --- LÓGICA ASESOR PANEL ---
+    const asesorPanel = document.getElementById('asesor-panel');
+    const asesorCloseBtn = document.getElementById('asesor-close-btn');
+
+    if(asesorPanel && asesorCloseBtn) {
+        asesorCloseBtn.addEventListener('click', closeAsesorPanel);
+    }
+    
+    // Background rotation and other initializations
+    const backgroundImages = [
+        'assets/images/foto (1).webp', 'assets/images/foto (2).webp', 'assets/images/foto (3).webp', 
+        'assets/images/foto (4).webp', 'assets/images/foto (5).webp', 'assets/images/foto (6).webp',
+        'assets/images/foto (7).webp', 'assets/images/foto (8).webp', 'assets/images/foto (9).webp'
+    ];
+    let currentImageIndex = 0;
+    const homepageSection = document.getElementById('homepage-section');
+
+    if (homepageSection) {
+        setInterval(() => {
+            if (document.body.classList.contains('homepage')) {
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+            }
+        }, 12000);
+    }
+
+    const backToTopButton = document.getElementById('back-to-top');
+    if (backToTopButton) {
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        };
+        backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+    }
+
+
+    showHomepage(); // Show homepage on initial load
 
     console.log('✅ All components initialized successfully');
 });
@@ -181,7 +214,7 @@ function closeActiveMenu() {
     }
 }
 
-// Handlers de navegación (globales)
+// --- Handlers de navegación (globales) ---
 window.openNewLink = function(url) {
     window.open(url, '_blank');
     closeActiveMenu();
@@ -193,3 +226,54 @@ window.handleCredencialIndependiente = function() { openNewLink('https://drive.g
 window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
 window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
 window.handleBuscarCurso = function(url) { openNewLink(url); }
+
+// --- Page switching functions ---
+function showHomepage() {
+    document.getElementById('homepage-section').style.display = 'flex';
+    document.getElementById('homepage-content-wrapper').style.display = 'block';
+    document.getElementById('main-footer').style.display = 'block';
+    document.getElementById('contenido').style.display = 'none';
+    document.body.className = 'homepage background-transition';
+    document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
+    window.scrollTo(0, 0);
+}
+
+function showDirectiva() {
+    document.getElementById('homepage-section').style.display = 'none';
+    document.getElementById('homepage-content-wrapper').style.display = 'none';
+    document.getElementById('main-footer').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+    document.getElementById('main-section').style.display = 'block';
+    document.getElementById('credenciales-section')?.classList.remove('active');
+    document.body.className = '';
+    document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+    window.scrollTo(0, 0);
+}
+
+function showCredenciales() {
+    document.getElementById('homepage-section').style.display = 'none';
+    document.getElementById('homepage-content-wrapper').style.display = 'none';
+    document.getElementById('main-footer').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+    document.getElementById('main-section').style.display = 'none';
+    document.getElementById('credenciales-section')?.classList.add('active');
+    document.body.className = '';
+    document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
+    window.scrollTo(0, 0);
+}
+
+// Handlers for Asesor Panel
+window.showAsesorPanel = function() {
+    const asesorPanel = document.getElementById('asesor-panel');
+    if (asesorPanel) {
+        asesorPanel.classList.add('show');
+    }
+    closeActiveMenu(); // Cierra el menú principal si está abierto
+}
+
+window.closeAsesorPanel = function() {
+    const asesorPanel = document.getElementById('asesor-panel');
+    if (asesorPanel) {
+        asesorPanel.classList.remove('show');
+    }
+}
