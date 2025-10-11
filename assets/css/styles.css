@@ -293,12 +293,12 @@ body.homepage {
     text-align: center; /* Centrado */
 }
 
-/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA DERECHA --- */
-.has-submenu-right {
+/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA IZQUIERDA --- */
+.has-submenu-left {
     position: relative;
 }
 
-.submenu-parent-btn-right {
+.submenu-parent-btn-left {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -312,61 +312,62 @@ body.homepage {
     cursor: pointer;
 }
 
-.submenu-right {
+.submenu-left {
     display: none;
     position: absolute;
-    top: 0;
-    left: 100%;
+    top: -1rem; /* Alinear verticalmente */
+    right: 100%; /* Posicionar a la izquierda */
     width: 320px;
     background-color: rgba(240, 240, 240, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
     z-index: 1300;
     padding: 1rem;
 }
 
-.has-submenu-right:hover .submenu-right {
+.has-submenu-left:hover .submenu-left {
     display: block;
 }
 
-.submenu-arrow-right {
+.submenu-arrow-left {
     transition: transform 0.2s;
+    margin-right: 0.5rem; /* Espacio entre flecha y texto */
 }
 
-.has-submenu-right:hover .submenu-arrow-right {
-    transform: translateX(4px);
+.has-submenu-left:hover .submenu-arrow-left {
+    transform: translateX(-4px);
 }
 
-.submenu-right h4 {
+.submenu-left h4 {
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #1d4ed8;
 }
 
-.submenu-right p, .submenu-right ul {
+.submenu-left p, .submenu-left ul {
     font-size: 0.8rem;
     line-height: 1.4;
     color: #374151;
 }
 
-.submenu-right a {
+.submenu-left a {
     color: #2563eb;
     text-decoration: underline;
 }
 
-.submenu-right ul {
+.submenu-left ul {
     padding-left: 1rem;
     list-style: none;
 }
 
-.submenu-right ul li {
+.submenu-left ul li {
     margin-bottom: 0.5rem;
 }
 
-.submenu-right ul ol {
+.submenu-left ul ol {
     padding-left: 1rem;
     list-style-type: decimal;
 }
