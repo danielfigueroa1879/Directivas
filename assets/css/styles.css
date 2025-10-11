@@ -317,8 +317,9 @@ body.homepage {
     position: absolute;
     top: -1rem; /* Alinear verticalmente */
     right: 100%; /* Posicionar a la izquierda */
+    margin-right: 10px; /* Separación del menú principal */
     width: 320px;
-    background-color: rgba(240, 240, 240, 0.98);
+    background-color: rgba(255, 255, 255, 0.98); /* Fondo más opaco */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
@@ -356,6 +357,7 @@ body.homepage {
 .submenu-left a {
     color: #2563eb;
     text-decoration: underline;
+    word-break: break-all; /* Para que los links largos no se salgan */
 }
 
 .submenu-left ul {
@@ -370,6 +372,10 @@ body.homepage {
 .submenu-left ul ol {
     padding-left: 1rem;
     list-style-type: decimal;
+}
+
+.overflow-visible {
+    overflow: visible !important;
 }
 
 /* Resto de estilos */
