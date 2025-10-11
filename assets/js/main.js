@@ -136,9 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- LÓGICA PARA SUBMENÚ A LA IZQUIERDA ---
+    // --- LÓGICA PARA SUBMENÚ A LA IZQUIERDA (Evitar clipping) ---
     document.querySelectorAll('.has-submenu-left').forEach(item => {
-        // No se necesita JS, el hover se maneja por CSS
+        const parentSubmenu = item.closest('.submenu');
+        if (parentSubmenu) {
+            item.addEventListener('mouseenter', () => {
+                parentSubmenu.classList.add('overflow-visible');
+            });
+            item.addEventListener('mouseleave', () => {
+                parentSubmenu.classList.remove('overflow-visible');
+            });
+        }
     });
 
 
