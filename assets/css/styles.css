@@ -293,7 +293,7 @@ body.homepage {
     text-align: center; /* Centrado */
 }
 
-/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA DERECHA --- */
+/* --- ESTILOS PARA SUBMENÚ A LA IZQUIERDA --- */
 .has-submenu-left {
     position: relative;
 }
@@ -312,106 +312,149 @@ body.homepage {
     cursor: pointer;
 }
 
-.submenu-left-content {
+.submenu-left {
     display: none;
-    position: absolute;
-    top: -1rem; /* Alinear verticalmente */
-    left: 100%; /* Posicionar a la derecha */
-    margin-left: 10px; /* Separación del menú principal */
-    width: 320px;
-    background-color: rgba(255, 255, 255, 0.98); /* Fondo más opaco */
+    position: fixed; /* Cambiado a fixed para que no se corte */
+    top: 4rem; /* Debajo del banner */
+    left: 50%; /* Centrado */
+    transform: translateX(-50%); /* Centrado */
+    width: 90%;
+    max-width: 380px; /* Ancho máximo */
+    background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
     z-index: 1300;
     padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(10px) translateX(-50%);
+    pointer-events: none;
 }
 
-.has-submenu-left:hover .submenu-left-content {
+.has-submenu-left:hover .submenu-left {
     display: block;
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+    pointer-events: auto;
 }
 
-.submenu-arrow-right {
+.submenu-arrow-left {
     transition: transform 0.2s;
-    margin-left: 0.5rem; /* Espacio entre flecha y texto */
 }
 
-.has-submenu-left:hover .submenu-arrow-right {
-    transform: translateX(4px);
+.has-submenu-left:hover .submenu-arrow-left {
+    transform: rotate(180deg);
 }
 
-.submenu-left-content h3 {
+.submenu-left h4 {
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #1d4ed8;
 }
 
-.submenu-left-content p, .submenu-left-content ol {
+.submenu-left p, .submenu-left ul {
     font-size: 0.8rem;
     line-height: 1.4;
     color: #374151;
+}
+
+.submenu-left a {
+    color: #2563eb;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.submenu-left ul {
+    padding-left: 1rem;
+    list-style: none;
+}
+
+.submenu-left ul li {
     margin-bottom: 0.5rem;
 }
 
-.submenu-left-content a {
-    color: #2563eb;
-    text-decoration: underline;
-    word-break: break-all; /* Para que los links largos no se salgan */
-}
-
-.submenu-left-content ol {
+.submenu-left ul ol {
     padding-left: 1rem;
     list-style-type: decimal;
 }
 
-.overflow-visible {
-    overflow: visible !important;
-}
-
-/* --- ESTILOS ASESOR PANEL --- */
-#asesor-panel {
+/* --- ASESOR PANEL --- */
+.asesor-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: white;
-    z-index: 1100;
+    height: calc(100vh - 4rem); /* Altura hasta debajo del banner */
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
     transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
-    max-height: calc(100vh - 64px);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1500; /* Por encima de todo */
     overflow-y: auto;
     padding: 2rem;
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1), 0 -2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-#asesor-panel.show {
+.asesor-panel.show {
     transform: translateY(0);
 }
 
-#asesor-content h3 {
+#asesor-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2.5rem;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.asesor-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.asesor-content h4 {
     font-size: 1.5rem;
-    font-weight: 700;
-    color: #1f2937;
+    font-weight: bold;
+    color: #1d4ed8;
     margin-bottom: 1rem;
 }
 
-#asesor-content p {
+.asesor-content p, .asesor-content ul {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #374151;
     margin-bottom: 1rem;
 }
 
-#asesor-content ol {
-    list-style-type: decimal;
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-#asesor-content a {
+.asesor-content a {
     color: #2563eb;
     text-decoration: underline;
+    word-break: break-all;
 }
+
+.asesor-content ul {
+    padding-left: 1.5rem;
+    list-style: none;
+}
+
+.asesor-content ul li {
+    margin-bottom: 0.75rem;
+}
+
+.asesor-content ul ol {
+    padding-left: 1.5rem;
+    list-style-type: decimal;
+    margin-top: 0.5rem;
+}
+
 
 /* Resto de estilos */
 .banner-text-small,
