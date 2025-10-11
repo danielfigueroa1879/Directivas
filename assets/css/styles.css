@@ -293,7 +293,7 @@ body.homepage {
     text-align: center; /* Centrado */
 }
 
-/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA IZQUIERDA --- */
+/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA DERECHA --- */
 .has-submenu-left {
     position: relative;
 }
@@ -312,64 +312,56 @@ body.homepage {
     cursor: pointer;
 }
 
-.submenu-left {
+.submenu-left-content {
     display: none;
     position: absolute;
     top: -1rem; /* Alinear verticalmente */
-    right: 100%; /* Posicionar a la izquierda */
-    margin-right: 10px; /* Separación del menú principal */
+    left: 100%; /* Posicionar a la derecha */
+    margin-left: 10px; /* Separación del menú principal */
     width: 320px;
     background-color: rgba(255, 255, 255, 0.98); /* Fondo más opaco */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
     border: 1px solid rgba(0,0,0,0.08);
     border-radius: 8px;
     z-index: 1300;
     padding: 1rem;
 }
 
-.has-submenu-left:hover .submenu-left {
+.has-submenu-left:hover .submenu-left-content {
     display: block;
 }
 
-.submenu-arrow-left {
+.submenu-arrow-right {
     transition: transform 0.2s;
-    margin-right: 0.5rem; /* Espacio entre flecha y texto */
+    margin-left: 0.5rem; /* Espacio entre flecha y texto */
 }
 
-.has-submenu-left:hover .submenu-arrow-left {
-    transform: translateX(-4px);
+.has-submenu-left:hover .submenu-arrow-right {
+    transform: translateX(4px);
 }
 
-.submenu-left h4 {
+.submenu-left-content h3 {
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: #1d4ed8;
 }
 
-.submenu-left p, .submenu-left ul {
+.submenu-left-content p, .submenu-left-content ol {
     font-size: 0.8rem;
     line-height: 1.4;
     color: #374151;
+    margin-bottom: 0.5rem;
 }
 
-.submenu-left a {
+.submenu-left-content a {
     color: #2563eb;
     text-decoration: underline;
     word-break: break-all; /* Para que los links largos no se salgan */
 }
 
-.submenu-left ul {
-    padding-left: 1rem;
-    list-style: none;
-}
-
-.submenu-left ul li {
-    margin-bottom: 0.5rem;
-}
-
-.submenu-left ul ol {
+.submenu-left-content ol {
     padding-left: 1rem;
     list-style-type: decimal;
 }
