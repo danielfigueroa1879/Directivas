@@ -293,6 +293,84 @@ body.homepage {
     text-align: center; /* Centrado */
 }
 
+/* --- NUEVOS ESTILOS PARA SUBMENÚ A LA DERECHA --- */
+.has-submenu-right {
+    position: relative;
+}
+
+.submenu-parent-btn-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.submenu-right {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 320px;
+    background-color: rgba(240, 240, 240, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    z-index: 1300;
+    padding: 1rem;
+}
+
+.has-submenu-right:hover .submenu-right {
+    display: block;
+}
+
+.submenu-arrow-right {
+    transition: transform 0.2s;
+}
+
+.has-submenu-right:hover .submenu-arrow-right {
+    transform: translateX(4px);
+}
+
+.submenu-right h4 {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #1d4ed8;
+}
+
+.submenu-right p, .submenu-right ul {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: #374151;
+}
+
+.submenu-right a {
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+.submenu-right ul {
+    padding-left: 1rem;
+    list-style: none;
+}
+
+.submenu-right ul li {
+    margin-bottom: 0.5rem;
+}
+
+.submenu-right ul ol {
+    padding-left: 1rem;
+    list-style-type: decimal;
+}
+
 /* Resto de estilos */
 .banner-text-small,
 .voice-button, .response-button, .typing-indicator, .voice-selector, .os10-coquimbo-center,
@@ -319,5 +397,3 @@ body.homepage {
 .credenciales-responsive-table th, .credenciales-responsive-table td { border: 1px solid #ddd; padding: 12px; }
 .credenciales-responsive-table th { background-color: #f1f5f9; }
 #credenciales-arrow-back-btn:hover { background-color: rgba(0, 0, 0, 0.05); }
-
-}
