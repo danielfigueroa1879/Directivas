@@ -68,9 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const openMenu = () => {
         clearTimeout(menuTimeout);
-        if (mobileDropdown.classList.contains('hidden')) {
-            mobileDropdown.classList.remove('hidden');
-            setTimeout(() => mobileDropdown.classList.add('show'), 10);
+        if (!mobileDropdown.classList.contains('show')) {
+            mobileDropdown.classList.add('show');
             if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
                 mobileMenuOverlay.classList.remove('hidden');
             }
@@ -82,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuTimeout = setTimeout(() => {
             if (mobileDropdown.classList.contains('show')) {
                 mobileDropdown.classList.remove('show');
-                setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
                  if (window.innerWidth < 1024) {
                     mobileMenuOverlay.classList.add('hidden');
                 }
@@ -91,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const toggleMenu = () => {
-        if (mobileDropdown.classList.contains('hidden')) {
-            openMenu();
-        } else {
+        if (mobileDropdown.classList.contains('show')) {
             closeMenu(true);
+        } else {
+            openMenu();
         }
     };
 
@@ -112,10 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Comportamiento de hover solo para escritorio (PC)
         if (window.innerWidth >= 1024) {
-            mobileMenuBtn.addEventListener('mouseenter', openMenu);
-            mobileMenuBtn.addEventListener('mouseleave', () => closeMenu());
-            mobileDropdown.addEventListener('mouseenter', () => clearTimeout(menuTimeout));
-            mobileDropdown.addEventListener('mouseleave', () => closeMenu());
+            mobileMenuBtn.closest('#menu-container').addEventListener('mouseenter', openMenu);
+            mobileMenuBtn.closest('#menu-container').addEventListener('mouseleave', () => closeMenu());
         }
     }
 
@@ -127,53 +123,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
     submenuContainers.forEach(parent => {
         const btn = parent.querySelector('.submenu-parent-btn');
-        const arrow = parent.querySelector('.submenu-arrow');
         if (!btn) return;
 
-        // Lógica de CLIC para TODO el botón (abre o cierra el submenú)
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Previene que el menú principal se cierre
-            
-            // Cierra otros submenús abiertos
+            e.stopPropagation(); 
             document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
                 if (other !== parent) {
                     other.classList.remove('submenu-open');
                 }
             });
-            
-            // Alterna el estado del submenú actual
             parent.classList.toggle('submenu-open');
         });
+    });
 
-        // Lógica de HOVER solo para la FLECHA en ESCRITORIO
-        if (window.innerWidth >= 1024 && arrow) {
-            let submenuTimeout;
-
-            // Abre el submenú cuando el cursor entra en la flecha
-            arrow.addEventListener('mouseenter', (e) => {
-                e.stopPropagation();
-                clearTimeout(submenuTimeout);
-                 // Cierra otros submenús abiertos
-                document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                    if (other !== parent) {
-                        other.classList.remove('submenu-open');
-                    }
-                });
-                parent.classList.add('submenu-open');
-            });
-            
-            // Programa el cierre cuando el cursor sale del elemento padre completo
-            parent.addEventListener('mouseleave', () => {
-                submenuTimeout = setTimeout(() => {
-                    parent.classList.remove('submenu-open');
-                }, 300);
-            });
-
-            // Cancela el cierre si el cursor entra de nuevo en el elemento padre (para poder navegar al submenú)
-            parent.addEventListener('mouseenter', () => {
-                 clearTimeout(submenuTimeout);
-            });
-        }
+    // --- LÓGICA PARA SUBMENÚ A LA IZQUIERDA ---
+    document.querySelectorAll('.has-submenu-left').forEach(item => {
+        // No se necesita JS, el hover se maneja por CSS
     });
 
 
@@ -204,7 +169,6 @@ function closeActiveMenu() {
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     if (mobileDropdown && mobileDropdown.classList.contains('show')) {
         mobileDropdown.classList.remove('show');
-        setTimeout(() => mobileDropdown.classList.add('hidden'), 300);
         if (mobileMenuOverlay) mobileMenuOverlay.classList.add('hidden');
     }
 }
