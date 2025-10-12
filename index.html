@@ -25,38 +25,6 @@
         body.homepage { background-color: white; background-image: none; }
         .pwa-install-banner { position: fixed; top: 64px; left: 0; right: 0; background-color: #f1f5f9; border-bottom: 2px solid #3b82f6; padding: 1rem; display: flex; justify-content: space-between; align-items: center; z-index: 1100; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); transition: all 0.5s ease-in-out; transform: translateY(-100%); opacity: 0; }
         .pwa-install-banner.show { transform: translateY(0); opacity: 1; }
-        .notification-banner {
-        position: fixed;
-        top: 0; /* Modificado para aparecer encima del banner principal */
-        left: 50%;
-        transform: translate(-50%, -100%); /* Start off-screen */
-        width: 100%; /* Responsive width */
-        max-width: 750px;
-        background-color: #51a351; /* Color modificado según la solicitud del usuario */
-        color: white;
-        padding: 1.3rem 2.0rem;
-        border-radius: 0 0 12px 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1300; /* Z-index aumentado para que esté por encima del banner principal (1200) */
-        text-align: center;
-        opacity: 0;
-        transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease-in-out;
-    }
-
-    .notification-banner.show {
-        transform: translate(-50%, 0); /* Slide in */
-        opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-        .notification-banner {
-            width: 100%;
-            border-radius: 0 0 0 0;
-        }
-    }
-    .mover-derecha {
-        margin-left: 25px; /* Puedes ajustar el valor para el espaciado deseado */
-    }
     </style>
 
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -67,10 +35,6 @@
     <link rel="stylesheet" href="assets/css/styles.css?v=44">
 </head>
 <body class="homepage background-transition">
-    <!-- Notificación de recepción de documentos -->
-<div id="notification-banner" class="notification-banner text-sm sm:text-base font-semibold">
-    AVISO IMPORTANTE: La recepción de nuevas solicitudes de credenciales está suspendida temporalmente por cambio de proveedor. Informaremos prontamente sobre la reanudación del servicio. Agradecemos su comprensión.
-</div>
     
     <div id="pwa-install-banner" class="pwa-install-banner md:hidden">
         <span class="text-gray-800 text-sm font-medium">Instala la aplicación para un acceso más rápido.</span>
