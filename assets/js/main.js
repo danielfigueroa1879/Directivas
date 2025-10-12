@@ -69,18 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const openMenu = () => {
         clearTimeout(menuTimeout);
         mobileDropdown.classList.add('show');
-        if (window.innerWidth < 1024) { // Solo mostrar overlay en móvil
+        if (window.innerWidth < 1024) {
             mobileMenuOverlay.classList.remove('hidden');
         }
     };
 
     const closeMenu = (immediate = false) => {
-        const delay = immediate ? 0 : 200;
+        const delay = immediate ? 0 : 300;
         menuTimeout = setTimeout(() => {
             mobileDropdown.classList.remove('show');
             if (window.innerWidth < 1024) {
                 mobileMenuOverlay.classList.add('hidden');
             }
+            document.querySelectorAll('.has-submenu.submenu-open').forEach(openSubmenu => {
+                openSubmenu.classList.remove('submenu-open');
+            });
         }, delay);
     };
 
@@ -92,36 +95,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // --- Event Listeners ---
     if (mobileMenuBtn && mobileDropdown) {
-        mobileDropdown.addEventListener('click', (e) => e.stopPropagation());
         mobileMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleMenu();
         });
 
         if (window.innerWidth >= 1024) {
-            mobileMenuBtn.closest('#menu-container').addEventListener('mouseenter', openMenu);
-            mobileMenuBtn.closest('#menu-container').addEventListener('mouseleave', () => closeMenu());
+            const menuContainer = document.getElementById('menu-container');
+            menuContainer.addEventListener('mouseenter', openMenu);
+            menuContainer.addEventListener('mouseleave', () => closeMenu());
         }
     }
-
+    
     if (mobileMenuOverlay) {
         mobileMenuOverlay.addEventListener('click', () => closeMenu(true));
     }
     
-    const submenuContainers = document.querySelectorAll('#mobile-dropdown .has-submenu');
-    submenuContainers.forEach(parent => {
-        const btn = parent.querySelector('.submenu-parent-btn');
-        if (!btn) return;
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            document.querySelectorAll('#mobile-dropdown .has-submenu.submenu-open').forEach(other => {
-                if (other !== parent) other.classList.remove('submenu-open');
-            });
-            parent.classList.toggle('submenu-open');
-        });
+    document.addEventListener('click', (e) => {
+         if (mobileDropdown && !mobileDropdown.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+             closeMenu(true);
+         }
     });
 
+    document.querySelectorAll('.submenu-parent-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const parent = btn.closest('.has-submenu');
+            const wasOpen = parent.classList.contains('submenu-open');
+            
+            document.querySelectorAll('.has-submenu').forEach(other => {
+                other.classList.remove('submenu-open');
+            });
+
+            if (!wasOpen) {
+                parent.classList.add('submenu-open');
+            }
+        });
+    });
+    
+    // --- LÓGICA DEL PANEL DE ASESOR ---
+    const showAsesorBtn = document.getElementById('show-asesor-btn');
+    const asesorPanel = document.getElementById('asesor-panel');
+    const asesorCloseBtn = document.getElementById('asesor-close-btn');
+
+    if (showAsesorBtn && asesorPanel && asesorCloseBtn) {
+        showAsesorBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            asesorPanel.classList.add('show');
+            closeMenu(true); // Cierra el menú principal
+        });
+
+        asesorCloseBtn.addEventListener('click', () => {
+            asesorPanel.classList.remove('show');
+        });
+    }
+
+
+    // --- LÓGICA PWA ---
     const installButton = document.getElementById('install-button');
     if (installButton) installButton.addEventListener('click', installPWA);
 
@@ -132,53 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- LÓGICA ASESOR PANEL ---
-    const asesorPanel = document.getElementById('asesor-panel');
-    const asesorCloseBtn = document.getElementById('asesor-close-btn');
-    if(asesorPanel && asesorCloseBtn) {
-        asesorCloseBtn.addEventListener('click', closeAsesorPanel);
-    }
-    
-    // --- ROTACIÓN DE IMÁGENES Y OTROS ---
-    const backgroundImages = [
-        'assets/images/foto (1).webp', 'assets/images/foto (2).webp', 'assets/images/foto (3).webp', 
-        'assets/images/foto (4).webp', 'assets/images/foto (5).webp', 'assets/images/foto (6).webp',
-        'assets/images/foto (7).webp', 'assets/images/foto (8).webp', 'assets/images/foto (9).webp'
-    ];
-    let currentImageIndex = 0;
-    const homepageSection = document.getElementById('homepage-section');
-
-    if (homepageSection) {
-        setInterval(() => {
-            if (document.body.classList.contains('homepage')) {
-                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
-                homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
-            }
-        }, 12000);
-    }
-
-    const backToTopButton = document.getElementById('back-to-top');
-    if (backToTopButton) {
-        window.onscroll = function() {
-            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                backToTopButton.classList.remove('hidden');
-            } else {
-                backToTopButton.classList.add('hidden');
-            }
-        };
-        backToTopButton.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-    }
-
-    showHomepage();
     console.log('✅ All components initialized successfully');
 });
 
-window.addEventListener('appinstalled', (e) => {
-    console.log('🎉 PWA: App was installed successfully');
-    deferredPrompt = null;
-    bannerShown = false;
-});
-
+// Función global para cerrar el menú desde los enlaces
 function closeActiveMenu() {
     const mobileDropdown = document.getElementById('mobile-dropdown');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
@@ -188,21 +177,13 @@ function closeActiveMenu() {
     }
 }
 
-// --- Handlers de navegación (globales) ---
+// Handlers de navegación (globales)
 window.openNewLink = function(url) {
     window.open(url, '_blank');
     closeActiveMenu();
 };
-window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); }
-window.handleDirectiva = function() { showDirectiva(); closeActiveMenu(); }
-window.handleCredenciales = function() { showCredenciales(); closeActiveMenu(); }
-window.handleCredencialIndependiente = function() { openNewLink('https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS'); }
-window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); }
-window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); }
-window.handleBuscarCurso = function(url) { openNewLink(url); }
 
-// --- Page switching functions ---
-function showHomepage() {
+window.showHomepage = function() {
     document.getElementById('homepage-section').style.display = 'flex';
     document.getElementById('homepage-content-wrapper').style.display = 'block';
     document.getElementById('main-footer').style.display = 'block';
@@ -210,9 +191,9 @@ function showHomepage() {
     document.body.className = 'homepage background-transition';
     document.getElementById('credenciales-arrow-back-btn')?.classList.add('hidden');
     window.scrollTo(0, 0);
-}
+};
 
-function showDirectiva() {
+window.showDirectiva = function() {
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
@@ -222,9 +203,10 @@ function showDirectiva() {
     document.body.className = '';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
-}
+    closeActiveMenu();
+};
 
-function showCredenciales() {
+window.showCredenciales = function() {
     document.getElementById('homepage-section').style.display = 'none';
     document.getElementById('homepage-content-wrapper').style.display = 'none';
     document.getElementById('main-footer').style.display = 'none';
@@ -234,20 +216,18 @@ function showCredenciales() {
     document.body.className = '';
     document.getElementById('credenciales-arrow-back-btn')?.classList.remove('hidden');
     window.scrollTo(0, 0);
-}
+    closeActiveMenu();
+};
 
-// Handlers for Asesor Panel
 window.showAsesorPanel = function() {
     const asesorPanel = document.getElementById('asesor-panel');
     if (asesorPanel) {
         asesorPanel.classList.add('show');
+        closeActiveMenu();
     }
-    closeActiveMenu();
-}
+};
 
-window.closeAsesorPanel = function() {
-    const asesorPanel = document.getElementById('asesor-panel');
-    if (asesorPanel) {
-        asesorPanel.classList.remove('show');
-    }
-}
+window.handleCerofilas = function() { openNewLink('https://dal5.short.gy/CFil'); };
+window.handleValores = function() { openNewLink('https://dal5.short.gy/val'); };
+window.handleValorPlan = function() { openNewLink('https://os10.short.gy/Pl4n'); };
+window.handleBuscarCurso = function(url) { openNewLink(url); };
