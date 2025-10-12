@@ -38,7 +38,7 @@ body.homepage {
     border-radius: 0.5rem;
 }
 
-/* ===== ESTILOS CHATBOT (CORREGIDOS PARA MÓVIL) ===== */
+/* ===== ESTILOS CHATBOT (CORREGIDOS) ===== */
 #chat-widget-container { 
     position: fixed; 
     z-index: 2000;
@@ -53,32 +53,44 @@ body.homepage {
         bottom: 2rem;
         right: 1.5rem;
     }
+    
+    #chat-toggle-button {
+        width: 80px;
+        height: 80px;
+        border-radius: 1rem; /* Cuadrado con esquinas redondeadas */
+    }
+    
+    #chat-popup {
+        width: 450px;
+        height: 600px;
+    }
 }
 
-/* Estilos para móvil - CORREGIDO */
+/* Estilos para móvil */
 @media (max-width: 767px) { 
     #chat-widget-container { 
         bottom: 1rem;
         right: 1rem;
-        left: auto; /* Asegurar que no haya conflicto */
+        left: auto;
     }
     
     #chat-toggle-button { 
         width: 70px; 
-        height: 70px; 
+        height: 70px;
+        border-radius: 1rem; /* Cuadrado con esquinas redondeadas */
     }
     
-    /* Ventana del chat centrada en móvil */
+    /* Ventana del chat centrada y 98% de ancho en móvil */
     #chat-popup {
         position: fixed !important;
         bottom: 1rem !important;
         left: 50% !important;
         right: auto !important;
         transform: translateX(-50%) !important;
-        width: 95vw !important;
-        max-width: 400px !important;
+        width: 98vw !important; /* 98% del ancho de la pantalla */
+        max-width: 98vw !important;
         height: 500px !important;
-        margin: 0 auto !important;
+        margin: 0 !important;
     }
 }
 
@@ -92,10 +104,12 @@ body.homepage {
     #chat-toggle-button {
         width: 65px;
         height: 65px;
+        border-radius: 0.875rem; /* Esquinas redondeadas proporcionales */
     }
     
     #chat-popup {
-        width: 90vw !important;
+        width: 98vw !important;
+        max-width: 98vw !important;
         height: 480px !important;
     }
 }
@@ -121,7 +135,6 @@ body.homepage {
     transition: all 0.3s ease; 
     position: relative; 
     border: 1px solid #0c640c;
-    border-radius: 50%;
     background: white;
     cursor: pointer;
 }
@@ -145,7 +158,7 @@ body.homepage {
     right: -5px; 
     bottom: -5px; 
     background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1)); 
-    border-radius: 50%; 
+    border-radius: 1.25rem; /* Ajustado para coincidir con el botón */
     animation: pulseGlow 4s ease-in-out infinite; 
     z-index: -1; 
 }
