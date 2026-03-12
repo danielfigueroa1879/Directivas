@@ -1,18 +1,18 @@
 // sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.5'; // Increment version for updates
+const CACHE_NAME = 'directivas-os10-cache-v1.9'; // Versión incrementada para forzar la actualización
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
   '/',
   './index.html',
   './manifest.json',
-  './assets/css/styles.css',
+  './assets/css/styles.css?v=25',
   './assets/css/credenciales.css',
-  './assets/js/main.js',
-  './assets/js/inicio.js',
+  './assets/js/main.js?v=2',
+  './assets/js/inicio.js?v=5',
   './assets/js/credenciales.js',
-  './assets/js/chatbot.js',
-  './rules/chatbot-rules.js',
+  './assets/js/chatbot.js?v=2',
+  './rules/chatbot-rules.js?v=2',
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
@@ -21,8 +21,11 @@ const urlsToCache = [
   './assets/images/favicon.ico',
   // Imágenes críticas y del carrusel (versiones WebP)
   './assets/images/foto (1).webp',
+  './assets/images/foto (1a).webp',
   './assets/images/foto (2).webp',
+  './assets/images/foto (2a).webp',
   './assets/images/foto (3).webp',
+  './assets/images/foto (3a).webp',
   './assets/images/foto (4).webp',
   './assets/images/foto (5).webp',
   './assets/images/foto (6).webp',
@@ -45,6 +48,9 @@ const urlsToCache = [
   './assets/images/foto (23).webp',
   './assets/images/foto (24).webp',
   './assets/images/foto (25).webp',
+  './assets/images/foto (26).webp',
+  './assets/images/foto (27).webp',
+  './assets/images/foto (28).webp',
   './assets/images/valores.webp',
   './assets/images/qr.webp',
   './assets/images/qrcred.webp',
@@ -60,7 +66,6 @@ self.addEventListener('install', (event) => {
     caches.open(CACHE_NAME)
       .then((cache) => {
         console.log('📦 Service Worker: Cache abierta, añadiendo recursos principales.');
-        // Cachear recursos uno por uno para mejor manejo de errores
         return Promise.allSettled(
           urlsToCache.map(url => 
             cache.add(url).catch(err => {
@@ -80,7 +85,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Evento 'activate': Se dispara cuando el Service Worker se activa.
+// Evento 'activate': Se dispara cuando el Service Worker se activa para limpiar cachés viejos.
 self.addEventListener('activate', (event) => {
   console.log('🚀 Service Worker: Activando...');
   event.waitUntil(
@@ -100,52 +105,31 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Evento 'fetch': Implementa una estrategia "Cache first, then network".
+// Evento 'fetch': Implementa una estrategia "Network first, then cache".
 self.addEventListener('fetch', (event) => {
-  // Solo procesar peticiones GET
-  if (event.request.method !== 'GET') return;
-  
-  // Ignorar extensiones del navegador y peticiones especiales
-  if (event.request.url.startsWith('chrome-extension://') || 
-      event.request.url.startsWith('moz-extension://') ||
-      event.request.url.includes('netlify/functions/')) {
+  // Ignorar peticiones que no son GET o son de extensiones.
+  if (event.request.method !== 'GET' || event.request.url.startsWith('chrome-extension://') || event.request.url.startsWith('moz-extension://') || event.request.url.includes('netlify/functions/')) {
     return;
   }
 
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        // Si el recurso está en la caché, lo devolvemos desde ahí.
-        if (cachedResponse) {
-          // No logueamos cada hit de caché para no saturar la consola
-          // console.log(`📦 Desde caché: ${event.request.url}`);
-          return cachedResponse;
+    // 1. Intentar ir a la red primero.
+    fetch(event.request).then(networkResponse => {
+      // Si la petición a la red es exitosa...
+      return caches.open(CACHE_NAME).then(cache => {
+        // ...guardamos una copia en el caché para uso futuro (offline).
+        // Solo cacheamos respuestas 'basic' para evitar errores.
+        if (networkResponse.type === 'basic') {
+          cache.put(event.request, networkResponse.clone());
         }
-
-        // Si no está en la caché, vamos a la red.
-        return fetch(event.request).then((networkResponse) => {
-            // Solo cachear respuestas exitosas
-            if (networkResponse && networkResponse.status === 200) {
-              // No clonamos para recursos no 'basic' para evitar errores
-              if (networkResponse.type === 'basic' || event.request.url.startsWith('https://fonts.')) {
-                  return caches.open(CACHE_NAME).then((cache) => {
-                  cache.put(event.request, networkResponse.clone());
-                  return networkResponse;
-                });
-              }
-            }
-            return networkResponse;
-          }
-        ).catch((err) => {
-            console.warn(`⚠️ Service Worker: Falló la obtención desde red: ${event.request.url}`, err);
-            
-            // Página de fallback para navegación
-            if (event.request.mode === 'navigate') {
-              return caches.match('./index.html');
-            }
-            
-            throw err;
-        });
-      })
+        // Y devolvemos la respuesta de la red al navegador.
+        return networkResponse;
+      });
+    }).catch(() => {
+      // 2. Si la petición a la red falla (ej. sin conexión)...
+      // ...buscamos el recurso en el caché.
+      console.log(`🔌 Sin red, buscando en caché: ${event.request.url}`);
+      return caches.match(event.request);
+    })
   );
 });
