@@ -137,8 +137,9 @@ body.homepage {
     background-image: none;
 }
 /* Ocultar elementos que causan parpadeo visual hasta que cargue el CSS */
-.homepage-section, .section-card, .card-container, #tramites-principales, #banner {
+.homepage-section, .section-card, .card-container, #tramites-principales, #banner, #homepage-content-wrapper, .carousel-card {
     opacity: 0;
+    visibility: hidden;
 }
 /* Mostrar inmediatamente el fondo base */
 body {
@@ -151,9 +152,10 @@ img {
     display: block;
 }
 /* Clase para mostrar contenido una vez cargado */
-.loaded .homepage-section, .loaded .section-card, .loaded .card-container, .loaded #tramites-principales, .loaded #banner {
+.loaded .homepage-section, .loaded .section-card, .loaded .card-container, .loaded #tramites-principales, .loaded #banner, .loaded #homepage-content-wrapper, .loaded .carousel-card {
     opacity: 1;
-    transition: opacity 0.4s ease-in;
+    visibility: visible;
+    transition: opacity 0.5s ease-in;
 }
 #banner {
     position: fixed;
@@ -3076,7 +3078,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Actualizar estado al cargar la página
         document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.add('loaded');
+            // Asegurar que la clase loaded se añada después de un pequeño delay
+            // para permitir que los estilos se asienten
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 50);
             updateOfficeStatus();
             // Actualizar cada minuto
             setInterval(updateOfficeStatus, 60000);
