@@ -863,7 +863,7 @@ async function speakWithElevenLabs(text) {
             };
 
             // USAR LA URL CORRECTA DEL PROXY CONFIGURADO EN NETLIFY.TOML
-            const apiResponse = await fetch('/api/gemini', {
+            const apiResponse = await fetch('/.netlify/functions/gemini-proxy', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(geminiPayload),
