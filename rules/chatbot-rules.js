@@ -2,21 +2,100 @@
 console.log('🔄 Cargando base de datos de reglas OS10...');
 
 const responses = {
-    'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTt 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
-    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "decreto 93", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma"], response: 'Infracciones de Guardias (Decreto Supremo N° 93):\n\n*Guardia sin curso OS10:*\nInfringe el *artículo 13*. La empresa que contrata al guardia sin este requisito es la infractora.\n\n*Guardia sin credencial vigente:*\nInfringe el *artículo 18*. La responsabilidad es de la empresa contratante.\n\n*Sin Directiva de Funcionamiento (DD.FF.):*\nInfringe el *artículo 15*. Es una infracción de la empresa si opera sin esta autorización.\n\n*Portando elementos no autorizados:*\nInfringe el *artículo 14*. Los implementos deben estar especificados en la DD.FF. Infracción aplicable a la empresa.\n\n*Portando arma de fuego:*\nInfringe el *artículo 14*. Los guardias tienen prohibido portar armas de fuego. Grave infracción atribuible a la empresa.' },
+    'rule_1': { keywords: ["*bots*","*tienes algun bots*","*bots de ciberseguridad*"], response: '🤖 *Bots con IA avanzada:* \n *1 Bot Seguridad Privada* \n dal5.short.gy/SePriv *2 Bot de Ciberseguridad 2024* \n dal5.short.gy/Cib *3 Bot Abogado Virtual GPT* \n dal5.short.gy/Ab0 *4 Bot Ley de Tránsito Chile* \n dal5.short.gy/LeyTto 5 Bot Ley Karin*\n dal5.short.gy/lkar'},
+    'rule_2': { keywords: ["infracciones", "sanciones guardias", "multas guardias", "guardia sin curso", "guardia sin credencial", "guardia sin directiva", "guardia con arma", "infracciones ley 21659"], response: '🤖⚖️ **INFRACCIONES LEY 21.659 Y DECRETO 209** (Vigente desde 28-NOV-2025):\n\n**INFRACCIONES GRAVÍSIMAS - 3 a 20 UTM (Art. 94):**\n• Presentar antecedentes falsos ante SPD (Art. 94 N°1)\n• Usar uniformes que asimilen con FF.OO. (Art. 94 N°2)\n• Desempeñarse sin autorización de SPD (Art. 94 N°3)\n• Realizar investigaciones de delitos (Art. 94 N°3)\n• Intervenir en conflictos políticos/laborales (Art. 94 N°3)\n• Suministrar información sobre personas/bienes (Art. 94 N°3)\n• Poseer o portar armas sin autorización (Art. 94 N°3)\n• Vulnerar sitios de suceso del CPP (Art. 94 N°6)\n• Obstaculizar labores de fiscalizadores (Art. 94 N°7)\n\n**INFRACCIONES GRAVES - 1 a 3 UTM (Art. 96):**\n• Desempeñarse sin curso aprobado (Art. 96 N°4 + Art. 89 D.209)\n• Desempeñarse sin credencial vigente (Art. 96 N°4 + Art. 91 D.209)\n• No usar uniforme reglamentario (Art. 96 N°3 + Art. 90 D.209)\n• No cumplir directiva de funcionamiento (Art. 96 N°2 + Art. 92 D.209)\n• Incumplir requisitos generales Art. 46 (Art. 96 N°4)\n• Dos infracciones leves en 2 años (Art. 102 N°2)\n• Servicio de vigilancia sin directiva/curso/seguros (Art. 97 D.209)\n\n**INFRACCIONES LEVES - 0,5 a 1 UTM (Art. 98):**\n• No informar pérdida de credencial en 24 horas (Art. 98 N°3)\n• Otras contravenciones de obligaciones (Art. 98 N°3)\n\n**REINCIDENCIA:**\n• Leves reincidentes → se sancionan como graves\n• Graves reincidentes → se sancionan como gravísimas\n\n**OBSERVACIONES:**\n• Competencia: Juzgados de Policía Local (Art. 106)\n• Autodenuncia: reduce sanción hasta 80% (Art. 107)\n• Vigencia: 28 de noviembre 2025' },
     'rule_3': { keywords: ["tipos de empresas", "tipo de empresa"], response: '*EMPRESA DE RR.HH. CAPACITACION O ASESORIAS* https://www.zosepcar.cl/content/OS10/TRAM_empresas.pdf'},
-    'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: 'ESCRIBA EL NOMBRE DEL COMPONENTE DEL SISTEMA Y SE DESCARGARA UNA GUIA, PARA QUE PUEDA REALIZAR SU TRAMITE*👮🏻‍♂️ \n ⬇️\n*1.-* VIGILANTE PRIVADO\n*2.-* GUARDIA DE SEGURIDAD\n*3.-* JEFE DE SEGURIDAD \n*4.-* ENCARGADO DE SEGURIDAD\n*5.-* SUPERVISOR\n*6.-* ASESOR \n*7.-* CAPACITADOR\n*8.-* TÉCNICO \n*9.-* OPERADOR DE CAJEROS \n*10.-* INSTALADOR TÉC. DE SEGURIDAD\n*11.-* OPERADOR CCTV.\n*12.-* EMPRESAS' },
-    'rule_5': { keywords: ["la guia de guardia","guardia de segurridad"], response: '🤖 🧙🏻‍♂️ Ok... en este link encontrará la guía de GUARDIA DE SEGURIDAD la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_guardia_de_seguridad.pdf' },
-    'rule_6': { keywords: ["jefe de seguridad"], response: 'OK..en este link encontrará la guía de *JEFE DE SEGURIDAD* la puede descargar: https://www.zosepcar.cl/content/OS10/TRAM_jefe_de_seguridad.pdf' },
-    'rule_7': { keywords: ["supervisor","acreditación supervisor","supervisor seguridad","para supervisor","acreditar un supervisor","supervisores","acreditar supervisores"], response: '🤖. *SUPERVISOR* \n1.- *GUIA*\nhttps://www.zosepcar.cl/content/OS10/TRAM_supervisor.pdf\n2.- *CREDENCIAL*\nhttps://os10.short.gy/Sup' },
-    'rule_8': { keywords: ["*encargado de seguridad*","*encargado*"], response: '🤖 *ENCARGADO DE SEGURIDAD*\n*CREDENCIAL:*\nhttps://bit.ly/3H6pIOu\n*GUIA:*\nhttps://www.zosepcar.cl/content/OS10/TRAM_encargado_de_seguridad.pdf' },
-    'rule_9': { keywords: ["capacitador"], response: '🤖 *CAPACITADOR*\nhttps://www.zosepcar.cl/content/OS10/TRAM_capacitador.pdf' },
-    'rule_10': { keywords: ["tecnico"], response: '*TÉCNICO* https://www.zosepcar.cl/content/OS10/TRAM_tecnico.pdf' },
-    'rule_11': { keywords: ["la guia de asesor", "asesor"], response: '🤖 ASESOR\n**GUÍA:* \nhttps://www.zosepcar.cl/content/OS10/TRAM_asesor.pdf' },
-    'rule_12': { keywords: ["*instalador tecnico","*técnico*","instalador*"], response: '*INSTALADOR TÉCNICO*\n https://www.zosepcar.cl/content/OS10/TRAM_instalador_tecnico.pdf' },
-    'rule_13': { keywords: ["operador de cajeros", "operador de cajero"], response: '*OPERADOR DE CAJEROS AUTOMÁTICOS* \nhttps://www.zosepcar.cl/content/OS10/TRAM_operador_cajeros.pdf' },
-    'rule_14': { keywords: ["*operador cctv","cctv*"], response: '🤖 *OPERADOR CCTV*\n*GUÍA:* https://www.zosepcar.cl/content/OS10/TRAM_operador_cctv.pdf' },
-    'rule_15': { keywords: ["manuales"], response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' },
+    'rule_4': { keywords: ["guias","guia","componentes del sistema","componentes"], response: '🤖📂 **COMPONENTES DEL SISTEMA (Ley 21.659):**\nSeleccione para ver requisitos:\n' +
+    '<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👮 Vigilante Privado</button>' +
+    '<button onclick="mostrarRequisitos(\'guardia\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛡️ Guardia de Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'jefe\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍✈️ Jefe de Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Encargado de Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'supervisor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👀 Supervisor de Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Asesor de Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Capacitador</button>' +
+    '<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Técnico en Seguridad</button>' +
+    '<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Instalador Técnico</button>' +
+    '<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Operador de Cámaras</button>' +
+    '<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🚪 Portero/Nochero/Rondín</button>' +
+    '<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔫 Encargado de Armas</button>' },
+    'rule_5': { 
+        keywords: ["guardia de seguridad", "guardia"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 90 horas pedagógicas mínimo (Art. 89)\n✓ Credencial: Vigente, emitida por SPD (Art. 91)\n✓ Uniforme: Negro con leyenda "SEGURIDAD PRIVADA" (Art. 90)\n✓ Directiva: Aprobada por SPD (Art. 92)\n✓ Seguro de vida: Mínimo 132 UF (Art. 88)\n✓ Chaleco anticorte: Elemento mínimo obligatorio\n\n**PERÍODO DE VALIDACIÓN:**\n• Credencial: 2 años\n• Curso: Renovación anual recomendada\n\n**PROHIBICIONES:**\n✗ Trabajar sin curso aprobado\n✗ Trabajar sin credencial vigente\n✗ Portar armas no autorizadas\n✗ Intervenir en conflictos políticos/laborales\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+    },
+    
+    'rule_5a': { 
+        keywords: ["el guardia debe usar chaleco anticorte","uso de chaleco anticorte", "chaleco anticorte"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD Decreto 209 Art. 93 Inc. 2do.**\nDecreto 209 Art. 93 Inc. 2do. Los guardias de seguridad deberan contar como elemento minimo con un chaleco anticorte:\n<button>'
+    },
+    
+    'rule_5b': { 
+        keywords: ["vigilante privado", "vigilante"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👮 **VIGILANTE PRIVADO - LEY 21.659 Y DECRETO 209**\n\n**REQUISITOS GENERALES (Art. 46 Ley 21.659):**\n✓ Mayor de edad\n✓ Condiciones físicas y psíquicas compatibles\n✓ Educación media completa o equivalente\n✓ Sin condenas por crimen o delito\n✓ Sin violencia intrafamiliar\n✓ Sin acusaciones por delitos específicos\n✓ No sancionado en últimos 5 años\n✓ No inhabilitado para seguridad privada\n\n**REQUISITOS ESPECÍFICOS (Decreto 209):**\n✓ Curso: 60 horas pedagógicas mínimo\n✓ Credencial: Vigente, emitida por SPD\n✓ Uniforme: Identificatorio de la empresa\n✓ Seguro: Según normativa\n\n**DIFERENCIAS CON GUARDIA:**\n• NO puede portar armas\n• NO puede realizar detenciones\n• Función: Control y vigilancia\n• Reporta incidentes a autoridades\n\n**PROHIBICIONES:**\n✗ Portar armas de ningún tipo\n✗ Realizar investigaciones\n✗ Intervenir en conflictos\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+    },
+    
+    'rule_6': { 
+        keywords: ["jefe de seguridad", "jefe seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👨‍✈️ **JEFE DE SEGURIDAD - LEY 21.659**\n\n**REQUISITOS MÍNIMOS:**\n✓ Todos los requisitos generales (Art. 46)\n✓ Experiencia en seguridad privada\n✓ Conocimiento de Ley 21.659 y Decreto 209\n✓ Capacidad de gestión y supervisión\n✓ Responsabilidad legal de operaciones\n\n**FORMACIÓN REQUERIDA:**\n✓ Diplomado: 400 horas académicas mínimo\n✓ Si requiere vigilante privado: Certificación adicional (2 años)\n✓ Actualización anual en cambios normativos\n\n**RESPONSABILIDADES:**\n✓ Supervisar directivas de funcionamiento\n✓ Garantizar cumplimiento de requisitos\n✓ Mantener registros y documentación\n✓ Coordinar con autoridades fiscalizadoras\n✓ Reportar infracciones a SPD\n\n**AUTORIDAD:**\n✓ Autorizar cursos de capacitación\n✓ Emitir directivas de funcionamiento\n✓ Supervisar personal a su cargo\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+    },
+    
+    'rule_7': { 
+        keywords: ["supervisor", "supervisor seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👀 **SUPERVISOR DE SEGURIDAD - LEY 21.659**\n\n**REQUISITOS GENERALES:**\n✓ Todos los requisitos del Art. 46 Ley 21.659\n✓ Experiencia supervisiva en seguridad\n✓ Conocimiento de Ley 21.659 y Decreto 209\n✓ Competencias en liderazgo y gestión\n\n**FORMACIÓN:**\n✓ Curso de supervisión: Mínimo 120 horas\n✓ Certificación en supervisión de seguridad\n✓ Actualización anual recomendada\n\n**RESPONSABILIDADES:**\n✓ Supervisar cumplimiento de directivas\n✓ Verificar requisitos de personal\n✓ Inspeccionar equipamiento y uniformes\n✓ Documentar infracciones\n✓ Reportar a Jefe de Seguridad\n✓ Coordinar con fiscalizadores\n\n**AUTORIDAD:**\n✓ Verificar credenciales\n✓ Supervisar jornadas\n✓ Reportar irregularidades\n\nℹ️ Contacta OS10: 512651024 / 512651023' 
+    },
+    
+    'rule_8': { 
+        keywords: ["encargado de seguridad", "encargado"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🔧 **ENCARGADO DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargado\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔧 Ver Requisitos Encargado</button>' 
+    },
+    
+    'rule_9': { 
+        keywords: ["capacitador"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖👨‍🏫 **CAPACITADOR**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'capacitador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">👨‍🏫 Ver Requisitos Capacitador</button>' 
+    },
+    
+    'rule_10': { 
+        keywords: ["tecnico", "tecnico seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🛠️ **TÉCNICO EN SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'tecnico\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🛠️ Ver Requisitos Técnico</button>' 
+    },
+    
+    'rule_11': { 
+        keywords: ["asesor", "asesor de seguridad"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖💼 **ASESOR DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'asesor\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">💼 Ver Requisitos Asesor</button>' 
+    },
+    
+    'rule_12': { 
+        keywords: ["instalador tecnico", "instalador"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖🔌 **INSTALADOR TÉCNICO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'instalador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">🔌 Ver Requisitos Instalador</button>' 
+    },
+    
+    'rule_13': { 
+        keywords: ["empresa de seguridad", "empresas de seguridad", "crear empresa seguridad"], 
+        response: '🤖🏢 **EMPRESAS DE SEGURIDAD**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'empresa\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Empresa</button>' 
+    },
+    
+    'rule_14': { 
+        keywords: ["operador cctv", "cctv", "operador de camaras", "operador camaras"], 
+        requiresKeywords: ["requisitos", "guia", "guía", "acreditación", "como", "necesito", "requisito"],
+        response: '🤖📹 **OPERADOR DE CÁMARAS (CCTV)**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'operador\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">📹 Ver Requisitos Operador</button>' 
+    },
+    
+    'rule_15': { 
+        keywords: ["manuales"], 
+        response: '🤖 ⬇️ *ESCRIBE UNA OPCIÓN* 👮🏻‍♂️🚦\n*1M.-* MANUAL DE FUNCIONAMIENTO\n*2M.-* MANUAL DE CAPACITACIÓN \n*3M.-* MANUAL DE ORGANIZACIÓN' 
+    },
+
+
+
+
     'rule_17': { keywords: ["1m"], response: '*MANUAL DE FUNCIONAMIENTO* https://www.zosepcar.cl/content/OS10/manual_funcionamiento.pdf' },
     'rule_18': { keywords: ["3m"], response: '*MANUAL DE ORGANIZACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_organizacion.pdf' },
     'rule_19': { keywords: ["2m"], response: '*MANUAL DE CAPACITACIÓN*\nhttps://www.zosepcar.cl/content/OS10/manual_capacitacion.pdf' },
@@ -39,7 +118,7 @@ const responses = {
     'rule_36': { keywords: ["59"], response: '*Resol. 59*. https://www.zosepcar.cl/content/OS10/resolucion_59.pdf' },
     'rule_37': { keywords: ["32"], response: '*Decreto. 32 DECRETO 32 EXENTO MODIFICA EN TÉRMINOS QUE INDICA DECRETO N°261 EXENTO, DE 2020, DEL MINISTERIO DEL INTERIOR Y SEGURIDAD PÚBLICA, QUE APRUEBA MANUAL OPERATIVO EN MATERIAS DE SEGURIDAD PRIVADA Y FIJA SU TEXTO ACTUALIZADO*. https://www.bcn.cl/leychile/navegar?idNorma=1200633' },
     'rule_38': { keywords: ["80"], response: '*Resol. 80*. https://www.zosepcar.cl/content/OS10/resolucion_80.pdf' },
-    'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: 'Entra en vigencia el 28-NOV-2025 *LEY 21659*. https://dal5.short.gy/LeySeg, ' },
+    'rule_39': { keywords: ["*21659*", "*nueva ley de seguridad*"], response: '🤖📚 **LEY 21.659 VIGENTE**\nLa Ley de Seguridad Privada y sus reglamentos (Decreto 209 y 208) están vigentes. Establece nuevas categorías de riesgo, infracciones y procedimientos.\nVer ley: https://dal5.short.gy/LeySeg' },
     'rule_65': { keywords: ["*fono*", "*telefono*","*numero*","*ubicados*","*dirección*","*atención*","*horario*","*horarios*","*ubicación*","*direccion oficina*","*cual es la dirección del os10*","*horario atención publico*", "*donde estan ubicados*", "*donde esta el os10 coquimbo*", "*donde esta el os10*","*donde*", "*direccion*"], response: '🤖 👉🏼 *O.S.10 COQUIMBO*\nDe lunes a jueves de 09:00 horas a 13:00 horas. Dirección en calle Cienfuegos 180, La Serena.\nFonos: 512651024-512651022-512651023\n https://maps.app.goo.gl/QUhujWbTF1FjDA7E6' },
     'rule_66': { keywords: ["Otro Menú"], response: '**ESCRIBA LO QUE ESTA CON NEGRILLAS:**\n **registro: **Consultar guardia \n**OS10:** menú OS10 \n**comisaria:** Comisaria cuadrantes\n**ciberseguridad:** Ciberseguridad \n**Dgac: **DGAC Seg. Priv. \n**32:** Modifica 261 \n**Directiva:** Directiva\n**Bots:** Seguridad privada, Ciberseguridad, tránsito, Ley Karyn' },
     'rule_68': { keywords: ["imc"], response: '*CALCULAR IMC*\nhttps://nutricionistavirtual.cl/calculadora/' },
@@ -55,12 +134,12 @@ const responses = {
     'rule_86': { keywords: ["*cuál es la pagina del os10*","*zosepcar*"], response: '*🤖 Está es la página del os10*\nhttps://www.zosepcar.cl/OS10.php' },
     'rule_87': { keywords: ["reglamento"], response: '*Reglamento 11*\nhttps://drive.google.com/file/d/0By_MScWZi3fRLVlIN2dJby1hekU/view?usp=drivesdk&resourcekey=0-3OB6XmcfWnIf9KZU1J65Yw' },
     'rule_88': { keywords: ["ciberseguridad"], response: '🤖 🧙🏻‍♂️ *\"CIBERSEGURIDAD\"*\n➢ *1.-¿Que Hacer?*:\nhttps://www.dal5.short.gy/SIyeI3\n➢ *2.,-¿Cómo notificar?*:\nhttps://www.dal5.short.gy/GFxMgX' },
-    'rule_89': { keywords: ["menu os10", "MENÚ OS10","menú os10"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ **ESCRIBA El QUE NECESITE:**\n➢ **Bots:** recibirá un listado de bots con Inteligencia Avanzada.\n➢ **Componentes:** Obtendrá las guías\n➢ **Manuales:** Se desplega menú\n➢ **Leyes:** Se desplega menú\n➢ **Editable:** Documentos en Word.\n➢ **Directiva:** Requisitos presentar\n➢ **Valores:** Cursos y planes.\n➢ **Independiente:** Requisitos Cred.\n➢ **Menu credencial:** Menú credenciales\n➢ **Nueva Ley:** Nueva ley seguridad privada y reglamento.' },
-    'rule_90': { keywords: ["*directiva*","*directiva de funcionamiento*","*directivas*","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🧙🏻‍♂️🤖 *PRESENTAR DIRECTIVA DE FUNCIONAMIENTO*\n(Instalación - Evento - Partidos de Fútbol Profesional)\nPagina: https://dal5.short.gy/df' },
+    'rule_89': { keywords: ["menu os10", "MENÚ OS10","menú os10"], response: '*De acuerdo OS10*🧙🏻‍♂️👮🏻‍♂️☝️*Escriba lo que está con negrillas:* \n \n ⬇️ **ESCRIBA El QUE NECESITE:**\n➢ **Bots:** recibirá un listado de bots con Inteligencia Avanzada.\n➢ **Componentes:** Obtendrá las guías\n➢ **Manuales:** Se desplega menú\n➢ **Leyes:** Se desplega menú\n➢ **Editable:** Documentos en Word.\n➢ **Directiva:** Requisitos presentar\n➢ **Valores:** Cursos y planes.\n➢ **Menu credencial:** Menú credenciales\n➢ **Nueva Ley:** Nueva ley seguridad privada y reglamento.' },
+    'rule_90': { keywords: ["*directiva*","*directiva de funcionamiento*","*directivas*","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖📋 **DIRECTIVA DE FUNCIONAMIENTO**\n(Instalación - Evento - Partidos de Fútbol Profesional)\n\n📥 **Descargar Formato Editable:**\nhttps://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit' },
     'rule_91': { keywords: ["mantra"], response: '*Mantra*\n\nOm: Om es la sílaba semilla que sintoniza cualquier mantra que se recita en su vibración' },
     'rule_92': { keywords: ["usuario diploma"], response: '*PAGINA DIPLOMADO* https://centropyc.carabineros.cl/acipol/login/index.php Usuario: 982083a Contraseña: Flor9820&' },
     'rule_93': { keywords: ["auditorias empresa de capacitacion","auditorias empresas de capacitacion","auditoria empresa de capacitacion","auditoria empresas de capacitacion"], response: ',👮🏼*AUDITORIAS EMPRESA CAPACITACIÓN 2024*\n\nhttps://dal5.short.gy/AuCap' },
-    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖 *INDEPENDIENTE 2025* \n*Descargar Guía:* \nhttps://os10.short.gy/I25' },
+    'rule_95': { keywords: ["*independiente*","*credencial independiente*","*credencial independientes*"], response: '🤖🚫 **Credencial Independiente (Eliminada)**\nCon la nueva Ley 21.659, la figura del guardia independiente que tramita su propia credencial ya no existe. Todo el personal de seguridad debe estar contratado y acreditado a través de una empresa de seguridad autorizada o una entidad obligada.' },
     'rule_96': { keywords: ["medidas"], response: '🤖🧙🏻‍♂️ *MEDIDAS DE SEGURIDAD*\n➢ *MED.EDITABLE:* https://dal5.short.gy/M3' },
     'rule_98': { keywords: ["Valores","cuanto cuesta","cual es el valor","valor plan","valores planes","valores plan","*valor*","*cuesta*"], response: '🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES SEGUNDO SEMESTRE*\n **1 CREDENCIAL**\n https://dal5.short.gy/val **2 CREDENCIAL EMPRESA**\n https://dal5.short.gy/C.emp  **3 CURSO FORMACIÓN**\n https://dal5.short.gy/Form  **4 CURSO PERFECCIONAMIENTO**\n https://dal5.short.gy/BjzkHI **5 VALOR PLAN**\n https://os10.short.gy/Pl4n' },
     'rule_102': { keywords: ["no hay sistema"], response: '🤖 *NO HAY SISTEMA CENTRAL ACTUALMENTE*\nLa resolución 3632 del 30 de Noviembre de 2023 establece que actualmente no existe un sistema central de registro.' },
@@ -72,8 +151,11 @@ const responses = {
     'rule_109': { keywords: ["decreto 32"], response: '*DECRETO 32/2024*\nModifica decreto 261\nhttps://www.zosepcar.cl/content/OS10/Resol_32.pdf' },
     'rule_110': { keywords: ["*editable*","*documentos word*"], response: '🤖 *DOCUMENTOS EDITABLES EN WORD*\n✅ Estudio\n✅ Plan\n✅ Medidas\n✅ Directiva\n✅ Todos@ ' },
     'rule_111': { keywords: ["nueva ley"], response: '🤖 *NUEVA LEY SEGURIDAD PRIVADA*\nLey 21.659 del 21 de marzo de 2024\nhttps://dal5.short.gy/LeySeg **Decreto 209**\n https://os10.short.gy/J88sfJ **APRUEBA REGLAMENTO DE SEGURIDAD PRIVADA** https://os10.short.gy/209 ' },
-    'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor\n- Independiente' },
-    'rule_113': { keywords: ["vigilante privado"], response: '🤖 *VIGILANTE PRIVADO*\nSimilar a guardia de seguridad pero con funciones específicas\nhttps://www.zosepcar.cl/content/OS10/TRAM_vigilante_privado.pdf' },
+    'rule_112': { keywords: ["menu credencial"], response: '🤖 *MENÚ CREDENCIALES*\n- Guardia\n- Jefe Seguridad\n- Supervisor\n- Asesor' },
+    'rule_113': { keywords: ["vigilante privado"], response: '🤖👮‍♂️ **VIGILANTE PRIVADO**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'vigilante\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Vigilante</button>' },
+    'rule_114': { keywords: ["portero", "nochero", "rondin", "guia portero"], response: '🤖🌙 **PORTERO / NOCHERO / RONDÍN**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'portero\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Portero</button>' },
+    'rule_115': { keywords: ["encargado de armas", "guia encargado armas"], response: '🤖🔫 **ENCARGADO DE ARMAS**\nRequisitos actualizados (Ley 21.659):\n<button onclick="mostrarRequisitos(\'encargadoArmas\')" class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium my-1">Ver Requisitos Encargado Armas</button>' },
+    'rule_116': { keywords: ["malla", "malla curricular", "malla curso", "materias curso", "que entra en el curso", "asignaturas de capacitacion", "asignaturas de capacitación", "malla de capacitacion", "malla de capacitación", "asignaturas"], response: '🤖📚 **MALLAS CURRICULARES**\nDescarga los contenidos de los cursos:\n\n👮 **Guardia de Seguridad (90 hrs):**\nhttps://www.zosepcar.cl/content/OS10/malla_guardia.pdf\n\n🔫 **Vigilante Privado (100 hrs):**\nhttps://www.zosepcar.cl/content/OS10/malla_vigilante.pdf\n\n🌙 **Portero/Nochero:**\nhttps://www.zosepcar.cl/content/OS10/malla_portero.pdf' },
     'rule_149': { keywords: ["empresas recursos humanos"], response: '🤖 *EMPRESAS DE RECURSOS HUMANOS*\nAutorización especial para intermediación laboral\nRequisitos específicos' },
     'rule_150': { keywords: ["*supermercados*","*sobre 500 uf*","*requisitos sobre 500 uf*"], response: '🤖 *REQUISITOS SOBRE 500 UF.*\n\nhttps://dal5.short.gy/S500' },
     'rule_152': { keywords: ["linkedin"], response: '🧙🏻‍♂️.*LinkedIn* \nhttps://dal5.short.gy/Lin' },
@@ -109,7 +191,7 @@ const responses = {
     'rule_194': { keywords: ["14 puntos cajeros"], response: '🤖 *14 PUNTOS CAJEROS*\n\nMi XXXXXXX se informa el siguiente procedimiento' },
     'rule_195': { keywords: ["*¿los días de votación serán feriados?"], response: '*¿Los días de votación serán feriados?*\n\nSí. El sábado 26 de octubre será feriado normal, por lo que el comercio podrá abrir. Mientras que el domingo 27 de octubre será feriado irrenunciable.' },
     'rule_197': { keywords: ["colores"], response: '🤖 *Colores votaciones* \nhttps://drive.google.com/file/d/1qAQoR_DRaXl8Cgzfueyx2ggh2LL_caBh/view?usp=drivesdk' },
-    'rule_198': { keywords: ["*para tramitar una credencial de guardia*","tipos de credencial","cuanto tipos de credenciales"], response: '👮🏽‍♂️👉🏼 Existen dos tipos de credenciales para guardia de seguridad, escribe lo que está con negrillas del que necesitas:\n*1. Independiente:* (solo eventos)\n*2. Credencial Empresa* (instalación empresa)' },
+    'rule_198': { keywords: ["*para tramitar una credencial de guardia*","tipos de credencial","cuanto tipos de credenciales"], response: '👮🏽‍♂️👉🏼 Bajo la nueva Ley 21.659, solo existe un tipo de credencial para guardias, la cual se tramita siempre a través de una **Empresa de Seguridad** autorizada. La figura del guardia independiente fue eliminada.' },
     'rule_201': { keywords: ["y tiene los valores","y tiene los valores del plan","credenciales empresa","los valores","valores credencial","valor","cual es el valor","cuanto cuesta","plan"], response: 'Si, claro: 🤖🧙🏻‍♂️ *AQUI ESTAN LOS VALORES 2DO. SEMESTRE 2024*\n\n1.- *CREDENCIAL*\nhttps://bit.ly/3vmqEvz' },
     'rule_202': { keywords: ["registro ingreso biometrico"], response: '🤖👉🏼 *Registro ingreso Biométrico*\n\nhttps://dal5.short.gy/Reg' },
     'rule_203': { keywords: ["sacar cantidad de guardias por evento","guardia por evento","cantidad de guardias","cuantos guardias","guardias por evento"], response: '🤖👮🏼‍♂️👉🏼 *CANTIDAD DE GUARDIA POR EVENTO:* \n \n*Link:*\n*https://dal5.short.gy/GGSS*' },
@@ -124,8 +206,9 @@ const responses = {
     'rule_220': { keywords: ["pagina"], response: '🧙🏼‍♂️ *PAGINA CIBERSEGURIDAD*\n*https://dal5.short.gy/C25*' },
     'rule_223': { keywords: ["cédula","cédula de identidad"], response: '*CÉDULA DE IDENTIDAD 2025*\nhttps://dal5.short.gy/Ce' },
     'rule_238': { keywords: ["pensiones","calculo pensión","jubilación","retiro","pensión","retirarme","retirarse"], response: '🧙🏼‍♂️ *Calculo Pensiones*\ndal5.short.gy/Pens' },
-    'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*\n*3.- CRED. INDEPENDIENTE.*' },
-    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '*TRAMITAR CREDENCIALES* 🤖👉🏼 https://directiva.netlify.app/ aquí en el ultimo boton de abajo aparecen los pasos a seguir para tramitar una credencial' },
+    'rule_239': { keywords: ["directiva","directiva de funcionamiento","directivas","directiva de funcionamiento instalacion","funcionamiento","formulario directiva"], response: '🤖 *PAGINA PARA:*\n*1.- PRESENTAR DIRECTIVA.*\n*2.- CREDENCIAL EMPRESA.*' },
+    'rule_240': { keywords: ["*credencial empresa*","credencial empleador","cred empresa","*credenciales empresas*","credencial","credencial independiente","independiente","credencial independientes","tramitar credencial"], response: '🤖 **ACREDITACIÓN DE PERSONAL**\nBajo la nueva Ley 21.659, toda credencial debe ser tramitada por una **Empresa de Seguridad** autorizada o una entidad obligada. La credencial de "independiente" ya no existe. El personal siempre debe estar vinculado a un empleador.\n\n📞 Consultas: 512651024' },
+    'rule_242': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva"], response: '🤖📋 Una empresa NO puede operar sin Directiva de Funcionamiento aprobada. Es requisito obligatorio según DL 3607 art. 2°. La autorización se otorga por Decreto del Ministerio del Interior previo informe favorable de Carabineros.' },
     'rule_243': { keywords: ["realizaron examen","los que realizaron el examen","enviar el resultado examen","enviar resultado","enviar resultados"], response: '🤖 👮🏼‍♂️\n1.- Los que están con rojo sacaron bajo el 60% y están reprobados' },
     'rule_244': { keywords: ["usuario portal","portal usuario","portal de usuario","usuario"], response: '🧙🏼‍♂️\nhttps://dal5.short.gy/U53' },
     'rule_245': { keywords: ["presentación con ia","presentaciónes"], response: '🤖🧙🏼‍♂️ \n\n1.- https://gamma.app/' },
@@ -177,10 +260,9 @@ const responses = {
 
 // El bot analiza las consultas y extrae respuestas de la base de conocimiento de la Nueva Ley de Seguridad Privada 2
 
-'rule_286': { keywords: ["guardia sin curso","vigilante sin capacitación","sin formación","no tengo curso","no tiene curso","falta curso","sin curso","no hice curso","no ha hecho curso","capacitación pendiente","curso vencido","certificado vencido"], response: '🤖⚠️ Un guardia sin curso de capacitación NO puede ejercer funciones art. 13° del decreto suupremo 93 y DL 3607, es OBLIGATORIO contar con curso básico de formación vigente (3 años). Sin curso = INFRACCIÓN GRAVE. Multa: 25 a 125 ingresos mínimos mensuales (primera vez), hasta 250 en reincidencia.' },
-'rule_287': { keywords: ["guardia sin credencial","vigilante sin autorización","sin credencial","no tengo credencial","no tiene credencial","falta credencial","credencial vencida","sin licencia","no tengo licencia","no tiene licencia","autorización vencida","permiso vencido"], response: '🤖❌ Un guardia sin credencial vigente NO puede trabajar. Según Decreto 93 art. 93° la credencial es requisito ESENCIAL para ejercer. Sin credencial = EJERCICIO ILEGAL. Multa: 25 a 125 ingresos mínimos mensuales, duplicándose en reincidencia + posible clausura.' },
-'rule_288': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva","no tengo directiva","no tiene directiva","directiva vencida","sin autorización empresa","empresa no autorizada","sin resolución","no tenemos directiva"], response: '🤖📋 Una empresa NO puede operar sin Directiva de Funcionamiento aprobada. Según Decreto 93 art. 15°, es OBLIGATORIA y tiene vigencia de 3 años. Sin directiva = OPERACIÓN ILEGAL. Debe solicitarse con 15 días hábiles de anticipación. Sanción: clausura inmediata + multa.' },
-'rule_288': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva"], response: '🤖📋 Una empresa NO puede operar sin Directiva de Funcionamiento aprobada. Es requisito obligatorio según DL 3607 art. 2°. La autorización se otorga por Decreto del Ministerio del Interior previo informe favorable de Carabineros.' },
+'rule_286': { keywords: ["guardia sin curso","vigilante sin capacitación","sin formación","no tengo curso","no tiene curso","falta curso","sin curso","no hice curso","no ha hecho curso","capacitación pendiente","curso vencido","certificado vencido"], response: '🤖⚠️ **GUARDIA SIN CURSO (Ley 21.659)**\nUn guardia sin curso de capacitación vigente comete una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nSanción: Multa de 3 a 20 UTM y posible inhabilitación. La empresa contratante también es sancionada.' },
+'rule_287': { keywords: ["guardia sin credencial","vigilante sin autorización","sin credencial","no tengo credencial","no tiene credencial","falta credencial","credencial vencida","sin licencia","no tengo licencia","no tiene licencia","autorización vencida","permiso vencido"], response: '🤖❌ **GUARDIA SIN CREDENCIAL (Ley 21.659)**\nTrabajar sin credencial vigente es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nSanción: Multa de 3 a 20 UTM. La credencial es intransferible y obligatoria durante el servicio.' },
+'rule_288': { keywords: ["sin directiva funcionamiento","empresa sin directiva","falta directiva","no tengo directiva","no tiene directiva","directiva vencida","sin autorización empresa","empresa no autorizada","sin resolución","no tenemos directiva"], response: '🤖📋 **SIN DIRECTIVA (Ley 21.659)**\nOperar sin Directiva de Funcionamiento aprobada es una **INFRACCIÓN GRAVÍSIMA** para la empresa (Art. 100). \nSanción: Multa de 650 a 13.500 UTM (Entidades Obligadas) o 50 a 650 UTM (Empresas Seguridad), más medidas administrativas.' },
 'rule_289': { keywords: ["guardia sin uniforme","vigilante sin uniforme","uniforme obligatorio"], response: '🤖👕 Los vigilantes DEBEN usar uniforme reglamentario según DL 3607 art. 1°. El uniforme debe ser diferente al de FF.AA. y Carabineros, y de uso exclusivo para vigilantes autorizados. No usarlo constituye infracción.' },
 'rule_290': { keywords: ["vigilante sin arma","guardia desarmado","arma obligatoria"], response: '🤖🔫 Los vigilantes DEBEN portar armas según DL 3607 art. 1°. El porte y control de armas se rige por Ley 17.798. Solo pueden portar armas autorizadas y registradas según normativa vigente.' },
 'rule_291': { keywords: ["empresa sin registro","compañía no autorizada","registro empresa"], response: '🤖🏢 Las empresas de seguridad DEBEN estar registradas y autorizadas. Operar sin registro constituye ejercicio ilegal de actividad regulada. Sanción: multa de 25 a 125 ingresos mínimos mensuales, más clausura.' },
@@ -213,15 +295,15 @@ const responses = {
 'rule_318': { keywords: ["porte armas","licencia armas","autorización armamento"], response: '🤖🔫 El porte de armas requiere: licencia individual vigente, inscripción en Registro Nacional de Armas, capacitación específica y autorización del empleador según Ley 17.798.' },
 'rule_319': { keywords: ["subcontratación","tercerización","empresa contratista"], response: '🤖🤝 La subcontratación de servicios de seguridad está permitida pero la empresa principal mantiene responsabilidad solidaria según normativa laboral y de seguridad privada.' },
 'rule_320': { keywords: ["reclutamiento","selección personal","contratación vigilantes"], response: '🤖👥 El reclutamiento DEBE verificar: antecedentes, aptitud física/mental, capacitación previa, referencias laborales y cumplimiento de todos los requisitos legales vigentes.' },
-'rule_321': { keywords: ["puedo trabajar sin curso","trabajo sin capacitación","me contratan sin curso","contrato sin formación","empiezo sin curso","inicio sin capacitación"], response: '🤖🚫 NO puedes trabajar sin curso. Es ILEGAL según Decreto 93 art. 13°. Primero debes: 1) Hacer curso básico (40 horas mínimo) 2) Aprobar examen 3) Obtener certificado 4) Solicitar credencial. Trabajar sin curso = multa para ti y tu empleador.' },
+'rule_321': { keywords: ["puedo trabajar sin curso","trabajo sin capacitación","me contratan sin curso","contrato sin formación","empiezo sin curso","inicio sin capacitación"], response: '🤖🚫 **TRABAJAR SIN CURSO (Ley 21.659)**\nNO puedes trabajar sin curso. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nProceso: 1) Curso formación (90 hrs) 2) Aprobar examen 3) Obtener certificación 4) Solicitar credencial. Trabajar sin esto conlleva multas en UTM.' },
 'rule_322': { keywords: ["él trabaja sin curso","ella trabaja sin curso","trabaja sin capacitación","empleado sin curso","personal sin formación","guardia nuevo sin curso"], response: '🤖⚠️ Esa persona NO puede trabajar sin curso. Según Decreto 93 art. 13° es obligatorio tener capacitación vigente. Si detectas esta situación, repórtala a Carabineros. La empresa también será sancionada por contratar personal no calificado.' },
-'rule_323': { keywords: ["puedo trabajar sin credencial","trabajo sin licencia","me contratan sin credencial","empiezo sin autorización","inicio sin permiso","trabajo sin papeles"], response: '🤖❌ NO puedes trabajar sin credencial. Es ILEGAL según Decreto 93. La credencial es tu "licencia de conducir" para seguridad privada. Sin ella cometes delito. Proceso: 1) Curso aprobado 2) Solicitar credencial 3) Esperar autorización 4) Recién ahí trabajar.' },
+'rule_323': { keywords: ["puedo trabajar sin credencial","trabajo sin licencia","me contratan sin credencial","empiezo sin autorización","inicio sin permiso","trabajo sin papeles"], response: '🤖❌ **TRABAJAR SIN CREDENCIAL (Ley 21.659)**\nNO puedes trabajar sin credencial. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 94). \nLa credencial es tu autorización oficial. Sin ella, te expones a multas de 3 a 20 UTM e inhabilitación.' },
 'rule_324': { keywords: ["él trabaja sin credencial","ella trabaja sin credencial","trabaja sin licencia","guardia sin papeles","empleado sin autorización","personal sin credencial"], response: '🤖🚨 Esa persona comete INFRACCIÓN GRAVE trabajando sin credencial. Según Decreto 93, solo pueden ejercer quienes tengan autorización vigente. Denuncia inmediatamente a Carabineros. Multa para guardia Y empresa.' },
-'rule_325': { keywords: ["empresa puede operar sin directiva","trabajamos sin directiva","operamos sin autorización","empresa nueva sin papeles","negocio sin permisos","compañía sin resolución"], response: '🤖🛑 NO pueden operar sin Directiva de Funcionamiento. Según Decreto 93 art. 15° es OBLIGATORIA. Vigencia: 3 años. Sin directiva = CLAUSURA INMEDIATA. Deben solicitarla 15 días hábiles antes de operar. Es delito ejercer sin autorización.' },
+'rule_325': { keywords: ["empresa puede operar sin directiva","trabajamos sin directiva","operamos sin autorización","empresa nueva sin papeles","negocio sin permisos","compañía sin resolución"], response: '🤖🛑 **EMPRESA SIN DIRECTIVA (Ley 21.659)**\nNO pueden operar sin Directiva de Funcionamiento. Es una **INFRACCIÓN GRAVÍSIMA** (Art. 100). \nSanción: Multas altas en UTM y posible revocación de autorización. Deben solicitarla con anticipación a la autoridad fiscalizadora.' },
 'rule_326': { keywords: ["esa empresa opera sin directiva","empresa sin autorización","compañía ilegal","negocio sin permisos","operan sin papeles","funcionan sin directiva"], response: '🤖📢 Esa empresa opera ILEGALMENTE sin Directiva de Funcionamiento. Según Decreto 93 art. 15°, todas las empresas de seguridad DEBEN tener autorización vigente. Denuncia inmediatamente: pueden clausurarla y multar a directivos.' },
-'rule_327': { keywords: ["si no tengo curso os10", "qué pasa si no tengo curso","qué pasa si trabajo sin curso","consecuencias sin capacitación","multa por no tener curso","sanción trabajar sin formación"], response: '🤖⚖️ Consecuencias trabajar sin curso: 1) Multa personal: 25-125 ingresos mínimos 2) Multa empresa: 25-250 ingresos mínimos 3) Prohibición ejercer 4) Antecedentes laborales negativos 5) Posible denuncia penal por ejercicio ilegal de profesión.' },
-'rule_328': { keywords: ["qué pasa si trabajo sin credencial","consecuencias sin licencia","multa por no tener credencial","sanción trabajar sin autorización"], response: '🤖⚖️ Consecuencias trabajar sin credencial: 1) Multa personal: 25-125 ingresos mínimos 2) Multa empresa: hasta 250 ingresos mínimos 3) Inhabilitación temporal 4) Antecedentes penales posibles 5) Clausura del servicio de seguridad.' },
-'rule_329': { keywords: ["qué pasa empresa sin directiva","consecuencias operar sin autorización","multa empresa sin directiva","sanción compañía ilegal"], response: '🤖⚖️ Consecuencias empresa sin directiva: 1) Clausura INMEDIATA 2) Multa directivos: 25-250 ingresos mínimos 3) Inhabilitación directivos 4) Pérdida inversión 5) Responsabilidad civil por daños 6) Posible querella criminal por ejercicio ilegal.' },
+'rule_327': { keywords: ["si no tengo curso os10", "qué pasa si no tengo curso","qué pasa si trabajo sin curso","consecuencias sin capacitación","multa por no tener curso","sanción trabajar sin formación"], response: '🤖⚖️ **CONSECUENCIAS SIN CURSO (Ley 21.659)**\n1) Multa personal: 3-20 UTM (Gravísima)\n2) Multa empresa: 50-650 UTM (Grave/Gravísima)\n3) Inhabilitación temporal o definitiva\n4) Registro de sanción en sistema nacional.' },
+'rule_328': { keywords: ["qué pasa si trabajo sin credencial","consecuencias sin licencia","multa por no tener credencial","sanción trabajar sin autorización"], response: '🤖⚖️ **CONSECUENCIAS SIN CREDENCIAL (Ley 21.659)**\n1) Multa personal: 3-20 UTM (Gravísima)\n2) Multa empresa: Sanciones graves en UTM\n3) Inhabilitación para ejercer seguridad privada\n4) Registro de infracción.' },
+'rule_329': { keywords: ["qué pasa empresa sin directiva","consecuencias operar sin autorización","multa empresa sin directiva","sanción compañía ilegal"], response: '🤖⚖️ **CONSECUENCIAS EMPRESA SIN DIRECTIVA (Ley 21.659)**\n1) Multa: 50-650 UTM (Empresas Seguridad) o 650-13.500 UTM (Entidades Obligadas)\n2) Suspensión o revocación de autorización\n3) Clausura de servicios\n4) Responsabilidad civil y administrativa.' },
 
 // Reglas conversacionales para el chatbot OS10 Coquimbo solo region de Coquimbo.
     
@@ -232,7 +314,7 @@ const responses = {
 'rule_400': { keywords: ["infracciones gravísimas guardias", "infracciones graves guardias", "sanciones graves guardias"], response: '🤖⚖️ **INFRACCIONES GRAVÍSIMAS GUARDIAS DE SEGURIDAD** (Art. 94-95 Ley 21.659):\n**1.** Usar armas de fuego en ejercicio de funciones - **PROHIBIDO TOTALMENTE**\n**2.** No adoptar medidas de seguridad según plan aprobado\n**3.** Trabajar sin credencial vigente\n**4.** Trabajar sin curso de capacitación aprobado\n**5.** Proporcionar información falsa a autoridades\n**SANCIONES:** Multa 3-20 UTM + posible inhabilitación' },
 'rule_401': { keywords: ["infracciones gravísimas vigilantes", "infracciones graves vigilantes", "sanciones graves vigilantes"], response: '🤖⚖️ **INFRACCIONES GRAVÍSIMAS VIGILANTES PRIVADOS** (Art. 94-95 Ley 21.659):\n**1.** Ejercer sin autorización vigente\n**2.** No portar armas cuando es obligatorio\n**3.** Usar armas fuera del recinto autorizado\n**4.** No usar sistemas de registro audiovisual obligatorios\n**5.** Trabajar sin curso vigente (cada 2 años)\n**SANCIONES:** Multa 3-20 UTM + inhabilitación temporal o definitiva' },
 // NUEVA LEY 21.659 - ASPECTOS GENERALES
-'rule_402': { keywords: ["nueva ley seguridad privada", "ley 21659", "que cambió nueva ley"], response: '🤖📚 **NUEVA LEY 21.659 SEGURIDAD PRIVADA** (Vigencia: 28-NOV-2025):\n**PRINCIPALES CAMBIOS:**\n**1.** Órgano rector: Subsecretaría Prevención Delito\n**2.** Clasificación entidades por RIESGO (Alto/Medio/Bajo)\n**3.** Estudios seguridad vigencia 4 años (2 años vigilancia privada)\n**4.** Cursos obligatorios diferenciados\n**5.** Nuevas figuras: Jefe seguridad, Encargado seguridad\n**6.** Registro Nacional digitalizado\n**7.** Regulación eventos masivos\n**DEROGA:** Decreto Ley 3.607 y Ley 19.303' },
+'rule_402': { keywords: ["nueva ley seguridad privada", "ley 21659", "que cambió nueva ley"], response: '🤖📚 **NUEVA LEY 21.659 SEGURIDAD PRIVADA** (VIGENTE):\n**PRINCIPALES CAMBIOS:**\n**1.** Órgano rector: Subsecretaría Prevención Delito\n**2.** Clasificación entidades por RIESGO (Alto/Medio/Bajo)\n**3.** Estudios seguridad vigencia 4 años\n**4.** Cursos obligatorios diferenciados\n**5.** Nuevas figuras: Jefe seguridad, Encargado seguridad\n**6.** Registro Nacional digitalizado\n**7.** Regulación eventos masivos (Decreto 208)\n**DEROGA:** Decreto Ley 3.607 y Ley 19.303' },
 // ENTIDADES OBLIGADAS - CLASIFICACIÓN POR RIESGO
 'rule_403': { keywords: ["entidades obligadas", "clasificación riesgo", "riesgo alto medio bajo"], response: '🤖🏢 **ENTIDADES OBLIGADAS - CLASIFICACIÓN RIESGO** (Art. 7-9 Ley 21.659):\n**RIESGO ALTO:** Sistema vigilancia privada obligatorio\n- Bancos y financieras\n- Transporte valores\n- Apoyo giro bancario\n**RIESGO MEDIO:** Medidas seguridad adaptadas\n**RIESGO BAJO:** Medidas básicas\n**SIEMPRE OBLIGADAS:** Empresas venta combustible\n**CRITERIOS:** Actividad, localización, concurrencia público, valores, horarios, delitos previos' },
 // VIGILANTES PRIVADOS - REQUISITOS NUEVOS
@@ -255,6 +337,7 @@ const responses = {
 'rule_412': { keywords: ["seguridad electrónica", "empresas alarmas", "cctv"], response: '🤖📹 **SEGURIDAD ELECTRÓNICA** (Art. 76-81 Reglamento):\n**SERVICIOS:**\n- Instalación/mantenimiento sistemas\n- Operación centrales alarmas/CCTV\n- Certificación dispositivos\n**OBLIGACIONES:**\n- Verificar activaciones alarmas\n- Informar usuarios funcionamiento\n- Personal calificado\n- Certificados organismos sectoriales\n**RESPONSABILIDAD:** Falsas alarmas = infracción leve' },
 // EVENTOS MASIVOS
 'rule_413': { keywords: ["eventos masivos", "seguridad eventos"], response: '🤖🎪 **EVENTOS MASIVOS** (Título IV Ley 21.659):\n**DEFINICIÓN:** Más 3.000 personas o características especiales\n**OBLIGACIONES ORGANIZADOR:**\n- Plan seguridad\n- Autorización Delegación Presidencial\n- Seguro responsabilidad civil\n- Personal seguridad privada\n- Recursos tecnológicos\n- Responsable seguridad designado\n**SANCIONES:** Multa 501-1.000 UTM infracciones gravísimas' },
+'rule_413a': { keywords: ["decreto 208", "reglamento eventos masivos", "seguridad eventos"], response: '🤖🏟️ **DECRETO 208 (EVENTOS MASIVOS)**:\nReglamento vigente que regula la seguridad en eventos de más de 3000 personas. Exige:\n- Directiva de Funcionamiento específica\n- Organizador responsable\n- Encargado de Seguridad de Eventos\n- Guardias capacitados\n- Medios tecnológicos (CCTV, control acceso)\n- Coordinación con Carabineros' },
 // UNIFORMES REGLAMENTARIOS
 'rule_414': { keywords: ["uniforme vigilante", "uniforme guardia", "colores uniformes"], response: '🤖👕 **UNIFORMES REGLAMENTARIOS** (Art. 33, 90 Reglamento):\n**VIGILANTES PRIVADOS:**\n- Gris perla azulado (camisa/pantalón)\n- Gorra militar gris perla azulado\n- Corbata negra\n- Calzado negro\n- Cinturón negro con cartuchera\n**GUARDIAS SEGURIDAD:**\n- Negro (camisa/pantalón/gorra)\n- Chaleco alta visibilidad rojo\n- "SEGURIDAD PRIVADA" en espalda\n- Chaquetón rojo impermeable\n**OBLIGATORIO:** Uso solo durante servicio' },
 // SANCIONES ESPECÍFICAS
@@ -805,27 +888,352 @@ response: '🤖👮‍♂️ **VIGILANTES EN MEDIDAS** (Art. 16° Ley 19303):\n*
 'rule_554': {
 keywords: ["facilidades carabineros", "información recintos", "medidas implementadas"],
 response: '🤖🔍 **FACILIDADES INFORMACIÓN** (Art. 9° Ley 19303):\n**OBLIGACIÓN:** Otorgar facilidades Carabineros\n**INFORMACIÓN:** Recintos/locales medidas seguridad\n**OBLIGADOS:** Combustible/entidades Decreto Supremo\n**ACCESO:** Para obtener información\n**NORMATIVA:** Ley 19303/1994 Art. 9°\n**INFRACCIÓN:** No proporcionar información requerida'
+},
+    // REGLAS OS11 - CONTROL DE ARMAS
+'rule_560': { 
+    keywords: ["*portal armas*","*consulta armas*","*registro armas*","*armas chile*"], 
+    response: '🧙🏼‍♂️🤖👉🏼 *PORTAL DE CONSULTAS DE ARMAS*\nhttps://www.portalarmaschile.gob.cl/' 
+},
+'rule_561': { 
+    keywords: ["*os11*","*os 11*","*control de armas*","*oficina armas*"], 
+    response: '🤖👉🏼 *O.S.11 INFORMACIÓN GENERAL*\nhttps://www.zosepcar.cl/OS11.php#faq' 
+},
+'rule_562': { 
+    keywords: ["*tramites os11*","*tramites armas*","*inscribir arma*","*permiso armas*"], 
+    response: '🤖👉🏼 *O.S.11 TRÁMITES*\nhttps://www.zosepcar.cl/OS11.php#tramites' 
+},
+'rule_563': { 
+    keywords: ["*os11 regiones*","*oficinas armas*","*donde tramitar armas*","*direcciones os11*"], 
+    response: '🤖👉🏼 *OS11 POR REGIONES - FONOS Y DIRECCIONES*\nhttps://www.zosepcar.cl/OS11.php#inforegion' 
+},
+'rule_564': { 
+    keywords: ["*os11 la serena*","*armas la serena*","*1a comisaria*","*af 15*"], 
+    response: '🤖📍 *OS11 LA SERENA (A.F. 15)*\n**Dirección:** Balmaceda N° 4828, Pard. 10 La Pampa\n**Fono:** 512651101\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** La Serena, La Higuera\n**Email:** af_laserena@dgmn.cl\nos11.laserena@carabineros.cl' 
+},
+'rule_565': { 
+    keywords: ["*os11 coquimbo*","*armas coquimbo*","*2a comisaria*","*af 16*","*andacollo*"], 
+    response: '🤖📍 *OS11 COQUIMBO (A.F. 16)*\n**Dirección:** Tegualda N° 515\n**Fono:** 512651125\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Coquimbo, Andacollo\n**Email:** af_coquimbo@dgmn.cl\nos11.coquimbo@carabineros.cl' 
+},
+'rule_566': { 
+    keywords: ["*os11 vicuña*","*armas vicuña*","*5a comisaria*","*af 17*","*paihuano*"], 
+    response: '🤖📍 *OS11 VICUÑA (A.F. 17)*\n**Dirección:** Av. Las Delicias N° 599\n**Fono:** 512651170\n**Horario:** Lunes a Viernes 08:00 a 13:00 y 15:00 a 17:00 hrs\n**Comunas:** Vicuña, Paihuano\n**Email:** af_vicuna@dgmn.cl\nos11.vicuna@carabineros.cl' 
+},
+'rule_567': { 
+    keywords: ["*os11 ovalle*","*armas ovalle*","*3a comisaria*","*af 18*","*rio hurtado*","*punitaqui*","*monte patria*"], 
+    response: '🤖📍 *OS11 OVALLE (A.F. 18)*\n**Dirección:** Tangue N° 20\n**Fono:** 532453016\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Ovalle, Río Hurtado, Punitaqui, Monte Patria\n**Email:** af_ovalle@dgmn.cl\nos11.ovalle@carabineros.cl' 
+},
+'rule_568': { 
+    keywords: ["*os11 combarbala*","*armas combarbala*","*af 19*","*combarbalá*"], 
+    response: '🤖📍 *OS11 COMBARBALÁ (A.F. 19)*\n**Dirección:** Plaza de Armas N° 100\n**Fono:** 532453072\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comuna:** Combarbalá\n**Email:** af_combarbala@dgmn.cl\nos11.combarbala@carabineros.cl' 
+},
+'rule_569': { 
+    keywords: ["*os11 illapel*","*armas illapel*","*4a comisaria*","*af 20*","*salamanca*","*los vilos*","*canela*"], 
+    response: '🤖📍 *OS11 ILLAPEL (A.F. 20)*\n**Dirección:** O\'Higgins N° 189\n**Fono:** 532453134\n**Horario:** Lunes a Viernes 08:00 a 13:00 hrs\n**Comunas:** Illapel, Salamanca, Los Vilos, Canela\n**Email:** af_illapel@dgmn.cl\nos11.illapel@carabineros.cl' 
+},
+'rule_570': { 
+    keywords: ["*prefectura coquimbo armas*","*oficinas armas coquimbo*","*donde tramitar arma region coquimbo*"], 
+    response: '🤖🏛️ *PREFECTURA COQUIMBO - OFICINAS OS11*\n\n**A.F. 15 - LA SERENA:** 512651101\n**A.F. 16 - COQUIMBO:** 512651125\n**A.F. 17 - VICUÑA:** 512651170\n**A.F. 18 - OVALLE:** 532453016\n**A.F. 19 - COMBARBALÁ:** 532453072\n**A.F. 20 - ILLAPEL:** 532453134\n\n📋 Para más detalles escriba el nombre de la comuna' 
+},
+
+// PREGUNTAS FRECUENTES PLATAFORMA SPD Y LEY 21.659
+'rule_600': {
+    keywords: ["plataforma spd", "link spd", "pagina spd", "sitio spd", "web spd", "donde ingreso spd"],
+    response: '🤖💻 **PLATAFORMA SPD**\nLa plataforma oficial de la Subsecretaría de Prevención del Delito para trámites de seguridad privada es:\n👉 https://segprivada.minsegpublica.gob.cl/'
+},
+'rule_601': {
+    keywords: ["ingreso representante legal", "entrar representante", "clave única empresa", "como ingreso empresa"],
+    response: '🤖🔑 **INGRESO REPRESENTANTE LEGAL**\nSi usted es el representante legal de una empresa, podrá ingresar al sistema utilizando su **Clave Única**. Una vez dentro de la plataforma, deberá adjuntar una declaración jurada que acredite su calidad de representante legal.'
+},
+'rule_602': {
+    keywords: ["pagar en línea", "pago credenciales", "pagar credencial online", "pago online"],
+    response: '🤖💳 **PAGO EN LÍNEA**\nSí. Las credenciales podrán pagarse en línea a través de la plataforma. El sistema permitirá realizar el pago de manera directa y segura.'
+},
+'rule_603': {
+    keywords: ["error plataforma", "plataforma no funciona", "problemas tramite online", "soporte electrónico"],
+    response: '🤖⚠️ **ERRORES EN PLATAFORMA**\nEn caso de que la plataforma presente errores o no permite completar un trámite, deberá contactar al soporte electrónico para reportar la situación y recibir asistencia técnica.'
+},
+'rule_604': {
+    keywords: ["validez acreditaciones", "vigencia acreditaciones 2025", "acreditaciones después noviembre 2025"],
+    response: '🤖📅 **VIGENCIA ACREDITACIONES**\nLas autorizaciones otorgadas a personas naturales y jurídicas para ejercer actividades de seguridad privada y que se encuentren vigentes al 28 de noviembre de 2025, seguirán siendo válidas hasta la fecha de su vencimiento conforme con la legislación vigente a la época de su otorgamiento.'
+},
+'rule_605': {
+    keywords: ["que es seguridad privada", "definición seguridad privada"],
+    response: '🤖🛡️ **SEGURIDAD PRIVADA**\nEs el conjunto de actividades o medidas de carácter preventivas, coadyuvantes y complementarias de la seguridad pública, destinadas a la protección de personas, bienes y procesos productivos, desarrolladas en un área determinada y realizadas por personas naturales o jurídicas de derecho privado, debidamente autorizadas en la forma y condiciones que establece la ley N°21.659.'
+},
+'rule_606': {
+    keywords: ["a quien regula ley 21659", "alcance ley 21659", "quienes regula ley seguridad"],
+    response: '🤖📜 **ALCANCE LEY 21.659**\nRegula a las empresas y personas que prestan servicios de seguridad privada, así como a aquellas entidades que se encuentran obligadas a tener medidas de seguridad privada. Además, regula la realización de eventos masivos.'
+},
+'rule_607': {
+    keywords: ["autoridades fiscalizadoras", "quien fiscaliza", "autoridad fiscalizadora"],
+    response: '🤖👮 **AUTORIDADES FISCALIZADORAS**\n**Carabineros de Chile** es la autoridad fiscalizadora principal.\n\nEn recintos específicos:\n- **DIRECTEMAR:** Recintos portuarios/marítimos.\n- **DGAC:** Aeropuertos.\n- **Autoridad Militar:** Recintos bajo su control.'
+},
+'rule_608': {
+    keywords: ["función subsecretaría prevención delito", "rol spd", "spd ley 21659"],
+    response: '🤖🏛️ **ROL SUBSECRETARÍA (SPD)**\nLe corresponde autorizar, regular, supervigilar, controlar y ejercer las demás atribuciones legales en materia de seguridad privada. Actúa como órgano rector y vela por el cumplimiento del rol preventivo y coadyuvante de la seguridad pública.'
+},
+'rule_609': {
+    keywords: ["tipos de registros", "registros seguridad privada", "que registros existen"],
+    response: '🤖📂 **REGISTROS EXISTENTES**\n1. Entidades obligadas a tener medidas de seguridad.\n2. Entidades que voluntariamente adoptan medidas.\n3. Personas que ejercen funciones (guardias, vigilantes, etc.).\n4. Empresas de seguridad privada.\n5. Registro de sanciones.\n6. Registro de eventos masivos.\n*El registro es secreto, salvo excepciones legales.*'
+},
+'rule_610': {
+    keywords: ["sanciones ley 21659", "castigos ley 21659", "multas ley 21659"],
+    response: '🤖⚖️ **SANCIONES LEY 21.659**\nLas infracciones se sancionan con:\n- Multas.\n- Suspensión o revocación de autorización.\n- Clausura de la sucursal, agencia u oficina donde se cometió la infracción.'
+},
+'rule_611': {
+    keywords: ["quien sanciona", "competencia sanciones", "juzgado policía local seguridad privada"],
+    response: '🤖👨‍⚖️ **COMPETENCIA SANCIONES**\n- **Multas:** Juzgado de Policía Local (Ley 18.287).\n- **Suspensión/Revocación/Clausura:** Subsecretaría de Prevención del Delito.'
+},
+'rule_612': {
+    keywords: ["que es entidad obligada", "definición entidad obligada"],
+    response: '🤖🏢 **ENTIDAD OBLIGADA**\nSon entidades públicas o privadas obligadas a mantener medidas de seguridad privada porque su actividad genera un riesgo para la seguridad pública (alto, medio o bajo).'
+},
+'rule_613': {
+    keywords: ["medidas de seguridad privada", "que son medidas seguridad"],
+    response: '🤖🔒 **MEDIDAS DE SEGURIDAD**\nEs toda acción que involucre la implementación de recursos humanos, materiales, tecnológicos o procedimientos destinados a otorgar protección a personas y bienes dentro de un recinto o área determinada.'
+},
+'rule_614': {
+    keywords: ["cuales son entidades obligadas", "entidades obligadas por ley"],
+    response: '🤖📋 **ENTIDADES OBLIGADAS POR LEY**\n- Empresas de transporte de valores.\n- Instituciones bancarias y financieras.\n- Empresas de apoyo al giro bancario (con dinero).\n- Empresas de venta de combustible.'
+},
+'rule_615': {
+    keywords: ["quien declara entidad obligada", "organismo declara obligada"],
+    response: '🤖✍️ **DECLARACIÓN ENTIDAD OBLIGADA**\nLa **Subsecretaría de Prevención del Delito** es la autoridad competente para declarar a una entidad como obligada mediante resolución, previo informe de la autoridad fiscalizadora, considerando el nivel de riesgo.'
+},
+'rule_616': {
+    keywords: ["empresas obligadas decreto 3607", "transición entidades obligadas", "ley 19603 transición"],
+    response: '🤖🔄 **TRANSICIÓN ENTIDADES OBLIGADAS**\nSe mantendrán como obligadas por un máximo de **2 años** desde la vigencia de la Ley 21.659. En ese plazo, la SPD deberá determinarlas nuevamente como obligadas según su nivel de riesgo.'
+},
+'rule_617': {
+    keywords: ["que hacer si soy entidad obligada", "declarado entidad obligada"],
+    response: '🤖📝 **SI ES DECLARADO OBLIGADO**\nDebe elaborar un **estudio de seguridad** y presentarlo para aprobación ante la Subsecretaría de Prevención del Delito dentro del plazo legal. Puede contratar asesoría de una empresa de seguridad autorizada.'
+},
+'rule_618': {
+    keywords: ["matriz de factores de riesgo", "matriz riesgo seguridad privada"],
+    response: '🤖📊 **MATRIZ DE RIESGO**\nInstrumento para valorar y clasificar el riesgo (bajo, medio, alto) de una entidad, considerando peligros internos y externos que puedan afectar la seguridad pública.'
+},
+'rule_619': {
+    keywords: ["quien aplica matriz riesgo", "aplicación matriz riesgo"],
+    response: '🤖🔍 **APLICACIÓN MATRIZ**\nLa matriz es aplicada por la **Subsecretaría de Prevención del Delito**, organismo competente para su supervisión técnica e interpretación.'
+},
+'rule_620': {
+    keywords: ["nivel de riesgo medio", "entidad riesgo medio"],
+    response: '🤖🟠 **RIESGO MEDIO**\nLas entidades evaluadas con riesgo medio serán declaradas por la SPD como **entidades obligadas** a mantener medidas de seguridad privada.'
+},
+'rule_621': {
+    keywords: ["nivel de riesgo alto", "entidad riesgo alto", "sistema vigilancia privada obligatorio"],
+    response: '🤖🔴 **RIESGO ALTO**\nDeben incorporar un **Sistema de Vigilancia Privada**. Esto implica:\n- Estudio de seguridad exigente.\n- Organismo de seguridad interno (Jefe, Encargado, Encargado de Armas).\n- Vigilantes Privados y Guardias.\n*Siempre obligadas: Transporte valores, Bancos, Apoyo giro bancario.*'
+},
+'rule_622': {
+    keywords: ["que es estudio de seguridad", "definición estudio seguridad"],
+    response: '🤖📘 **ESTUDIO DE SEGURIDAD**\nInstrumento que identifica vulnerabilidades y establece la política de seguridad a implementar. Debe indicar medidas precisas y concretas. Se presenta ante la SPD para aprobación.'
+},
+'rule_623': {
+    keywords: ["vigencia estudio seguridad", "cuanto dura estudio seguridad"],
+    response: '🤖⏳ **VIGENCIA ESTUDIO SEGURIDAD**\n- **Regla general:** 4 años.\n- **Con sistema vigilancia privada:** 2 años.\n- **Transporte de valores:** 1 año.'
+},
+'rule_624': {
+    keywords: ["plazo implementar estudio seguridad", "tiempo implementar estudio"],
+    response: '🤖⏱️ **PLAZO IMPLEMENTACIÓN**\nLa entidad tiene un plazo de **30 días** para implementar el estudio de seguridad desde la notificación de la resolución que lo aprueba.'
+},
+'rule_625': {
+    keywords: ["entidades comparten infraestructura", "entidades mismo espacio"],
+    response: '🤖🤝 **ENTIDADES COMPARTIDAS**\nSi dos o más entidades obligadas comparten espacios, sus estudios de seguridad deben estar **coordinados**. Deben elaborar un protocolo conjunto con estrategias comunes.'
+},
+'rule_626': {
+    keywords: ["contenido sistema vigilancia privada", "que tiene sistema vigilancia"],
+    response: '🤖👁️ **SISTEMA VIGILANCIA PRIVADA**\nIntegrado por:\n- Organismo de seguridad interno.\n- Recursos tecnológicos y materiales.\n- Estudio de seguridad autorizado por la SPD.'
+},
+'rule_627': {
+    keywords: ["personal sistema vigilancia privada", "composicion sistema vigilancia"],
+    response: '🤖👥 **PERSONAL VIGILANCIA PRIVADA**\nEl organismo interno se compone de:\n- Jefe de Seguridad.\n- Encargado de Seguridad.\n- Encargados de Armas.\n- Vigilantes Privados.\n- Guardias de Seguridad de apoyo.'
+},
+'rule_628': {
+    keywords: ["quien dirige sistema vigilancia", "director sistema vigilancia"],
+    response: '🤖👨‍✈️ **DIRECCIÓN SISTEMA**\nSerá dirigido por el **Jefe de Seguridad**, quien debe estar autorizado por la Subsecretaría de Prevención del Delito.'
+},
+'rule_629': {
+    keywords: ["subcontratar sistema vigilancia", "vigilancia privada subcontratada"],
+    response: '🤖📝 **SUBCONTRATACIÓN**\nSí, puede ser propio o subcontratado. En ambos casos aplican las obligaciones de la Ley 21.659. Los vigilantes son trabajadores dependientes (Código del Trabajo). El armamento siempre es propiedad de la entidad obligada (comodato).'
+},
+'rule_630': {
+    keywords: ["que es empresa seguridad privada", "definición empresa seguridad"],
+    response: '🤖🏢 **EMPRESA SEGURIDAD PRIVADA**\nTienen por objeto suministrar bienes o servicios de protección. Deben disponer de medios materiales, técnicos y humanos, y estar autorizadas por la SPD.'
+},
+'rule_631': {
+    keywords: ["requisitos empresa seguridad privada", "autorizar empresa seguridad"],
+    response: '🤖✅ **REQUISITOS EMPRESA SEGURIDAD**\n- Persona jurídica de derecho privado.\n- Objeto social específico.\n- Medios humanos/técnicos/financieros.\n- Seguros para el personal.\n- Socios/representantes sin condenas (crimen/simple delito) ni acusaciones por leyes específicas (armas, drogas, terrorismo, etc.).\n- No haber dejado FF.AA./Orden por medida disciplinaria (últimos 5 años).'
+},
+'rule_632': {
+    keywords: ["vigencia autorización empresa seguridad", "duración autorización empresa"],
+    response: '🤖📅 **VIGENCIA AUTORIZACIÓN EMPRESA**\nLa autorización para actuar como empresa de seguridad privada tiene una vigencia de **4 años**.'
+},
+'rule_633': {
+    keywords: ["empresa seguridad electrónica", "que es empresa seguridad electrónica"],
+    response: '🤖📹 **EMPRESA SEGURIDAD ELECTRÓNICA**\nObjeto: Instalación/mantenimiento de sistemas de seguridad, alarmas, videovigilancia y operación de centrales. Deben estar autorizadas por la SPD.'
+},
+'rule_634': {
+    keywords: ["correo otec", "email otec", "contacto otec", "carga sobredimensionada", "correo carga", "persona natural spd", "persona juridica spd", "spd cargadimensionada"],
+    response: '🤖📋 **CONTACTO OTEC Y CARGA (SPD)**\nSi la plataforma no funciona, contacta por correo a:\n👉 **spd-cargadimensionada@minsegpublica.gob.cl**\n\n**Temas:**\n- Organismos Técnicos de Capacitación (OTEC)\n- Consultas sobre carga sobredimensionada\n- Trámites para personas naturales y jurídicas'
+},
+'rule_635': {
+    keywords: ["correo capacitacion", "email capacitacion", "contacto capacitacion", "planes capacitacion", "programas formacion", "cursos spd", "spd capacitacion"],
+    response: '🤖🎓 **CONTACTO CAPACITACIÓN (SPD)**\nSi la plataforma no funciona, contacta por correo a:\n👉 **spd-capacitacionessp@minsegpublica.gob.cl**\n\n**Temas:**\n- Consultas sobre planes de capacitación\n- Programas de formación en seguridad privada\n- Información sobre cursos disponibles'
+},
+'rule_636': {
+    keywords: ["correos spd", "emails spd", "contactos spd", "a quien escribir spd", "soporte spd", "ayuda correo"],
+    response: '🤖📬 **CONTACTO POR CORREO ELECTRÓNICO SPD**\nSi la plataforma no funciona:\n\n1️⃣ **OTEC y Carga:** spd-cargadimensionada@minsegpublica.gob.cl\n2️⃣ **Capacitación:** spd-capacitacionessp@minsegpublica.gob.cl'
+},
+'rule_637': {
+    keywords: ["plataforma ley 21659", "cuando funciona plataforma", "modulos plataforma", "implementacion plataforma", "plazos plataforma"],
+    response: '🤖💻 **IMPLEMENTACIÓN PLATAFORMA LEY 21.659**\nLa plataforma debe estar operativa máx. 1 año desde vigencia de la ley. \n\n**Al 28 de Noviembre 2025 estarán listos los módulos:**\n1. **Entidades Obligadas:** Estudios y planes.\n2. **Personas Naturales:** Guardias, Vigilantes, Capacitadores (Solicitudes ante SPD).\n3. **Instituciones Capacitación:** Solicitud autorización.\n4. **Eventos Masivos:** Solicitudes organizadores.'
+},
+'rule_638': {
+    keywords: ["tramite presencial", "donde presentar solicitud", "modulos no activos", "tramite carabineros", "donde ir si no hay plataforma"],
+    response: '🤖👮 **TRÁMITE TRANSITORIO (Módulos no activos)**\nMientras no funcionen los módulos en la plataforma, las solicitudes deben presentarse ante la **Prefectura de Carabineros** respectiva.\n\n*Excepción:* En puertos, aeropuertos o recintos militares, ante la autoridad institucional correspondiente (DIRECTEMAR, DGAC, etc.).'
+},
+'rule_639': {
+    keywords: ["tramite transitorio spd", "correo carga sobredimensionada", "correo planes capacitacion", "tramitacion transitoria", "excepcion carabineros"],
+    response: '🤖📧 **TRAMITACIÓN TRANSITORIA SPD (Vía Email)**\nSe exceptúan del trámite en Carabineros y se envían por email (PDF) a la SPD:\n\n1. **Carga Sobredimensionada:**\n📧 spd-cargadimensionada@minsegpublica.gob.cl\n\n2. **Planes y Programas Capacitación (OTEC):**\n📧 spd-capacitacionessp@minsegpublica.gob.cl\n\n*Vigente hasta implementación de módulos electrónicos.*'
 }
+    ,
+    'rule_nueva_1': { keywords: ["cuando entra en vigencia", "vigencia ley 21659"], response: '🤖📅 **VIGENCIA LEY 21.659:** Entró en vigencia el 28-NOV-2025. Decretos: 208 y 209. Autoridad: SPD.' },
+    'rule_nueva_2': { keywords: ["subsecretaria prevencion delito", "spd", "que es spd"], response: '🤖🏛️ **SPD:** Subsecretaría de Prevención del Delito, nuevo órgano rector de seguridad privada. Autoriza empresas, certifica personal, fiscaliza.' },
+    'rule_nueva_3': { keywords: ["diferencia guardia vigilante", "guardia vs vigilante"], response: '🤖⚖️ **GUARDIA vs VIGILANTE:** Vigilante puede portar armas, curso 100 hrs c/2 años. Guardia NO porta armas, curso 90 hrs c/4 años.' },
+    'rule_nueva_4': { keywords: ["cuanto dura curso", "horas curso"], response: '🤖⏰ **DURACIÓN CURSOS:** Vigilante: 100h + 40h c/2 años. Guardia: 90h + perfeccionamiento c/4 años. Supervisor: 120h.' },
+    'rule_nueva_5': { keywords: ["requisitos generales", "requisitos para trabajar"], response: '🤖📋 **REQUISITOS (Art. 46):** Mayor 18 años, enseñanza media, salud compatible, certificado antecedentes, curso aprobado.' },
+    'rule_nueva_6': { keywords: ["vigencia credencial", "cada cuanto renovar"], response: '🤖⏳ **VIGENCIA:** Vigilantes: 2 años. Guardias/Porteros: 4 años. No requiere nuevo curso si cambia empleador.' },
+    'rule_nueva_7': { keywords: ["materias curso", "contenido capacitacion"], response: '🤖📚 **MATERIAS OBLIGATORIAS:** Derechos Humanos, privacidad, primeros auxilios, legislación, probidad, no discriminación, género.' },
+    'rule_nueva_8': { keywords: ["reincidencia", "segunda infraccion"], response: '🤖⚠️ **REINCIDENCIA (Art. 105):** Dentro de 24 meses. Leve+Reincidencia=Grave. Grave+Reincidencia=Gravísima.' },
+    'rule_nueva_9': { keywords: ["autodenunciarse", "reduccion multa"], response: '🤖💰 **AUTODENUNCIA (Art. 107):** 1er denunciante: 90% reducción. 2do: 60%. 3ro+: 30% máx.' },
+    'rule_nueva_10': { keywords: ["juzgado policia local", "donde se tramita"], response: '🤖⚖️ **COMPETENCIA:** Juzgado Policía Local del domicilio del infractor. Procedimiento Ley 18.287.' },
+    'rule_nueva_11': { keywords: ["plataforma spd", "sistema digital"], response: '🤖💻 **PLATAFORMA SPD:** Máx. 1 año implementación. Mientras tanto: Prefectura Carabineros. Emails: spd-cargadimensionada@ y spd-capacitacionessp@minsegpublica.gob.cl' },
+    'rule_nueva_12': { keywords: ["estudios de seguridad", "plan de seguridad"], response: '🤖📄 **ESTUDIOS:** Elabora Asesor autorizado. Aprueba SPD. Obligatorio para bancos, transporte valores, empresas estratégicas.' },
+    'rule_nueva_13': { keywords: ["uniforme vigilante", "ropa reglamentaria"], response: '🤖👔 **UNIFORMES:** Vigilante: tipo SLACK. Guardia: reglamentario empresa. PROHIBIDO simular FF.AA. o Carabineros (gravísima).' },
+    'rule_nueva_14': { keywords: ["elementos defensivos", "spray pimienta"], response: '🤖🛡️ **ELEMENTOS:** Guardias: bastón, aerosol, esposas. Vigilantes además: armas fuego autorizadas. Guardias NO armas fuego.' },
+    'rule_nueva_15': { keywords: ["eventos masivos", "seguridad eventos"], response: '🤖🎭 **EVENTOS MASIVOS:** Plan seguridad obligatorio. Presentación SPD. Coordinación autoridades. Infracción gravísima: 501-1.000 UTM.' },
+    'rule_nueva_16': { keywords: ["instituciones capacitacion", "otec"], response: '🤖🎓 **CAPACITACIÓN:** OTEC, educación superior autorizados por SPD. Email: spd-capacitacionessp@minsegpublica.gob.cl' },
+    'rule_nueva_17': { keywords: ["empresas seguridad", "crear empresa"], response: '🤖🏢 **EMPRESAS:** Tipos: Servicios, Transporte Valores, Sistemas, Asesoría. Infracciones: Gravísimas 50-650 UTM.' },
+    'rule_nueva_18': { keywords: ["transporte valores", "blindados"], response: '🤖🚛 **TRANSPORTE VALORES:** Solo vigilantes autorizados armados. Mínimo 3 por vehículo. Blindaje certificado, GPS.' },
+    'rule_nueva_19': { keywords: ["carga sobredimensionada", "escolta carga"], response: '🤖🚚 **CARGA SOBREDIMENSIONADA:** Ministerio Transportes autoriza servicios seguridad. Email: spd-cargadimensionada@minsegpublica.gob.cl' },
+    'rule_nueva_20': { keywords: ["agravante penal", "delito contra guardia"], response: '🤖⚖️ **AGRAVANTE PENAL (Art. 118):** Nuevo Art. 12 N°24 Código Penal. Delito contra personal seguridad en servicio aumenta pena.' }
+    ,
+    
+    // ==================== NUEVAS REGLAS AGREGADAS ====================
+    
+    'rule_directiva_duracion': { 
+        keywords: ["duracion directiva", "cuanto dura una directiva de funcionamiento", "cuanto dura una directiva","vigencia directiva", "cuanto dura directiva", "directiva 3 años"], 
+        response: '🤖📋 **DURACIÓN DIRECTIVA DE FUNCIONAMIENTO (Art. 92 Decreto 209):**\n\n**VIGENCIA:** 3 AÑOS desde notificación de resolución aprobatoria.\n\n**RENOVACIÓN:** Transcurrido el plazo, debe presentar nueva directiva actualizada.\n\n**EXCEPCIÓN:** Servicios temporales (eventos masivos, construcción condominios): vigencia por duración de la actividad.\n\n**PRESENTACIÓN:** 15 días hábiles antes del inicio del servicio ante SPD.' 
+    },
+    
+    'rule_duraciones_componentes': {
+        keywords: ["duracion componentes", "vigencia certificacion", "cuanto tiempo dura", "cada cuanto renovar componentes"],
+        response: '🤖⏳ **DURACIÓN CERTIFICACIONES - COMPONENTES DEL SISTEMA:**\n\n**VIGILANTE PRIVADO:**\n✅ Certificación: 2 AÑOS (Art. 60 Ley 21.659)\n✅ Perfeccionamiento: cada 2 años (40 hrs)\n\n**GUARDIA DE SEGURIDAD:**\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n\n**PORTERO/NOCHERO/RONDÍN:**\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n\n**SUPERVISOR:**\n✅ Curso: 120 hrs (válido 4 años)\n\n**ENCARGADO:**\n✅ Curso: 120 hrs\n\n**JEFE DE SEGURIDAD:**\n✅ Diplomado: 400 hrs\n\n**ASESOR:**\n✅ Diplomado: 400 hrs\n\n**DIRECTIVA FUNCIONAMIENTO:**\n✅ Vigencia: 3 AÑOS\n\n**NO requiere nuevo curso si cambia empleador dentro del plazo.**'
+    },
+    
+    'rule_vigilante_duracion': {
+        keywords: ["cuanto dura un vigilante", "vigencia vigilante", "renovacion vigilante"],
+        response: '🤖👮 **VIGILANTE PRIVADO - DURACIÓN:**\n\n✅ Certificación: 2 AÑOS\n✅ Perfeccionamiento: cada 2 años (40 horas)\n✅ NO requiere curso nuevo al cambiar empleador'
+    },
+    
+    'rule_guardia_duracion': {
+        keywords: ["cuanto dura un guardia", "vigencia guardia", "renovacion guardia"],
+        response: '🤖🛡️ **GUARDIA DE SEGURIDAD - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
+    },
+    
+    'rule_supervisor_duracion': {
+        keywords: ["cuanto dura un supervisor", "vigencia supervisor"],
+        response: '🤖👀 **SUPERVISOR - DURACIÓN:**\n\n✅ Curso: 120 horas (mínimo)\n✅ Si tiene curso guardia: +30 hrs supervisión\n✅ Si tiene curso vigilante: +20 hrs supervisión\n✅ Cursos válidos 4 años antes de postulación'
+    },
+    
+    'rule_jefe_duracion': {
+        keywords: ["cuanto dura jefe", "vigencia jefe seguridad"],
+        response: '🤖👨‍✈️ **JEFE DE SEGURIDAD - DURACIÓN:**\n\n✅ Diplomado: 400 horas académicas\n✅ Si requiere vigilante privado: certificación 2 años'
+    },
+    
+    'rule_asesor_duracion': {
+        keywords: ["cuanto dura asesor", "vigencia asesor"],
+        response: '🤖💼 **ASESOR DE SEGURIDAD - DURACIÓN:**\n\n✅ Diplomado: 400 horas académicas\n✅ Título profesional área seguridad\n✅ Autorización SPD'
+    },
+    
+    'rule_encargado_duracion': {
+        keywords: ["cuanto dura encargado", "vigencia encargado"],
+        response: '🤖🔧 **ENCARGADO DE SEGURIDAD - DURACIÓN:**\n\n✅ Curso: 120 horas académicas mínimo\n✅ Área seguridad o materias afines'
+    },
+    
+    'rule_portero_duracion': {
+        keywords: ["cuanto dura portero", "vigencia portero", "nochero duracion"],
+        response: '🤖🚪 **PORTERO/NOCHERO/RONDÍN - DURACIÓN:**\n\n✅ Certificación: 4 AÑOS\n✅ Perfeccionamiento: cada 4 años\n✅ NO requiere curso nuevo al cambiar empleador'
+    }
     
 };
 
-const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada, profesional
+const systemPrompt = `Eres un asistente virtual y funcionario de la oficina de Seguridad Privada O.S.10 de Carabineros en Coquimbo, Chile. Tu principal objetivo es ayudar a los usuarios con sus trámites y consultas, responde como si fueras un experto en Seguridad Privada bajo la LEY 21.659 Y DECRETO 209, profesional.
 Tus reglas principales son:
 1.  **Asume tu Rol:** Responde siempre como si fueras un miembro del equipo de la oficina O.S.10 Coquimbo. Usa un tono servicial y profesional, se preciso y concreto para responder, responde corto y preciso, no te explayes deja tu respuesta corta y buena.
 2.  **Prioridad a los documentos:** Tu máxima prioridad es buscar y entregar primero cualquier documento, guía o PDF que tengas en tu base de datos cuando se te pregunte por un trámite (ej. "cómo tramitar credencial"). Una vez entregado el documento, puedes responder preguntas adicionales.
 3.  **Respuestas cortas y reales:** Sé conciso y factual. No inventes respuestas. Si no sabes algo, indícalo amablemente.
 4.  **Formato claro:** Usa Markdown para dar formato. Para listas, asegúrate de que cada ítem esté en una nueva línea (ej. "1. Guardia\\n2. Vigilante").
-5.- **OS10 COQUIMBO, OFICINA DE SEGURIDAD PRIVADA OS10 COQUIMBO, OFICINA, O.S.10:** Es una oficina que se ecuentra en en el centro de La Serena, su direccion es Calle Cienfuegos N°180, La Serena, sus fonos son los siguientes: 512651024 o el 512651023.
-6.  **infracciones del os10:** las principales infracciones de guardia de seguridad son las siguiente: sin curso os10 art. 13 del decreto 93, sin directiva de funcionamiento art. 15 del decreto 93, sin credencial de guardia (gg.ss) art 18 del decreto 93, guardia de seguridad no puede usar armamento art. 14 decreto 93, sin uniforme reglamentario art. 8vo del decrero 867 y decreto 23/2024. 
-7.- **Nueva Ley de seguridad privada:** La Nueva ley de seguridad privada entra en vigencia el 28-NOV-2025 pero por el momento no han llegado instrucciones del funcionamiento de la nueva ley de seguridad privada, se informara en forma oportuna si llega alguna información. 
-Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.
-8.- **infracciones de seguridad privda** Sempre que te pregunten por las infracciones que cometen los guardias de seguridad entrega el articulo y la ifraccion ordenada y enumerada con negrillas es decir la 1.articulo 13 sin curso de guardia etx. 2.- artiiculo 14 guardia porta armamento o elpementos no autorizados etc- 3.- articulo 15 sin directiva de funcionamiento etc. 4.- articulo 18 sin credencial etc.
-9.- **Resumen detallado de la nueva ley de seguridad privada 21659 sobre seguridad privada** RESUMEN DETALLADO DE LA LEY 21659 SOBRE SEGURIDAD PRIVADA.`;
+5.- **OS10 COQUIMBO, OFICINA DE SEGURIDAD PRIVADA OS10 COQUIMBO, OFICINA, O.S.10:** Es una oficina que se encuentra en el centro de La Serena, su direccion es Calle Cienfuegos N°180, La Serena, sus fonos son los siguientes: 512651024 o el 512651023.
+6.  **infracciones del os10 - LEY 21.659:** Las infracciones para guardia de seguridad y vigilante privado están clasificadas en GRAVÍSIMAS, GRAVES y LEVES según Art. 94, 96 y 98 de la Ley 21.659 y Decreto 209. Cada una tiene multas específicas en UTM.
+7.- **Nueva Ley de seguridad privada:** La Ley 21.659 entra en vigencia el 28-NOV-2025. El Decreto 209 y 208 son sus reglamentos. Toda información debe referirse a esta nueva ley, no a leyes anteriores.
+8.- **infracciones de seguridad privada:** Siempre que te pregunten por infracciones entrega información detallada según Art. 94 (Gravísimas), Art. 96 (Graves) y Art. 98 (Leves) de la Ley 21.659.
+9.- **Requisitos de personal:** Entrega requisitos según Art. 46 (generales) y Decreto 209 (específicos) para cada componente del sistema.
+Genera respuestas usando Markdown para formato, como **negrita** para énfasis y listas con * o números.`;
 
 // Hacer variables globalmente accesibles
 window.responses = responses;
 window.systemPrompt = systemPrompt;
 
-// Verificación
-console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente`);
+// ========== FUNCIÓN DE VALIDACIÓN MEJORADA ==========
+/**
+ * Procesa un mensaje y valida si debe responder con una regla
+ * @param {string} userMessage - El mensaje del usuario
+ * @param {object} rules - El objeto de reglas
+ * @returns {string|null} - La respuesta o null si no hay coincidencia
+ */
+function procesarMensajeConValidacion(userMessage, rules) {
+    const messageLower = userMessage
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    
+    for (let ruleKey in rules) {
+        const rule = rules[ruleKey];
+        
+        // Verificar si coincide con alguna palabra clave
+        const tieneKeyword = rule.keywords.some(keyword => 
+            messageLower.includes(
+                keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            )
+        );
+        
+        if (!tieneKeyword) continue;
+        
+        // Si la regla requiere palabras específicas, validar que estén presentes
+        if (rule.requiresKeywords && rule.requiresKeywords.length > 0) {
+            const tieneRequiredKeyword = rule.requiresKeywords.some(reqKeyword =>
+                messageLower.includes(
+                    reqKeyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                )
+            );
+            
+            // Si no tiene las palabras requeridas, NO responder
+            if (!tieneRequiredKeyword) {
+                return null;
+            }
+        }
+        
+        // Si llegamos aquí, la regla es válida
+        return rule.response;
+    }
+    
+    return null;
+}
 
+// Hacer variables globalmente accesibles
+window.responses = responses;
+window.procesarMensajeConValidacion = procesarMensajeConValidacion;
+
+// Verificación
+console.log(`✅ ${Object.keys(responses).length} reglas cargadas correctamente con validación mejorada`);
