@@ -1,5 +1,6 @@
 // netlify/functions/gemini-proxy.js
-// Node 18+ (Netlify runtime) tiene fetch nativo — no requiere node-fetch
+
+const fetch = require("node-fetch");
 
 exports.handler = async function(event, context) {
   console.log("--- DETECTOR: La función gemini-proxy se ha iniciado. ---");
@@ -21,7 +22,7 @@ exports.handler = async function(event, context) {
     };
   }
 
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
 
   const MAX_RETRIES = 3;
   let retries = 0;
@@ -63,7 +64,6 @@ exports.handler = async function(event, context) {
         }
       }
 
-      // Respuesta exitosa
       return {
         statusCode: 200,
         body: JSON.stringify(responseData),
@@ -78,7 +78,6 @@ exports.handler = async function(event, context) {
     }
   }
 
-  // Fallo después de todos los reintentos
   return {
     statusCode: 503,
     body: JSON.stringify({ error: "El servicio de IA está temporalmente no disponible. Por favor, inténtelo de nuevo más tarde." }),
