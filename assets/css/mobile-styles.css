@@ -1,1 +1,117 @@
-#tramites-principales .tramite-card .flex-shrink-0 svg{width:7.5rem;height:7.5rem} #componentes-seguridad .carousel-card .flex-shrink-0 svg{width:4.5rem;height:4.5rem} #capacitacion a.group .bg-white\/20 svg,#capacitacion div[onclick] .bg-white\/20 svg{width:46rem;height:46rem} #capacitacion .text-green-300,#capacitacion .text-green-600{color:#4ADE80} #capacitacion .text-blue-300,#capacitacion .text-blue-600{color:#60A5FA} #capacitacion .text-yellow-300,#capacitacion .text-yellow-600{color:#FACC15} #capacitacion .text-red-300,#capacitacion .text-red-600{color:#EF4444} #servicios-adicionales a svg,#servicios-adicionales div[onclick] svg{width:46rem;height:46rem} #servicios-adicionales a span,#servicios-adicionales div[onclick] span{color:#374151} } #tramites-principales .tramite-card .flex-shrink-0 svg{width:10.5rem;height:10.5rem} #componentes-seguridad .carousel-card .flex-shrink-0 svg{width:4.5rem;height:4.5rem} #capacitacion a.group .bg-white\/20 svg,#capacitacion div[onclick] .bg-white\/20 svg{width:46rem;height:46rem} #capacitacion .text-green-300,#capacitacion .text-green-600{color:#4ADE80} #capacitacion .text-blue-300,#capacitacion .text-blue-600{color:#60A5FA} #capacitacion .text-yellow-300,#capacitacion .text-yellow-600{color:#FACC15} #capacitacion .text-red-300,#capacitacion .text-red-600{color:#EF4444} #servicios-adicionales a svg,#servicios-adicionales div[onclick] svg{width:36rem;height:36rem} #servicios-adicionales a span,#servicios-adicionales div[onclick] span{color:#374151} }
+/* ========================================
+   CUSTOM MOBILE STYLES
+   ======================================== */
+
+    /* --- TRAMITES PRINCIPALES --- */
+    #tramites-principales .tramite-card .flex-shrink-0 svg {
+        /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
+        width: 7.5rem;
+        height: 7.5rem;
+    }
+
+    /* --- COMPONENTES DEL SISTEMA --- */
+    #componentes-seguridad .carousel-card .flex-shrink-0 svg {
+        /* MODIFICADO: Aumentado de 3.5rem a 4.5rem */
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    /* --- CAPACITACION Y FORMACION --- */
+    #capacitacion a.group .bg-white\/20 svg,
+    #capacitacion div[onclick] .bg-white\/20 svg {
+        /* MODIFICADO: Aumentado de 5rem a 6rem */
+        width: 46rem;
+        height: 46rem;
+    }
+
+    /* --- Colores para los iconos de Capacitación (visibles por defecto) --- */
+    #capacitacion .text-green-300,
+    #capacitacion .text-green-600 {
+        color: #4ADE80; /* Verde */
+    }
+
+    #capacitacion .text-blue-300,
+    #capacitacion .text-blue-600 {
+        color: #60A5FA; /* Azul */
+    }
+
+    #capacitacion .text-yellow-300,
+    #capacitacion .text-yellow-600 {
+        color: #FACC15; /* Amarillo */
+    }
+
+    #capacitacion .text-red-300,
+    #capacitacion .text-red-600 {
+        color: #EF4444; /* Rojo */
+    }
+
+    /* --- SERVICIOS ADICIONALES --- */
+    #servicios-adicionales a svg,
+    #servicios-adicionales div[onclick] svg {
+        /* MODIFICADO: Aumentado de 4rem a 5rem */
+        width: 46rem;
+        height: 46rem;
+    }
+
+    #servicios-adicionales a span,
+    #servicios-adicionales div[onclick] span {
+        color: #374151; /* Dark gray */
+    }
+}
+
+    /* --- TRAMITES PRINCIPALES --- */
+    #tramites-principales .tramite-card .flex-shrink-0 svg {
+        /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
+        width: 10.5rem;
+        height: 10.5rem;
+    }
+
+    /* --- COMPONENTES DEL SISTEMA --- */
+    #componentes-seguridad .carousel-card .flex-shrink-0 svg {
+        /* MODIFICADO: Aumentado de 3.5rem a 4.5rem */
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    /* --- CAPACITACION Y FORMACION --- */
+    #capacitacion a.group .bg-white\/20 svg,
+    #capacitacion div[onclick] .bg-white\/20 svg {
+        /* MODIFICADO: Aumentado de 5rem a 6rem */
+        width: 46rem;
+        height: 46rem;
+    }
+
+    /* --- Colores para los iconos de Capacitación (visibles por defecto) --- */
+    #capacitacion .text-green-300,
+    #capacitacion .text-green-600 {
+        color: #4ADE80; /* Verde */
+    }
+
+    #capacitacion .text-blue-300,
+    #capacitacion .text-blue-600 {
+        color: #60A5FA; /* Azul */
+    }
+
+    #capacitacion .text-yellow-300,
+    #capacitacion .text-yellow-600 {
+        color: #FACC15; /* Amarillo */
+    }
+
+    #capacitacion .text-red-300,
+    #capacitacion .text-red-600 {
+        color: #EF4444; /* Rojo */
+    }
+
+    /* --- SERVICIOS ADICIONALES --- */
+    #servicios-adicionales a svg,
+    #servicios-adicionales div[onclick] svg {
+        /* MODIFICADO: Aumentado de 4rem a 5rem */
+        width: 36rem;
+        height: 36rem;
+    }
+
+    #servicios-adicionales a span,
+    #servicios-adicionales div[onclick] span {
+        color: #374151; /* Dark gray */
+    }
+}
