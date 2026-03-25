@@ -3,7 +3,8 @@
     "allow": [
       "Bash(node -e \":*)",
       "Bash(npx prettier:*)",
-      "Bash(npx js-beautify:*)"
+      "Bash(npx js-beautify:*)",
+      "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\netlify\\\\functions 2>/dev/null && ls C:UsersUSUARIODocumentsCODIGOLABORATORIOPAGINA\" OS10node_modules)"
     ]
   }
 }
