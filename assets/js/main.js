@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof initializeCarousel === 'function') {
         requestAnimationFrame(() => {
             initializeCarousel({ containerSelector: '#tramites-principales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#tramites-principales .pagination-dots', autoScroll: 'mobile' });
-            initializeCarousel({ containerSelector: '#componentes-seguridad .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#componentes-seguridad .pagination-dots', autoScroll: 'mobile' });
+            initializeCarousel({ containerSelector: '#componentes-seguridad .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#componentes-seguridad .pagination-dots', autoScroll: 'always' });
             initializeCarousel({ containerSelector: '#capacitacion .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#capacitacion .pagination-dots', autoScroll: 'mobile' });
             initializeCarousel({ containerSelector: '#servicios-adicionales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#servicios-adicionales .pagination-dots', autoScroll: 'mobile' });
         });
