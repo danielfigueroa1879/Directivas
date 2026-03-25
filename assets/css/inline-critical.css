@@ -228,6 +228,11 @@ body.homepage {
 @media (min-width: 1024px) {
     .desktop-navbar { display: block !important; }
     #mobile-menu-btn { display: none !important; }
+    /* Navbar principal (64px) + navbar verde desktop (34px) = 98px + margen */
+    body.show-directiva #contenido,
+    body.show-credenciales #contenido {
+        margin-top: 108px !important;
+    }
     .homepage-section {
         margin-top: 98px !important;
         padding-top: 0 !important;
@@ -278,6 +283,8 @@ body.homepage {
         opacity: 1 !important;
         position: relative !important;
         left: auto !important;
+        /* Desplaza el contenedor bajo la navbar fija (64px) en móvil */
+        margin-top: 70px !important;
     }
     body.show-directiva #main-section,
     body.show-credenciales #credenciales-section {
