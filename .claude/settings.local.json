@@ -4,7 +4,10 @@
       "Bash(node -e \":*)",
       "Bash(npx prettier:*)",
       "Bash(npx js-beautify:*)",
-      "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\netlify\\\\functions 2>/dev/null && ls C:UsersUSUARIODocumentsCODIGOLABORATORIOPAGINA\" OS10node_modules)"
+      "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\netlify\\\\functions 2>/dev/null && ls C:UsersUSUARIODocumentsCODIGOLABORATORIOPAGINA\" OS10node_modules)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where netlify:*)",
+      "Bash(npx netlify:*)"
     ]
   }
 }
