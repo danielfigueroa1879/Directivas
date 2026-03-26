@@ -872,8 +872,13 @@ async function speakWithElevenLabs(text) {
             removeTypingIndicator();
 
             if (!apiResponse.ok) {
-                const errorData = await apiResponse.json();
-                console.error("Error from proxy:", errorData);
+                try {
+                    const errorData = await apiResponse.json();
+                    console.error("Error from proxy:", errorData);
+                } catch(e) {
+                    const errorText = await apiResponse.text().catch(() => '');
+                    console.error("Error from proxy (no-JSON):", apiResponse.status, errorText.substring(0, 200));
+                }
                 throw new Error(`Server error: ${apiResponse.status}`);
             }
 
