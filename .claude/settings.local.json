@@ -7,7 +7,10 @@
       "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\netlify\\\\functions 2>/dev/null && ls C:UsersUSUARIODocumentsCODIGOLABORATORIOPAGINA\" OS10node_modules)",
       "mcp__Claude_Preview__preview_start",
       "Bash(where netlify:*)",
-      "Bash(npx netlify:*)"
+      "Bash(npx netlify:*)",
+      "Bash(wc -l \"C:/Users/USUARIO/Downloads/Directivas2-main \\(8\\)/Directivas2-main/assets/js/chatbot.min.js\")",
+      "Read(//c/Users/USUARIO/Downloads/Directivas2-main \\(8\\)/Directivas2-main/rules/**)",
+      "Bash(npm install:*)"
     ]
   }
 }
