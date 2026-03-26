@@ -5,6 +5,10 @@
   # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
 
+[build.environment]
+  # Node 18+ tiene fetch nativo (sin node-fetch)
+  NODE_VERSION = "18"
+
 # Redirección específica y segura para nuestra API.
 [[redirects]]
   # Cuando el código del frontend llame a esta ruta "amigable"...
