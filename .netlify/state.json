@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "La Serena",
+			"country": {
+				"code": "CL",
+				"name": "Chile"
+			},
+			"subdivision": {
+				"code": "CO",
+				"name": "Coquimbo Region"
+			},
+			"timezone": "America/Santiago",
+			"latitude": -29.907,
+			"longitude": -71.2562
+		},
+		"timestamp": 1774560193171
+	}
+}
