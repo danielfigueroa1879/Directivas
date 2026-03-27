@@ -24,7 +24,10 @@
       "Bash(npm list:*)",
       "Bash(node -e \"const os=require\\(''os''\\);console.log\\(os.platform\\(\\),os.arch\\(\\)\\)\")",
       "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\assets\\\\images\"\" | grep \"1a \")",
-      "Bash(node -e \"const fs=require\\(''fs''\\);fs.readdirSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images''\\).filter\\(f=>f.includes\\(''1a''\\)\\).forEach\\(f=>{const s=fs.statSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images/''+f\\).size;console.log\\(f,\\(s/1024\\).toFixed\\(0\\)+''KB''\\)}\\)\")"
+      "Bash(node -e \"const fs=require\\(''fs''\\);fs.readdirSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images''\\).filter\\(f=>f.includes\\(''1a''\\)\\).forEach\\(f=>{const s=fs.statSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images/''+f\\).size;console.log\\(f,\\(s/1024\\).toFixed\\(0\\)+''KB''\\)}\\)\")",
+      "Bash(npm uninstall:*)",
+      "Bash(node -e \"const fs=require\\(''fs''\\); const p=JSON.parse\\(fs.readFileSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/package.json'',''utf8''\\)\\); console.log\\(JSON.stringify\\(p,null,2\\)\\)\")",
+      "Bash(node -e \"const fs=require\\(''fs''\\);console.log\\(fs.readdirSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/node_modules''\\).length,''packages''\\)\")"
     ]
   }
 }
