@@ -85,7 +85,8 @@
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
          Sin petición externa, sin bloqueo de parser JS.
     ====================================================== -->
-  <link rel="stylesheet" href="assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="assets/css/tailwind.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/tailwind.min.css"></noscript>
   <!-- =====================================================
          GOOGLE FONTS - No bloqueante
          Ya correcto con preload + onload + noscript fallback
@@ -125,6 +126,41 @@
          los CSS externos, evitando FOUC con la carga async.
     ====================================================== -->
   <style id="critical-inline">
+
+/* ── Tailwind utilities críticas above-fold (Tailwind carga async) ── */
+.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}
+.inset-0{inset:0}.top-0{top:0}.left-0{left:0}.right-0{right:0}.bottom-0{bottom:0}
+.flex{display:flex}.hidden{display:none}.block{display:block}.inline-flex{display:inline-flex}
+.flex-col{flex-direction:column}.flex-row{flex-direction:row}.flex-grow{flex-grow:1}.flex-shrink-0{flex-shrink:0}
+.items-center{align-items:center}.items-start{align-items:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-start{justify-content:flex-start}
+.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}
+.text-white{color:rgb(255 255 255)}.text-gray-800{color:rgb(31 41 55)}.text-gray-500{color:rgb(107 114 128)}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-6xl{font-size:3.75rem;line-height:1}
+.font-bold{font-weight:700}.font-medium{font-weight:500}
+.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}
+.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-4{padding:1rem}
+.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}
+.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}
+.mt-1{margin-top:0.25rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.mt-12{margin-top:3rem}.mt-14{margin-top:3.5rem}.mx-auto{margin-left:auto;margin-right:auto}
+.ml-1{margin-left:0.25rem}
+.w-4{width:1rem}.w-5{width:1.25rem}.w-7{width:1.75rem}.w-full{width:100%}.h-4{height:1rem}.h-5{height:1.25rem}.h-7{height:1.75rem}.h-10{height:2.5rem}.h-16{height:4rem}.h-full{height:100%}
+.max-w-xs{max-width:20rem}.max-w-2xl{max-width:42rem}.max-w-6xl{max-width:72rem}
+.z-\[1200\]{z-index:1200}.z-10{z-index:10}.z-0{z-index:0}
+.space-x-1>:not([hidden])~:not([hidden]){margin-left:0.25rem}.space-x-2>:not([hidden])~:not([hidden]){margin-left:0.5rem}.space-x-6>:not([hidden])~:not([hidden]){margin-left:1.5rem}
+.space-y-4>:not([hidden])~:not([hidden]){margin-top:1rem}
+.bg-white\/35{background-color:rgb(255 255 255 / 0.35)}.bg-black\/30{background-color:rgb(0 0 0 / 0.3)}.bg-blue-600{background-color:rgb(37 99 235)}
+.border-b{border-bottom-width:1px}.border-white\/30{border-color:rgb(255 255 255 / 0.3)}
+.shadow-sm{box-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05)}
+.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}
+.backdrop-blur-md{backdrop-filter:blur(12px);}
+.leading-tight{line-height:1.25}
+.transform{transform:translateX(var(--tw-translate-x,0)) translateY(var(--tw-translate-y,0))}
+.object-cover{object-fit:cover}
+.pl-3{padding-left:0.75rem}.pr-3{padding-right:0.75rem}.pl-5{padding-left:1.25rem}
+.border-t{border-top-width:1px}.border-gray-700{border-color:rgb(55 65 81)}
+.pt-8{padding-top:2rem}.pb-0{padding-bottom:0}
+@media(min-width:640px){.sm\:hidden{display:none}.sm\:flex{display:flex}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:items-end{align-items:flex-end}.sm\:flex-row{flex-direction:row}.sm\:space-x-4>:not([hidden])~:not([hidden]){margin-left:1rem}}
+@media(min-width:768px){.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-xl{font-size:1.25rem;line-height:1.75rem}.md\:py-24{padding-top:6rem;padding-bottom:6rem}.md\:hidden{display:none}}
+@media(min-width:1024px){.lg\:px-4{padding-left:1rem;padding-right:1rem}}
 
 html {
     scroll-behavior: smooth;
