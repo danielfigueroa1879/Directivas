@@ -204,6 +204,7 @@ body.homepage {
     #mobile-menu-btn { display: block !important; }
     #banner { height: 6.5rem; }
     body  { padding-top: 0; }
+    #credenciales-arrow-back-btn { top: -0.3rem !important; }
     .homepage-section {
         min-height: 70vh !important;
         height: 70vh !important;
@@ -233,10 +234,15 @@ body.homepage {
 @media (min-width: 1024px) {
     .desktop-navbar { display: block !important; }
     #mobile-menu-btn { display: none !important; }
-    /* Navbar principal (64px) + navbar verde desktop (34px) = 98px + margen */
+    #drill-detail-panel, #drill-back-btn, #drill-header { display: none !important; }
+    /* Barra verde oculta en Directivas/Credenciales — solo queda el pill blanco (bottom: 60px + 5px gap = 65px) */
+    body.show-directiva .desktop-navbar,
+    body.show-credenciales .desktop-navbar {
+        display: none !important;
+    }
     body.show-directiva #contenido,
     body.show-credenciales #contenido {
-        margin-top: 108px !important;
+        margin-top: 65px !important;
     }
     .homepage-section {
         margin-top: 98px !important;
