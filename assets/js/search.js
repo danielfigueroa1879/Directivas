@@ -770,6 +770,253 @@ class GlobalSearch {
                 action: () => window.showCredenciales && window.showCredenciales(), // Abre la sección de credenciales
                 keywords: ['foto', 'fotografia', 'requisitos', 'jpg', '260x320', 'camisa negra', 'credencial']
             },
+            // SECCIÓN: Leyes nuevas (faltantes)
+            {
+                title: 'Resolución 2183',
+                content: 'Resolución 2183 publicada en el Diario Oficial 2025. Normativa seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/11/10/44295-B/01/2724844.pdf', '_blank'),
+                keywords: ['resolución', '2183', '2025', 'diario oficial', 'normativa']
+            },
+            {
+                title: 'Resolución 772',
+                content: 'Resolución 772 publicada en el Diario Oficial 2026. Normativa seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2026/03/03/44390/01/2777672.pdf', '_blank'),
+                keywords: ['resolución', '772', '2026', 'diario oficial', 'normativa']
+            },
+            {
+                title: 'Ley 21.806',
+                content: 'Ley 21.806 sobre seguridad privada. Normativa complementaria.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221118', '_blank'),
+                keywords: ['ley', '21806', '21.806', 'seguridad', 'privada', 'normativa']
+            },
+            {
+                title: 'Resolución 830',
+                content: 'Resolución 830 de seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://os10.short.gy/830', '_blank'),
+                keywords: ['resolución', '830', 'normativa', 'seguridad']
+            },
+            {
+                title: 'Resolución 831',
+                content: 'Resolución 831 de seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://os10.short.gy/831', '_blank'),
+                keywords: ['resolución', '831', 'normativa', 'seguridad']
+            },
+
+            // SECCIÓN: Entidades Obligadas
+            {
+                title: 'Entidades Obligadas',
+                content: 'Documentos requeridos para entidades obligadas: Venta de Combustible, Empresas de Turismo, Bancos y Financieras, Apoyo Giro Bancario.',
+                section: 'Entidades Obligadas',
+                action: () => window.open('https://segprivada-docs.minsegpublica.gob.cl/01_Documentos_Requeridos_Entidades_Obligadas.pdf', '_blank'),
+                keywords: ['entidades', 'obligadas', 'combustible', 'turismo', 'banco', 'financiera', 'giro bancario', 'spd']
+            },
+
+            // SECCIÓN: Tipos de Empresas
+            {
+                title: 'Empresas de Capacitación',
+                content: 'Requisitos para empresas de capacitación en seguridad privada.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasCapacitacion'),
+                keywords: ['empresa', 'capacitación', 'requisitos', 'seguridad', 'spd']
+            },
+            {
+                title: 'Empresas de Seguridad Electrónica',
+                content: 'Requisitos para empresas de seguridad electrónica.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasSeguridad'),
+                keywords: ['empresa', 'seguridad', 'electrónica', 'cámaras', 'alarmas', 'requisitos', 'spd']
+            },
+            {
+                title: 'Empresas de Asesoría en Seguridad Privada',
+                content: 'Requisitos para empresas de asesoría en seguridad privada.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasAsesoria'),
+                keywords: ['empresa', 'asesoría', 'asesoria', 'seguridad', 'privada', 'requisitos', 'spd']
+            },
+            {
+                title: 'Empresas de Recursos Humanos',
+                content: 'Requisitos para empresas de recursos humanos en seguridad privada.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasRecursosHumanos'),
+                keywords: ['empresa', 'recursos', 'humanos', 'seguridad', 'requisitos', 'spd']
+            },
+            {
+                title: 'Empresas de Externalización de Vigilantes Privados',
+                content: 'Requisitos para empresas de externalización de vigilantes privados.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasExternalizacion'),
+                keywords: ['empresa', 'externalización', 'externalizacion', 'vigilantes', 'privados', 'vvpp', 'requisitos', 'spd']
+            },
+            {
+                title: 'Empresa Custodia Transporte Carga Sobredimensionada',
+                content: 'Requisitos para empresa de custodia y transporte de carga sobredimensionada.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasCustodia'),
+                keywords: ['empresa', 'custodia', 'transporte', 'carga', 'sobredimensionada', 'requisitos', 'spd']
+            },
+            {
+                title: 'Empresa Transporte de Valores',
+                content: 'Requisitos para empresa de transporte de valores.',
+                section: 'Empresas',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('empresasTransporte'),
+                keywords: ['empresa', 'transporte', 'valores', 'dinero', 'requisitos']
+            },
+
+            // SECCIÓN: Componentes faltantes
+            {
+                title: 'Supervisor de Vigilantes Privados',
+                content: 'Requisitos para supervisor de vigilantes privados.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('supervisorVigilantes'),
+                keywords: ['supervisor', 'vigilantes', 'privados', 'requisitos', 'spd']
+            },
+            {
+                title: 'Conserje',
+                content: 'Requisitos para conserjes en edificios y condominios. Similar a portero y nochero.',
+                section: 'Componentes del Sistema',
+                action: () => window.mostrarRequisitos && window.mostrarRequisitos('portero'),
+                keywords: ['conserje', 'edificio', 'condominio', 'portero', 'nochero', 'requisitos', 'spd']
+            },
+
+            // SECCIÓN: Documentos Editables faltantes
+            {
+                title: 'Directiva de Funcionamiento (Editable)',
+                content: 'Documento Word editable para Directiva de Funcionamiento DD.FF.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://docs.google.com/document/d/1MgInvryuu2EaxHMG_Zuy_1ZiuOTHr6jA/edit', '_blank'),
+                keywords: ['directiva', 'funcionamiento', 'editable', 'word', 'ddff', 'documento']
+            },
+            {
+                title: 'Solicitud Jefe de Seguridad',
+                content: 'Documento de solicitud editable para trámite de Jefe de Seguridad.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://os10.short.gy/SoliJef', '_blank'),
+                keywords: ['solicitud', 'jefe', 'seguridad', 'editable', 'trámite', 'documento']
+            },
+            {
+                title: 'Solicitud Capacitador',
+                content: 'Documento de solicitud editable para trámite de Capacitador.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://os10.short.gy/SolCap', '_blank'),
+                keywords: ['solicitud', 'capacitador', 'editable', 'trámite', 'documento']
+            },
+            {
+                title: 'Formato Declarar Dueños y Socios (SPD)',
+                content: 'Formato SPD para declarar dueños y socios de empresa. Entidades con medidas de seguridad.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables', '_blank'),
+                keywords: ['formato', 'declarar', 'dueños', 'socios', 'empresa', 'spd', 'medidas']
+            },
+            {
+                title: 'Formato Estudio de Seguridad (SPD)',
+                content: 'Formato oficial SPD para estudio de seguridad de entidades obligadas.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables', '_blank'),
+                keywords: ['formato', 'estudio', 'seguridad', 'spd', 'entidad', 'obligada']
+            },
+            {
+                title: 'Formato Planes de Seguridad Sucursal (SPD)',
+                content: 'Formato oficial SPD para planes de seguridad de sucursal.',
+                section: 'Documentos Editables',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables', '_blank'),
+                keywords: ['formato', 'plan', 'seguridad', 'sucursal', 'spd', 'entidad']
+            },
+
+            // SECCIÓN: Capacitación - Planes y Programas SPD
+            {
+                title: 'Plantilla Informar Inicio de Curso (SPD)',
+                content: 'Plantilla oficial SPD para informar inicio de curso de capacitación.',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones', '_blank'),
+                keywords: ['plantilla', 'informar', 'inicio', 'curso', 'capacitación', 'spd', 'autorización']
+            },
+            {
+                title: 'Plantilla Informar Término de Curso (SPD)',
+                content: 'Plantilla oficial SPD para informar término de curso de capacitación.',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones', '_blank'),
+                keywords: ['plantilla', 'informar', 'término', 'termino', 'curso', 'capacitación', 'spd', 'autorización']
+            },
+            {
+                title: 'Plantilla Informar Servicio Custodia (SPD)',
+                content: 'Plantilla oficial SPD para informar servicio de custodia.',
+                section: 'Capacitación y Formación',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables-autorizaciones', '_blank'),
+                keywords: ['plantilla', 'informar', 'servicio', 'custodia', 'spd', 'autorización']
+            },
+
+            // SECCIÓN: Valores faltantes
+            {
+                title: 'Valor Plan',
+                content: 'Tabla de valores para planes de seguridad.',
+                section: 'Valores',
+                action: () => window.open('https://drive.google.com/file/d/12mg35jowBvw1zX8z-jU2gZg_ALjBCIBD/view', '_blank'),
+                keywords: ['valor', 'plan', 'precio', 'costo', 'seguridad', 'arancel']
+            },
+            {
+                title: 'Alarma 1er Semestre 2026',
+                content: 'Valor de alarma para el primer semestre 2026.',
+                section: 'Valores',
+                action: () => window.open('https://os10.short.gy/Renta', '_blank'),
+                keywords: ['alarma', '2026', 'semestre', 'valor', 'precio', 'costo', 'renta']
+            },
+
+            // SECCIÓN: Links de Interés
+            {
+                title: 'Zosepcar',
+                content: 'Portal Zosepcar - consulta de cursos y certificaciones OS10.',
+                section: 'Links de Interés',
+                action: () => window.open('https://www.zosepcar.cl/OS10.php', '_blank'),
+                keywords: ['zosepcar', 'portal', 'consultar', 'curso', 'certificación', 'os10']
+            },
+            {
+                title: 'Directemar - Seguridad Marítimo Portuaria',
+                content: 'Dirección General del Territorio Marítimo. Seguridad privada marítimo portuaria.',
+                section: 'Links de Interés',
+                action: () => window.open('https://www.directemar.cl/directemar/seguridad-maritima/seguridad-privada-maritimo-portuaria', '_blank'),
+                keywords: ['directemar', 'marítimo', 'portuario', 'seguridad', 'naval']
+            },
+            {
+                title: 'DGAC - Seguridad Aeroportuaria',
+                content: 'Dirección General de Aeronáutica Civil. Acreditación DAN 1702.',
+                section: 'Links de Interés',
+                action: () => window.open('https://www.dgac.gob.cl/aeropuertos/seguridad-aeroportuaria/acreditacion-dan-1702/', '_blank'),
+                keywords: ['dgac', 'aeropuerto', 'aeronáutica', 'seguridad', 'acreditación', 'dan', '1702']
+            },
+            {
+                title: 'DGMN - Ley de Armas',
+                content: 'Dirección General de Movilización Nacional. Ley de armas.',
+                section: 'Links de Interés',
+                action: () => window.open('https://www.dgmn.cl/leydearmas/', '_blank'),
+                keywords: ['dgmn', 'armas', 'ley', 'movilización', 'nacional']
+            },
+            {
+                title: 'SPD - Subsecretaría de Prevención del Delito',
+                content: 'Portal oficial de la Subsecretaría de Prevención del Delito. Seguridad privada SPD.',
+                section: 'Links de Interés',
+                action: () => window.handleSPD && window.handleSPD(),
+                keywords: ['spd', 'subsecretaría', 'prevención', 'delito', 'seguridad', 'privada', 'ministerio']
+            },
+            {
+                title: 'GG.SS. x Evento',
+                content: 'Herramienta para gestión de guardias de seguridad por evento.',
+                section: 'Links de Interés',
+                action: () => window.open('https://guardiaevento.netlify.app/', '_blank'),
+                keywords: ['guardias', 'evento', 'ggss', 'gestión', 'seguridad']
+            },
+            {
+                title: 'Descargables SPD',
+                content: 'Documentos descargables del portal SPD - Subsecretaría de Prevención del Delito.',
+                section: 'Links de Interés',
+                action: () => window.open('https://segprivada.minsegpublica.gob.cl/descargables', '_blank'),
+                keywords: ['descargables', 'spd', 'documentos', 'subsecretaría', 'formularios']
+            },
+
             // SECCIÓN: Información de contacto
             {
                 title: 'Teléfono OS10',
