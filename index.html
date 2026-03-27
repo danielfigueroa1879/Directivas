@@ -78,7 +78,7 @@
          Reduce "Retraso de carga de recursos" de 1260ms a ~0ms.
          fetchpriority="high" indica al navegador máxima prioridad.
     ====================================================== -->
-  <link rel="preload" as="image" href="assets/images/foto%20(1).webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp" fetchpriority="high">
   <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
@@ -918,7 +918,7 @@
     <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
       <div class="kb-slide active">
-        <img src="assets/images/foto (1a).webp" fetchpriority="high" loading="eager" decoding="async" alt="Fondo principal OS10 Coquimbo" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <img src="assets/images/foto%20(1a).webp" fetchpriority="high" loading="eager" decoding="async" alt="Fondo principal OS10 Coquimbo" width="1920" height="1080" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
       </div>
     </div>
     <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
@@ -1793,7 +1793,7 @@
   <!-- YouTube facade: carga iframe solo al hacer click -->
   <!-- Google Translate (oculto) -->
   <div id="google_translate_element" style="display:none;visibility:hidden;position:absolute;"></div>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 
 </html>
