@@ -51,9 +51,6 @@ function initializeCarousel({
     // Sin reflow: usa valor cacheado
     const isCarouselActive = () => cachedIsActive;
 
-    // Carga inicial del caché — se lee ANTES de modificar el DOM (evita reflow forzado)
-    refreshCache();
-
     // 1. Crear los puntos de paginación (DOM modification DESPUÉS de leer geometría)
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
@@ -178,7 +175,10 @@ function initializeCarousel({
     // rAF garantiza que las lecturas (scrollLeft, etc.) ocurren DESPUÉS de que el
     // navegador procesa las escrituras DOM anteriores (creación de dots), evitando
     // el "forced synchronous layout" reportado por Lighthouse.
+    // refreshCache() aquí: todas las escrituras DOM (dots) ya ocurrieron →
+    // leer geometría en frame limpio evita el forced synchronous layout.
     requestAnimationFrame(() => {
+        refreshCache();
         handleScroll();
         manageAutoScroll();
     });

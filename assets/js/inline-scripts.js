@@ -404,9 +404,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // ── DRILL-DOWN NAVIGATION (reemplaza acordeones en mobile) ──
+        // Leer innerWidth ANTES de cualquier escritura DOM para evitar forced reflow
+        const viewportWidth = window.innerWidth;
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
 
-        if (window.innerWidth < 1024) {
+        if (viewportWidth < 1024) {
             // 1. Envolver contenido existente en panel principal
             // Máscara sticky — tapa el scroll detrás del pill sin añadir capa extra de blur
             const scrollMask = document.createElement('div');

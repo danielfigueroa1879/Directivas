@@ -288,12 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Defer con rAF para evitar reflows forzados durante el render inicial.
     // Los carruseles están debajo del fold → no afecta LCP ni FCP.
     if (typeof initializeCarousel === 'function') {
-        requestAnimationFrame(() => {
+        // setTimeout(0) cede el hilo al browser para que finalice el layout inicial
+        // antes de leer propiedades geométricas, evitando forced reflows.
+        setTimeout(() => {
             initializeCarousel({ containerSelector: '#tramites-principales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#tramites-principales .pagination-dots', autoScroll: 'mobile' });
             initializeCarousel({ containerSelector: '#componentes-seguridad .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#componentes-seguridad .pagination-dots', autoScroll: 'always' });
             initializeCarousel({ containerSelector: '#capacitacion .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#capacitacion .pagination-dots', autoScroll: 'mobile' });
             initializeCarousel({ containerSelector: '#servicios-adicionales .carousel-container', cardSelector: '.carousel-card', dotsSelector: '#servicios-adicionales .pagination-dots', autoScroll: 'mobile' });
-        });
+        }, 0);
     }
 
     console.log('✅ All components initialized successfully');
