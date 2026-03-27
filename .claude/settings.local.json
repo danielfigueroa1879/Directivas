@@ -10,7 +10,9 @@
       "Bash(npx netlify:*)",
       "Bash(wc -l \"C:/Users/USUARIO/Downloads/Directivas2-main \\(8\\)/Directivas2-main/assets/js/chatbot.min.js\")",
       "Read(//c/Users/USUARIO/Downloads/Directivas2-main \\(8\\)/Directivas2-main/rules/**)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(wc -l \"/c/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/css\"/*.css)",
+      "Bash(find \"/c/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/css\" -name \"*.css\" -exec wc -l {} +)"
     ]
   }
 }
