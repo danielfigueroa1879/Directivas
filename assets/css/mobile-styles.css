@@ -1,8 +1,36 @@
 /* ========================================
    CUSTOM MOBILE STYLES
    ======================================== */
+/* ========================================
+   AJUSTE DE POSICIÓN: DIRECTIVA Y CREDENCIALES
+   ======================================== */
 
-    /* --- TRAMITES PRINCIPALES --- */
+@media (max-width: 768px) {
+    /* 1. Quitamos los márgenes y rellenos del contenedor general */
+    .card-container {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        width: 100% !important; /* Para que ocupe todo el ancho */
+        max-width: 100% !important;
+    }
+
+    /* 2. Forzamos a que estas secciones suban hasta tocar el banner */
+    #directiva-section, 
+    #credenciales-section {
+        margin-top: -1rem !important; /* Ajuste para compensar el espacio del header */
+        padding-top: 0 !important;
+    }
+
+    /* 3. Quitamos los bordes redondeados superiores para que se vea integrado */
+    .section-card {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+        margin-top: 0 !important;
+        border-top: none !important;
+    }
+} 
+
+/* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
         /* MODIFICADO: Aumentado de 4.5rem a 5.5rem */
         width: 7.5rem;
@@ -57,7 +85,7 @@
     #servicios-adicionales div[onclick] span {
         color: #374151; /* Dark gray */
     }
-}
+
 
     /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
@@ -114,4 +142,4 @@
     #servicios-adicionales div[onclick] span {
         color: #374151; /* Dark gray */
     }
-}
+
