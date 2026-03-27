@@ -15,7 +15,16 @@
       "Bash(find \"/c/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/css\" -name \"*.css\" -exec wc -l {} +)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8888/)",
       "Bash(node --check \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\assets\\\\js\\\\search.min.js\")",
-      "Bash(grep -v \"document.addEventListener\\\\|DOMContentLoaded\\\\|^$\\\\|\\\\*\")"
+      "Bash(grep -v \"document.addEventListener\\\\|DOMContentLoaded\\\\|^$\\\\|\\\\*\")",
+      "Bash(sort -k5 -rn)",
+      "Bash(ffmpeg -version)",
+      "Bash(cwebp -version)",
+      "Bash(magick --version)",
+      "Bash(convert --version)",
+      "Bash(npm list:*)",
+      "Bash(node -e \"const os=require\\(''os''\\);console.log\\(os.platform\\(\\),os.arch\\(\\)\\)\")",
+      "Bash(ls \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\assets\\\\images\"\" | grep \"1a \")",
+      "Bash(node -e \"const fs=require\\(''fs''\\);fs.readdirSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images''\\).filter\\(f=>f.includes\\(''1a''\\)\\).forEach\\(f=>{const s=fs.statSync\\(''C:/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/images/''+f\\).size;console.log\\(f,\\(s/1024\\).toFixed\\(0\\)+''KB''\\)}\\)\")"
     ]
   }
 }
