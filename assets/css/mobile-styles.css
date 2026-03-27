@@ -5,30 +5,41 @@
    AJUSTE DE POSICIÓN: DIRECTIVA Y CREDENCIALES
    ======================================== */
 
+/* ========================================
+   AJUSTE DE POSICIÓN: DIRECTIVA Y CREDENCIALES
+   ======================================== */
+
 @media (max-width: 768px) {
-    /* 1. Quitamos los márgenes y rellenos del contenedor general */
+    /* Eliminamos el espacio superior que el body impone en el archivo principal */
+    body {
+        padding-top: 0 !important;
+    }
+
+    /* El contenedor principal debe subir hasta el tope del header */
     .card-container {
         margin-top: 0 !important;
         padding-top: 0 !important;
-        width: 100% !important; /* Para que ocupe todo el ancho */
+        width: 100% !important;
         max-width: 100% !important;
     }
 
-    /* 2. Forzamos a que estas secciones suban hasta tocar el banner */
+    /* Ajuste específico para que la tarjeta toque el banner verde */
     #directiva-section, 
     #credenciales-section {
-        margin-top: -1rem !important; /* Ajuste para compensar el espacio del header */
+        margin-top: 0 !important; 
         padding-top: 0 !important;
     }
 
-    /* 3. Quitamos los bordes redondeados superiores para que se vea integrado */
+    /* Quitamos redondeados y sombras superiores para que se pegue visualmente */
     .section-card {
+        margin-top: 0 !important;
         border-top-left-radius: 0 !important;
         border-top-right-radius: 0 !important;
-        margin-top: 0 !important;
         border-top: none !important;
+        box-shadow: none !important; /* Evita que la sombra genere una línea de separación */
     }
-} 
+}
+
 
 /* --- TRAMITES PRINCIPALES --- */
     #tramites-principales .tramite-card .flex-shrink-0 svg {
