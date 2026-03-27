@@ -224,10 +224,10 @@ body.homepage {
     }
     /* Menú lateral alineado con el fin del banner */
     .mobile-dropdown { top: 4.5rem !important; }
-    /* Desplaza #contenido bajo el pill en móvil (pill: top 8px + height 67px + gap 15px = 90px) */
+    /* Desplaza #contenido bajo el pill en móvil (pill: top 8px + height 67px + gap 5px = 80px) */
     body.show-directiva #contenido,
     body.show-credenciales #contenido {
-        margin-top: 90px !important;
+        margin-top: 80px !important;
     }
 }
 @media (min-width: 1024px) {
