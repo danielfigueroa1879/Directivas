@@ -1,21 +1,15 @@
 /* ========================================
    CUSTOM MOBILE STYLES
    ======================================== */
-/* ========================================
-   AJUSTE DE POSICIÓN: DIRECTIVA Y CREDENCIALES
-   ======================================== */
-
-/* ========================================
-   AJUSTE DE POSICIÓN: DIRECTIVA Y CREDENCIALES
-   ======================================== */
 
 @media (max-width: 768px) {
-    /* Eliminamos el espacio superior que el body impone en el archivo principal */
+    /* Mantenemos el padding para que el contenido NO se meta debajo del header */
     body {
-        padding-top: 0 !important;
+        padding-top: 4rem !important; 
     }
 
-    /* El contenedor principal debe subir hasta el tope del header */
+    /* El contenedor ahora bajará porque el body tiene padding, 
+       pero eliminamos su margen propio para que pegue al límite */
     .card-container {
         margin-top: 0 !important;
         padding-top: 0 !important;
@@ -23,22 +17,23 @@
         max-width: 100% !important;
     }
 
-    /* Ajuste específico para que la tarjeta toque el banner verde */
+    /* Alineación exacta para las secciones solicitadas */
     #directiva-section, 
     #credenciales-section {
         margin-top: 0 !important; 
         padding-top: 0 !important;
     }
 
-    /* Quitamos redondeados y sombras superiores para que se pegue visualmente */
+    /* Quitamos redondeados para que el choque visual sea recto con el banner */
     .section-card {
         margin-top: 0 !important;
         border-top-left-radius: 0 !important;
         border-top-right-radius: 0 !important;
         border-top: none !important;
-        box-shadow: none !important; /* Evita que la sombra genere una línea de separación */
+        box-shadow: none !important;
     }
 }
+
 
 
 /* --- TRAMITES PRINCIPALES --- */
