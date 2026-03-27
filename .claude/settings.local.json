@@ -14,7 +14,8 @@
       "Bash(wc -l \"/c/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/css\"/*.css)",
       "Bash(find \"/c/Users/USUARIO/Documents/CODIGO/LABORATORIO/PAGINA OS10/assets/css\" -name \"*.css\" -exec wc -l {} +)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8888/)",
-      "Bash(node --check \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\assets\\\\js\\\\search.min.js\")"
+      "Bash(node --check \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\CODIGO\\\\LABORATORIO\\\\PAGINA OS10\\\\assets\\\\js\\\\search.min.js\")",
+      "Bash(grep -v \"document.addEventListener\\\\|DOMContentLoaded\\\\|^$\\\\|\\\\*\")"
     ]
   }
 }
