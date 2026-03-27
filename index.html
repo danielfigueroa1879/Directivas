@@ -70,6 +70,7 @@
     ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <!-- preconnect: establece TCP+TLS anticipado → ahorra ~150ms cuando el idle callback hace fetch() -->
   <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
   <!-- =====================================================
@@ -329,7 +330,7 @@ body.homepage {
     .desktop-navbar { display: none !important; }
     #mobile-menu-btn { display: block !important; }
     #banner { height: 6.5rem; }
-    body  { padding-top: 0; }
+    body  { padding-top: 0 !important; }
     #credenciales-arrow-back-btn { top: -0.3rem !important; }
     .homepage-section {
         min-height: 70vh !important;
@@ -655,11 +656,11 @@ button.desktop-submenu-item .spd-badge {
 .text-spd-alternante .texto-spd.fade-out { opacity: 0; }
 @media (max-width: 639px) {
     .homepage-btn { width: 100% !important; max-width: 220px !important; min-width: 180px !important; height: 48px !important; min-height: 48px !important; max-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 1rem !important; overflow: hidden !important; box-sizing: border-box !important; }
-    .text-spd-alternante .texto-spd { font-size: 0.75rem; white-space: normal; line-height: 1.2; }
+    .text-spd-alternante .texto-spd { font-size: 0.75rem; white-space: nowrap; line-height: 1.2; }
 }
 @media (min-width: 640px) {
     .homepage-btn { width: 230px !important; min-width: 230px !important; max-width: 230px !important; height: 48px !important; min-height: 48px !important; max-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 1rem !important; overflow: hidden !important; box-sizing: border-box !important; }
-    .text-spd-alternante .texto-spd { font-size: 0.8rem; white-space: normal; line-height: 1.2; }
+    .text-spd-alternante .texto-spd { font-size: 0.8rem; white-space: nowrap; line-height: 1.2; }
 }
 /* Modal requisitos */
 .modal-requisitos-componentes { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.85); z-index: 9999 !important; overflow-y: auto; padding: 1rem; backdrop-filter: blur(8px); }
@@ -2451,7 +2452,7 @@ body {
 <!-- ============================================================
      SECCIÓN HERO - HOMEPAGE (IMAGEN DE FONDO KEN BURNS)
 ============================================================ -->
-  <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden" style="background-image:url('assets/images/foto%20(1).webp')">
+  <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
     <!-- Slides Ken Burns inyectadas por JS -->
     <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
