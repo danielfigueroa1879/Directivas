@@ -385,13 +385,6 @@ body:not(.homepage) {
         right: 0.5rem !important;
         margin-top: 0 !important;
     }
-   .directivas-title-container {
-        margin-top: 1.25rem !important;
-    }
-   #directivas-arrow-back-btn {
-        top: 0.6rem !important;
-        right: 0.5rem !important;
-        margin-top: 0 !important;
-    }
+   
 }
 
