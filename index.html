@@ -165,9 +165,22 @@
 html {
     scroll-behavior: smooth;
 }
+/* Fallback con métricas ajustadas para Poppins.
+   @font-face "Poppins-fallback" apunta a Arial local con size-adjust calibrado
+   para que los anchos de texto coincidan con Poppins Regular.
+   Resultado: al cargar el @font-face real (Google Fonts CSS), el intercambio
+   no produce reflow porque ambas fuentes ocupan el mismo espacio → CLS ≈ 0. */
+@font-face {
+    font-family: "Poppins-fallback";
+    src: local("Arial"), local("Helvetica Neue"), local("sans-serif");
+    size-adjust: 108%;
+    ascent-override: 85%;
+    descent-override: 20%;
+    line-gap-override: 0%;
+}
 /* Estilos críticos body para evitar FOUC */
 body {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', 'Poppins-fallback', sans-serif;
     padding-top: 4rem;
 }
 body.homepage {
@@ -200,12 +213,16 @@ body.homepage {
     opacity: 0;
     pointer-events: none;
 }
-/* Homepage section crítico */
+/* Homepage section crítico
+   VALORES IDÉNTICOS a styles.css → evita CLS 0.936 cuando styles.css carga async
+   y cambia min-height:100vh (inicial incorrecto) a height:75vh/max-height:700px */
 .homepage-section {
     background-image: none;
     background-size: cover;
     background-position: center center;
-    min-height: 100vh;
+    height: 75vh;
+    max-height: 700px;
+    min-height: 450px;
     position: relative;
     overflow: hidden;
 }
