@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Plataforma OS10 Coquimbo</title>
+    <meta name="description" content="Plataforma de trámites y servicios de seguridad privada. Requisitos para Directivas de Funcionamiento, Credenciales y más. OS10 Coquimbo.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff"/>
+    <meta name="application-name" content="Directivas OS10">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Directivas OS10">
+
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/icon-192x192.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            /* Fondo de pantalla original para páginas internas */
+            background-image: url('assets/images/101.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding-top: 4rem; /* Added for fixed banner (64px) */
+        }
+        
+        /* Página de inicio con fondo rotativo */
+        body.homepage {
+            background-color: white; /* Fondo blanco para el body en la homepage */
+            background-image: none;
+        }
+
+        #homepage-section {
+            background-image: url('assets/images/foto (1).jpeg');
+            background-size: cover;
+            background-position: center;
+            /* background-attachment: fixed; -- REMOVED */
+            transition: background-image 5.5s ease-in-out;
+        }
+        
+        .card-container { 
+            max-width: 750px; 
+            width: 90%; 
+            margin: 0.5rem auto; 
+            position: relative; 
+        }
+        .logo-os10-container { 
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            height: 60px;
+            z-index: 10;
+        }
+        .section-card { 
+            border-left-width: 4px; 
+            padding: 1rem; 
+            border-radius: 0.5rem; 
+        }
+        
+        .voice-button { transition: all 0.3s ease; }
+        .voice-button:hover { transform: scale(1.05); }
+        .voice-button:active { transform: scale(0.95); }
+        .voice-button.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        
+        .response-button { transition: all 0.2s ease; }
+        .response-button:hover { transform: translateX(4px); }
+
+        /* Chatbot Styles - Adjusted */
+        #chat-widget-container { 
+            position: fixed; 
+            bottom: 6.5rem; 
+            right: 1.5rem; 
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-end;
+        }
+        #chat-popup { 
+            width: 450px; 
+            height: 600px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        }
+        #chat-toggle-button { 
+            width: 80px;
+            height: 80px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            animation: floatAnimation 2s ease-in-out infinite;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        /* Animación de flotación principal */
+        @keyframes floatAnimation {
+            0%, 100% { 
+                transform: translateY(0px);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            }
+            50% { 
+                transform: translateY(-15px);
+                box-shadow: 0 12px 20px rgba(0,0,0,0.25);
+            }
+        }
+        
+        /* Efecto hover mejorado */
+        #chat-toggle-button:hover {
+            animation-play-state: paused;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.3);
+        }
+        
+        /* Efecto de pulsación suave adicional */
+        #chat-toggle-button::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, rgba(34, 197, 94, 0.1), rgba(59, 130, 246, 0.1));
+            border-radius: 50%;
+            animation: pulseGlow 4s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+        
+        .chat-messages-container { 
+            scroll-behavior: smooth; 
+        }
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            margin: 0 2px;
+            background-color: #9ca3af;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        /* Voice quality indicator */
+        .voice-quality-indicator {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .voice-quality-indicator::after {
+            content: "🎙️ PREMIUM";
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #10B981, #059669);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+        
+        .voice-quality-indicator:hover::after {
+            opacity: 1;
+        }
+
+        /* Voice selector styles */
+        .voice-selector {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 4px 8px;
+            color: white;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        .voice-selector option {
+            background: #1f2937;
+            color: white;
+        }
+
+        /* Adjustments for larger screens (PC) */
+        @media (min-width: 1024px) {
+            #chat-widget-container {
+                right: calc((100vw - 750px) / 2 + 1.5rem); 
+                bottom: 7.9rem; 
+            }
+            #chat-toggle-button {
+                width: 90px;
+                height: 90px;
+                animation: floatAnimation 1.9s ease-in-out infinite;
+            }
+            
+            @keyframes floatAnimation {
+                0%, 100% { 
+                    transform: translateY(0px);
+                    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+                }
+                50% { 
+                    transform: translateY(-18px);
+                    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+                }
+            }
+        }
+       /* Adjustments for medium screens (tablets) */
+       @media (min-width: 768px) and (max-width: 1023px) {
+            #chat-widget-container {
+                right: calc((102vw - 85vw) / 2 + 1.5rem); 
+                bottom: 7.9rem; 
+            }
+            #chat-popup {
+                width: 400px; 
+            }
+        }
+        
+        /* Adjustments for small screens (Mobile) */
+        @media (max-width: 767px) {
+            .card-container {
+                width: 98%; 
+            }
+            #chat-widget-container {
+                right: 1.8rem; 
+                bottom: 7.9rem; 
+            }
+            #chat-popup {
+                position: fixed;
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 96%;
+                height: 500px;
+            }
+            #chat-toggle-button {
+                width: 70px; 
+                height: 70px;
+                animation: floatAnimation 1.8s ease-in-out infinite;
+            }
+            
+            @keyframes floatAnimation {
+                0%, 100% { 
+                    transform: translateY(0px);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                }
+                50% { 
+                    transform: translateY(-12px);
+                    box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+                }
+            }
+        }
+
+        /* Additional adjustment for very small mobile screens */
+        @media (max-width: 480px) {
+            #chat-widget-container {
+                right: 1.7rem;
+                bottom: 7.9rem; 
+            }
+            #chat-toggle-button {
+                width: 67px;
+                height: 67px;
+                animation: floatAnimation 1.6s ease-in-out infinite;
+            }
+            
+            @keyframes floatAnimation {
+                0%, 100% { 
+                    transform: translateY(0px);
+                    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+                }
+                50% { 
+                    transform: translateY(-10px);
+                    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+                }
+            }
+        }
+
+        /* ===== ESTILOS PARA CREDENCIALES ===== */
+        .credenciales-section {
+            display: none;
+            position: relative; 
+        }
+        .credenciales-section.active {
+            display: block;
+        }
+
+        .credenciales-title-container {
+            text-align: center;
+            margin-top: 2rem; 
+            line-height: 1;
+        }
+        .credenciales-main-title, .credenciales-main-subtitle {
+            color: #EAB308;
+            font-weight: bold;
+            display: block;
+            text-shadow: 0 1px 4px rgba(245, 158, 11, 0.4);
+            transition: all 0.3s ease;
+            margin: 0;
+            padding: 0;
+        }
+        .credenciales-main-title {
+            font-size: 2.2rem;
+            transform: translateX(-2px);
+        }
+        .credenciales-main-subtitle {
+            font-size: 1.6rem; 
+            transform: translateX(10px);
+        }
+
+        .credenciales-section-title {
+            color: #F54C38;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .credenciales-download-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 8px 24px;
+            margin: 0.5rem 0;
+            width: auto;
+            min-width: 240px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            border-radius: 7px;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .credenciales-dpi-btn {
+            width: 240px;
+            min-width: 240px;
+        }
+        .credenciales-download-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .credenciales-photo-example {
+            width: 40%;
+            margin-left: 0;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+            /* cursor: zoom-in; */ /* Eliminado */
+            border: 2px solid #FFD700;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        .credenciales-photo-example:hover {
+            /* transform: scale(1.2); */ /* Eliminado */
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .credenciales-valores-example {
+            display: block;
+            width: 220px;
+            transition: transform 0.3s ease;
+            /* cursor: zoom-in; */ /* Eliminado */
+            border: 2px solid #FFD700;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+        .credenciales-valores-example:hover {
+            /* transform: scale(1.3); */ /* Eliminado */
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .credenciales-table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+        }
+        .credenciales-responsive-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .credenciales-responsive-table th,
+        .credenciales-responsive-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .credenciales-responsive-table th {
+            background-color: #f1f5f9;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .credenciales-table-select {
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1em;
+            padding: 0.5rem 2rem 0.5rem 0.5rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            min-width: 200px;
+        }
+
+        .credenciales-qr-image {
+            width: 80px;
+            height: auto;
+        }
+
+        /* New arrow button in the top right corner of card-container */
+        #credenciales-arrow-back-btn {
+            position: absolute;
+            top: 1rem; 
+            right: 0.5rem; 
+            z-index: 20; 
+            color: #4B5563; 
+            transition: all 0.2s ease;
+            cursor: pointer;
+            padding: 0.5rem; 
+            border-radius: 9999px; 
+        }
+        #credenciales-arrow-back-btn:hover {
+            color: #2563EB; 
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+
+        /* Specific animations */
+        .indep-btn.bounce-animation {
+            animation: bounce 2s ease infinite !important;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        /* Responsive for credentials */
+        @media (max-width: 640px) {
+            .credenciales-main-title {
+                font-size: 1.4rem;
+            }
+            .credenciales-main-subtitle {
+                font-size: 1.0rem; 
+            }
+            .credenciales-section-title {
+                font-size: 1.1rem;
+            }
+            .credenciales-photo-example {
+                width: 80%;
+            }
+            .credenciales-valores-example {
+                width: 180px;
+            }
+            .credenciales-qr-image {
+                width: 60px;
+            }
+            .credenciales-download-btn, .credenciales-dpi-btn {
+                width: 190px;
+                min-width: 190px;
+                padding: 8px 16px;
+            }
+            .credenciales-table-container {
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+                width: calc(100% + 3rem);
+            }
+
+             /* Adjustments for the new arrow button on smaller mobiles */
+            #credenciales-arrow-back-btn {
+                width: 2rem; 
+                height: 2rem; 
+                top: 0.5rem; 
+                right: 1.5rem; 
+                padding: 0.2rem; 
+            }
+        }
+        /* Font size adjustment for banner */
+        .banner-text-small {
+            font-size: 0.75rem; 
+        }
+        /* Adjustment for large screens (PC) */
+        @media (min-width: 1024px) {
+            .banner-text-small {
+                font-size: 0.875rem; 
+            }
+        }
+
+        .banner-content-wrapper {
+            position: relative; 
+        }
+        .os10-coquimbo-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 1rem; 
+        }
+
+        /* Dropdown Menu - Panel que aparece suavemente desde abajo */
+        .dropdown-menu {
+            position: absolute;
+            top: 40px; 
+            left: 0;
+            width: 260px;
+            height: auto;
+            max-height: calc(100vh - 120px);
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-top: none;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 2px 0 30px rgba(0, 0, 0, 0.1);
+            z-index: 1201;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            overflow-y: auto;
+            scrollbar-width: thin;
+        }
+
+        /* Estado visible del panel */
+        .dropdown-menu:not(.hidden) {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Contenedor interno del panel */
+        .dropdown-menu-content {
+            padding: 16px 0;
+        }
+
+        /* Header del panel */
+        .dropdown-menu-header {
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.4);
+            margin-bottom: 8px;
+            background-color: rgba(255, 255, 255, 0.3); /* Fondo adicional para el header */
+        }
+
+        .dropdown-menu-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(31, 41, 55, 0.95); /* Texto más definido */
+        }
+
+        /* Botones dentro del panel */
+        .dropdown-menu button {
+            width: 100%;
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 0.875rem;
+            color: rgba(31, 41, 55, 0.9); /* Texto más visible */
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo sutil para botones */
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+            transform: translateX(0);
+        }
+
+        /* Último botón sin border */
+        .dropdown-menu button:last-child {
+            border-bottom: none;
+        }
+
+        /* Hover effect para los botones */
+        .dropdown-menu button:hover {
+            background-color: rgba(59, 130, 246, 0.2); /* Hover más visible */
+            color: rgba(37, 99, 235, 1);
+            transform: translateX(8px);
+            padding-left: 28px;
+            backdrop-filter: blur(10px); /* Blur adicional en hover */
+        }
+
+        /* Active state */
+        .dropdown-menu button:active {
+            transform: translateX(4px);
+            background-color: rgba(59, 130, 246, 0.25);
+        }
+
+        /* Overlay de fondo quando el panel está abierto - solo visible en el área del contenedor */
+        #tramites-overlay, #editables-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.15);
+            z-index: 1150;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            border-radius: 12px; /* Mismo radio que el contenedor principal */
+        }
+
+        /* Overlay visible */
+        #tramites-overlay:not(.hidden), #editables-overlay:not(.hidden) {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Animación de entrada para los botones */
+        @keyframes slideInFromBottom {
+            from {
+                transform: translateY(15px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+       
+        .dropdown-menu-content > button {
+             animation: slideInFromBottom 0.3s ease both;
+        }
+        
+        /* Staggered animation */
+        .dropdown-menu-content > button:nth-child(1) { animation-delay: 0.05s; }
+        .dropdown-menu-content > button:nth-child(2) { animation-delay: 0.1s; }
+        .dropdown-menu-content > button:nth-child(3) { animation-delay: 0.15s; }
+        .dropdown-menu-content > button:nth-child(4) { animation-delay: 0.2s; }
+        .dropdown-menu-content > button:nth-child(5) { animation-delay: 0.25s; }
+        .dropdown-menu-content > button:nth-child(6) { animation-delay: 0.3s; }
+        .dropdown-menu-content > button:nth-child(7) { animation-delay: 0.35s; }
+
+
+        /* Responsive - Ajustes para móvil y tablet */
+        @media (max-width: 1024px) {
+            /* En pantallas medianas y pequeñas, volver al comportamiento fixed */
+            .dropdown-menu {
+                position: fixed;
+                top: 50px;
+                left: initial; /* Reset left property */
+                background-color: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(25px);
+                z-index: 1201; /* Asegurar que esté sobre el banner */
+            }
+            
+            #tramites-overlay, #editables-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                z-index: 1150; /* Detrás del banner */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .dropdown-menu {
+                width: 240px;
+            }
+            
+            .dropdown-menu button {
+                padding: 12px 16px;
+                font-size: 0.8rem;
+            }
+            
+            .dropdown-menu button:hover {
+                transform: translateX(6px);
+                padding-left: 22px;
+            }
+        }
+
+        /* Asegurar que el contenedor principal tenga position relative para el posicionamiento absoluto */
+        .card-container {
+            position: relative;
+            overflow: visible; /* Permitir que el panel sea visible fuera del contenedor */
+        }
+
+        /* Efecto adicional: Indicador visual en el banner cuando el panel está abierto */
+        .panel-active {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: rgba(37, 99, 235, 1);
+            border-radius: 6px;
+            padding: 4px 8px;
+            margin: -4px -8px;
+        }
+
+        /* Smooth scrollbar para el panel */
+        .dropdown-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.6);
+            border-radius: 2px;
+        }
+
+        .dropdown-menu::-webkit-scrollbar-thumb:hover {
+            background: rgba(107, 114, 128, 0.8);
+        }
+
+        /* Efecto glass mejorado para todo el panel */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ===== ESTILOS PARA PÁGINA DE INICIO (MODIFICADOS) ===== */
+        .homepage-section {
+            display: none; /* Hidden by default */
+            height: 75vh; /* Altura ajustada para ser menos alta */
+            max-height: 700px; /* Límite para pantallas muy altas */
+            min-height: 450px; /* Límite para pantallas muy cortas */
+        }
+        .background-transition {
+            animation: none;
+        }
+        .text-shadow { text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
+        .text-shadow-lg { text-shadow: 2px 2px 5px rgba(0,0,0,0.7); }
+
+        /* Estilos para tarjeta de Misión/Visión */
+        .elegant-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        .elegant-card:hover {
+            border-color: transparent;
+            box-shadow: 0 0 25px 5px rgba(34, 197, 94, 0.6); /* Green fire glow */
+        }
+
+
+        @media (max-width: 640px) {
+           /* No specific hero changes needed here anymore, handled by tailwind */
+        }
+    </style>
+</head>
+<body class="homepage background-transition">
+    <!-- Banner superior -->
+    <div id="banner" class="fixed top-0 left-0 right-0 z-[1200] bg-white/70 backdrop-blur-md border-b border-white/30 h-16 flex items-center justify-center shadow-sm">
+        <div class="w-full max-w-[750px] mx-auto h-full flex items-center justify-between px-4 relative">
+            <div class="flex items-center space-x-4"> <!-- Contenedor para botones de la izquierda -->
+                <!-- Menú Trámites -->
+                <div class="relative">
+                    <button id="tramites-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
+                        Trámites
+                        <svg class="w-3 h-3 ml-1 transition-transform" id="tramites-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="tramites-dropdown" class="dropdown-menu hidden">
+                        <div class="dropdown-menu-header">
+                            <h3>Menu de Trámites</h3>
+                        </div>
+                        <div class="dropdown-menu-content">
+                            <button onclick="handleDirectiva()">Directiva</button>
+                            <button onclick="handleCredenciales()">Credenciales</button>
+                            <button onclick="handleCredencialIndependiente()">Credencial de Independiente</button>
+                            <button onclick="handleValores()">Valores</button>
+                            <button onclick="handleValorPlan()">Valor Plan</button>
+                            <button onclick="handleCursoFormacion()">Curso de Formación</button>
+                            <button onclick="openLink('https://maps.app.goo.gl/QUhujWbTF1FjDA7E6')">Ubicación</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menú Doc. Editables -->
+                <div class="relative">
+                    <button id="editables-menu-btn" class="font-medium hover:text-blue-600 transition-colors cursor-pointer flex items-center banner-text-small">
+                        Doc. Editables
+                        <svg class="w-3 h-3 ml-1 transition-transform" id="editables-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="editables-dropdown" class="dropdown-menu hidden">
+                         <div class="dropdown-menu-header">
+                            <h3>Documentos Editables</h3>
+                        </div>
+                        <div class="dropdown-menu-content">
+                            <button onclick="openLink('https://bit.ly/3QbfmlT')">Estudio de Seguridad</button>
+                            <button onclick="openLink('https://d6.short.gy/Pl4n')">Plan de Seguridad</button>
+                            <button onclick="openLink('https://dal5.short.gy/M3')">Medidas de Seguridad</button>
+                            <button onclick="openLink('https://dal5.short.gy/H23wIF')">Solicitud Simple</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a id="os10-home-btn" class="font-medium banner-text-small cursor-pointer hover:text-blue-600 transition-colors os10-coquimbo-center absolute left-1/2 -translate-x-1/2">
+                
+            </a>
+
+            <div class="flex items-center text-xs space-x-2">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <span>Visitas: <span id="visit-counter" class="font-bold">--</span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlays -->
+    <div id="tramites-overlay" class="hidden"></div>
+    <div id="editables-overlay" class="hidden"></div>
+    
+    <!-- Contenedor principal para las páginas internas -->
+    <div id="contenido" class="card-container bg-white/90 backdrop-blur-sm rounded-xl shadow-lg space-y-6 relative p-6" style="display: none;">
+        <a href="https://www.zosepcar.cl/OS10.php" target="_blank" aria-label="Visit ZOSEPCAR page" class="logo-os10-container">
+            <img src="assets/images/logo-os10.png" alt="OS10 Logo" class="h-full" loading="lazy" width="60" height="60">
+        </a>
+
+        <button id="credenciales-arrow-back-btn" class="hidden" title="Back to Home" onclick="showHomepage()">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 18l-6-6 6-6"></path>
+            </svg>
+        </button>
+
+        <section id="main-section" class="main-content" style="display: none;">
+            <header class="text-center pt-8">
+                <h1 class="text-2xl font-bold text-gray-800">DIRECTIVA DE FUNCIONAMIENTO</h1>
+                <h2 class="text-lg font-semibold text-gray-600">Instalación - Eventos - Partidos de Fútbol Profesional</h2>
+            </header>
+            
+            <main class="space-y-4">
+                <section class="section-card border-blue-500 bg-blue-100/80">
+                    <h3 class="font-bold text-blue-800">1 Presentar Directiva DD.FF.</h3>
+                    <ul class="list-disc pl-5 text-sm text-gray-700">
+                        <li>Vigencia 03 años en instalación.</li>
+                        <li>Presentar con 15 días hábiles de anticipación.</li>
+                        <li>
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=9081" target="_blank" class="text-blue-600 hover:underline">Dec. 93/1985</a>,
+                            <a href="https://www.zosepcar.cl/content/OS10/Decreto-261.pdf" target="_blank" class="text-blue-600 hover:underline">Dec. 261</a>,
+                            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1200633" target="_blank" class="text-blue-600 hover:underline">Dec. 32/2024</a>.
+                       </li>
+                   </ul>
+                </section>
+                
+                <section class="section-card border-green-500 bg-green-100/80">
+                    <h3 class="font-bold text-green-800">2 Documentación</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>
+                            <p>02 Solicitudes Simple.</p>
+                            <a href="https://dal5.short.gy/Solic" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Solicitud">Descargar</a>
+                        </li>
+                        <li>
+                            <p>01 copia DD.FF. completa.</p>
+                            <a href="https://dal5.short.gy/D" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Editable</a>
+                        </li>
+                        <li>
+                            <p>Requisitos según tipo.</p>
+                            <a href="https://dal5.short.gy/Re24" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Requisi.">Descargar</a>
+                        </li>
+                        <li>
+                            <p>Uniforme Decreto 32/2024.</p>
+                            <a href="https://dal5.short.gy/0u" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Ejemplo Uniforme">Ejemplo</a>
+                        </li>
+                        <li>
+                            <p>Análisis de Vulnerabilidades.</p>
+                            <a href="https://dal5.short.gy/6ydn" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Análisis">Descargar</a>
+                        </li>
+                        <li>
+                            <p>Solicitud Uniforme Distinto.</p>
+                            <a href="https://d6.short.gy/G8" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-green-500 rounded-md hover:bg-green-600 transition-colors" title="Descargar Word">Editable</a>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section class="section-card border-red-500 bg-red-100/80">
+                    <h3 class="font-bold text-red-800">3 Todo escaneado en Digital.</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>
+                            <p>Escanear en 01 archivo PDF.</p>
+                            <a href="https://dal5.short.gy/I" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-600 transition-colors" title="Herramienta para unir PDF">Herramienta</a>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section class="section-card border-yellow-500 bg-yellow-100/80">
+                    <h3 class="font-bold text-yellow-800">4 Tramitar Credenciales</h3>
+                    <ul class="space-y-4 text-sm text-gray-700">
+                        <li>
+                            <p>Resol. 1480 (10.04.2025).</p>
+                            <a href="https://d6.short.gy/dsds" target="_blank" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" title="Download Documents">Download</a>
+                        </li>
+                        <li>
+                            <p>Tramitar credenciales.</p>
+                            <button onclick="showCredenciales()" class="inline-block mt-1 w-32 text-center px-4 py-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-600 transition-colors" id="tramitarCredencialesBtn" title="Process Credentials">Process</button>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer class="relative mt-6 border-t border-gray-200 pt-4">
+                <div class="text-center text-sm text-gray-600 leading-tight pr-16">
+                    <span>Haga clic para descargar.</span><br>
+                    <span>©2025 - Daniel Figueroa Ch.</span><br>
+                    <span>Ingeniero en Informática.</span>
+                </div>
+                <img src="assets/images/qr.png" alt="QR Code" class="absolute right-4 bottom-4 w-11 h-11 md:w-14 md:h-14" title="More information" loading="lazy" width="56" height="56">
+            </footer>
+        </section>
+
+        <section id="credenciales-section" class="credenciales-section">
+            
+            <header class="credenciales-title-container">
+                <h1 class="credenciales-main-title">CREDENCIAL</h1>
+                <h2 class="credenciales-main-subtitle">EMPRESA E INDEPENDIENTE</h2><br>
+            </header>
+                
+                <main class="content-container">
+                    <section class="main-section">
+                        <h3 class="credenciales-section-title">REQUISITOS PARA SOLICITUD DE CREDENCIAL</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Documentos requeridos:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>01 Solicitud simple o carta conductora para credencial Independiente o Empresa.</li>
+                                    <a href="https://d6.short.gy/bv" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">
+                                    Descargar
+                                </a>
+                                    <li>Fotocopia de cédula de identidad (ambas caras).</li>
+                                    <li>Certificado OS.10 (Curso Aprobado Vigente).</li>
+                                    <li>Certificado de Antecedentes para Fines Especiales.</li>
+                                </ul>
+                                
+                            </div>
+                            
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Fotografía digital:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>Formato JPG, 331x413 píxeles, fondo blanco.</li>
+                                    <li>Resolución 300 DPI, desde los hombros hacia arriba.</li>
+                                    <li>Camisa negra (tela gruesa/delgada, manga corta/larga).</li>
+                                    <li>Fotografia almacenada en un Pendrive.</li>
+                                </ul>
+                                <div class="mt-4 flex justify-center">
+                                    <img src="assets/images/foto.jpg" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413">
+                                </div>
+                                <div class="flex flex-col space-y-3 mt-4">
+                                    <p class="text-sm italic text-center">Utilice estas herramientas para modificar los DPI/PPP de su imagen:</p>
+                                    <a href="https://dal5.short.gy/0" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                        1 Convert. 300 DPI
+                                    </a>
+                                    <a href="https://dal5.short.gy/j" target="_blank" class="credenciales-download-btn credenciales-dpi-btn bg-yellow-500 hover:bg-yellow-600">
+                                        2 Convert. 300 DPI
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">Formato Excel:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>Nombre del archivo: RUT del agente sin puntos, guión medio y dígito verificador (ej: 12345678-9).</li>
+                                    <li>Estructura obligatoria: <strong>FORMATO ESTÁNDAR DE EXCEL PARA EMPRESAS. Datos de los agentes</strong>.</li>
+                                </ul>
+                                <div class="credenciales-table-container">
+                                    <table class="credenciales-responsive-table">
+                                        <thead>
+                                            <tr>
+                                                <th>AF</th><th>RUN</th><th>NOMBRES</th><th>APELLIDOS</th><th>CARGO</th><th>EMPRESA</th><th>VIGENCIA</th><th>OBS-COLOR</th><th>OTROS</th><th>EMAIL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>COQUIMBO</td><td>12345678-9</td><td>CAMILA GRACIELA</td><td>LEYTON MONTENEGRO</td>
+                                                <td><select class="credenciales-table-select">
+                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                                </select></td>
+                                                <td>ALTA SEGURIDAD S.A.</td><td>31-10-2027</td>
+                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                                <td></td><td>camilaleyton@gmail.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>COQUIMBO</td><td>15524524-5</td><td>DANIEL ENRIQUE</td><td>VEGA CHAVEZ</td>
+                                                <td><select class="credenciales-table-select">
+                                                    <option>GUARDIA DE SEGURIDAD</option><option selected>CONSERJE</option><option>VIGILANTE PRIVADO</option><option>ASESOR DE SEGURIDAD</option><option>CAPACITADOR</option><option>ENCARGADO DE SEGURIDAD</option><option>JEFE DE SEGURIDAD</option><option>SUPERVISOR</option><option>TÉCNICO</option><option>TÉCNICO INDEPENDIENTE</option><option>OPERADOR C.C.T.V. Y ALARMA</option>
+                                                </select></td>
+                                                <td>ALTA SEGURIDAD S.A.</td><td>23/05/2026</td>
+                                                <td><select class="credenciales-table-select"><option selected>BLANCO</option><option>AZUL</option><option>GRIS</option></select></td>
+                                                <td></td><td>danielvega@gmail.com</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <a href="https://dal5.short.gy/Cr3d" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600 excel-btn">Descargar excel</a>
+                                
+                                <h4 class="requirement-subtitle special-subtitle">CREDENCIAL INDEPENDIENTE</h4>
+                                <a href="https://drive.google.com/uc?export=download&id=1nTEa4dzI1K-v0xf_nCjzUFEaRWnWnXYS" target="_blank" class="credenciales-download-btn bg-blue-500 hover:bg-blue-600 indep-btn">Independiente</a>
+                            </div>
+
+                            <div class="requirement-block">
+                                <h4 class="requirement-subtitle">PAGO VALE VISTA:</h4>
+                                <ul class="list-disc pl-5">
+                                    <li>$5.890 CLP con un VALE VISTA a nombre de:</li>
+                                    <li><strong>ZONA DE CARABINEROS SEGURIDAD PRIVADA CONTROL DE ARMAS Y EXPLOSIVOS</strong></li>
+                                    <li>R.U.T.: 61.944.800-6</li>
+                                    <li>Teléfono OS.10.: +562512651024</li>
+                                </ul>
+                                <div class="flex flex-col sm:flex-row items-center sm:items-end justify-center sm:justify-between mt-4 gap-4">
+                                    <a href="https://drive.google.com/uc?export=download&id=1CO9egHu6DydS51hKyDnxkg2BdDPj-vZZ" download="valores.pdf" class="download-link" id="valoresImageLink">
+                                        <img src="assets/images/valores.png" alt="Payment Values" class="credenciales-valores-example" loading="lazy" width="220" height="100">
+                                    </a>
+                                    <a href="https://dal5.short.gy/Câˆš" target="_blank">
+                                       <img src="assets/images/qrcred.png" alt="QR Code for more information" class="credenciales-qr-image" loading="lazy" width="80" height="80">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>  
+               
+               <footer class="footer-text text-center mt-6 text-sm text-gray-600">
+                  <span>Haga clic en los botones para descargar.</span><br>
+                  <span>©2025 - Daniel Figueroa Ch.</span><br>
+                  <span>Ingeniero en Informática.</span>
+               </footer>
+            </div>
+        </section>
+    </div>
+
+    <!-- ========= INICIO SECCION HOMEPAGE ========= -->
+    <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
+        <!-- Dark overlay for text readability -->
+        <div class="absolute inset-0 bg-black/30 z-0"></div>
+        <!-- Content -->
+        <div class="relative z-10 -mt-24 md:-mt-16">
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
+            <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
+            <button onclick="showDirectiva()" class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-transform transform hover:scale-105">
+                Iniciar Trámites
+            </button>
+        </div>
+    </section>
+
+    <div id="homepage-content-wrapper">
+        <!-- Trámites Principales Section -->
+        <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314]/80 backdrop-blur-sm">
+            <div class="max-w-5xl mx-auto px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Trámites Principales</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">Acceso directo a la información que buscas</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Card 1: Directivas de Funcionamiento -->
+                    <div onclick="showDirectiva()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Directivas de Funcionamiento</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                    <!-- Card 2: Credenciales -->
+                    <div onclick="showCredenciales()" class="cursor-pointer group relative p-8 bg-white/10 rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-yellow-500/20 text-yellow-300 rounded-lg p-3">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path></svg>
+                            </div>
+                            <h3 class="ml-4 text-xl font-bold text-white">Credenciales</h3>
+                        </div>
+                        <p class="mt-4 text-gray-300">Encuentra todos los formularios y requisitos para la acreditación de personal.</p>
+                        <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nuestra Labor Section -->
+        <section id="nuestra-labor" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nuestra Labor</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-600">Comprometidos con la fiscalización y el control de la seguridad privada en la región.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Misión -->
+                    <div class="elegant-card">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-gray-900">Misión</h4>
+                            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 text-justify">El OS10 Coquimbo ejerce la fiscalización, control y supervisión de las personas naturales y jurídicas que desarrollan actividades de vigilancia y seguridad privada en el territorio de la Región de Coquimbo, en conformidad con las disposiciones legales vigentes que se encomienda a Carabineros de Chile. Nuestra responsabilidad abarca la autorización, capacitación, certificación y acreditación de los actores del sistema de seguridad privada, así como la aprobación de estudios de seguridad, planes de seguridad, medidas de seguridad y directivas de funcionamiento, con el objetivo fundamental de contribuir eficazmente a la seguridad pública mediante la prevención de hechos delictuales y la protección de personas y bienes.</p>
+                        </div>
+                    </div>
+                    <!-- Visión -->
+                    <div class="elegant-card">
+                        <div>
+                            <h4 class="text-2xl font-semibold text-gray-900">Visión</h4>
+                            <p class="mt-2 text-xs sm:text-sm leading-relaxed text-gray-600 text-justify">Consolidarnos como un organismo especializado de excelencia en la gestión, fiscalización y control de la seguridad privada a nivel nacional, ser reconocidos por nuestro profesionalismo, eficiencia y compromiso con la legalidad. Aspiramos a ser un referente técnico que, mediante una estructura organizacional sólida, procesos estandarizados y el uso de inteligencia artificial avanzada, brinde atención rápida y de calidad en materias de seguridad privada, promoviendo el desarrollo de un sistema íntegro y competente que contribuya significativamente al fortalecimiento de la seguridad pública en la Región de Coquimbo y sirva como modelo tecnológico e innovador para otras oficinas similares a nivel nacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- ========= FIN DE NUEVAS SECCIONES ========= -->
+
+
+    <!-- ========= INICIO DE NUEVO FOOTER ========= -->
+    <footer id="main-footer" class="bg-[#146314]/80 backdrop-blur-sm text-gray-300">
+        <div class="max-w-7xl mx-auto py-12 px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Col 1: Logo and About -->
+                <div class="md:col-span-2 lg:col-span-1">
+                    <h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3>
+                    <p class="mt-2 text-sm">Prefectura de Coquimbo</p>
+                </div>
+                <!-- Col 2: Enlaces (vacío por ahora) -->
+                <div>
+                   <!-- Puedes agregar enlaces aquí si lo deseas en el futuro -->
+                </div>
+                <!-- Col 3: Contacto -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Contacto</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li>
+                            <a href="tel:+56512651024" class="hover:text-white">+56 51 265 1024</a>
+                        </li>
+                        <li>
+                            <a href="mailto:os10.coquimbo@carabineros.cl" class="hover:text-white">os10.coquimbo@carabineros.cl</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Col 4: Dirección -->
+                <div>
+                    <h3 class="text-lg font-semibold text-white">Dirección</h3>
+                    <p class="mt-4 text-sm">Calle Cienfuegos 180, La Serena, Coquimbo</p>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
+                <p>© 2025 Prefectura de Coquimbo, O.S.10. Todos los derechos reservados.</p>
+                <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. - Ingeniero en Informática</p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========= FIN DE NUEVO FOOTER ========= -->
+
+
+    <div id="chat-widget-container">
+        <div id="chat-popup" class="hidden flex flex-col bg-white/95 backdrop-blur-lg border border-green-500/50 rounded-2xl">
+            <header class="p-3 border-b border-green-500/30 flex items-center justify-between text-gray-800">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-white border-2 border-green-400/80 flex items-center justify-center flex-shrink-0 p-1">
+                        <img src="assets/images/poli.png" alt="Bot Icon" class="h-full w-full object-contain" width="40" height="40" loading="lazy">
+                    </div>
+                    <div>
+                        <h1 class="text-base font-bold">Asistente OS10</h1>
+                        <p class="text-xs text-gray-500">Con voces modernas</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <select id="voiceSelector" class="voice-selector text-xs">
+                        <option value="Diego">Diego</option>
+                        <option value="Antoni">Antoni</option>
+                        <option value="Josh">Josh</option>
+                        <option value="Adam">Adam</option>
+                        <option value="Alejandro" selected>Alejandro</option>
+                    </select>
+                    
+                    <button id="speak-btn" class="voice-button bg-green-500 hover:bg-green-600 rounded-lg p-2 text-white" title="Leer último mensaje">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+                        </svg>
+                    </button>
+                    <button id="chat-close-btn-internal" class="text-gray-500 hover:text-gray-800">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+            <main id="chat-messages" class="chat-messages-container flex-1 p-4 overflow-y-auto"></main>
+            <footer class="p-3 border-t border-green-500/30">
+                <div class="mb-2 text-xs text-center text-gray-500"><span>Alt+V para micrófono</span></div>
+                <div class="flex items-center space-x-2 bg-gray-200 rounded-xl p-2">
+                    <button id="toggle-speak-btn" class="voice-button bg-yellow-500 hover:bg-yellow-600 rounded-lg p-2 text-white" title="Activar/Desactivar Auto-lectura">
+                        <svg id="speaker-on-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                        <svg id="speaker-off-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l-2.25 2.25M19.5 12l2.25-2.25M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                        </svg>
+                    </button>
+                    <button id="voice-btn" class="voice-button bg-blue-500 hover:bg-blue-600 rounded-lg p-2 text-white" title="Hablar">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" x2="12" y1="19" y2="23"/>
+                            <line x1="8" x2="16" y1="23" y2="23"/>
+                        </svg>
+                    </button>
+                    <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
+                    <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                </div>
+            </footer>
+        </div>
+        <button id="chat-toggle-button" class="bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
+            <img src="assets/images/poli.png" alt="Chatbot Icon" class="h-full w-full object-contain" width="80" height="80" loading="lazy">
+        </button>
+    </div>
+    <div id="chat-backdrop" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+
+    <button id="back-to-top" class="hidden fixed bottom-5 right-5 bg-transparent text-black p-2 rounded-full shadow-lg hover:bg-gray-200 transition-colors z-[1050]">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <script>
+        // Background rotation for homepage
+        let backgroundImages = [
+            'assets/images/foto (1).jpeg',
+            'assets/images/foto (2).jpeg',
+            'assets/images/foto (3).jpeg',
+            'assets/images/foto (4).jpeg',
+            'assets/images/foto (5).jpeg',
+            'assets/images/foto (6).jpeg',
+            'assets/images/foto (7).jpeg',
+            'assets/images/foto (9).jpeg',
+            'assets/images/foto (10).jpeg',
+            'assets/images/foto (11).jpeg',
+            'assets/images/foto (12).jpeg',
+            'assets/images/foto (13).jpeg',
+            'assets/images/foto (14).jpeg',
+            'assets/images/foto (15).jpeg',
+            'assets/images/foto (16).jpeg',           
+            'assets/images/foto (18).jpeg'
+        ];
+
+        let currentImageIndex = 0;
+
+        function rotateBackground() {
+            const homepageSection = document.getElementById('homepage-section');
+            if (homepageSection && document.body.classList.contains('homepage')) {
+                currentImageIndex = (currentImageIndex + 1) % backgroundImages.length;
+                homepageSection.style.backgroundImage = `url('${backgroundImages[currentImageIndex]}')`;
+            }
+        }
+
+        // Start background rotation every 12 seconds for homepage
+        setInterval(rotateBackground, 12000); // Aún más tiempo de espera
+
+        // Functions to switch between sections
+        function showHomepage() {
+            document.getElementById('homepage-section').style.display = 'flex';
+            document.getElementById('homepage-content-wrapper').style.display = 'block';
+            document.getElementById('main-footer').style.display = 'block';
+            document.getElementById('contenido').style.display = 'none';
+            
+            document.body.className = 'homepage background-transition';
+            
+            const homepageSection = document.getElementById('homepage-section');
+            homepageSection.style.backgroundImage = `url('${backgroundImages[0]}')`;
+            currentImageIndex = 0;
+            
+            document.getElementById('credenciales-arrow-back-btn').classList.add('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function showDirectiva() {
+            document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('homepage-content-wrapper').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+            document.getElementById('main-section').style.display = 'block';
+            document.getElementById('credenciales-section').classList.remove('active');
+            
+            document.body.className = '';
+            
+            document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
+            
+            window.scrollTo(0, 0);
+        }
+
+        function showCredenciales() {
+            document.getElementById('homepage-section').style.display = 'none';
+            document.getElementById('homepage-content-wrapper').style.display = 'none';
+            document.getElementById('main-footer').style.display = 'none';
+            document.getElementById('contenido').style.display = 'block';
+            document.getElementById('main-section').style.display = 'none';
+            document.getElementById('credenciales-section').classList.add('active');
+            
+            document.body.className = '';
+            
+            document.getElementById('credenciales-arrow-back-btn').classList.remove('hidden');
+
+            window.scrollTo(0, 0);
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
+            closeTramitesMenu();
+            closeEditablesMenu();
+        }
+
+        // Functions for the new tramites menu
+        function handleDirectiva() {
+            showDirectiva();
+            closeTramitesMenu();
+        }
+
+        function handleCredenciales() {
+            showCredenciales();
+            closeTramitesMenu();
+        }
+
+        function handleCredencialIndependiente() {
+            const independienteLink = document.querySelector('.indep-btn');
+            if (independienteLink && independienteLink.href) {
+                window.open(independienteLink.href, '_blank');
+            }
+            closeTramitesMenu();
+        }
+
+        function handleValores() {
+            // Open the valores PDF
+            const valoresLink = document.getElementById('valoresImageLink');
+            if (valoresLink && valoresLink.href) {
+                window.open(valoresLink.href, '_blank');
+            }
+            closeTramitesMenu();
+        }
+
+        function handleValorPlan() {
+            // Link to plan values - you can customize this URL
+            window.open('https://d6.short.gy/dsds', '_blank');
+            closeTramitesMenu();
+        }
+
+        function handleCursoFormacion() {
+            // Link to formation course - you can customize this URL  
+            window.open('https://www.zosepcar.cl/OS10.php', '_blank');
+            closeTramitesMenu();
+        }
+        
+        function showTramitesMenu() {
+            const dropdown = document.getElementById('tramites-dropdown');
+            const arrow = document.getElementById('tramites-arrow');
+            const menuBtn = document.getElementById('tramites-menu-btn');
+            
+            dropdown.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+            menuBtn.classList.add('panel-active');
+        }
+
+        function closeTramitesMenu() {
+            const dropdown = document.getElementById('tramites-dropdown');
+            const arrow = document.getElementById('tramites-arrow');
+            const menuBtn = document.getElementById('tramites-menu-btn');
+            
+            dropdown.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
+            menuBtn.classList.remove('panel-active');
+        }
+
+        function showEditablesMenu() {
+            const dropdown = document.getElementById('editables-dropdown');
+            const arrow = document.getElementById('editables-arrow');
+            const menuBtn = document.getElementById('editables-menu-btn');
+            
+            dropdown.classList.remove('hidden');
+            arrow.style.transform = 'rotate(180deg)';
+            menuBtn.classList.add('panel-active');
+        }
+
+        function closeEditablesMenu() {
+            const dropdown = document.getElementById('editables-dropdown');
+            const arrow = document.getElementById('editables-arrow');
+            const menuBtn = document.getElementById('editables-menu-btn');
+            
+            dropdown.classList.add('hidden');
+            arrow.style.transform = 'rotate(0deg)';
+            menuBtn.classList.remove('panel-active');
+        }
+
+
+        // Adjust on load and when window is resized
+        window.addEventListener('load', () => {});
+        window.addEventListener('resize', () => {});
+
+        // Event listeners for menu and other elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const tramitesMenuBtn = document.getElementById('tramites-menu-btn');
+            const tramitesDropdown = document.getElementById('tramites-dropdown');
+            const tramitesContainer = tramitesMenuBtn.parentElement;
+            let tramitesTimeout;
+
+            const editablesMenuBtn = document.getElementById('editables-menu-btn');
+            const editablesDropdown = document.getElementById('editables-dropdown');
+            const editablesContainer = editablesMenuBtn.parentElement;
+            let editablesTimeout;
+
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            if (isTouchDevice) {
+                // Click logic for touch devices
+                if (tramitesMenuBtn) {
+                    tramitesMenuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isHidden = tramitesDropdown.classList.contains('hidden');
+                        closeEditablesMenu(); // Close other menu
+                        if (isHidden) showTramitesMenu();
+                        else closeTramitesMenu();
+                    });
+                }
+                if (editablesMenuBtn) {
+                    editablesMenuBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isHidden = editablesDropdown.classList.contains('hidden');
+                        closeTramitesMenu(); // Close other menu
+                        if (isHidden) showEditablesMenu();
+                        else closeEditablesMenu();
+                    });
+                }
+            } else {
+                // Hover logic for non-touch devices
+                if (tramitesContainer) {
+                    tramitesContainer.addEventListener('mouseenter', () => {
+                        clearTimeout(tramitesTimeout);
+                        closeEditablesMenu();
+                        showTramitesMenu();
+                    });
+                    tramitesContainer.addEventListener('mouseleave', () => {
+                        tramitesTimeout = setTimeout(closeTramitesMenu, 200);
+                    });
+                }
+                if (editablesContainer) {
+                    editablesContainer.addEventListener('mouseenter', () => {
+                        clearTimeout(editablesTimeout);
+                        closeTramitesMenu();
+                        showEditablesMenu();
+                    });
+                    editablesContainer.addEventListener('mouseleave', () => {
+                        editablesTimeout = setTimeout(closeEditablesMenu, 200);
+                    });
+                }
+            }
+
+            // Close menus when clicking outside
+            window.addEventListener('click', () => {
+                closeTramitesMenu();
+                closeEditablesMenu();
+            });
+
+
+            // Original independent button logic
+            const independentButton = document.querySelector('.indep-btn');
+            if (independentButton) {
+                setInterval(() => {
+                    independentButton.classList.add('bounce-animation');
+                    setTimeout(() => {
+                        independentButton.classList.remove('bounce-animation');
+                    }, 2000);
+                }, 5000);
+
+                setTimeout(() => {
+                    independentButton.classList.add('bounce-animation');
+                    setTimeout(() => {
+                        independentButton.classList.remove('bounce-animation');
+                    }, 2000);
+                }, 3000);
+            }
+
+            // Automatic PDF download when clicking "valores.png" image
+            const valoresImageLink = document.getElementById('valoresImageLink');
+            if (valoresImageLink) {
+                valoresImageLink.addEventListener('click', (event) => {
+                    event.preventDefault(); 
+                    
+                    const pdfUrl = valoresImageLink.href;
+                    const fileName = valoresImageLink.download || 'documento.pdf';
+
+                    const a = document.createElement('a');
+                    a.href = pdfUrl;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    
+                    console.log(`Attempting to download: ${fileName} from ${pdfUrl}`);
+                });
+            }
+
+            // Event listener for OS10 Home Button (in banner)
+            document.getElementById('os10-home-btn').addEventListener('click', showHomepage);
+            
+            // --- Back to Top Button ---
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            };
+
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+
+            // --- Open chatbot on hover ---
+            const chatToggleButton = document.getElementById('chat-toggle-button');
+            if (chatToggleButton) {
+                chatToggleButton.addEventListener('mouseenter', () => {
+                    const popup = document.getElementById('chat-popup');
+                    if (popup.classList.contains('hidden')) {
+                        const backdrop = document.getElementById('chat-backdrop');
+                        const button = document.getElementById('chat-toggle-button');
+                        
+                        popup.classList.remove('hidden');
+                        backdrop.classList.remove('hidden');
+                        button.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Initialize homepage view
+            showHomepage();
+        });
+    </script>
+
+    <script type="module">
+        // FIREBASE SCRIPT (Visit Counter)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, doc, runTransaction } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U",
+          authDomain: "cuenta-946e2.firebaseapp.com",
+          projectId: "cuenta-946e2",
+          storageBucket: "cuenta-946e2.firebasestorage.app",
+          messagingSenderId: "816979648502",
+          appId: "1:816979648502:web:809beffeea8ba7968031d7",
+          measurementId: "G-RX9KZSC0F4"
+        };
+        
+        async function runCounter() {
+            const counterSpan = document.getElementById('visit-counter');
+            try {
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+                const auth = getAuth(app);
+                await signInAnonymously(auth); // Sign in anonymously for visit counter
+                
+                const counterRef = doc(db, `page-visits/${firebaseConfig.projectId}/visits/counter`);
+                const newCount = await runTransaction(db, async (transaction) => {
+                    const counterDoc = await transaction.get(counterRef);
+                    let count = 1;
+                    if (counterDoc.exists()) {
+                        count = counterDoc.data().count + 1;
+                        transaction.update(counterRef, { count: count });
+                    } else {
+                        transaction.set(counterRef, { count: count });
+                    }
+                    return count;
+                });
+                if (counterSpan) counterSpan.textContent = newCount.toLocaleString('es-CL');
+            } catch (error) {
+                console.error("ERROR: Counter process failed.", error);
+                if (counterSpan) counterSpan.textContent = "Error";
+            }
+        }
+        runCounter();
+    </script>
+    
+    <script src="./rules/chatbot-rules.js" defer></script>
+    
+    <script src="assets/js/chatbot.js" defer></script>
+</body>
+</html>

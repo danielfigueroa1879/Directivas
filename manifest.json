@@ -1,0 +1,40 @@
+{
+  "short_name": "OS10 Coquimbo",
+  "name": "Plataforma OS10 Coquimbo - Seguridad Privada",
+  "description": "Plataforma oficial de trámites y servicios de seguridad privada para la región de Coquimbo. Directivas de funcionamiento, credenciales y más.",
+  "icons": [
+    {
+      "src": "assets/images/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icon-192x192.png",
+      "type": "image/png", 
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512", 
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#146314",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["government", "utilities", "business"],
+  "lang": "es-CL",
+  "dir": "ltr"
+}

@@ -1,0 +1,14 @@
+{
+  "name": "directivas-os10-con-proxy",
+  "version": "1.0.0",
+  "description": "Proyecto con proxy seguro para la API de Gemini",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
