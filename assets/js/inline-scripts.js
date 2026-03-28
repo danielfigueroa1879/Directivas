@@ -25,19 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const submenu = item.querySelector('.desktop-submenu');
         if (!submenu) return;
         
-        // Posicionar el submenú
-        function positionSubmenu() {
-            const rect = item.getBoundingClientRect();
-            const submenuWidth = submenu.offsetWidth;
-            const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
-            
-            submenu.style.left = left + 'px';
-            submenu.style.top = '93px'; // POSICIÓN FIJA
-        }
-        
         // Abrir submenú
         function openSubmenu() {
             clearTimeout(closeTimeout);
+            // Leer geometría ANTES de cualquier escritura DOM para evitar forced reflow
+            const rect = item.getBoundingClientRect();
+            const submenuWidth = submenu.offsetWidth;
+            const left = rect.left + (rect.width / 2) - (submenuWidth / 2);
             // Cerrar otros submenús primero
             if (currentOpenSubmenu && currentOpenSubmenu !== submenu) {
                 currentOpenSubmenu.style.opacity = '0';
@@ -45,7 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentOpenSubmenu.style.pointerEvents = 'none';
                 currentOpenSubmenu.style.transform = 'translateY(-6px)';
             }
-            positionSubmenu();
+            submenu.style.left = left + 'px';
+            submenu.style.top = '93px';
             submenu.style.visibility = 'visible';
             submenu.style.transition = 'opacity 0.16s cubic-bezier(0.16,1,0.3,1), transform 0.18s cubic-bezier(0.16,1,0.3,1), visibility 0s linear 0s';
             requestAnimationFrame(() => {
@@ -1067,8 +1062,13 @@ function updateOfficeStatus() {
             setTimeout(function() {
                 prev.classList.remove('active', 'alt');
                 prev.style.animation = 'none';
-                prev.offsetHeight; // reflow
-                prev.style.animation = '';
+                // Doble rAF: equivalente al truco offsetHeight pero sin forced synchronous layout.
+                // El primer frame confirma animation:none; el segundo restaura la animación.
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        prev.style.animation = '';
+                    });
+                });
             }, 1900);
         }, 9000);
     }

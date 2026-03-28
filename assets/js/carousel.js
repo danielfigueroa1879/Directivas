@@ -25,6 +25,8 @@ function initializeCarousel({
     const cardCount = cards.length;
     let autoScrollInterval;
     let currentIndex = 0;
+    // Rastrea si los dots están visibles para evitar writes DOM redundantes en cada scroll
+    let dotsCurrentlyVisible = true;
 
     if (cardCount <= 1) {
         if (dotsContainer) dotsContainer.style.display = 'none';
@@ -100,10 +102,17 @@ function initializeCarousel({
         const containerWidth = cachedContainerWidth;
 
         if (!isCarouselActive()) {
-            if (dotsContainer) dotsContainer.style.display = 'none';
+            // Solo escribir si el estado cambia, para no invalidar el layout en cada scroll
+            if (dotsContainer && dotsCurrentlyVisible) {
+                dotsContainer.style.display = 'none';
+                dotsCurrentlyVisible = false;
+            }
             return;
         }
-        if (dotsContainer) dotsContainer.style.display = 'flex';
+        if (dotsContainer && !dotsCurrentlyVisible) {
+            dotsContainer.style.display = 'flex';
+            dotsCurrentlyVisible = true;
+        }
 
         let closestCardIndex = 0;
         let minDistance = Infinity;
