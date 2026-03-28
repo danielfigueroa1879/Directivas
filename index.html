@@ -833,6 +833,10 @@ body:has(.modal-requisitos-componentes.active) .desktop-navbar { display: none !
 .credenciales-section { display: none; }
 /* chat-popup tiene class="chat-popup-hidden flex..." → el flex de Tailwind lo haría visible sin esto */
 .chat-popup-hidden { display: none !important; }
+/* search modal creado por search.min.js: sin search.css, la clase search-modal-hidden no aplica
+   display:none → el modal aparece como bloques visibles (cuadros) en mobile antes de que cargue search.css */
+#global-search-modal { display: none; }
+#global-search-modal.search-modal-visible { display: flex; }
 /* ===== CRÍTICOS PARA CLS: carousel.css carga async y las secciones son visibles en el viewport
    inicial móvil (hero 70vh + banner 72px = 640px < 812px). Sin estas reglas, carousel.css al
    cargar puede cambiar la orientación de .carousel-card .flex (column vs row) → CLS mínimo.
@@ -3368,7 +3372,22 @@ body {
   <!-- YouTube facade: carga iframe solo al hacer click -->
   <!-- Google Translate (oculto) -->
   <div id="google_translate_element" style="display:none;visibility:hidden;position:absolute;"></div>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+  <!-- Carga diferida: Google Translate se inyecta solo durante tiempo inactivo del navegador
+       (después del LCP), eliminando la cadena crítica www.gstatic.com/el_main_css -->
+  <script>
+    (function () {
+      function loadGoogleTranslate() {
+        var s = document.createElement('script');
+        s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        document.body.appendChild(s);
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGoogleTranslate, { timeout: 4000 });
+      } else {
+        setTimeout(loadGoogleTranslate, 3000);
+      }
+    })();
+  </script>
 </body>
 
 </html>
