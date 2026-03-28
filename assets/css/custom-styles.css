@@ -127,7 +127,7 @@
     background-color: #166534; 
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 #desktop-submenu-panel .panel-submenu-title {
@@ -377,8 +377,22 @@ body:not(.homepage) {
 
     body.show-directiva #contenido.card-container,
     body.show-credenciales #contenido.card-container {
-        margin-top: 4.25rem !important;
+        margin-top: 4.0rem !important;
         border-radius: 1.8rem !important;
+    }
+
+    /* Título más arriba en PC */
+    body.show-directiva #main-section,
+    body.show-credenciales #credenciales-section {
+        margin-top: 3.5rem !important;
+    }
+
+    body.show-directiva #main-section > header {
+        padding-top: 0.5rem !important;
+    }
+
+    body.show-credenciales .credenciales-title-container {
+        margin-top: 0.5rem !important;
     }
 }
 
@@ -411,8 +425,17 @@ body:not(.homepage) {
 
     /* Chevron: esquina superior derecha, z-index por encima de las secciones (z-index:50) */
     #credenciales-arrow-back-btn {
-        top: 0.6rem !important;
+        top: 0.7rem !important;
         right: 0.5rem !important;
+        margin-top: 0 !important;
+        z-index: 60 !important;
+    }
+}
+
+/* Chevron desktop: neutralizar space-y-6 */
+@media (min-width: 768px) {
+    #credenciales-arrow-back-btn {
+        top: 1.1rem !important;
         margin-top: 0 !important;
         z-index: 60 !important;
     }
