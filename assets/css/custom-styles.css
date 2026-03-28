@@ -367,7 +367,7 @@ body:not(.homepage) {
 }
 @media (max-width: 767px) {
     #contenido.card-container {
-        margin-top: 4.8rem !important;
+        margin-top: 4.9rem !important;
         padding-top: 0.75rem !important;
         border-radius: 0 !important;
     }
@@ -378,7 +378,7 @@ body:not(.homepage) {
         padding-top: 0.25rem !important;
     }
     .credenciales-title-container {
-        margin-top: 0.25rem !important;
+        margin-top: 0.8rem !important;
     }
     #credenciales-arrow-back-btn {
         top: 0.6rem !important;
