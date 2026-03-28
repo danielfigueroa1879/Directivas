@@ -367,6 +367,22 @@ body:not(.homepage) {
 }
 
 /* ============================================================
+   DESKTOP: Eliminar barra verde y container al mismo nivel que mobile
+   ============================================================ */
+@media (min-width: 1024px) {
+    body.show-directiva .desktop-navbar,
+    body.show-credenciales .desktop-navbar {
+        display: none !important;
+    }
+
+    body.show-directiva #contenido.card-container,
+    body.show-credenciales #contenido.card-container {
+        margin-top: 4.25rem !important;
+        border-radius: 1.8rem !important;
+    }
+}
+
+/* ============================================================
    MOBILE: Ajustes Directivas y Credenciales
    ============================================================ */
 @media (max-width: 767px) {
@@ -374,7 +390,7 @@ body:not(.homepage) {
     #contenido.card-container {
         margin-top: 4.8rem !important;
         padding-top: 0.75rem !important;
-        border-radius: 1.8rem !important
+        border-radius: 1.8rem !important;
     }
 
     /* Bajar un poco el título en Directivas y Credenciales */
@@ -401,4 +417,3 @@ body:not(.homepage) {
         z-index: 60 !important;
     }
 }
-
