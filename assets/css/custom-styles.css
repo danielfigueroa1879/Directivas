@@ -197,7 +197,7 @@
    de las secciones internas para evitar el doble borde, manteniendo solo
    la estructura necesaria. */
 #credenciales-section,
-#directiva-section, 
+#directiva-section,
 section[id$="-section"]:not(#homepage-section) {
     display: none;
     background-color: transparent; /* Eliminado el fondo blanco */
@@ -207,7 +207,7 @@ section[id$="-section"]:not(#homepage-section) {
     max-width: 100%;              /* Ancho completo dentro del contenedor padre */
     box-shadow: none;             /* Eliminada la sombra */
     position: relative;
-    z-index: 50; 
+    z-index: 50;
 }
 
 #credenciales-section.active,
@@ -365,25 +365,39 @@ body:not(.homepage) {
         width: 97%;
     }
 }
+
+/* ============================================================
+   MOBILE: Ajustes Directivas y Credenciales
+   ============================================================ */
 @media (max-width: 767px) {
+    /* Container pegado justo debajo del banner, con bordes redondeados */
     #contenido.card-container {
-        margin-top: 4.9rem !important;
+        margin-top: 4.8rem !important;
         padding-top: 0.75rem !important;
-        border-radius: 0 !important;
     }
-    #main-section, #credenciales-section {
-        margin-top: 0.75rem !important;
+
+    /* Bajar un poco el título en Directivas y Credenciales */
+    #main-section,
+    #credenciales-section {
+        margin-top: 2.5rem !important;
     }
+
+    /* Subir título en Directivas */
     #main-section > header {
-        padding-top: 0.25rem !important;
+        padding-top: 0.5rem !important;
     }
+
+    /* Subir título en Credenciales */
     .credenciales-title-container {
-        margin-top: 0.8rem !important;
+        margin-top: 0.5rem !important;
     }
+
+    /* Chevron: esquina superior derecha, z-index por encima de las secciones (z-index:50) */
     #credenciales-arrow-back-btn {
         top: 0.6rem !important;
         right: 0.5rem !important;
         margin-top: 0 !important;
+        z-index: 60 !important;
     }
 }
 
