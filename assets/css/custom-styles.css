@@ -374,6 +374,7 @@ body:not(.homepage) {
     #contenido.card-container {
         margin-top: 4.8rem !important;
         padding-top: 0.75rem !important;
+        border-radius: 1.5rem !important
     }
 
     /* Bajar un poco el título en Directivas y Credenciales */
