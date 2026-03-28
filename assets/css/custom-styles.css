@@ -380,7 +380,7 @@ body:not(.homepage) {
     /* Bajar un poco el título en Directivas y Credenciales */
     #main-section,
     #credenciales-section {
-        margin-top: 2.5rem !important;
+        margin-top: 4rem !important;
     }
 
     /* Subir título en Directivas */
