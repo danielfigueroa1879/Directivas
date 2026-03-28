@@ -127,7 +127,7 @@
     background-color: #166534; 
     color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 #desktop-submenu-panel .panel-submenu-title {
