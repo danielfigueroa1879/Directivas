@@ -374,13 +374,13 @@ body:not(.homepage) {
     #contenido.card-container {
         margin-top: 4.8rem !important;
         padding-top: 0.75rem !important;
-        border-radius: 1.5rem !important
+        border-radius: 1.8rem !important
     }
 
     /* Bajar un poco el título en Directivas y Credenciales */
     #main-section,
     #credenciales-section {
-        margin-top: 4.5rem !important;
+        margin-top: 5.0rem !important;
     }
 
     /* Subir título en Directivas */
