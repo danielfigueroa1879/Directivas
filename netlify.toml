@@ -7,11 +7,52 @@
 
 # Redirección específica y segura para nuestra API.
 [[redirects]]
-  # Cuando el código del frontend llame a esta ruta "amigable"...
   from = "/api/gemini"
-  # ...Netlify ejecutará internamente la función que está en esta ruta real.
   to = "/.netlify/functions/gemini-proxy"
-  # El status 200 significa que es una reescritura, no una redirección visible.
   status = 200
-  # 'force = true' asegura que esta regla tenga prioridad.
   force = true
+
+# ============================================================
+# CACHE HEADERS — assets estáticos con versión: 1 año
+# ============================================================
+
+# Imágenes: cache 1 año (inmutables, se reemplazan con nuevo nombre)
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS con versión (?v=): 1 año
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# JS con versión (?v=): 1 año
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Rules / chatbot-rules.js
+[[headers]]
+  for = "/rules/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fuentes y manifest
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# HTML principal: siempre revalidar
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
