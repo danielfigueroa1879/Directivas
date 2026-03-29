@@ -1,5 +1,5 @@
 // sw.js - Service Worker
-const CACHE_NAME = 'directivas-os10-cache-v1.9'; // Versión incrementada para forzar la actualización
+const CACHE_NAME = 'directivas-os10-cache-v2.0'; // Versión actualizada: imágenes optimizadas WebP
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
@@ -16,8 +16,8 @@ const urlsToCache = [
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',
-  './assets/images/logo-os10.png',
-  './assets/images/poli.png',
+  './assets/images/logo-os10.webp',
+  './assets/images/poli.webp',
   './assets/images/favicon.ico',
   // Imágenes críticas y del carrusel (versiones WebP)
   './assets/images/foto (1).webp',
