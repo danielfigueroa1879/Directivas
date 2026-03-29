@@ -74,7 +74,7 @@ body {
 
 /* Fallback para navegadores que no soportan WebP */
 .no-webp body {
-    background-image: url('../images/101.jpg');
+    background-image: url('../images/101.webp');
 }
 
 body.homepage {
@@ -92,7 +92,7 @@ body.homepage {
 }
 
 .no-webp #homepage-section {
-    background-image: url('../images/foto (1).jpeg');
+    background-image: url('../images/foto (1).webp');
 }
 
 /* ===== LAYOUT COMPONENTS ===== */
