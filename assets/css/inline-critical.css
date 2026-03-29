@@ -324,10 +324,10 @@ body.homepage {
 }
 .desktop-nav-item {
     position: relative;
-    color: #ffffff;
+    color: white;
     font-family: Arial, sans-serif;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: normal;
+    font-size: 12px;
     line-height: 14px;
     padding: 10px 14px;
     border-radius: 0;
@@ -817,12 +817,12 @@ body {
 .lang-selector { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); z-index: 200; }
 .lang-btn {
     display: flex; align-items: center; gap: 0.3rem;
-    background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.35);
     border-radius: 6px; color: #fff; font-size: 0.72rem; font-weight: 700;
     padding: 0.18rem 0.55rem; cursor: pointer; height: 22px;
     letter-spacing: 0.06em; transition: background 0.2s; white-space: nowrap;
 }
-.lang-btn:hover { background: rgba(0,0,0,0.45); }
+.lang-btn:hover { background: rgba(255,255,255,0.28); }
 .lang-arrow { transition: transform 0.25s; flex-shrink: 0; }
 .lang-selector.open .lang-arrow { transform: rotate(180deg); }
 .lang-dropdown {
