@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
     }
 
-    // 3. Descarga automática del PDF al hacer clic en la imagen "valores.png"
+    // 3. Descarga automática del PDF al hacer clic en la imagen "valores.webp"
     const valoresImageLink = document.getElementById('valoresImageLink');
     if (valoresImageLink) {
         valoresImageLink.addEventListener('click', (event) => {
