@@ -1160,6 +1160,13 @@ function toggleLangMenu(e) {
     e.stopPropagation();
     document.getElementById('lang-selector').classList.toggle('open');
 }
+// Cerrar menú de idioma al hacer clic fuera
+document.addEventListener('click', function(e) {
+    const selector = document.getElementById('lang-selector');
+    if (selector && !selector.contains(e.target)) {
+        selector.classList.remove('open');
+    }
+});
 function setLang(langCode, label, btn) {
     document.getElementById('lang-current').textContent = label;
     document.querySelectorAll('.lang-dropdown button').forEach(b => b.classList.remove('lang-active'));
