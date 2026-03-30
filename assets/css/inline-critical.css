@@ -110,8 +110,8 @@ body.homepage {
 
 }
 @keyframes notice-glow {
-    0%, 100% { opacity: 0.85; }
-    50%       { opacity: 1; }
+    0%, 100% { box-shadow: 0 0 6px rgba(255, 255, 255, 0.1); }
+    50%       { box-shadow: 0 0 18px rgba(255, 255, 255, 0.35); }
 }
 @keyframes notice-slidein {
     0%   { transform: translateX(110%); }
@@ -204,7 +204,7 @@ body.homepage {
     .desktop-navbar { display: none !important; }
     #mobile-menu-btn { display: block !important; }
     #banner { height: 6.5rem; }
-    body  { padding-top: 0; }
+    body  { padding-top: 0 !important; }
     .homepage-section {
         min-height: 70vh !important;
         height: 70vh !important;
