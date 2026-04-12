@@ -2,8 +2,8 @@
 
 const fetch = require("node-fetch");
 
-const MAX_BODY_SIZE = 100 * 1024; // 100 KB máximo
-const MAX_MESSAGE_LENGTH = 20000; // 20k caracteres por solicitud
+const MAX_BODY_SIZE = 500 * 1024; // 500 KB máximo (acomoda mensajes largos)
+const MAX_MESSAGE_LENGTH = 50000; // 50k caracteres por solicitud
 
 // Rate limiting
 const rateLimitMap = new Map();
