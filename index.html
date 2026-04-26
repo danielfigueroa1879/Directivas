@@ -84,8 +84,7 @@
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
          Sin petición externa, sin bloqueo de parser JS.
     ====================================================== -->
-  <link rel="stylesheet" href="assets/css/tailwind.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/tailwind.min.css"></noscript>
+  <link rel="stylesheet" href="assets/css/tailwind.min.css">
   <!-- =====================================================
          GOOGLE FONTS - No bloqueante
          Ya correcto con preload + onload + noscript fallback
@@ -106,9 +105,8 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
-  <!-- styles.css: cubierto por critical inline → async seguro -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
+  <!-- styles.css: crítico → bloqueante (async causa FOUC) -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=25">
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
