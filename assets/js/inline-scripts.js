@@ -236,12 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
    (extraído desde index.html, línea 3459)
 ============================================================ */
 // Contador de visitas: REST API directa → elimina 34 KiB de Firebase SDK.
-        // Misma lógica: lee PRE-incremento + incremento atómico en paralelo.
-        const runWhenIdle = window.requestIdleCallback
-            ? (cb) => requestIdleCallback(cb, { timeout: 4000 })
-            : (cb) => setTimeout(cb, 3500);
-
-        runWhenIdle(async () => {
+        // Espera al evento load + 3s para no competir con LCP/FCP.
+        window.addEventListener('load', () => setTimeout(async () => {
             const counterSpan = document.getElementById('visit-counter');
             const PROJECT = 'cuenta-946e2';
             const KEY = 'AIzaSyBB2AegLOQ-b6ZGI_cuPycSFJFuRsUlu5U';
@@ -275,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch {
                 if (counterSpan) counterSpan.textContent = '—';
             }
-        });
+        }, 3000)); // 3s después de load → fuera de la ventana LCP
 
 
 /* ============================================================
