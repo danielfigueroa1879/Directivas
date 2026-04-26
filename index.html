@@ -69,9 +69,8 @@
          Ahorro estimado: ~920ms en LCP
     ====================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- preconnect: establece TCP+TLS anticipado → ahorra ~150ms cuando el idle callback hace fetch() -->
-  <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
   <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
          Precarga la imagen de fondo del homepage-section.
@@ -2070,7 +2069,7 @@ body {
 <!-- ============================================================
      SCRIPTS INLINE EXTRAÍDOS
 ============================================================ -->
-  <script src="assets/js/inline-scripts.js"></script>
+  <script src="assets/js/inline-scripts.js" defer></script>
 <!-- ============================================================
      MENÚ DESPLEGABLE MÓVIL Y DRILL-DOWN
 ============================================================ -->
