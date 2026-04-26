@@ -84,7 +84,8 @@
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
          Sin petición externa, sin bloqueo de parser JS.
     ====================================================== -->
-  <link rel="stylesheet" href="assets/css/tailwind.min.css">
+  <link rel="stylesheet" href="assets/css/tailwind.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/tailwind.min.css"></noscript>
   <!-- =====================================================
          GOOGLE FONTS - No bloqueante
          Ya correcto con preload + onload + noscript fallback
@@ -105,8 +106,9 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
-  <!-- styles.css: crítico → bloqueante (async causa CLS) -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=25">
+  <!-- styles.css: async → cubierto por inline-critical + anti-CLS -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=25" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=25"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
@@ -123,6 +125,17 @@
          los CSS externos, evitando FOUC con la carga async.
     ====================================================== -->
   <style id="critical-inline">
+/* === ANTI-CLS: pre-establece valores finales para evitar shifts === */
+/* Tailwind preflight: browser default body margin es 8px → shift al cargar */
+*,::before,::after{box-sizing:border-box}
+body{margin:0;line-height:inherit}
+/* Google Translate inyecta position:relative;top:0px al body → pre-establecer */
+body{position:relative;top:0;min-height:100%}
+/* styles.css cambia homepage-section a height:75vh;max-width:700px → pre-establecer */
+.homepage-section{height:75vh;max-height:700px;min-height:450px}
+/* body background de styles.css → evitar flash de imagen de fondo */
+body:not(.homepage){background-image:url('assets/images/101.webp');background-size:cover;background-position:center;background-attachment:fixed}
+/* === FIN ANTI-CLS === */
 /* === TAILWIND CRÍTICO ABOVE-THE-FOLD === */
 .fixed{position:fixed}
 .relative{position:relative}
