@@ -1035,6 +1035,18 @@ body {
     .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
     #drill-detail-panel, #drill-overlay { display: none !important; }
 }
+#footer-columns {
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 1024px) {
+    #footer-columns {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
 
 /* ===== SELECTOR DE IDIOMA (PC) ===== */
 .lang-selector { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); z-index: 200; }
@@ -3281,7 +3293,7 @@ body {
       <img src="assets/images/aniversario.webp" alt="Aniversario" style="width:80px; height:auto; opacity:0.9;">
     </div>
     <div class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
-    <div class="flex flex-row justify-between gap-8 px-4 md:px-20">
+    <div id="footer-columns" class="gap-8 px-4">
         <!--<div class="flex flex-col md:flex-row md:justify-between gap-12 md:px-20">-->
         <div class="text-left">
           <h3 class="text-lg font-semibold text-white">O.S.10 Coquimbo</h3>
@@ -3443,9 +3455,8 @@ body {
      Esto reduce el peso inicial descargado (ahorro ~500KB).
 -->
   <!-- YouTube facade: carga iframe solo al hacer click -->
-  <!-- Google Translate (oculto) -->
+  <!-- Google Translate (oculto) — script cargado lazy desde inline-scripts.js -->
   <div id="google_translate_element" style="display:none;visibility:hidden;position:absolute;"></div>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 
 </html>
