@@ -750,16 +750,16 @@ async function speakWithElevenLabs(text) {
 
     // FUNCIÓN CORREGIDA PARA MOSTRAR NEGRITAS
     // ----- MODIFICACIÓN 1: Añadir 'speakMessage = true' -----
-    function addMessage(sender, text, buttons = [], imageUrl = null, speakMessage = true, trackHistory = true) {
+    function addMessage(sender, text, buttons = [], speakMessage = true, trackHistory = true) {
         const chatMessages = document.getElementById('chat-messages');
         const messageDiv = document.createElement('div');
         
         let content = '';
         if (sender === 'user') {
-            messageDiv.className = 'flex items-start space-x-2 mb-4 justify-end';
-            content = `<div class="bg-blue-600 text-white p-3 px-4 rounded-2xl shadow-md max-w-xs text-sm" style="border-bottom-right-radius: 4px;">${text}</div><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0 shadow-lg">U</div>`;
+            messageDiv.className = 'flex items-start space-x-2 mb-3 justify-end';
+            content = `<div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs">${text}</div><div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0">U</div>`;
         } else {
-            messageDiv.className = 'flex items-start space-x-2 mb-5';
+            messageDiv.className = 'flex items-start space-x-2 mb-1';
             
             // PRIMERO: Procesar negritas para HTML (ANTES de todo lo demás)
             let formattedText = text
@@ -791,9 +791,7 @@ async function speakWithElevenLabs(text) {
             const buttonsHtml = buttons.length > 0 ? '<div class="mt-2 space-y-1">' + buttons.map(btn => `<button class="response-button block w-full text-left bg-green-100 hover:bg-green-200 border border-green-500/50 text-green-800 text-sm py-1.5 px-3 rounded-lg transition-all font-medium" onclick="window.handleUserButtonClick('${btn}')">${btn}</button>`).join('') + '</div>' : '';
             
             // CUARTO: Crear contenido HTML final
-            let imageHtml = imageUrl ? `<img src="${imageUrl}" class="rounded-xl mb-3 w-full object-cover shadow-sm border border-gray-100" style="max-height: 180px;">` : '';
-            
-            content = `<div class="w-10 h-10 rounded-full bg-white border-2 border-green-500 flex items-center justify-center flex-shrink-0 p-1 shadow-sm"><img src="assets/images/poli.webp" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-white border border-gray-200 p-4 rounded-2xl shadow-sm max-w-[85%] text-gray-800 leading-relaxed text-sm" style="border-bottom-left-radius: 4px;">${imageHtml}${formattedText}${buttonsHtml}</div>`;
+            content = `<div class="w-8 h-8 rounded-full bg-white border-2 border-yellow-400 flex items-center justify-center flex-shrink-0 p-1"><img src="assets/images/poli.webp" alt="Bot Icon" class="h-full w-full object-contain"></div><div class="bg-gray-100 p-3 rounded-lg max-w-sm text-gray-800 leading-tight">${formattedText}${buttonsHtml}</div>`;
             
             // QUINTO: TTS por separado (usando texto ORIGINAL sin procesar)
             // ----- MODIFICACIÓN 2: Añadir '&& speakMessage' -----
@@ -1096,7 +1094,7 @@ async function speakWithElevenLabs(text) {
         const welcomeButtons = ['Menú OS10','Otro Menú','Valores', 'Horario', 'Directiva'];
         
         // ----- MODIFICACIÓN 3: Pasa 'false' para silenciar este mensaje -----
-        addMessage('bot', randomWelcomeMessage, welcomeButtons, 'assets/images/poli.webp', false, false);
+        addMessage('bot', randomWelcomeMessage, welcomeButtons, false, false);
 
     }, 1000);
 });

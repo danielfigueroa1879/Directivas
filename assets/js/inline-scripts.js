@@ -393,15 +393,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Evento del botón hamburguesa (ahora también cierra como X)
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        let leftToggleBusy = false;
+        let lastLeftToggleTs = 0;
+        function toggleLeftMenu(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            const now = Date.now();
+            if (leftToggleBusy || now - lastLeftToggleTs < 300) return;
+            lastLeftToggleTs = now;
+            leftToggleBusy = true;
             const isOpen = !mobileDropdown.classList.contains('hidden');
-            if (isOpen) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
-            }
+            if (isOpen) closeMobileMenu();
+            else openMobileMenu();
+            setTimeout(() => { leftToggleBusy = false; }, 260);
+        }
+        mobileMenuBtn.addEventListener('click', toggleLeftMenu);
+        mobileMenuBtn.addEventListener('pointerup', function(e) {
+            if (e.pointerType === 'touch') toggleLeftMenu(e);
         });
 
         // Cerrar al hacer click en el overlay
@@ -454,16 +461,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         window._closeMobileMenuRight = closeMobileMenuRight;
 
-        if (mobileMenuBtnRight) {
-            mobileMenuBtnRight.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
+        if (mobileMenuBtnRight && mobileDropdownRight) {
+            let rightToggleBusy = false;
+            let lastRightToggleTs = 0;
+            function toggleRightMenu(e) {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                const now = Date.now();
+                // Guarda contra doble disparo (pointer + click sintetizado) y re-entrada durante animación
+                if (rightToggleBusy || now - lastRightToggleTs < 300) return;
+                lastRightToggleTs = now;
+                rightToggleBusy = true;
                 const isOpen = !mobileDropdownRight.classList.contains('hidden');
-                if (isOpen) {
-                    closeMobileMenuRight();
-                } else {
-                    openMobileMenuRight();
-                }
+                if (isOpen) closeMobileMenuRight();
+                else openMobileMenuRight();
+                setTimeout(() => { rightToggleBusy = false; }, 260);
+            }
+            mobileMenuBtnRight.addEventListener('click', toggleRightMenu);
+            // Respaldo para devices donde el 'click' no se sintetiza tras touchend
+            mobileMenuBtnRight.addEventListener('pointerup', function(e) {
+                if (e.pointerType === 'touch') toggleRightMenu(e);
             });
         }
 
