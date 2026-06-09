@@ -355,6 +355,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Función para abrir el menú
         function openMobileMenu() {
+            // Cerrar el menú derecho si está abierto (sin tocar overlay)
+            if (mobileDropdownRight && !mobileDropdownRight.classList.contains('hidden')) {
+                mobileDropdownRight.classList.remove('show');
+                setMenuIconRight(false);
+                setTimeout(() => { mobileDropdownRight.classList.add('hidden'); }, 240);
+            }
             mobileDropdown.classList.remove('hidden');
             mobileMenuOverlay.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
@@ -378,8 +384,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (bannerEl) bannerEl.classList.remove('menu-open');
             setTimeout(() => {
                 mobileDropdown.classList.add('hidden');
-                mobileMenuOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
+                var rightMenu = document.getElementById('mobile-dropdown-right');
+                if (!rightMenu || rightMenu.classList.contains('hidden')) {
+                    mobileMenuOverlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
             }, 240);
         }
 
@@ -398,8 +407,66 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cerrar al hacer click en el overlay
         mobileMenuOverlay.addEventListener('click', function() {
             closeMobileMenu();
+            if (window._closeMobileMenuRight) window._closeMobileMenuRight();
         });
-        
+
+        // ===== MANEJO DEL SEGUNDO MENÚ HAMBURGUESA (DERECHO) =====
+        const mobileMenuBtnRight = document.getElementById('mobile-menu-btn-right');
+        const mobileDropdownRight = document.getElementById('mobile-dropdown-right');
+        const menuIconHamburgerRight = document.getElementById('menu-icon-hamburger-right');
+        const menuIconCloseRight = document.getElementById('menu-icon-close-right');
+
+        function setMenuIconRight(open) {
+            if (menuIconHamburgerRight) menuIconHamburgerRight.classList.toggle('hidden', open);
+            if (menuIconCloseRight) menuIconCloseRight.classList.toggle('hidden', !open);
+        }
+
+        function openMobileMenuRight() {
+            // Cerrar el menú izquierdo si está abierto (sin tocar overlay)
+            if (!mobileDropdown.classList.contains('hidden')) {
+                mobileDropdown.classList.remove('show');
+                setMenuIcon(false);
+                setTimeout(() => { mobileDropdown.classList.add('hidden'); }, 240);
+            }
+            mobileDropdownRight.classList.remove('hidden');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setMenuIconRight(true);
+            if (bannerEl) bannerEl.classList.add('menu-open');
+            mobileDropdownRight.scrollTop = 0;
+            setTimeout(() => {
+                mobileDropdownRight.classList.add('show');
+            }, 10);
+        }
+
+        function closeMobileMenuRight() {
+            if (!mobileDropdownRight) return;
+            mobileDropdownRight.classList.remove('show');
+            setMenuIconRight(false);
+            if (bannerEl && !mobileDropdown.classList.contains('show')) bannerEl.classList.remove('menu-open');
+            setTimeout(() => {
+                mobileDropdownRight.classList.add('hidden');
+                if (mobileDropdown.classList.contains('hidden')) {
+                    mobileMenuOverlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            }, 240);
+        }
+        window._closeMobileMenuRight = closeMobileMenuRight;
+
+        if (mobileMenuBtnRight) {
+            mobileMenuBtnRight.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const isOpen = !mobileDropdownRight.classList.contains('hidden');
+                if (isOpen) {
+                    closeMobileMenuRight();
+                } else {
+                    openMobileMenuRight();
+                }
+            });
+        }
+
         // ── DRILL-DOWN NAVIGATION (reemplaza acordeones en mobile) ──
         const submenuButtons = document.querySelectorAll('#mobile-dropdown .submenu-parent-btn');
 
@@ -552,6 +619,125 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
         }
+
+        // ── DRILL-DOWN NAVIGATION para MENÚ DERECHO ──
+        if (mobileDropdownRight) {
+            const submenuButtonsRight = mobileDropdownRight.querySelectorAll('.submenu-parent-btn');
+
+            const scrollMaskR = document.createElement('div');
+            scrollMaskR.id = 'scroll-mask-top-right';
+            scrollMaskR.className = 'scroll-mask-top';
+            mobileDropdownRight.appendChild(scrollMaskR);
+
+            const drillMainR = document.createElement('div');
+            drillMainR.id = 'drill-main-panel-right';
+            drillMainR.className = 'drill-main-panel';
+            Array.from(mobileDropdownRight.children).forEach(c => {
+                if (c !== scrollMaskR) drillMainR.appendChild(c);
+            });
+            mobileDropdownRight.appendChild(drillMainR);
+
+            const drillDetailR = document.createElement('div');
+            drillDetailR.id = 'drill-detail-panel-right';
+            drillDetailR.className = 'drill-detail-panel';
+            drillDetailR.innerHTML = `
+                <div class="drill-header">
+                    <button class="drill-back-btn" aria-label="Volver al menú">
+                        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
+                        Menú
+                    </button>
+                    <span class="drill-title-right"></span>
+                </div>
+                <div class="drill-content-right"></div>
+            `;
+            const drillOverlayR = document.createElement('div');
+            drillOverlayR.id = 'drill-overlay-right';
+            drillOverlayR.className = 'drill-overlay';
+            document.body.appendChild(drillOverlayR);
+            document.body.appendChild(drillDetailR);
+
+            let activeSubmenuR = null;
+            let activeParentR = null;
+            const drillContentR = drillDetailR.querySelector('.drill-content-right');
+            const drillTitleR = drillDetailR.querySelector('.drill-title-right');
+
+            const chevronSVG2 = `<svg class="drill-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>`;
+
+            function openDrillPanelR(submenu, title, parentEl) {
+                drillContentR.innerHTML = '';
+                drillContentR.appendChild(submenu);
+                submenu.classList.add('show');
+                submenu.style.maxHeight = 'none';
+                submenu.style.overflow = 'visible';
+                submenu.style.height = 'auto';
+                drillTitleR.textContent = title;
+                activeSubmenuR = submenu;
+                activeParentR = parentEl;
+                drillMainR.classList.add('pushed');
+                drillDetailR.classList.add('active');
+                drillOverlayR.classList.add('active');
+                drillDetailR.scrollTop = 0;
+            }
+
+            function closeDrillPanelR() {
+                drillMainR.classList.remove('pushed');
+                drillDetailR.classList.remove('active');
+                drillOverlayR.classList.remove('active');
+                const sub = activeSubmenuR;
+                const par = activeParentR;
+                activeSubmenuR = null;
+                activeParentR = null;
+                setTimeout(() => {
+                    if (sub && par) {
+                        sub.style.maxHeight = '';
+                        sub.style.overflow = '';
+                        sub.style.height = '';
+                        par.appendChild(sub);
+                        sub.classList.remove('show');
+                    }
+                    drillContentR.innerHTML = '';
+                }, 280);
+            }
+
+            submenuButtonsRight.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parent = this.closest('.has-submenu');
+                    const submenu = parent.querySelector('.submenu');
+                    if (!submenu) return;
+                    const title = Array.from(this.childNodes)
+                        .filter(n => n.nodeType === 3)
+                        .map(n => n.textContent.trim())
+                        .filter(Boolean)
+                        .join(' ');
+                    openDrillPanelR(submenu, title, parent);
+                });
+            });
+
+            drillDetailR.querySelector('.drill-back-btn').addEventListener('click', closeDrillPanelR);
+            drillOverlayR.addEventListener('click', closeDrillPanelR);
+
+            // Nested buttons en menú derecho
+            drillContentR.addEventListener('click', function(e) {
+                const btn = e.target.closest('.nested-btn');
+                if (!btn) return;
+                e.stopPropagation();
+                const parent = btn.closest('.has-nested');
+                const menu = parent.querySelector('.nested-menu');
+                const arrow = btn.querySelector('.nested-arrow');
+                const isOpen = parent.classList.contains('nested-open');
+                if (isOpen) {
+                    parent.classList.remove('nested-open');
+                    if (menu) menu.classList.remove('show');
+                    if (arrow) arrow.style.transform = '';
+                } else {
+                    parent.classList.add('nested-open');
+                    if (menu) menu.classList.add('show');
+                    if (arrow) arrow.style.transform = 'rotate(90deg)';
+                }
+            });
+        }
+
         // Nota: la rama else (acordeón escritorio para mobile-dropdown) se eliminó
         // porque en escritorio #mobile-menu-btn está oculto y el mobile-dropdown
         // no se abre — los handlers drill-down ya no interfieren en PC.
@@ -999,22 +1185,51 @@ document.addEventListener('DOMContentLoaded', function() {
     var container = document.getElementById('kb-container');
     if (!container) return;
 
+    // Cache busting — añade ?v=N a cada URL para forzar redescarga cuando se
+    // actualicen las fotos. window.PHOTO_VERSION se define en index.html <head>.
+    var ver = window.PHOTO_VERSION ? ('?v=' + window.PHOTO_VERSION) : '';
+
     // Solo las primeras 2 imágenes para carga inicial inmediata
     var priority = [
-        'assets/images/foto%20(1a).webp',
-        'assets/images/foto%20(1).webp'
+        'assets/images/foto%20(1a).webp' + ver,
+        'assets/images/foto%20(1).webp' + ver
     ];
 
     // El resto se carga de forma diferida
     var deferred = [];
     for (var i = 2; i <= 20; i++) {
-        deferred.push('assets/images/foto%20(' + i + ').webp');
+        deferred.push('assets/images/foto%20(' + i + ').webp' + ver);
     }
 
     var slides = [];
     var current = 0;
     var altToggle = false;
     var intervalId = null;
+    var firstVideoEnded = false;
+
+    // Cortar el primer video a los 20 s exactos y transicionar a foto (1).webp.
+    // No esperamos al evento 'ended' del video (~21 s) — forzamos el corte a 20 s.
+    var FIRST_VIDEO_CUT_MS = 20000;
+    var firstVideoEl = container.querySelector('video');
+    if (firstVideoEl) {
+        firstVideoEl.loop = false;
+        var onFirstVideoEnded = function() {
+            if (firstVideoEnded) return;
+            firstVideoEnded = true;
+            try { firstVideoEl.pause(); } catch (e) {}
+            // Limpiar el poster para que el navegador NO muestre foto (1a).webp
+            // si por cualquier motivo el video se rebobina o pierde su último frame
+            // durante el fade-out hacia foto (1).webp.
+            try { firstVideoEl.removeAttribute('poster'); } catch (e) {}
+            // Si el carrusel ya arrancó y hay al menos una foto cargada, avanzar ya.
+            if (intervalId && slides.length >= 2) advanceSlide();
+        };
+        // Corte forzado a los 20 s desde el arranque del script.
+        setTimeout(onFirstVideoEnded, FIRST_VIDEO_CUT_MS);
+        // Backup: si el video natural terminara antes (ej. cambia a uno más corto),
+        // que también dispare la transición.
+        firstVideoEl.addEventListener('ended', onFirstVideoEnded);
+    }
 
     function createSlide(src, hidden) {
         var div = document.createElement('div');
@@ -1024,27 +1239,100 @@ document.addEventListener('DOMContentLoaded', function() {
         return div;
     }
 
+    function createVideoSlide(src) {
+        var div = document.createElement('div');
+        div.className = 'kb-slide';
+        var video = document.createElement('video');
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.src = src;
+        video.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;';
+        video.className = 'kb-hero-video';
+        div.appendChild(video);
+        container.appendChild(div);
+        return div;
+    }
+
+    function advanceSlide() {
+        var prev = slides[current];
+        // Avanzar al próximo slot con slide cargado; omite huecos (null/false)
+        var nextIdx = current;
+        var attempts = 0;
+        do {
+            nextIdx = (nextIdx + 1) % slides.length;
+            attempts++;
+            if (attempts > slides.length) return;
+        } while (!slides[nextIdx]);
+        if (nextIdx === current) return;
+        current = nextIdx;
+        var next = slides[current];
+
+        altToggle = !altToggle;
+        next.classList.toggle('alt', altToggle);
+        next.classList.add('active');
+
+        var prevVideo = prev.querySelector('video');
+        // Solo pausar — NO rebobinar a 0. Si rebobinamos, el navegador muestra el
+        // primer frame (o el poster, si lo tiene) durante el fade-out de 1.8 s,
+        // lo que produce un destello de "otra foto" entre video y foto (1).webp.
+        // El reset a 0 lo hace el bloque nextVideo cuando el carrusel cicla de
+        // vuelta al video y lo va a reproducir de nuevo desde el inicio.
+        if (prevVideo) { prevVideo.pause(); }
+
+        var nextVideo = next.querySelector('video');
+        if (nextVideo) { nextVideo.currentTime = 0; nextVideo.play(); }
+
+        setTimeout(function() {
+            prev.classList.remove('active', 'alt');
+            prev.style.animation = 'none';
+            requestAnimationFrame(function() {
+                prev.style.animation = '';
+            });
+        }, 1900);
+
+        scheduleNext();
+    }
+
+    function scheduleNext() {
+        // Si la slide actual tiene un video, esperar a que termine
+        var slide = slides[current];
+        if (slide) {
+            var video = slide.querySelector('video');
+            if (video) {
+                // Primera reproducción del primer video: el listener global
+                // ya está enganchado y llamará a advanceSlide() al terminar.
+                // En replays (firstVideoEnded === true) usamos el flujo normal.
+                if (video === firstVideoEl && !firstVideoEnded) {
+                    if (video.ended) setTimeout(advanceSlide, 50);
+                    return;
+                }
+                if (!video.ended) {
+                    video.onended = function() {
+                        video.onended = null;
+                        advanceSlide();
+                    };
+                    return;
+                }
+                // Video ya terminó (caso raro en replay)
+                setTimeout(advanceSlide, 50);
+                return;
+            }
+        }
+        setTimeout(advanceSlide, 9000);
+    }
+
     function startCarousel() {
         if (slides.length < 2 || intervalId) return;
+        intervalId = true; // marcar como iniciado
         slides[0].classList.add('active');
-
-        intervalId = setInterval(function() {
-            var prev = slides[current];
-            current = (current + 1) % slides.length;
-            var next = slides[current];
-
-            altToggle = !altToggle;
-            next.classList.toggle('alt', altToggle);
-            next.classList.add('active');
-
-            setTimeout(function() {
-                prev.classList.remove('active', 'alt');
-                prev.style.animation = 'none';
-                requestAnimationFrame(function() {
-                    prev.style.animation = '';
-                });
-            }, 1900);
-        }, 9000);
+        // Si el primer video ya terminó antes de que cargara la primera foto,
+        // transicionar de inmediato en lugar de quedarnos en el último frame.
+        if (firstVideoEnded) {
+            advanceSlide();
+        } else {
+            scheduleNext();
+        }
     }
 
     function loadImage(src, callback) {
@@ -1078,24 +1366,45 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function loadDeferredImages() {
+        // Garantizar que la carga arranque en máx. 800 ms aunque el browser
+        // no entre en estado idle (frecuente en móvil con scripts pesados).
         var loadFn = (typeof requestIdleCallback !== 'undefined')
-            ? requestIdleCallback
-            : function(cb) { setTimeout(cb, 2000); };
+            ? function(cb) { requestIdleCallback(cb, { timeout: 800 }); }
+            : function(cb) { setTimeout(cb, 500); };
 
         loadFn(function() {
-            var idx = 0;
-            function loadNext() {
-                if (idx >= deferred.length) return;
-                var src = deferred[idx++];
-                loadImage(src, function(ok) {
-                    if (ok) {
-                        slides.push(createSlide(src));
-                    }
-                    // Cargar siguiente con pequeño delay para no saturar la red
-                    setTimeout(loadNext, 300);
-                });
-            }
-            loadNext();
+            var startIndex = slides.length;
+
+            // Intercalar videos entre las fotos diferidas.
+            // camioneta3 lleva su propia versión (recompresión liviana 2.8 MB) para
+            // forzar re-descarga sin afectar al cache de fotos via PHOTO_VERSION.
+            var heroVideos = [
+                'assets/images/camioneta2.mp4' + ver,
+                'assets/images/camioneta3.mp4?v=3'
+            ];
+            var videoInsertAfter = [4, 12];
+
+            var allItems = [];
+            var videoIdx = 0;
+            deferred.forEach(function(src, idx) {
+                allItems.push({ type: 'image', src: src });
+                if (videoIdx < videoInsertAfter.length && idx === videoInsertAfter[videoIdx]) {
+                    allItems.push({ type: 'video', src: heroVideos[videoIdx] });
+                    videoIdx++;
+                }
+            });
+
+            allItems.forEach(function(item, idx) {
+                var pos = startIndex + idx;
+                if (item.type === 'video') {
+                    slides[pos] = createVideoSlide(item.src);
+                } else {
+                    slides[pos] = null;
+                    loadImage(item.src, function(ok) {
+                        slides[pos] = ok ? createSlide(item.src) : false;
+                    });
+                }
+            });
         });
     }
 })();
@@ -1124,58 +1433,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/* ============================================================
-   BLOQUE 15: Google Translate - funciones del traductor
-   (extraído desde index.html, línea 4352)
-============================================================ */
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'es',
-        includedLanguages: 'en,pt,fr,de,it,zh-CN',
-        autoDisplay: false
-    }, 'google_translate_element');
-}
-function toggleLangMenu(e) {
-    e.stopPropagation();
-    document.getElementById('lang-selector').classList.toggle('open');
-}
-// Cerrar menú de idioma al hacer clic fuera
-document.addEventListener('click', function(e) {
-    const selector = document.getElementById('lang-selector');
-    if (selector && !selector.contains(e.target)) {
-        selector.classList.remove('open');
-    }
-});
-function setLang(langCode, label, btn) {
-    document.getElementById('lang-current').textContent = label;
-    document.querySelectorAll('.lang-dropdown button').forEach(b => b.classList.remove('lang-active'));
-    if (btn) btn.classList.add('lang-active');
-    document.getElementById('lang-selector').classList.remove('open');
-    if (langCode === 'es') {
-        // Restaurar idioma original
-        const iframe = document.querySelector('.goog-te-banner-frame');
-        if (iframe) {
-            try {
-                const doc = iframe.contentDocument || iframe.contentWindow.document;
-                const restoreBtn = doc.querySelector('[id*="restore"]') || doc.querySelector('a');
-                if (restoreBtn) restoreBtn.click();
-            } catch(e) {}
-        }
-        // Limpiar cookie de Google Translate
-        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
-        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
-        setTimeout(() => location.reload(), 100);
-        return;
-    }
-    const select = document.querySelector('.goog-te-combo');
-    if (select) {
-        select.value = langCode;
-        select.dispatchEvent(new Event('change'));
-    } else {
-        // Si el widget aún no cargó, guardar selección y recargar
-        document.cookie = 'googtrans=/es/' + langCode;
-        location.reload();
-    }
-}
 
 
