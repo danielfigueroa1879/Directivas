@@ -56,6 +56,11 @@ body.homepage {
     transition: opacity 1.8s ease-in-out;
     z-index: 0;
 }
+/* Realce sutil extra del video hero (el archivo ya viene con color/contraste mejorado vía ffmpeg) */
+.kb-hero-video {
+    filter: saturate(1.05) contrast(1.03);
+    -webkit-filter: saturate(1.05) contrast(1.03);
+}
 .kb-slide.active {
     opacity: 1;
     will-change: transform, opacity;
@@ -96,7 +101,7 @@ body.homepage {
 }
 #suspension-notice .notice-marquee {
     display: block;
-    animation: notice-slidein 35s ease-in-out infinite;
+    animation: notice-slidein 190s ease-in-out infinite;
 }
 #suspension-notice .notice-title {
     color: #FFFFFF;
@@ -115,9 +120,9 @@ body.homepage {
 }
 @keyframes notice-slidein {
     0%   { transform: translateX(110%); }
-    6%   { transform: translateX(0); }
-    91%  { transform: translateX(0); }
-    92%  { transform: translateX(110%); }
+    1%   { transform: translateX(0); }
+    96%  { transform: translateX(0); }
+    97%  { transform: translateX(110%); }
     100% { transform: translateX(110%); }
 }
 @media (min-width: 1024px) {
@@ -312,9 +317,9 @@ body.homepage {
     overflow-x: auto;
     overflow-y: visible;
 }
-.desktop-navbar-container::-webkit-scrollbar { height: 3px; }
+.desktop-navbar-container::-webkit-scrollbar { display: none; height: 0; width: 0; }
 .desktop-navbar-container::-webkit-scrollbar-track { background: transparent; }
-.desktop-navbar-container::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 10px; }
+.desktop-navbar-container::-webkit-scrollbar-thumb { background: transparent; }
 .desktop-nav-items {
     display: flex;
     align-items: center;
@@ -407,6 +412,48 @@ button.desktop-submenu-item .spd-badge {
     flex-shrink: 0;
 }
 .desktop-submenu-item:hover { background: rgba(0,0,0,0.2); }
+/* ===== Destacado del último ítem agregado: breve destello blanco al abrir el menú ===== */
+@keyframes flashItemNuevo {
+    0%   { color: #fff; text-shadow: none; }
+    8%   { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    16%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    24%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    32%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    40%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    48%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    56%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    64%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    72%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    80%  { color: #fff; text-shadow: 0 0 2px rgba(255,255,255,0.25); }
+    88%  { color: #fff; text-shadow: 0 0 8px #fff, 0 0 18px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.65); }
+    100% { color: #fff; text-shadow: none; }
+}
+/* Se dispara al abrir el submenú que contiene el ítem nuevo, parpadea 6 veces y vuelve a lo normal */
+.desktop-submenu-item-with-side:hover .item-nuevo,
+.desktop-nav-item:hover > .desktop-submenu > .item-nuevo {
+    animation: flashItemNuevo 5s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .desktop-submenu-item-with-side:hover .item-nuevo,
+    .desktop-nav-item:hover > .desktop-submenu > .item-nuevo { animation: none; }
+}
+/* ===== Destello del último ítem agregado en CELULAR (fondo claro): brillo verde breve al abrir el submenú ===== */
+@keyframes flashNuevoMobile {
+    0%   { background-color: transparent; color: #4b5563; }
+    18%  { background-color: rgba(22,163,74,0.22); color: #15803d; }
+    45%  { background-color: rgba(22,163,74,0.06); color: #15803d; }
+    70%  { background-color: rgba(22,163,74,0.22); color: #15803d; }
+    100% { background-color: transparent; color: #4b5563; }
+}
+#mobile-dropdown .submenu button.item-nuevo,
+#drill-content button.item-nuevo {
+    animation: flashNuevoMobile 2.3s ease-in-out;
+    border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+    #mobile-dropdown .submenu button.item-nuevo,
+    #drill-content button.item-nuevo { animation: none; }
+}
 .desktop-submenu-title {
     font-family: Arial, sans-serif;
     font-size: 11px;
@@ -458,6 +505,16 @@ button.desktop-submenu-item .spd-badge {
 .desktop-submenu-side::-webkit-scrollbar-track { background: transparent; }
 .desktop-submenu-side::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); border-radius: 10px; }
 .desktop-submenu-side::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.5); }
+/* ===== Lista lateral (leyes/normativa) ordenada: ancho fijo, sin cortes ===== */
+.desktop-submenu-side { width: 300px; min-width: 300px; max-width: 300px; }
+.desktop-submenu-side .desktop-submenu-item {
+    max-height: none;            /* no cortar los textos largos */
+    align-items: flex-start;     /* texto de 2 líneas alineado arriba */
+    white-space: normal;
+    line-height: 1.35;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 .desktop-submenu-item-with-side:hover > .desktop-submenu-side {
     opacity: 1;
     visibility: visible;
@@ -814,35 +871,25 @@ body {
     .mobile-dropdown { width: 430px !important; top: 4rem !important; height: auto !important; }
 }
 
-/* ===== SELECTOR DE IDIOMA (PC) ===== */
-.lang-selector { position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); z-index: 200; }
-.lang-btn {
-    display: flex; align-items: center; gap: 0.3rem;
-    background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 6px; color: #fff; font-size: 0.72rem; font-weight: 700;
-    padding: 0.18rem 0.55rem; cursor: pointer; height: 22px;
-    letter-spacing: 0.06em; transition: background 0.2s; white-space: nowrap;
+/* PC: ajustes del banner de navegación */
+@media (min-width: 1024px) {
+    /* Evitar que la rueda del mouse "suba" las letras: los items deben caber justo en los 34px del banner */
+    .desktop-nav-item {
+        min-height: 0 !important;
+        height: 34px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    /* Quitar el scroll por completo: el menú cabe centrado, no debe desplazarse con la rueda */
+    .desktop-navbar-container {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+    }
 }
-.lang-btn:hover { background: rgba(0,0,0,0.45); }
-.lang-arrow { transition: transform 0.25s; flex-shrink: 0; }
-.lang-selector.open .lang-arrow { transform: rotate(180deg); }
-.lang-dropdown {
-    display: none; position: absolute; top: calc(100% + 8px); right: 0;
-    background: #fff; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-    overflow: hidden; min-width: 155px; z-index: 9999;
-    border: 1px solid #e5e7eb;
-}
-.lang-selector.open .lang-dropdown { display: block; }
-.lang-dropdown button {
-    display: flex; align-items: center; gap: 0.55rem;
-    width: 100%; text-align: left; padding: 0.5rem 1rem;
-    border: none; background: transparent; font-size: 0.8rem;
-    color: #1e293b; cursor: pointer; font-weight: 500; transition: background 0.15s;
-    border-bottom: 1px solid #f1f5f9;
-}
-.lang-dropdown button:last-child { border-bottom: none; }
-.lang-dropdown button:hover { background: #f0fdf4; color: #15803d; }
-.lang-dropdown button.lang-active { background: #dcfce7; color: #15803d; font-weight: 700; }
+/* Ocultar barra desplazadora dentro del banner verde de navegación */
+.desktop-navbar-container { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+.desktop-navbar-container::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
 
 /* ====================================================
    MENÚ HAMBURGUESA — DISEÑO MODERNO Y LIMPIO

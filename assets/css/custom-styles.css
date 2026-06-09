@@ -189,6 +189,35 @@
     }
 }
 
+/* Ocultar menú hamburguesa izquierdo en PC */
+@media (min-width: 1024px) {
+    #mobile-menu-btn {
+        display: none !important;
+    }
+}
+
+/* Centrar los paneles móviles en tablet y móviles grandes */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .mobile-dropdown,
+    .mobile-dropdown-right {
+        width: min(95%, 640px) !important;
+        max-width: 640px !important;
+        left: 50% !important;
+        right: auto !important;
+    }
+    .mobile-dropdown {
+        transform: translateX(-150%) !important;
+    }
+    .mobile-dropdown-right {
+        transform: translateX(150%) !important;
+    }
+    .mobile-dropdown.show,
+    .mobile-dropdown-right.show {
+        transform: translateX(-50%) !important;
+        opacity: 1 !important;
+    }
+}
+
 /* ============================================================
    BLOQUE DE RESCATE: VISIBILIDAD DE SECCIONES
    ============================================================ */
@@ -445,17 +474,6 @@ body:not(.homepage) {
    ACCESIBILIDAD: TAMAÑO MÍNIMO DE ÁREAS TÁCTILES
    ======================================== */
 
-/* Botón de cambiar idioma */
-.lang-btn {
-    min-width: 32px !important;
-    min-height: 32px !important;
-    padding: 4px 8px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: auto !important;
-}
-
 /* Botones del menú desktop */
 .desktop-nav-item {
     min-height: 40px !important;
@@ -476,19 +494,21 @@ body:not(.homepage) {
     padding: 8px 10px !important;
 }
 
-/* Botones móviles */
-.mobile-dropdown .submenu button,
-.mobile-dropdown .submenu-parent-btn,
-.mobile-dropdown .dropdown-menu-content > button,
-.mobile-dropdown .dropdown-menu-content > a {
-    min-height: 42px !important;
-    padding: 10px 14px !important;
-}
+/* Botones móviles — solo aplica en pantallas >= 600px */
+@media (min-width: 600px) {
+    .mobile-dropdown .submenu button,
+    .mobile-dropdown .submenu-parent-btn,
+    .mobile-dropdown .dropdown-menu-content > button,
+    .mobile-dropdown .dropdown-menu-content > a {
+        min-height: 42px !important;
+        padding: 10px 14px !important;
+    }
 
-/* Botones del menú de leyes */
-.mobile-dropdown .submenu.leyes-compactas button {
-    min-height: 40px !important;
-    padding: 8px 14px !important;
+    /* Botones del menú de leyes */
+    .mobile-dropdown .submenu.leyes-compactas button {
+        min-height: 40px !important;
+        padding: 8px 14px !important;
+    }
 }
 
 /* ========================================
@@ -514,4 +534,643 @@ body:not(.homepage) {
     text-align: center;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+}
+
+/* ========================================
+   CELULARES PEQUEÑOS (≤ 380px)
+   ======================================== */
+
+/* Banner pill y menú: escalado fluido para todos los celulares */
+@media (max-width: 1023px) {
+    #banner {
+        width: calc(100% - 1rem) !important;
+        height: clamp(60px, 15vw, 67px) !important;
+    }
+    #banner > div {
+        gap: 0 !important;
+        padding-left: clamp(0.25rem, 1.5vw, 0.5rem) !important;
+        padding-right: clamp(0.25rem, 1.5vw, 0.5rem) !important;
+    }
+
+    /* Imagen aniversario */
+    #banner-aniversario {
+        width: clamp(80px, 22vw, 94px) !important;
+        max-width: clamp(80px, 22vw, 94px) !important;
+        margin-left: clamp(0.5rem, 2.5vw, 1.1rem) !important;
+    }
+
+    /* Logo OS10 */
+    #banner .logo-os10-container img,
+    #banner > div > div:first-child img {
+        height: clamp(33px, 9vw, 42px) !important;
+        width: auto !important;
+    }
+
+    /* Número de visitas en negrillas */
+    .banner-text-small #visit-counter {
+        font-weight: 800 !important;
+    }
+
+    /* Lupa */
+    #global-search-button {
+        min-width: clamp(36px, 10vw, 44px) !important;
+        min-height: clamp(36px, 10vw, 44px) !important;
+        width: clamp(36px, 10vw, 44px) !important;
+        height: clamp(36px, 10vw, 44px) !important;
+        padding: clamp(4px, 1vw, 6px) !important;
+    }
+    #global-search-button svg,
+    #global-search-button .search-icon {
+        width: clamp(20px, 5.5vw, 24px) !important;
+        height: clamp(20px, 5.5vw, 24px) !important;
+    }
+
+    /* Contador de visitas */
+    #banner-counter-group {
+        margin-right: clamp(0.25rem, 1.2vw, 0.5rem) !important;
+        padding: 0 clamp(0.25rem, 1vw, 0.5rem) 0 0 !important;
+    }
+    .banner-text-small {
+        font-size: clamp(0.95rem, 4.2vw, 1.18rem) !important;
+    }
+    .banner-text-small #visit-counter {
+        font-size: clamp(1rem, 4.6vw, 1.3rem) !important;
+    }
+    .banner-text-small svg {
+        width: clamp(1.4rem, 5.6vw, 1.75rem) !important;
+        height: clamp(1.4rem, 5.6vw, 1.75rem) !important;
+    }
+
+    /* Hamburger menu button */
+    #mobile-menu-btn {
+        margin-left: clamp(6px, 1.6vw, 10px) !important;
+    }
+    #mobile-menu-btn-right {
+        margin-right: clamp(6px, 1.6vw, 10px) !important;
+    }
+    #mobile-menu-btn,
+    #mobile-menu-btn-right {
+        width: clamp(36px, 10vw, 44px) !important;
+        height: clamp(36px, 10vw, 44px) !important;
+        padding: clamp(4px, 1vw, 6px) !important;
+    }
+    #mobile-menu-btn svg,
+    #mobile-menu-btn-right svg {
+        width: clamp(22px, 6vw, 26px) !important;
+        height: clamp(22px, 6vw, 26px) !important;
+    }
+    /* Close icons del menú móvil: color específico según menú abierto */
+    #menu-icon-close {
+        color: #047857 !important;
+        stroke-width: 3 !important;
+    }
+    #menu-icon-close-right {
+        color: #0633af !important;
+        stroke-width: 3 !important;
+    }
+    #menu-icon-close path,
+    #menu-icon-close-right path {
+        stroke-width: 3 !important;
+    }
+
+    /* Menú dropdown: extensión del banner pill */
+    .mobile-dropdown,
+    .mobile-dropdown-right {
+        position: fixed !important;
+        top: 8px !important;
+        width: calc(100% - 0.4rem) !important;
+        max-width: 500px !important;
+        max-height: calc(100vh - 16px) !important;
+        height: auto !important;
+        padding-top: 0 !important;
+        border-radius: 28px !important;
+        background: rgba(255, 255, 255, 0.79) !important;
+        backdrop-filter: saturate(180%) blur(40px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+        border: 1px solid rgba(255,255,255,0.55) !important;
+        box-shadow: 0 8px 40px rgba(0,0,0,0.16) !important;
+    }
+    .mobile-dropdown {
+        left: 0.2rem !important;
+        right: auto !important;
+    }
+    .mobile-dropdown-right {
+        left: auto !important;
+        right: 0.2rem !important;
+    }
+    /* Botones del menú: texto más grande y en negrillas */
+    body .mobile-dropdown .submenu-parent-btn {
+        padding: clamp(0.4rem, 1.8vw, 0.8rem) clamp(0.6rem, 2.5vw, 1.5rem) !important;
+        font-size: clamp(1rem, 3.2vw, 1.15rem) !important;
+        font-weight: 700 !important;
+    }
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        padding: clamp(0.3rem, 1.3vw, 0.5rem) clamp(0.6rem, 2.5vw, 1.5rem) !important;
+        font-size: clamp(0.95rem, 3vw, 1.1rem) !important;
+        font-weight: 600 !important;
+    }
+    body .mobile-dropdown .dropdown-menu-header h3 {
+        font-size: clamp(1.05rem, 3.4vw, 1.2rem) !important;
+        font-weight: 800 !important;
+    }
+    body .mobile-dropdown .submenu.submenu-compact button,
+    body .mobile-dropdown .submenu.leyes-compactas button {
+        padding-left: clamp(1rem, 4vw, 2.5rem) !important;
+        font-size: clamp(0.82rem, 2.5vw, 0.95rem) !important;
+        font-weight: 600 !important;
+    }
+    /* Flechas del menú */
+    body .mobile-dropdown .submenu-arrow {
+        width: clamp(0.9rem, 3vw, 1.25rem) !important;
+        height: clamp(0.9rem, 3vw, 1.25rem) !important;
+    }
+    /* Accesibilidad táctil fluida */
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .submenu-parent-btn,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        min-height: clamp(34px, 9vw, 42px) !important;
+    }
+}
+
+/* Menú: pantallas menores a 374px */
+@media (max-width: 374px) {
+    body .mobile-dropdown .submenu-parent-btn {
+        padding: 0.3rem 0.5rem !important;
+        font-size: 0.68rem !important;
+    }
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.68rem !important;
+    }
+    body .mobile-dropdown .submenu.submenu-compact button,
+    body .mobile-dropdown .submenu.leyes-compactas button {
+        padding-left: 0.8rem !important;
+        font-size: 0.56rem !important;
+    }
+    body .mobile-dropdown .dropdown-menu-header h3 {
+        font-size: 0.72rem !important;
+    }
+    body .mobile-dropdown .submenu-arrow {
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+    }
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .submenu-parent-btn {
+        min-height: 30px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Contenedor principal más ancho */
+    .card-container {
+        width: 100% !important;
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+    }
+
+    /* Sección homepage más compacta */
+    .homepage-section {
+        min-height: 350px !important;
+        height: 65vh !important;
+    }
+
+    /* Botones homepage más angostos */
+    .homepage-btn {
+        width: 80% !important;
+        min-width: unset !important;
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Tarjetas de trámites */
+    .tramite-card {
+        flex-basis: 98% !important;
+        min-width: unset !important;
+        padding: 1rem !important;
+    }
+
+    .tramite-card h3 {
+        font-size: 1rem !important;
+    }
+
+    /* Carousel de componentes */
+    #componentes-seguridad .carousel-card {
+        width: 98% !important;
+        flex-basis: 98% !important;
+        padding: 1rem !important;
+        min-height: 240px !important;
+    }
+
+    /* Textos generales más pequeños */
+    .text-sm {
+        font-size: 0.8rem !important;
+    }
+
+    .text-base {
+        font-size: 0.875rem !important;
+    }
+
+    /* Banner */
+    #banner {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+
+    .banner-text-small {
+        font-size: 0.95rem !important;
+    }
+    .banner-text-small #visit-counter {
+        font-size: 1rem !important;
+    }
+
+    /* Chat widget más pequeño */
+    #chat-toggle-button {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    /* Menú móvil: adaptación pantallas chicas */
+    .mobile-dropdown {
+        width: calc(100% - 0.5rem) !important;
+        border-radius: 18px !important;
+    }
+    body .mobile-dropdown .submenu-parent-btn {
+        padding: 0.35rem 0.6rem !important;
+        font-size: 0.72rem !important;
+    }
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        padding: 0.3rem 0.6rem !important;
+        font-size: 0.72rem !important;
+    }
+    body .mobile-dropdown .submenu.submenu-compact button,
+    body .mobile-dropdown .submenu.leyes-compactas button {
+        padding-left: 1rem !important;
+        font-size: 0.6rem !important;
+    }
+    body .mobile-dropdown .dropdown-menu-header h3 {
+        font-size: 0.78rem !important;
+    }
+    body .mobile-dropdown .submenu-arrow {
+        width: 0.85rem !important;
+        height: 0.85rem !important;
+    }
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .submenu-parent-btn {
+        min-height: 32px !important;
+    }
+
+    /* Credenciales */
+    .credenciales-main-title {
+        font-size: 1.2rem !important;
+    }
+
+    .credenciales-main-subtitle {
+        font-size: 0.85rem !important;
+    }
+
+    .credenciales-download-btn {
+        min-width: 200px !important;
+        font-size: 0.85rem !important;
+        padding: 6px 16px !important;
+    }
+
+    /* Tablas responsivas */
+    .credenciales-responsive-table th,
+    .credenciales-responsive-table td {
+        padding: 8px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Modal */
+    .modal-content {
+        width: 98% !important;
+        padding: 1.25rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    .modal-title {
+        font-size: 1.2rem !important;
+    }
+
+    /* Elegant cards */
+    .elegant-card {
+        padding: 1.25rem !important;
+    }
+
+    /* Evitar desbordamiento horizontal */
+    body {
+        overflow-x: hidden !important;
+    }
+
+    * {
+        max-width: 100vw;
+    }
+
+    img, svg, video, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* ========================================
+   CELULARES MUY PEQUEÑOS (≤ 324px)
+   - Logo OS10 más pequeño
+   - Textos del menú (Leyes y Normativa, Informativos SPD, etc.) más pequeños
+   ======================================== */
+@media (max-width: 324px) {
+    /* Logo OS10: reducir cuando la imagen aniversario ya está pequeña */
+    #banner .logo-os10-container img,
+    #banner > div > div:first-child img:not(#banner-aniversario) {
+        height: clamp(26px, 8.5vw, 32px) !important;
+        width: auto !important;
+    }
+
+    /* Imagen aniversario: un toque más pequeña para acompañar */
+    #banner-aniversario {
+        width: clamp(48px, 14vw, 58px) !important;
+        max-width: clamp(48px, 14vw, 58px) !important;
+        margin-left: clamp(0.35rem, 1.8vw, 0.7rem) !important;
+    }
+
+    /* Botones principales del menú (Normativa, Informativos SPD, etc.) */
+    body .mobile-dropdown .submenu-parent-btn {
+        padding: 0.25rem 0.45rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* Botones internos del menú */
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .dropdown-menu-content > button,
+    body .mobile-dropdown .dropdown-menu-content > a {
+        padding: 0.22rem 0.45rem !important;
+        font-size: 0.6rem !important;
+    }
+
+    /* Submenús compactos (leyes-compactas, submenu-compact) */
+    body .mobile-dropdown .submenu.submenu-compact button,
+    body .mobile-dropdown .submenu.leyes-compactas button {
+        padding-left: 0.7rem !important;
+        font-size: 0.5rem !important;
+    }
+
+    /* Encabezado del dropdown */
+    body .mobile-dropdown .dropdown-menu-header h3 {
+        font-size: 0.65rem !important;
+    }
+
+    /* Flechas del menú */
+    body .mobile-dropdown .submenu-arrow {
+        width: 0.72rem !important;
+        height: 0.72rem !important;
+    }
+
+    /* Altura mínima táctil reducida */
+    body .mobile-dropdown .submenu button,
+    body .mobile-dropdown .submenu-parent-btn {
+        min-height: 28px !important;
+    }
+}
+
+/* ========================================
+   CHATBOT — TAMAÑO FLUIDO (escala con la pantalla)
+   El popup se achica de forma CONTINUA a medida que la
+   pantalla se reduce, adaptándose a tablets, celulares
+   normales y celulares pequeños — sin saltos bruscos.
+   - clamp(min, preferido, max): el ancho/alto crecen y se
+     reducen junto al viewport, con topes mínimo y máximo.
+   ======================================== */
+@media (max-width: 1023px) {
+    #chat-popup {
+        /* Ancho: hasta 450px en tablet, se reduce con el ancho de pantalla.
+           98vw → en celulares normales queda un poquito más ancho. */
+        width: clamp(280px, 98vw, 450px) !important;
+        max-width: 98vw !important;
+        /* Alto: escala fluido con la altura de pantalla (reducido un poco más) */
+        height: clamp(280px, 52vh, 400px) !important;
+        max-height: 80vh !important;
+        /* Pegado al fondo: sin espacio entre el cuadro y el fin de la pantalla */
+        bottom: 0 !important;
+    }
+
+    /* La cabecera y el pie también se compactan en pantallas chicas */
+    #chat-popup header { padding: clamp(0.5rem, 2vw, 0.75rem) !important; }
+    #chat-popup footer { padding: clamp(0.5rem, 2vw, 0.75rem) !important; }
+    #chat-popup #chat-messages { padding: clamp(0.6rem, 2.5vw, 1rem) !important; }
+}
+
+/* ========================================
+   CHATBOT — CELULARES (≤ 767px)
+   Cabecera simplificada: se deja SOLO el ícono del bot,
+   el título "Asistente", el parlante y la X.
+   Se ocultan el subtítulo "O.S.10 Coquimbo 👍✅" y el
+   selector de voz (Diego, Antoni, ...).
+   Además la letra se reduce un poquito para adaptarse mejor.
+   ======================================== */
+@media (max-width: 767px) {
+    /* Ocultar subtítulo (nombre OS10 + pulgar) */
+    #chat-popup header p { display: none !important; }
+    /* Ocultar el selector de voz (el nombre para elegir) */
+    #chat-popup #voiceSelector,
+    #chat-popup .voice-selector { display: none !important; }
+
+    /* Letra de los mensajes un poquito más pequeña */
+    #chat-popup #chat-messages { font-size: 0.86rem !important; line-height: 1.3 !important; }
+    #chat-popup #chat-messages .max-w-sm,
+    #chat-popup #chat-messages .max-w-xs { font-size: 0.86rem !important; }
+    #chat-popup #user-input { font-size: 0.86rem !important; }
+}
+
+/* ========================================
+   CHATBOT — CELULARES PEQUEÑOS (≤ 380px)
+   El bot se hace aún más pequeño y la letra se reduce
+   para que todo entre cómodo en pantallas chicas.
+   ======================================== */
+@media (max-width: 380px) {
+    #chat-popup {
+        width: clamp(250px, 98vw, 380px) !important;
+        max-width: 98vw !important;
+        height: clamp(270px, 50vh, 380px) !important;
+        max-height: 78vh !important;
+        bottom: 0 !important;
+    }
+
+    /* Letra de los mensajes (burbujas) más pequeña */
+    #chat-popup #chat-messages { font-size: 0.78rem !important; line-height: 1.3 !important; }
+    #chat-popup #chat-messages .max-w-sm,
+    #chat-popup #chat-messages .max-w-xs { font-size: 0.78rem !important; }
+
+    /* Burbujas: menos relleno */
+    #chat-popup #chat-messages .p-3 { padding: 0.5rem 0.65rem !important; }
+
+    /* Avatares (bot/usuario) más chicos */
+    #chat-popup #chat-messages .w-8 { width: 1.6rem !important; height: 1.6rem !important; }
+
+    /* Botones de respuesta del bot */
+    #chat-popup .response-button {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.55rem !important;
+    }
+
+    /* Cabecera más compacta */
+    #chat-popup header h1 { font-size: 0.85rem !important; }
+    #chat-popup header p { font-size: 0.62rem !important; }
+    #chat-popup .voice-selector { font-size: 0.62rem !important; }
+
+    /* Entrada de texto y aviso del pie */
+    #chat-popup #user-input { font-size: 0.78rem !important; }
+    #chat-popup footer .text-xs { font-size: 0.6rem !important; }
+}
+
+/* Colores específicos para menús móviles abiertos */
+#mobile-dropdown.show {
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-parent-btn,
+#mobile-dropdown.show .dropdown-menu-content > button,
+#mobile-dropdown.show .dropdown-menu-content > a,
+#mobile-dropdown.show .submenu button,
+#mobile-dropdown.show .menu-item-stack,
+#mobile-dropdown.show .dropdown-menu-header h3,
+#mobile-dropdown.show .submenu-title {
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-arrow,
+#mobile-dropdown.show .close-mobile-menu-btn svg {
+    stroke: #047857 !important;
+    color: #047857 !important;
+}
+#mobile-dropdown.show .submenu-parent-btn .submenu-arrow path,
+#mobile-dropdown.show .close-mobile-menu-btn svg path {
+    stroke: #047857 !important;
+}
+
+#mobile-dropdown-right.show {
+    color: #062a8a !important;
+}
+#mobile-dropdown-right.show .submenu-parent-btn,
+#mobile-dropdown-right.show .dropdown-menu-content > button,
+#mobile-dropdown-right.show .dropdown-menu-content > a,
+#mobile-dropdown-right.show .submenu button,
+#mobile-dropdown-right.show .menu-item-stack,
+#mobile-dropdown-right.show .dropdown-menu-header h3,
+#mobile-dropdown-right.show .submenu-title {
+    color: #062a8a !important;
+}
+#mobile-dropdown-right.show .submenu-arrow,
+#mobile-dropdown-right.show .close-mobile-menu-btn svg {
+    stroke: #062a8a !important;
+    color: #062a8a !important;
+}
+#mobile-dropdown-right.show .submenu-parent-btn .submenu-arrow path,
+#mobile-dropdown-right.show .close-mobile-menu-btn svg path {
+    stroke: #062a8a !important;
+}
+
+/* ========================================
+   GRID DE 2 COLUMNAS EN MÓVIL - TRÁMITES PRINCIPALES
+   ======================================== */
+@media (max-width: 768px) {
+    #tramites-principales .carousel-container,
+    #tramites-principales .carousel-container.carousel-desktop-grid,
+    #tramites-principales .carousel-container.mt-16,
+    section#tramites-principales .carousel-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        scroll-snap-type: none !important;
+        flex: none !important;
+        scroll-behavior: smooth !important;
+    }
+
+    #tramites-principales .carousel-card {
+        flex: 1 1 auto !important;
+        flex-basis: unset !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 1.5rem;
+        min-height: 24rem;
+        scroll-snap-align: none !important;
+    }
+
+    /* Ocultar paginación en móvil */
+    #tramites-principales .carousel-container + .pagination-dots,
+    #tramites-principales .pagination-dots {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   AJUSTES DE DISEÑO - SEGÚN CAPTURA
+   ======================================== */
+@media (max-width: 768px) {
+    /* Container blanco superior más estrecho y centrado */
+    .homepage-section .flex.items-center.space-x-4 {
+        max-width: 90% !important;
+        margin: 0 auto !important;
+        padding: 1rem !important;
+    }
+
+    /* Iconos más pequeños en el container blanco */
+    .homepage-section button svg {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .homepage-section button span {
+        font-size: 0.75rem !important;
+    }
+
+    /* Sección Trámites Principales - Fondo blanco, letras verdes */
+    #leyes-normativa {
+        background-color: #ffffff !important;
+    }
+
+    #leyes-normativa h2 {
+        color: #146314 !important;
+    }
+
+    #leyes-normativa p {
+        color: #333333 !important;
+    }
+
+    /* Chatbot - Fondo verde */
+    #chat-popup {
+        background-color: #146314 !important;
+        color: white !important;
+    }
+
+    #chat-popup header {
+        background-color: #0f4a0f !important;
+        color: white !important;
+    }
+
+    #chat-popup footer {
+        background-color: #0f4a0f !important;
+        border-top-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    /* Barra final con logo */
+    #main-footer {
+        background-color: #146314 !important;
+        color: white !important;
+        padding: 1.5rem !important;
+        text-align: center !important;
+    }
+
+    #main-footer img {
+        max-width: 100% !important;
+        height: auto !important;
+        margin-bottom: 1rem !important;
+    }
 }

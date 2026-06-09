@@ -145,26 +145,56 @@ p.carousel-card-description {
 
 /* RESPONSIVE: Móvil (Ajuste ligero) */
 @media (max-width: 768px) {
+    /* Mostrar grid de 2 columnas en móvil para carousel-desktop-grid */
+    #tramites-principales .carousel-container.carousel-desktop-grid,
+    #capacitacion .carousel-container.carousel-desktop-grid,
+    #servicios-adicionales .carousel-container.carousel-desktop-grid,
+    .carousel-container.carousel-desktop-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+        padding: 1rem !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
+        scroll-snap-type: none !important;
+        flex: none !important;
+        scroll-behavior: smooth !important;
+    }
+
     .carousel-container {
         padding: 0 1rem 1.5rem 1rem;
         gap: 1rem;
     }
-    
-    .carousel-card {
-        flex-basis: 98%; /* MODIFICADO: 88% -> 92% (más ancho) */
-        min-width: 260px;
+
+    #tramites-principales .carousel-card,
+    #capacitacion .carousel-card,
+    #servicios-adicionales .carousel-card {
+        flex: 1 1 auto !important;
+        flex-basis: unset !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 100% !important;
         padding: 1.5rem;
-        min-height: 27rem; /* MODIFICADO: 24rem -> 27rem (más alto) */
+        min-height: 24rem;
+        scroll-snap-align: none !important;
     }
-    
+
     .carousel-card h3 {
         font-size: 1.1rem;
     }
-    
+
     /* MODIFICADO: Se cambia 'p' por 'p.carousel-card-description' y se achica la letra */
     p.carousel-card-description {
         font-size: 0.75rem; /* MODIFICADO: 0.9rem -> 0.75rem (más pequeño en móvil) */
         line-height: 1.4;
+    }
+
+    /* Ocultar paginación cuando es grid */
+    #tramites-principales .carousel-desktop-grid + .pagination-dots,
+    #capacitacion .carousel-desktop-grid + .pagination-dots,
+    #servicios-adicionales .carousel-desktop-grid + .pagination-dots,
+    .carousel-desktop-grid + .pagination-dots {
+        display: none !important;
     }
 }
 
