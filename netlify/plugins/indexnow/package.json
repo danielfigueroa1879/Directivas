@@ -1,0 +1,7 @@
+{
+  "name": "netlify-plugin-indexnow",
+  "version": "1.0.0",
+  "description": "Notifica a Bing IndexNow tras cada deploy exitoso en Netlify",
+  "main": "index.js",
+  "private": true
+}

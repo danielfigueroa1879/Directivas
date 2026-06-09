@@ -1,0 +1,12 @@
+name: netlify-plugin-indexnow
+inputs:
+  - name: host
+    description: Dominio del sitio (sin protocolo)
+    default: os10coquimbo.netlify.app
+  - name: key
+    description: Clave IndexNow
+    default: c2918e58ba2b45d7bbc4105d84c3ce17
+  - name: urls
+    description: Lista de URLs a notificar tras cada deploy exitoso
+    default:
+      - https://os10coquimbo.netlify.app/
