@@ -82,6 +82,7 @@ class GlobalSearch {
                             <button class="suggestion-pill" data-search="directiva">Directivas</button>
                             <button class="suggestion-pill" data-search="credencial">Credenciales</button>
                             <button class="suggestion-pill" data-search="21659">Ley 21.659</button>
+                            <button class="suggestion-pill" data-search="21825">Ley 21.825</button>
                             <button class="suggestion-pill" data-search="209">Decreto 209</button>
                             <button class="suggestion-pill" data-search="208">Decreto 208</button>
                             <button class="suggestion-pill" data-search="2310">Decreto 2310</button>
@@ -489,11 +490,74 @@ class GlobalSearch {
                 keywords: ['resolución', '831', 'elementos', 'defensa', 'fútbol', 'profesional', 'deportes', 'equipo']
             },
             {
+                title: 'Resolución N° 396 - Instrucciones Generales Examen VV.PP. y GG.SS.',
+                content: 'Res. N° 396 sobre Instrucciones Generales para Exámenes de Vigilantes Privados y Guardias de Seguridad',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1220956', '_blank'),
+                keywords: ['resolución', 'resol', '396', 'instrucciones', 'examen', 'vvpp', 'ggss', 'vigilantes', 'guardias', 'seguridad', 'privada', 'bcn']
+            },
+            {
+                title: 'Resolución N° 581 - Modifica Custodia Carga Sobredimensionada',
+                content: 'Res. N° 581 que modifica regulación de custodia de cargas sobredimensionadas',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221275', '_blank'),
+                keywords: ['resolución', 'resol', '581', 'custodia', 'carga', 'sobredimensionada', 'modifica', 'transporte', 'seguridad', 'bcn']
+            },
+            {
+                title: 'Resolución N° 1366 - Aprueba Convalidación de Asignaturas',
+                content: 'Res. N° 1366 que aprueba la convalidación de asignaturas',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1223663', '_blank'),
+                keywords: ['resolución', 'resol', '1366', 'convalidación', 'asignaturas', 'aprueba', 'capacitación', 'bcn']
+            },
+            {
+                title: 'Resolución N° 1507 - Convalidación Asignaturas de Perfeccionamiento (NUEVA)',
+                content: 'Res. N° 1507 sobre Convalidación de Asignaturas de Perfeccionamiento. Diario Oficial N° 44459 (27-05-2026).',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2026/05/27/44459/01/2813688.pdf', '_blank'),
+                keywords: ['resolución', 'resol', '1507', 'convalidación', 'asignaturas', 'perfeccionamiento', 'capacitación', 'formación', 'diario', 'oficial', '44459', '2026']
+            },
+            {
+                title: 'Resolución N° 33 - Aprueba Norma Técnica N° 247',
+                content: 'Res. N° 33 que aprueba la Norma Técnica N° 247',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1217403', '_blank'),
+                keywords: ['resolución', 'resol', '33', 'norma', 'técnica', '247', 'aprueba', 'bcn']
+            },
+            {
+                title: 'Resolución N° 2277 - Aprueba Planes y Programas',
+                content: 'Res. N° 2277 que aprueba Planes y Programas de capacitación',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1218912', '_blank'),
+                keywords: ['resolución', 'resol', '2277', 'planes', 'programas', 'aprueba', 'capacitación', 'bcn']
+            },
+            {
+                title: 'Diario Oficial 44136 - Modifica Decreto 222',
+                content: 'Publicación Diario Oficial N° 44136 (29-04-2025) que modifica el Decreto N° 222',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/04/29/44136/01/2638569.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44136', 'modifica', 'decreto', '222', '2025', 'abril', 'publicación']
+            },
+            {
+                title: 'Diario Oficial 44253',
+                content: 'Publicación Diario Oficial N° 44253 - 17 de septiembre de 2025',
+                section: 'Resoluciones',
+                action: () => window.open('https://www.diariooficial.interior.gob.cl/publicaciones/2025/09/17/44253/01/2702355.pdf', '_blank'),
+                keywords: ['diario', 'oficial', '44253', '2025', 'septiembre', 'publicación', 'normativa', 'seguridad']
+            },
+            {
                 title: 'Ley 21.806 - Extensión de Autoridades (VIGENTE)',
                 content: 'Ley 21.806 sobre Extensión de Autoridades Gobernadores y Vicegobernadores. Marco normativo actualizado 2026',
                 section: 'Leyes y Normativa',
                 action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1221118', '_blank'),
                 keywords: ['ley', '21806', '21.806', 'extensión', 'autoridades', 'gobernadores', 'vicegobernadores', 'vigente', '2026']
+            },
+            {
+                title: 'Ley 21.825 - Modifica Plazos Ley 21.659 (NUEVA)',
+                content: 'Ley 21.825 que modifica la Ley 21.659 sobre Seguridad Privada. Aumenta el plazo de presentación y pronunciamiento sobre los estudios de seguridad de 6 a 18 meses. Extiende la prórroga de vigencia de la última autorización del personal de seguridad privada.',
+                section: 'Leyes y Normativa',
+                action: () => window.open('https://www.bcn.cl/leychile/navegar?idNorma=1224572', '_blank'),
+                keywords: ['ley', '21825', '21.825', 'modifica', 'plazos', '18', 'meses', 'dieciocho', 'estudios', 'seguridad', 'prórroga', 'autorización', 'transitorio', 'nueva', 'vigente', '21659', '21.659', '2026']
             },
 
             // SECCIÓN: Componentes del Sistema (ACTUALIZADO SEGÚN LEY 21.659 Y DECRETO 209)
