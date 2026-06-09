@@ -215,9 +215,9 @@ body.homepage {
         height: 70vh !important;
         max-height: 70vh !important;
     }
-    /* Título hero: empieza debajo del pill (pill top 8px + height 56px + margen) */
+    /* Título hero: bajado para respirar bajo el banner pill */
     #hero-title-container {
-        top: 100px !important;
+        top: 150px !important;
     }
     /* Botones posicionados hacia el fondo de la sección hero */
     #btn-container-hero {
@@ -1132,7 +1132,7 @@ body {
             top: 8px !important;
             width: calc(100% - 1.5rem) !important;
             max-width: 820px !important;
-            height: 67px !important;
+            height: 68px !important;
             border-radius: 9999px !important;
             background: rgba(255, 255, 255, 0.60) !important;
             backdrop-filter: saturate(180%) blur(40px) !important;
@@ -1257,9 +1257,9 @@ body {
         #mobile-dropdown::-webkit-scrollbar { display: none !important; }
         #mobile-dropdown.show { overflow: hidden !important; }
 
-        /* Spacer fijo 67px — ocupa zona del pill, no scrollea */
+        /* Spacer 68px — ocupa zona del pill, no scrollea (debe coincidir con #banner) */
         #scroll-mask-top {
-            height: 67px;
+            height: 68px;
             flex-shrink: 0;
             pointer-events: none;
         }

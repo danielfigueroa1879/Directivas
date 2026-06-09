@@ -143,58 +143,28 @@ p.carousel-card-description {
 
 /* --- MEDIA QUERIES SIMPLIFICADAS --- */
 
-/* RESPONSIVE: Móvil (Grid de 2 columnas) */
+/* RESPONSIVE: Móvil (Ajuste ligero) */
 @media (max-width: 768px) {
-    /* Mostrar como grid en móvil - Aplica a cualquier carousel-container que sea un carousel-desktop-grid */
-    .carousel-container.carousel-desktop-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 1rem !important;
-        padding: 1rem !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-        scroll-snap-type: none !important;
-        max-width: 100% !important;
-        flex: none !important;
-    }
-
     .carousel-container {
         padding: 0 1rem 1.5rem 1rem;
         gap: 1rem;
     }
-
+    
     .carousel-card {
-        flex: 1 1 auto !important;
-        flex-basis: unset !important;
-        min-width: unset !important;
-        max-width: 100% !important;
+        flex-basis: 98%; /* MODIFICADO: 88% -> 92% (más ancho) */
+        min-width: 260px;
         padding: 1.5rem;
-        min-height: 24rem;
-        scroll-snap-align: none !important;
+        min-height: 27rem; /* MODIFICADO: 24rem -> 27rem (más alto) */
     }
-
+    
     .carousel-card h3 {
         font-size: 1.1rem;
     }
-
+    
     /* MODIFICADO: Se cambia 'p' por 'p.carousel-card-description' y se achica la letra */
     p.carousel-card-description {
         font-size: 0.75rem; /* MODIFICADO: 0.9rem -> 0.75rem (más pequeño en móvil) */
         line-height: 1.4;
-    }
-
-    /* Ocultar scrollbar en móvil */
-    .carousel-container {
-        scrollbar-width: none;
-    }
-
-    .carousel-container::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Ocultar paginación en móvil cuando es grid */
-    .carousel-desktop-grid + .pagination-dots {
-        display: none !important;
     }
 }
 
