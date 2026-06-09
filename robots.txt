@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://os10coquimbo.netlify.app/sitemap.xml

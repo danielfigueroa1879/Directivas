@@ -5,6 +5,22 @@
   # Le dice a Netlify dónde encontrar las funciones del servidor.
   functions = "netlify/functions/"
 
+# ============================================================
+# PLUGIN INDEXNOW — notifica a Bing tras cada deploy exitoso
+# ============================================================
+[[plugins]]
+  package = "./netlify/plugins/indexnow"
+
+  # URLs a notificar. Puedes agregar más a medida que el sitio crezca.
+  # También se puede sobreescribir en runtime con la env var INDEXNOW_URLS
+  # (lista separada por coma) configurada desde el panel de Netlify.
+  [plugins.inputs]
+    host = "os10coquimbo.netlify.app"
+    key = "c2918e58ba2b45d7bbc4105d84c3ce17"
+    urls = [
+      "https://os10coquimbo.netlify.app/"
+    ]
+
 # Redirección específica y segura para nuestra API.
 [[redirects]]
   from = "/api/gemini"
