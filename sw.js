@@ -2,21 +2,21 @@
 // PHOTO_VERSION sincronizado con window.PHOTO_VERSION en index.html.
 // IMPORTANTE: cuando reemplaces fotos, sube PHOTO_VERSION en los 3 lugares
 // (index.html <script>, este archivo, y bumpear el sufijo de CACHE_NAME).
-const PHOTO_VERSION = '10';
-const CACHE_NAME = 'directivas-os10-cache-v22'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
+const PHOTO_VERSION = '11';
+const CACHE_NAME = 'directivas-os10-cache-v23'; // Subir cuando cambien fotos para forzar limpieza de caché vieja
 
 // Lista de archivos y recursos a cachear durante la instalación
 const urlsToCache = [
   '/',
   './index.html',
   './manifest.json',
-  './assets/css/styles.css?v=27',
+  './assets/css/styles.css?v=28',
   './assets/css/credenciales.css',
-  './assets/js/main.js?v=3',
+  './assets/js/main.js?v=4',
   './assets/js/inicio.js?v=5',
   './assets/js/credenciales.js',
-  './assets/js/chatbot.js?v=2',
-  './rules/chatbot-rules.js?v=2',
+  './assets/js/chatbot.min.js',
+  './rules/chatbot-rules.js?v=4',
   // Iconos y logos
   './assets/images/icon-192x192.png',
   './assets/images/icon-512x512.png',

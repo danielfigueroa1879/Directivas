@@ -77,7 +77,7 @@
          cambies cualquier foto del carrusel. Todos los dispositivos
          descargarán la versión nueva sin importar la caché previa.
     ====================================================== -->
-  <script>window.PHOTO_VERSION = '10';</script>
+  <script>window.PHOTO_VERSION = '11';</script>
   <!-- =====================================================
          PRELOAD IMAGEN LCP - CRÍTICO
          Precarga la imagen de fondo del homepage-section.
@@ -88,7 +88,7 @@
     ====================================================== -->
   <!-- El poster del <video> hero es foto (1a) en TODOS los dispositivos →
        se precarga una sola imagen, con prioridad alta, para acelerar el LCP. -->
-  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=10" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/foto%20(1a).webp?v=11" fetchpriority="high">
   <!-- =====================================================
          TAILWIND LOCAL - CSS puro, misma versión (v3.4.19), ya purged.
          Reemplaza el CDN de 124 KiB JS por 30 KiB CSS local.
@@ -113,17 +113,17 @@
     <link rel="stylesheet" href="assets/css/carousel.css">
   </noscript>
   <!-- styles.css: async → cubierto por inline-critical + tailwind crítico -->
-  <link rel="stylesheet" href="assets/css/styles.css?v=27" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=27"></noscript>
+  <link rel="stylesheet" href="assets/css/styles.css?v=28" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/styles.css?v=28"></noscript>
   <!-- search.css: botón inlineado arriba, modal siempre oculto → async seguro -->
   <link rel="stylesheet" href="assets/css/search.css?v=1" media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet" href="assets/css/search.css?v=1">
   </noscript>
   <!-- custom-styles.css: panel/modales empiezan ocultos → async seguro -->
-  <link rel="stylesheet" href="assets/css/custom-styles.css?v=17" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/css/custom-styles.css?v=18" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="assets/css/custom-styles.css?v=17">
+    <link rel="stylesheet" href="assets/css/custom-styles.css?v=18">
   </noscript>
   <!-- =====================================================
          ESTILOS CRÍTICOS INLINE (above-the-fold)
@@ -220,14 +220,11 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: clip;
 }
 /* Estilos críticos body para evitar FOUC */
 body {
     font-family: 'Poppins', Arial, sans-serif;
     padding-top: 4rem;
-    overflow-x: clip !important;
-    overflow-y: visible !important;
 }
 body.homepage {
     background-color: white;
@@ -264,7 +261,7 @@ body.homepage {
     background-image: none;
     background-size: cover;
     background-position: center center;
-    min-height: 70vh;
+    min-height: 100vh;
     position: relative;
     overflow: hidden;
 }
@@ -598,33 +595,34 @@ body.show-credenciales #aviso-ley { display: none !important; }
     #banner { height: 6.5rem; }
     body  { padding-top: 0 !important; }
     .homepage-section {
-        min-height: 60vh !important;
+        min-height: 82vh !important;
         height: auto !important;
         max-height: calc(100vh - 5rem) !important;
-        overflow-x: hidden !important;
-        overflow-y: visible !important;
     }
     #kb-container,
     .kb-slide {
-        min-height: 60vh !important;
+        min-height: 82vh !important;
         height: 100% !important;
     }
     .kb-hero-video {
         width: 100% !important;
         height: 100% !important;
-        min-height: 60vh !important;
+        min-height: 82vh !important;
         object-fit: cover !important;
         object-position: center center !important;
     }
-    /* Título hero: empieza debajo del pill (pill top 8px + height 56px + margen) */
+    /* Título hero: bajado para respirar bajo el banner pill */
     #hero-title-container {
-        top: 140px !important;
+        top: 150px !important;
     }
     /* Botones posicionados hacia el fondo de la sección hero */
     #btn-container-hero {
-        position: relative !important;
-        margin-top: -46px !important;
-        margin-bottom: -46px !important;
+        position: absolute !important;
+        bottom: 8% !important;
+        top: auto !important;
+        left: 0;
+        right: 0;
+        margin-top: 0;
     }
     /* Menú lateral alineado con el fin del banner */
     .mobile-dropdown { top: 4.5rem !important; }
@@ -1148,8 +1146,6 @@ body:has(.modal-requisitos-componentes.active) #chat-widget-container { display:
 @media (min-width: 769px) {
     .carousel-desktop-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
         overflow-x: visible;
     }
     .carousel-desktop-grid .carousel-card {
@@ -1339,107 +1335,6 @@ body {
 /* Ocultar barra desplazadora dentro del banner verde de navegación */
 .desktop-navbar-container { -ms-overflow-style: none !important; scrollbar-width: none !important; }
 .desktop-navbar-container::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
-
-/* ===== RESPONSIVO: banner superior ===== */
-#banner > div {
-  overflow: hidden;
-  box-sizing: border-box;
-}
-#banner-aniversario {
-  max-width: 90px;
-  flex-shrink: 1;
-}
-@media (max-width: 374px) {
-  #banner-aniversario { height: 2rem !important; max-width: 70px; margin-left: 0.25rem !important; }
-  #banner > div { padding-left: 0.25rem !important; padding-right: 0.25rem !important; }
-  #mobile-menu-btn svg, #mobile-menu-btn-right svg { width: 2rem !important; height: 2rem !important; }
-  #mobile-menu-btn { padding: 0.25rem !important; }
-  #mobile-menu-btn-right { padding: 0.25rem !important; }
-  #banner-counter-group { font-size: 0.75rem !important; }
-  #visit-counter { font-size: 0.75rem !important; }
-}
-@media (min-width: 375px) and (max-width: 767px) {
-  #banner-aniversario { height: 2.5rem !important; max-width: 90px; margin-left: 0.5rem !important; }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  #banner-aniversario { height: 3rem !important; max-width: 120px; margin-left: 1rem !important; }
-  #banner > div { padding-left: 1rem !important; padding-right: 1rem !important; }
-}
-
-/* ===== RESPONSIVO: pantallas pequeñas (< 360px) ===== */
-@media (max-width: 359px) {
-  #btn-container-hero > div {
-    width: calc(100% - 1rem) !important;
-    padding: 0.6rem 0.25rem !important;
-  }
-  #btn-container-hero button > div {
-    width: 2.25rem !important;
-    height: 2.25rem !important;
-    padding: 0.4rem !important;
-  }
-  #btn-container-hero button > div svg {
-    width: 1rem !important;
-    height: 1rem !important;
-  }
-  #btn-container-hero button span {
-    font-size: 9px !important;
-  }
-  #hero-title-container {
-    top: 110px !important;
-  }
-}
-
-/* ===== RESPONSIVO: tablets (768px - 1023px) ===== */
-@media (min-width: 768px) and (max-width: 1023px) {
-  #btn-container-hero {
-    bottom: -60px !important;
-  }
-  #btn-container-hero > div {
-    width: calc(100% - 4rem) !important;
-    max-width: 620px !important;
-    padding: 1rem 1.5rem !important;
-    gap: 1rem !important;
-  }
-  #btn-container-hero button > div {
-    width: 3.5rem !important;
-    height: 3.5rem !important;
-    padding: 0.75rem !important;
-  }
-  #btn-container-hero button > div svg {
-    width: 1.75rem !important;
-    height: 1.75rem !important;
-  }
-  #btn-container-hero button span {
-    font-size: 13px !important;
-  }
-  #hero-title-container {
-    top: 180px !important;
-    max-width: 70% !important;
-  }
-  .homepage-section {
-    min-height: 70vh !important;
-    max-height: 80vh !important;
-  }
-}
-
-/* ===== INVERSIÓN DE COLORES sección Trámites Principales en mobile ===== */
-@media (max-width: 1023px) {
-  #tramites-principales h2 { color: #146314 !important; }
-  #tramites-principales p,
-  #tramites-principales span,
-  #tramites-principales h3,
-  #tramites-principales h4,
-  #tramites-principales a:not(.desktop-submenu-item),
-  #tramites-principales strong,
-  #tramites-principales .text-white,
-  #tramites-principales .text-gray-300,
-  #tramites-principales .text-gray-400 { color: #103830 !important; }
-  #tramites-principales > div > div.text-center > p { color: #4b5563 !important; }
-  #tramites-principales .carousel-card { background-color: #ffffff !important; border-color: #e5e7eb !important; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-  #tramites-principales .notice-marquee { color: #103830 !important; }
-  #tramites-principales .notice-title { color: #103830 !important; }
-  #tramites-principales #suspension-notice { background-color: #f0fdf4 !important; border-color: #bbf7d0 !important; }
-}
 
 /* ====================================================
    MENÚ HAMBURGUESA — DISEÑO MODERNO Y LIMPIO
@@ -1845,22 +1740,26 @@ body {
 
     /* ── MOBILE (≤1023px): pill fija, blanca, pill shape ── */
     @media (max-width: 1023px) {
-        #banner {
-            left: 50% !important;
-            right: auto !important;
-            transform: translateX(-50%) !important;
-            top: 8px !important;
-            width: calc(100% - 1.5rem) !important;
-            max-width: 480px !important;
-            height: 67px !important;
-            border-radius: 9999px !important;
-            background: rgba(255, 255, 255, 0.60) !important;
-            backdrop-filter: saturate(180%) blur(40px) !important;
-            -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
-            border: 1px solid rgba(255,255,255,0.45) !important;
-            border-bottom: 1px solid rgba(255,255,255,0.45) !important;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
-        }
+      /* Banner pill height driven by CSS var so spacer can match it */
+      #banner {
+        --banner-pill-h: clamp(68px, 16vw, 84px);
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        top: 6px !important;
+        width: calc(100% - 0.4rem) !important;
+        max-width: 500px !important;
+        height: var(--banner-pill-h) !important;
+        padding-top: 4px !important;
+        padding-bottom: 4px !important;
+        border-radius: 9999px !important;
+        background: rgba(255, 255, 255, 0.60) !important;
+        backdrop-filter: saturate(180%) blur(40px) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(40px) !important;
+        border: 1px solid rgba(255,255,255,0.45) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.45) !important;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.10) !important;
+      }
         /* Layout interno mobile: todo dentro del pill sin desborde */
         #banner > div {
             display: flex !important;
@@ -1876,14 +1775,15 @@ body {
             flex: 0 1 auto !important;
             min-width: 0 !important;
         }
-        /* Imagen aniversario: se reduce solo en pantallas muy chicas */
+        /* Imagen aniversario: agrandada en móvil */
         #banner-aniversario {
-            width: clamp(70px, 19vw, 88px) !important;
-            min-width: clamp(70px, 19vw, 88px) !important;
-            max-width: clamp(70px, 19vw, 88px) !important;
-            height: auto !important;
+            width: clamp(140px, 42vw, 200px) !important;
+            max-width: clamp(140px, 42vw, 200px) !important;
+            height: clamp(56px, 16vw, 64px) !important;
+            max-height: clamp(56px, 16vw, 64px) !important;
             flex-shrink: 0 !important;
-            margin-left: clamp(0.35rem, 1.5vw, 0.6rem) !important;
+            margin-left: clamp(1rem, 3.6vw, 1.8rem) !important;
+            object-fit: contain !important;
         }
         #search-center-container {
             flex: 0 0 auto !important;
@@ -2031,9 +1931,9 @@ body {
         #mobile-dropdown::-webkit-scrollbar, #mobile-dropdown-right::-webkit-scrollbar { display: none !important; }
         #mobile-dropdown.show, #mobile-dropdown-right.show { overflow: hidden !important; }
 
-        /* Spacer fijo 67px — ocupa zona del pill, no scrollea */
+        /* Spacer 68px — ocupa zona del pill, no scrollea (debe coincidir con #banner) */
         #scroll-mask-top, #scroll-mask-top-right {
-            height: 67px;
+          height: var(--banner-pill-h, 68px);
             flex-shrink: 0;
             pointer-events: none;
         }
@@ -2505,31 +2405,6 @@ body {
             font-weight: 700 !important;
         }
     }
-
-    /* === MEJORAS MODERNAS PARA EL CHATBOT === */
-    #chat-popup {
-        border-radius: 24px !important;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.15) !important;
-        border: 1px solid rgba(0,0,0,0.05) !important;
-    }
-    .chat-messages-container {
-        background-color: #f8fafc !important;
-    }
-    /* Animación para las tarjetas del carrusel */
-    .carousel-card {
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        border: 1px solid rgba(255,255,255,0.1) !important;
-    }
-    .carousel-card:hover {
-        transform: translateY(-10px) scale(1.02) !important;
-        background: rgba(255,255,255,0.15) !important;
-        box-shadow: 0 20px 30px rgba(0,0,0,0.2) !important;
-    }
-    /* Efecto de cristal para botones de respuesta */
-    .response-button {
-        border-radius: 12px !important;
-    }
   </style>
 </head>
 
@@ -2554,10 +2429,10 @@ body {
     <div class="w-full max-w-6xl mx-auto h-full flex items-center justify-between pl-3 pr-3 lg:px-4">
       <div class="flex items-center space-x-2">
         <button id="mobile-menu-btn" class="p-2" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="mobile-dropdown">
-          <svg id="menu-icon-hamburger" class="w-11 h-11" width="48" height="48" style="width: 48px !important; height: 48px !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 6h12M6 12h12M6 18h12"></path>
+          <svg id="menu-icon-hamburger" class="w-7 h-7" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-          <svg id="menu-icon-close" class="w-11 h-11 hidden" width="48" height="48" style="width: 48px !important; height: 48px !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="menu-icon-close" class="w-7 h-7 hidden" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
@@ -2577,10 +2452,10 @@ body {
           <span class="flex items-center"><span id="visit-counter" class="ml-1 text-slate-900">--</span></span>
         </div>
         <button id="mobile-menu-btn-right" class="p-2" aria-label="Abrir menú derecho" aria-expanded="false" aria-controls="mobile-dropdown-right">
-          <svg id="menu-icon-hamburger-right" class="w-11 h-11" width="48" height="48" style="width: 48px !important; height: 48px !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 6h12M6 12h12M6 18h12"></path>
+          <svg id="menu-icon-hamburger-right" class="w-7 h-7" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-          <svg id="menu-icon-close-right" class="w-11 h-11 hidden" width="48" height="48" style="width: 48px !important; height: 48px !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg id="menu-icon-close-right" class="w-7 h-7 hidden" width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
@@ -2910,7 +2785,7 @@ body {
 <!-- ============================================================
      SCRIPTS INLINE EXTRAÍDOS
 ============================================================ -->
-  <script src="assets/js/inline-scripts.js?v=10"></script>
+  <script src="assets/js/inline-scripts.js?v=11"></script>
 <!-- ============================================================
      MENÚ DESPLEGABLE MÓVIL Y DRILL-DOWN
 ============================================================ -->
@@ -3040,7 +2915,7 @@ body {
       </div>
     </div>
     <div class="has-submenu">
-      <button class="submenu-parent-btn">Empresas Seguridad Privada <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button class="submenu-parent-btn">Empresas Seguridad Priv. <svg class="submenu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path d="M9 5l7 7-7 7"></path>
         </svg></button>
       <div class="submenu submenu-compact">
@@ -3391,7 +3266,7 @@ body {
                 <li>Para empresas deben completar este listado en Word y debe venir en pendrive en formato digital.</li>
                 <a href="https://docs.google.com/document/d/14mzX_kderPmSKiui__WIqVKiRSKgFe7x/edit?usp=drive_link&ouid=106863493232977056654&rtpof=true&sd=true" target="_blank" class="credenciales-download-btn bg-yellow-500 hover:bg-yellow-600">WORD LIST. GG.SS.</a>
               </ul>
-              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp?v=10" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
+              <div class="mt-4 flex justify-center"><img src="assets/images/foto.webp?v=11" alt="Example of correct photo" class="credenciales-photo-example" loading="lazy" width="331" height="413"></div>
               <div class="flex flex-col space-y-3 mt-4">
                 <p class="text-sm italic text-center">Formato JPG, 260 x 320 píxeles, fondo blanco:</p>
               </div>
@@ -3432,76 +3307,102 @@ body {
 <!-- ============================================================
      SECCIÓN HERO - HOMEPAGE (IMAGEN DE FONDO KEN BURNS)
 ============================================================ -->
-  <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden" style="z-index: 10; position: relative;">
+  <section id="homepage-section" class="homepage-section relative flex flex-col items-center justify-center text-center text-white p-4 overflow-hidden">
     <!-- Slides Ken Burns inyectadas por JS -->
     <div id="kb-container" style="position:absolute;inset:0;z-index:0;overflow:hidden;">
       <!-- Primer slide: <img> real para que sea el elemento LCP con fetchpriority=high -->
       <!-- ?v=N debe coincidir con window.PHOTO_VERSION en <head> -->
       <div class="kb-slide active">
-        <video autoplay muted playsinline preload="auto" fetchpriority="high"
-               src="assets/images/camioneta.mp4?v=17"
-               poster="assets/images/foto%20(1a).webp?v=10"
+         <video autoplay muted playsinline preload="auto" fetchpriority="high"
+           src="assets/images/camioneta.mp4?v=18"
+           poster="assets/images/foto%20(1a).webp?v=11"
                width="960" height="443"
                aria-label="Video de fondo OS10 Coquimbo"
                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"
                class="kb-hero-video">
-          <img src="assets/images/foto%20(1a).webp?v=10" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none !important;" class="kb-hero-img hidden" aria-hidden="true">
+          <img src="assets/images/foto%20(1a).webp?v=11" fetchpriority="high" loading="eager" decoding="sync" alt="Fondo principal OS10 Coquimbo" width="960" height="443" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none !important;" class="kb-hero-img hidden" aria-hidden="true">
         </video>
       </div>
     </div>
-    <div class="absolute inset-0" style="z-index:5; pointer-events:none; background: linear-gradient(to right, rgba(16, 56, 48, 0.95) 0%, rgba(16, 56, 48, 0.85) 50%, rgba(16, 56, 48, 0.4) 100%);"></div>
-    <!-- Contenedor del Título (ALINEADO A IZQUIERDA) -->
-    <div class="relative z-10" id="hero-title-container" style="position: absolute !important; top: 8%; left: 2rem; right: auto; width: auto; max-width: 60%; z-index: 15 !important;">
-      <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold text-shadow-lg text-left leading-tight">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
-      <p class="mt-3 text-sm sm:text-base md:text-lg text-shadow text-left max-w-xl">Sistema de trámites y servicios de seguridad privada</p>
-      <div class="mt-4 flex items-center gap-2">
-        <svg class="w-5 h-5 text-green-300" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+    <div class="absolute inset-0 bg-black/30" style="z-index:1;"></div>
+    <!-- Contenedor del Título (FORZADO HACIA ARRIBA) -->
+    <div class="relative z-10" id="hero-title-container" style="position: absolute !important; left: 0; right: 0; width: 100%;">
+      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold text-shadow-lg">BIENVENIDOS A LA PLATAFORMA DE O.S.10 COQUIMBO</h1>
+      <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto text-shadow">Sistema de trámites y servicios de seguridad privada</p>
+      <div class="hero-oficial-pill" aria-label="Plataforma Oficial">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/>
+          <path d="M9 12l2 2 4-4"/>
         </svg>
-        <span class="inline-block bg-green-600/90 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold">Plataforma Oficial</span>
+        <span>Plataforma Oficial</span>
       </div>
     </div>
-    <!-- Contenedor de los Botones (4 botones en fila con iconos) -->
+    <!-- Contenedor de los Botones (centrado) -->
+    <div id="btn-container-hero" class="relative z-10 mt-12">
+      <!-- BOTONES PARA MÓVIL - Directivas y Credenciales eliminados:
+           ahora viven en la tarjeta blanca #mobile-quick-access -->
+      <div class="hidden">
+        <!-- Mantenemos el id texto-spd-mobile vacío por compatibilidad con
+             el script de animación SPD alternante (inline-scripts.js BLOQUE 6).
+             El botón visible de SPD ahora está en .mobile-quick-access. -->
+        <span class="texto-spd" id="texto-spd-mobile" aria-hidden="true">SPD</span>
+      </div>
+      <!-- BOTONES PARA PC - SPD EN EL MEDIO -->
+      <div class="hidden sm:flex flex-row space-x-6 justify-center items-center">
+        <button onclick="showDirectiva()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Directivas</button>
+        <button onclick="handleSPD()" class="homepage-btn bg-blue-600/80 hover:bg-blue-700 text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100 text-center leading-tight">
+          <span class="text-spd-alternante"><span class="texto-spd" id="texto-spd-desktop">SPD</span></span>
+        </button>
+        <button onclick="showCredenciales()" class="homepage-btn bg-[#ffb700]/80 hover:bg-[#d49900] text-white font-bold rounded-lg px-8 py-4 transition-transform transform hover:scale-105 hover:bg-opacity-100">Credenciales</button>
+      </div>
+    </div>
   </section>
-  <!-- Container acceso rápido: entre hero y tramites -->
-  <div id="btn-container-hero" class="lg:hidden flex justify-center" style="position:relative;z-index:200;margin-top:-46px;margin-bottom:-46px;">
-      <div class="bg-white border border-gray-100" style="width:calc(100% - 1.5rem);display:grid;grid-template-columns:repeat(4,1fr);padding:0.85rem 0.5rem;gap:0.25rem;border-radius:0.85rem;box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-        <button onclick="showCredenciales()" class="flex flex-col items-center justify-center gap-1.5 transition-all hover:scale-105 text-[#103830] w-full">
-          <div class="rounded-xl p-2 flex items-center justify-center w-11 h-11" style="background-color:#EBF2EB;">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #103830 !important;">
-              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25S13.24 11.25 12 11.25 9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-.75c0-1.66 3.34-2.5 5-2.5s5 .84 5 2.5V17z"/>
-            </svg>
-          </div>
-          <span class="font-semibold text-center" style="font-size:11px;color:#4b5563;line-height:1.2;">Credenciales</span>
-        </button>
-        <button onclick="showDirectiva()" class="flex flex-col items-center justify-center gap-1.5 transition-all hover:scale-105 text-[#103830] w-full">
-          <div class="rounded-xl p-2 flex items-center justify-center w-11 h-11" style="background-color:#EBF2EB;">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #103830 !important;">
-              <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H6v-2h10v2zm0-4H6v-2h10v2zm-3-5V3.5L18.5 9H13z"/>
-            </svg>
-          </div>
-          <span class="font-semibold text-center" style="font-size:11px;color:#4b5563;line-height:1.2;">Directivas</span>
-        </button>
-        <button class="flex flex-col items-center justify-center gap-1.5 transition-all hover:scale-105 text-[#103830] w-full" onclick="document.getElementById('tramites-principales').scrollIntoView({behavior: 'smooth'})">
-          <div class="rounded-xl p-2 flex items-center justify-center w-11 h-11" style="background-color:#EBF2EB;">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #103830 !important;">
-              <path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
-            </svg>
-          </div>
-          <span class="font-semibold text-center" style="font-size:11px;color:#4b5563;line-height:1.2;">Documentos</span>
-        </button>
-        <button class="flex flex-col items-center justify-center gap-1.5 transition-all hover:scale-105 text-[#103830] w-full" onclick="document.getElementById('main-footer').scrollIntoView({behavior: 'smooth'})">
-          <div class="rounded-xl p-2 flex items-center justify-center w-11 h-11" style="background-color:#EBF2EB;">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #103830 !important;">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </div>
-          <span class="font-semibold text-center" style="font-size:11px;color:#4b5563;line-height:1.2;">Contacto</span>
-        </button>
-      </div>
-    </div>
+  <!-- ============================================================
+       TARJETA BLANCA — 4 BOTONES CIRCULARES (SOLO MÓVIL/TABLET)
+       Credenciales · Directivas · Documentos · Contacto
+       Oculta en PC (>=1024px). No afecta la vista desktop.
+  ============================================================ -->
+  <nav id="mobile-quick-access" class="mobile-quick-access" aria-label="Accesos rápidos">
+    <button type="button" class="mqa-btn" onclick="showCredenciales()">
+      <span class="mqa-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2"/>
+          <circle cx="9" cy="10" r="2"/>
+          <path d="M14 9h4M14 13h4M6 16h12"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Credenciales</span>
+    </button>
+    <button type="button" class="mqa-btn" onclick="showDirectiva()">
+      <span class="mqa-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <path d="M14 2v6h6"/>
+          <path d="M9 13h6M9 17h6M9 9h2"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Directivas</span>
+    </button>
+    <button type="button" class="mqa-btn mqa-btn--spd" onclick="handleSPD()" aria-label="Subsecretaría de Prevención del Delito (SPD)">
+      <span class="mqa-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </span>
+      <span class="mqa-label">SPD</span>
+    </button>
+    <button type="button" class="mqa-btn" onclick="document.getElementById('main-footer')?.scrollIntoView({behavior:'smooth', block:'start'})">
+      <span class="mqa-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.95.37 1.88.72 2.77a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.31-1.31a2 2 0 0 1 2.11-.45c.89.35 1.82.59 2.77.72A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </span>
+      <span class="mqa-label">Contacto</span>
+    </button>
+  </nav>
   <div id="homepage-content-wrapper" role="main">
-    <section id="tramites-principales" class="py-16 md:py-24 backdrop-blur-sm" style="background-color:#ffffff; padding-top: 4rem !important; margin-top: 0 !important;">
+    <section id="tramites-principales" class="py-16 md:py-24 bg-[#146314] backdrop-blur-sm">
       <div class="max-w-5xl mx-auto px-6 lg:px-8">
         <div class="text-center">
           <!--<div class="flex items-center justify-center space-x-2">
@@ -3525,9 +3426,9 @@ body {
         </div>
         
         <div class="carousel-container carousel-desktop-grid mt-16">
-          <div onclick="showDirectiva()" class="carousel-card cursor-pointer group relative bg-[#103830] lg:bg-white/10 rounded-xl border border-white/20 lg:hover:bg-white/20 transition-all">
+          <div onclick="showDirectiva()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
             <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white lg:bg-blue-500/20 text-[#103830] lg:text-blue-300 rounded-full lg:rounded-lg p-3 shadow-md lg:shadow-none"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg></div>
               <h3 class="ml-4 text-xl font-bold text-white">Directivas de Funcionamiento</h3>
@@ -3535,9 +3436,9 @@ body {
             <p class="mt-4 text-white">Accede y gestiona los requerimientos para instalaciones, eventos y más.</p>
             <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
           </div>
-          <div onclick="showCredenciales()" class="carousel-card cursor-pointer group relative bg-[#103830] lg:bg-white/10 rounded-xl border border-white/20 lg:hover:bg-white/20 transition-all">
+          <div onclick="showCredenciales()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
             <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white lg:bg-yellow-500/20 text-[#103830] lg:text-yellow-300 rounded-full lg:rounded-lg p-3 shadow-md lg:shadow-none"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div class="flex-shrink-0 bg-yellow-500/20 text-yellow-300 rounded-lg p-3"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 012-2h2a2 2 0 012 2v1m-6 0h6"></path>
                 </svg></div>
               <h3 class="ml-4 text-xl font-bold text-white">Credenciales</h3>
@@ -3546,9 +3447,9 @@ body {
             <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
           </div>
           <!-- TARJETA SPD AGREGADA -->
-          <div onclick="handleSPD()" class="carousel-card cursor-pointer group relative bg-[#103830] lg:bg-white/10 rounded-xl border border-white/20 lg:hover:bg-white/20 transition-all">
+          <div onclick="handleSPD()" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
             <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white lg:bg-blue-500/20 text-[#103830] lg:text-blue-300 rounded-full lg:rounded-lg p-3 shadow-md lg:shadow-none">
+              <div class="flex-shrink-0 bg-blue-500/20 text-blue-300 rounded-lg p-3">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
@@ -3558,9 +3459,9 @@ body {
             <p class="mt-4 text-white">Plataforma de Seguridad Privada, preguntas frecuentes y contactos.</p>
             <span class="absolute top-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
           </div>
-          <div onclick="openNewLink('https://dal5.short.gy/R3')" class="carousel-card cursor-pointer group relative bg-[#103830] lg:bg-white/10 rounded-xl border border-white/20 lg:hover:bg-white/20 transition-all">
+          <div onclick="openNewLink('https://dal5.short.gy/R3')" class="carousel-card cursor-pointer group relative bg-white/10 rounded-xl border border-white/20 hover:bg-white/20">
             <div class="flex items-center">
-              <div class="flex-shrink-0 bg-white lg:bg-green-500/20 text-[#103830] lg:text-green-300 rounded-full lg:rounded-lg p-3 shadow-md lg:shadow-none"><svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <div class="flex-shrink-0 bg-green-500/20 text-green-300 rounded-lg p-3"><svg class="w-8 h-8 text-green-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M20.377 11.082c-.06 1.929-2.229 3.126-8.409 3.126-6.193 0-8.358-1.203-8.409-3.139 1.508 0 4.379-1.958 8.409-1.958 3.927-.001 7.144 1.971 8.409 1.971zm-8.408 4.09c-2.062 0-3.74-.131-5.078-.397.062.555.469 3.322 2.409 3.322 1.721 0 1.673-1.316 2.721-1.316 1.047 0 1.169 1.316 2.852 1.316 2.09 0 2.46-3.063 2.494-3.389-1.387.311-3.169.464-5.398.464zm6.405-.741c-.04 2.171-.717 4.769-2.28 6.437-1.048 1.119-2.377 1.687-3.949 1.687-1.575 0-2.898-.533-3.931-1.582-1.646-1.673-2.302-4.345-2.396-6.461-.523-.158-1.01-.347-1.484-.628-.016 2.472.704 5.942 2.821 8.094 1.321 1.341 3 2.022 4.99 2.022 1.972 0 3.712-.745 5.033-2.153 2.131-2.273 2.76-5.679 2.661-8.111-.459.308-.944.521-1.465.695zm-6.237-10.984l-.313.623-.701.1.507.485-.119.685.626-.324.627.324-.12-.685.507-.485-.7-.1-.314-.623zm7.211-.206s-2.537-.686-7.348-3.241c-4.812 2.555-7.348 3.241-7.348 3.241s-1.295 2.4-3.652 5.016l2.266 1.908c1.533-.165 4.64-2.082 8.734-2.082s7.201 1.917 8.734 2.083l2.266-1.909c-2.357-2.616-3.652-5.016-3.652-5.016zm-6.345 3.214c-.526.131-.605.188-.875.402-.269-.214-.349-.271-.875-.402-.731-.183-1.151-.656-1.151-1.299 0-.359.147-.691.318-1.146.192-.513.083-.675-.119-.882l-.171-.176.987-.819c.098.098.235.278.486.278.248 0 .416-.175.528-.271.102.09.268.271.523.271.248 0 .381-.171.49-.281l.983.823-.172.176c-.202.207-.311.369-.119.882.17.455.318.786.318 1.146 0 .641-.42 1.115-1.151 1.298z" />
                 </svg></div>
               <h3 class="ml-4 text-xl font-bold text-white">Reclamos de Seguridad Privada</h3>
@@ -3570,6 +3471,24 @@ body {
           </div>
         </div>
         <div class="pagination-dots"></div>
+      </div>
+    </section>
+    <section id="banner-cierre" class="py-8 bg-[#146314] text-white">
+      <div class="max-w-5xl mx-auto px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/logo-os10.webp" alt="OS10 Coquimbo" class="h-12 w-auto" loading="lazy" width="48" height="48">
+          <div>
+            <p class="font-semibold text-lg">O.S.10 Coquimbo</p>
+            <p class="text-sm text-green-200">Carabineros de Chile</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 justify-center sm:justify-end">
+          <img src="assets/images/aniversario1.webp" alt="100 años" class="h-12 w-auto" loading="lazy" width="72" height="72">
+          <div class="text-right">
+            <p class="text-sm uppercase tracking-[0.2em] text-green-200">100 años</p>
+            <p class="text-xs text-green-200">Un siglo de servicio y compromiso</p>
+          </div>
+        </div>
       </div>
     </section>
   <!-- ============================================================
@@ -3590,13 +3509,13 @@ body {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <!-- Columna Leyes -->
-          <div class="bg-[#103830] lg:bg-blue-200/30 border border-white/20 lg:border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue leyes-normativa-column">
-            <button id="leyes-toggle" class="w-full text-base md:text-lg font-bold text-white lg:text-blue-900 mb-4 flex items-center justify-between text-left">
+          <div class="bg-blue-200/30 border border-blue-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-blue leyes-normativa-column">
+            <button id="leyes-toggle" class="w-full text-base md:text-lg font-bold text-blue-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg> Leyes Principales </span>
-              <svg id="leyes-arrow" class="w-5 h-5 text-white lg:text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="leyes-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -3649,13 +3568,13 @@ body {
             </div>
           </div>
           <!-- Columna Decretos -->
-          <div class="bg-[#103830] lg:bg-green-200/30 border border-white/20 lg:border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column">
-            <button id="decretos-toggle" class="w-full text-base md:text-lg font-bold text-white lg:text-green-900 mb-4 flex items-center justify-between text-left">
+          <div class="bg-green-200/30 border border-green-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-green leyes-normativa-column">
+            <button id="decretos-toggle" class="w-full text-base md:text-lg font-bold text-green-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg> Decretos Supremos </span>
-              <svg id="decretos-arrow" class="w-5 h-5 text-white lg:text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="decretos-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -3702,13 +3621,13 @@ body {
             </div>
           </div>
           <!-- Columna Resoluciones -->
-          <div class="bg-[#103830] lg:bg-yellow-200/30 border border-white/20 lg:border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow leyes-normativa-column">
-            <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-white lg:text-yellow-900 mb-4 flex items-center justify-between text-left">
+          <div class="bg-yellow-200/30 border border-yellow-400 backdrop-blur-sm rounded-xl p-4 md:p-6 card-float-glow hover-glow-yellow leyes-normativa-column">
+            <button id="resoluciones-toggle" class="w-full text-base md:text-lg font-bold text-yellow-900 mb-4 flex items-center justify-between text-left">
               <span class="flex items-center">
                 <svg class="w-4 h-4 md:w-5 md:h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                 </svg> Resoluciones </span>
-              <svg id="resoluciones-arrow" class="w-5 h-5 text-white lg:text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg id="resoluciones-arrow" class="w-5 h-5 text-gray-600 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -3798,16 +3717,16 @@ body {
           <div class="carousel-card">
             <div class="grid grid-cols-1 gap-4 w-full">
               <!-- Asesor -->
-              <button onclick="mostrarRequisitos('asesor')" class="flex flex-col items-center justify-center p-4 bg-[#103830] lg:bg-white/10 rounded-lg lg:hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-white/10">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white lg:bg-blue-500/20 text-[#103830] lg:text-blue-300 rounded-full lg:rounded-lg shadow-md lg:shadow-none"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button onclick="mostrarRequisitos('asesor')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                   </svg></div>
                 <h3 class="text-white font-bold mt-3 text-center text-sm">Asesor de Seguridad</h3>
                 <p class="carousel-card-description">Ver requisitos completos</p>
               </button>
               <!-- Capacitador -->
-              <button onclick="mostrarRequisitos('capacitador')" class="flex flex-col items-center justify-center p-4 bg-[#103830] lg:bg-white/10 rounded-lg lg:hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer border border-white/10">
-                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-white lg:bg-blue-500/20 text-[#103830] lg:text-blue-300 rounded-full lg:rounded-lg shadow-md lg:shadow-none"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button onclick="mostrarRequisitos('capacitador')" class="flex flex-col items-center justify-center p-4 bg-white/10 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+                <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-blue-500/20 text-blue-300 rounded-lg"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                   </svg></div>
                 <h3 class="text-white font-bold mt-3 text-center text-sm">Capacitador</h3>
@@ -4020,22 +3939,22 @@ body {
               </svg>
             </button>
             <div id="modelos-solicitud-content" class="space-y-2 md:space-y-3">
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_pers_naturales.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://drive.google.com/file/d/1ObrdQqk_PPVTTRUKOzVmVDIxxlcZXRY6/view" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada P. Natural</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_dec_jurada_empresas.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://drive.google.com/file/d/1X32qrNC0KeyR9bW2AVZ7VzZW6JZTSjl0/view" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Declaración Jurada Empresas</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_simple_acreditacion_empresa.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acreditación de Empresa</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_sol_acreditacion_asesor.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="#" onclick="mostrarRequisitos('asesor'); return false;" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acreditación Asesor</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_solicitud_pers_natural_dependiente.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/descargables" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Solic. Pers. Natural Dep.</span>
               </a>
-              <a href="https://www.zosepcar.cl/content/OS10/MOD_acreditacion_capacitador.pdf" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
+              <a href="https://segprivada.minsegpublica.gob.cl/descargables" target="_blank" class="block bg-white px-3 md:px-4 py-2 rounded-lg hover:bg-green-100 hover:shadow-md transition-all border border-green-300 hover:-translate-y-1 active:bg-green-200 active:-translate-y-0.5">
                 <span class="text-xs md:text-sm font-medium text-green-700">Acred. Capacitador</span>
               </a>
             </div>
@@ -4189,29 +4108,6 @@ body {
         </div>
     </section>
   </div>
-
-  <!-- ============================================================
-       NUEVA SECCIÓN VERDE PARA CELULAR (AL FINAL)
-  ============================================================ -->
-  <section class="lg:hidden py-12 bg-[#146314] text-white border-t border-white/10">
-    <div class="max-w-xl mx-auto px-6">
-      <div class="text-center mb-8">
-        <h3 class="text-2xl font-bold">Información Regional</h3>
-        <p class="text-green-200 text-sm mt-2">Acceso rápido O.S.10 Coquimbo</p>
-      </div>
-      <div class="grid grid-cols-1 gap-4">
-        <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10 flex items-center space-x-4">
-          <div class="bg-green-500/30 p-3 rounded-xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
-          <div><p class="text-xs text-green-300 uppercase font-bold tracking-wider">Jurisdicción</p><p class="text-sm font-medium">Toda la IV Región de Coquimbo</p></div>
-        </div>
-        <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10 flex items-center space-x-4">
-          <div class="bg-blue-500/30 p-3 rounded-xl"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-          <div><p class="text-xs text-green-300 uppercase font-bold tracking-wider">Atención</p><p class="text-sm font-medium">Oficina Técnica Especializada</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 <!-- ============================================================
      FOOTER - PIE DE PÁGINA
 ============================================================ -->
@@ -4292,6 +4188,30 @@ body {
       <p class="mt-1">Plataforma desarrollada por Daniel Figueroa Ch. Ingeniero en Informática & Ciberseguridad.</p>
     </div>
   </footer>
+  <!-- ============================================================
+       FRANJA VERDE FINAL — "O.S.10 COQUIMBO · 100 AÑOS · 1925-2025"
+       Se muestra al final del documento, después del footer.
+  ============================================================ -->
+  <section id="os10-bottom-band" aria-label="O.S.10 Coquimbo Carabineros de Chile - 100 años">
+    <div class="os10-band-inner">
+      <div class="os10-band-col os10-band-col--logo">
+        <img src="assets/images/logo-os10.webp" alt="Logo O.S.10 Coquimbo" width="56" height="56" loading="lazy">
+        <div class="os10-band-title">
+          <strong>O.S.10 COQUIMBO</strong>
+          <span>Carabineros de Chile</span>
+        </div>
+      </div>
+      <div class="os10-band-divider" aria-hidden="true"></div>
+      <div class="os10-band-col os10-band-col--aniv">
+        <img src="assets/images/aniversario1.webp" alt="100 años Camino al Centenario - Carabineros de Chile 1927-2027" width="64" height="40" loading="lazy">
+      </div>
+      <div class="os10-band-divider" aria-hidden="true"></div>
+      <div class="os10-band-col os10-band-col--text">
+        <p>Un siglo de servicio<br>y compromiso</p>
+        <span class="os10-band-years">1927 - 2027</span>
+      </div>
+    </div>
+  </section>
 <!-- ============================================================
      CHATBOT - WIDGET DE CHAT
 ============================================================ -->
@@ -4338,12 +4258,6 @@ body {
               <line x1="12" x2="12" y1="19" y2="23"></line>
               <line x1="8" x2="16" y1="23" y2="23"></line>
             </svg></button>
-          <button id="image-btn" class="voice-button bg-purple-500 hover:bg-purple-600 rounded-lg p-2 text-white" title="Enviar imagen">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-            </svg>
-          </button>
-          <input type="file" id="image-input" class="hidden" accept="image/*">
           <input type="text" id="user-input" placeholder="Escribe o usa el micrófono..." class="flex-1 w-full bg-transparent text-gray-800 placeholder-gray-500 focus:outline-none px-2 text-base">
           <button id="send-button" class="flex-shrink-0 bg-green-500 hover:bg-green-600 transition-colors rounded-lg p-2 text-white"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -4351,9 +4265,10 @@ body {
         </div>
       </footer>
     </div>
-    <button id="chat-toggle-button" class="bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-full flex items-center justify-center p-0 mt-4 w-20 h-20 shadow-lg hover:shadow-xl transition-all" title="Abrir Asistente Virtual">
-      <span id="chatbot-tooltip" class="absolute hidden bg-white text-gray-800 text-sm font-bold px-3 py-2 rounded-lg shadow-lg -left-32 whitespace-nowrap">Abrir Asistente</span>
-      <img src="assets/images/poli.webp" alt="Chatbot Icon" class="h-16 w-16 object-contain" width="80" height="80" loading="eager">
+    <button id="chat-toggle-button" class="chat-toggle-asistente bg-white rounded-2xl flex items-center justify-center p-1 mt-4" title="Abrir Asistente Virtual con Voces Modernas">
+      <span id="chatbot-tooltip" class="absolute hidden bg-white text-gray-800 text-sm font-bold px-3 py-2 rounded-lg shadow-lg">Abrir Chatbot</span>
+      <img src="assets/images/poli.webp" alt="Chatbot Icon" class="chat-toggle-avatar h-full w-full object-contain" width="80" height="80" loading="eager">
+      <span class="chat-toggle-label">Asistente<br>OS10</span>
     </button>
   </div>
 <!-- ============================================================
@@ -4370,16 +4285,16 @@ body {
 <!-- ============================================================
      SCRIPTS EXTERNOS DIFERIDOS
 ============================================================ -->
-  <script src="assets/js/inicio.js?v=4" defer></script>
+  <script src="assets/js/inicio.js?v=5" defer></script>
   <script src="assets/js/carousel.js" defer></script>
   <!-- Carrusel de Componentes manejado por carousel.js (via main.js) -->
-  <script src="assets/js/main.js?v=3" defer></script>
-  <script src="./rules/chatbot-rules.js?v=3" defer></script>
+  <script src="assets/js/main.js?v=4" defer></script>
+  <script src="./rules/chatbot-rules.js?v=4" defer></script>
   <script src="assets/js/chatbot.min.js" defer></script>
   <!-- Script para menú hamburguesa móvil y manejo de banner PWA -->
   <!-- SCRIPT PARA ACORDEÓN (AÑADIDO) -->
   <!-- ✨ SCRIPT PARA ANIMACIÓN SPD -->
-  <script src="assets/js/search.min.js?v=4" defer></script>
+  <script src="assets/js/search.min.js?v=5" defer></script>
   <!-- spd-componentes (183 KiB): carga diferida via idle para no bloquear LCP paint -->
   <!-- Función para descargar contenido en PDF con animación -->
   <!-- Script mejorado para ocultar el banner verde cuando el modal está activo -->
@@ -4391,51 +4306,6 @@ body {
      Esto reduce el peso inicial descargado (ahorro ~500KB).
 -->
   <!-- YouTube facade: carga iframe solo al hacer click -->
-  <!-- ====== SCRIPT PARA GRID DE 2 COLUMNAS EN MÓVIL ====== -->
-  <script>
-    (function() {
-      function applyMobileGridStyles() {
-        // Solo ejecutar en móvil (max-width: 768px)
-        if (window.matchMedia('(max-width: 768px)').matches) {
-          const container = document.querySelector('#tramites-principales .carousel-container');
-          if (container) {
-            container.style.display = 'grid';
-            container.style.gridTemplateColumns = 'repeat(2, 1fr)';
-            container.style.gap = '1rem';
-            container.style.padding = '1rem';
-            container.style.overflow = 'visible';
-            container.style.overflowY = 'visible';
-            container.style.scrollSnapType = 'none';
-            container.style.flex = 'none';
-          }
-
-          // Modificar tarjetas
-          const cards = document.querySelectorAll('#tramites-principales .carousel-card');
-          cards.forEach(card => {
-            card.style.flex = '1 1 auto';
-            card.style.minWidth = 'unset';
-            card.style.maxWidth = '100%';
-            card.style.width = '100%';
-            card.style.minHeight = '24rem';
-            card.style.scrollSnapAlign = 'none';
-          });
-
-          // Ocultar paginación
-          const pagination = document.querySelector('#tramites-principales .pagination-dots');
-          if (pagination) {
-            pagination.style.display = 'none';
-          }
-        }
-      }
-
-      // Ejecutar cuando el DOM esté listo
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', applyMobileGridStyles);
-      } else {
-        applyMobileGridStyles();
-      }
-    })();
-  </script>
 </body>
 
 </html>
